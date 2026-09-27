@@ -1,11 +1,12 @@
 import pg from "pg";
+import { databaseUrl } from "./database-url";
 
 // One pool per server instance, reused across hot reloads in development.
 const globalForPool = globalThis as unknown as { __pgPool?: pg.Pool };
 
 export function pool(): pg.Pool {
   if (!globalForPool.__pgPool) {
-    const connectionString = process.env.DATABASE_URL;
+    const connectionString = databaseUrl();
     if (!connectionString) throw new Error("DATABASE_URL is not set");
     globalForPool.__pgPool = new pg.Pool({
       connectionString,

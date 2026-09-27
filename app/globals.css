@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* Design tokens (BUILD-SPEC.md section 4). Contrast is pre-checked; do not
+   add new text colors without checking 4.5:1. */
+@theme {
+  --color-ivory: #faf8f4;
+  --color-surface: #ffffff;
+  --color-tint: #e4eef6;
+  --color-tint-2: #d3e2ee;
+  --color-blue-soft: #cfe0ee;
+  --color-blue-mid: #7fa6cb; /* decorative only, never text */
+  --color-primary: #1f4a6e; /* the only action color */
+  --color-primary-hover: #173a57;
+  --color-ink: #1c2733;
+  --color-muted: #5b6875;
+  --color-muted-2: #45505c;
+  --color-line: #e6e1d8;
+  --color-champagne: #c9b79c; /* hairlines and arch outlines only, never text */
+  --color-danger: #a3312d;
+
+  /* The display face is a placeholder for a licensed Persian font; swap it here only. */
+  --font-display: "Noto Naskh Arabic", "Vazirmatn", serif;
+  --font-sans: "Vazirmatn", Tahoma, sans-serif;
+
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-tile: 16px;
+}
+
+@layer base {
+  html {
+    background: var(--color-ivory);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.9;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Phone numbers and codes read left to right inside RTL text. */
+  .ltr-nums {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

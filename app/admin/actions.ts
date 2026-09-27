@@ -35,6 +35,17 @@ const str = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
 export type LoginState = { step: "phone" | "code"; phone: string; error?: string; info?: string };
 
 export async function adminLogin(prev: LoginState, form: FormData): Promise<LoginState> {
+  try {
+    return await adminLoginStep(prev, form);
+  } catch (err) {
+    // redirect() works by throwing; let it through.
+    if (err && typeof err === "object" && "digest" in err && String(err.digest).startsWith("NEXT_REDIRECT")) throw err;
+    console.error("[admin login]", err);
+    return { ...prev, error: "خطای سرور. لطفاً دوباره تلاش کنید؛ اگر تکرار شد، Logs را در Vercel ببینید." };
+  }
+}
+
+async function adminLoginStep(prev: LoginState, form: FormData): Promise<LoginState> {
   const ip = await clientIp();
   if (prev.step === "phone" || form.get("resend")) {
     const phone = normalizePhone(str(form, "phone") || prev.phone);

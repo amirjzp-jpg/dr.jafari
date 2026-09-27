@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
 import { adminPhone } from "@/lib/auth/session";
-import { configProblems, smsIsMock } from "@/lib/config";
+import { configProblems, deploymentInfo, smsIsMock } from "@/lib/config";
 import { LoginForm } from "./LoginForm";
 
 export const metadata = { title: "ورود" };
@@ -15,6 +15,7 @@ const HELP: Record<string, string> = {
 export default async function LoginPage() {
   await connection();
   const problems = configProblems();
+  const dep = deploymentInfo();
   if (problems.length === 0 && (await adminPhone().catch(() => null))) redirect("/admin");
 
   return (
@@ -38,8 +39,18 @@ export default async function LoginPage() {
             ))}
           </ul>
           <p className="text-ink">
-            این‌ها را در Vercel، بخش Settings ← Environment Variables اضافه کنید و سپس Redeploy بزنید. راهنمای کامل در
-            فایل <code dir="ltr">docs/DEPLOY.md</code> است.
+            این‌ها را در Vercel، بخش Settings ← Environment Variables اضافه کنید. هنگام افزودن، هر سه گزینه‌ی Production،
+            Preview و Development را تیک بزنید. سپس از بخش Deployments روی آخرین نسخه Redeploy بزنید؛ تنظیمات تازه فقط
+            روی نسخه‌ای که بعد از آن ساخته شود اثر دارند.
+          </p>
+          <p dir="ltr" className="rounded-lg bg-surface px-3 py-2 text-left font-mono text-xs text-muted-2">
+            environment: {dep.env}
+            {dep.commit && <> · version: {dep.commit}</>}
+            {dep.host && <> · {dep.host}</>}
+          </p>
+          <p className="text-ink">
+            اگر environment بالا <code dir="ltr">preview</code> است، تنظیمات باید برای Preview هم تیک خورده باشند. راهنمای
+            کامل در فایل <code dir="ltr">docs/DEPLOY.md</code> است.
           </p>
         </div>
       ) : (

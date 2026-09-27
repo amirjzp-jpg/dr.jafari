@@ -4,7 +4,10 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import pg from "pg";
 
-const url = process.env.DATABASE_URL;
+// Same lookup as lib/database-url.ts (Vercel's Neon integration may use POSTGRES_URL or a prefix).
+const env = process.env;
+const prefixed = Object.keys(env).sort().find((k) => /_(DATABASE_URL|POSTGRES_URL)$/.test(k) && env[k]);
+const url = env.DATABASE_URL || env.POSTGRES_URL || (prefixed && env[prefixed]);
 if (!url) {
   console.log("[migrate] DATABASE_URL not set, skipping migrations.");
   process.exit(0);

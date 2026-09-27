@@ -1,4 +1,5 @@
 import "server-only";
+import { databaseUrl } from "./database-url";
 import { normalizePhone } from "./phone";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -31,8 +32,17 @@ export const smsIsMock = () => !process.env.SMSIR_API_KEY;
  */
 export function configProblems(): string[] {
   const problems: string[] = [];
-  if (!process.env.DATABASE_URL) problems.push("DATABASE_URL");
+  if (!databaseUrl()) problems.push("DATABASE_URL");
   if (isProd && (process.env.OTP_SECRET ?? "").length < 32) problems.push("OTP_SECRET");
   if (adminPhones().size === 0) problems.push("ADMIN_PHONES");
   return problems;
+}
+
+/** Which deployment is answering, so a stale or wrong-environment URL is easy to spot. */
+export function deploymentInfo() {
+  return {
+    env: process.env.VERCEL_ENV ?? process.env.NODE_ENV ?? "unknown",
+    commit: (process.env.VERCEL_GIT_COMMIT_SHA ?? "").slice(0, 7) || null,
+    host: process.env.VERCEL_URL ?? null,
+  };
 }

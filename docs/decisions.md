@@ -33,3 +33,10 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 
 - **Test deploy:** Vercel + Neon Postgres. The app stays portable (standard Node server, plain Postgres, config in env vars) for the move to an Iranian host.
 - SMS uses a mock provider (codes written to the server log) until the sms.ir key and templates are ready.
+
+## Implementation notes
+
+- Database access uses `pg` with plain SQL rather than Drizzle: the booking guarantees live in SQL (exclusion constraint, advisory locks, conditional updates), so keeping them visible is clearer. Migrations are plain `.sql` files run by `scripts/migrate.mjs`.
+- Service and journal content is structured TypeScript (`content/`) rather than MDX: the service pages need structured fields (steps, FAQ for FAQPage schema), and it keeps a later CMS migration straightforward.
+- Writers for the same slot queue on a transaction-scoped advisory lock and deadlocks are retried, so concurrent requests get a clean "slot taken" instead of an error. The constraint remains the guarantee.
+- Content drafts show a «پیش‌نویس» notice until `reviewed: true`.

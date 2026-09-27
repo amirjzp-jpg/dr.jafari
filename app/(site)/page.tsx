@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { PhoneIcon } from "@/components/icons/ui";
 import { ServiceIcon } from "@/components/icons/services";
@@ -11,14 +12,18 @@ import { cases } from "@/content/cases";
 import { latestArticles } from "@/content/journal";
 import { featuredServices, otherServices } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
+import { dentistSchema, personSchema } from "@/lib/seo";
 import { bookingHref, bookingLabel, site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
 import drHero from "@/public/images/doctor/dr-hero.webp";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={[dentistSchema(), personSchema()]} />
       <Hero />
       <Stats />
       <About />

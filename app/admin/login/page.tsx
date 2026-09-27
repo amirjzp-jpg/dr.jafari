@@ -47,6 +47,8 @@ export default async function LoginPage() {
             environment: {dep.env}
             {dep.commit && <> · version: {dep.commit}</>}
             {dep.host && <> · {dep.host}</>}
+            {dep.builtAt && <> · built: {dep.builtAt}</>}
+            {dep.nearMisses.length > 0 && <> · similar names found: {dep.nearMisses.map((k) => JSON.stringify(k)).join(", ")}</>}
           </p>
           <p className="text-ink">
             اگر environment بالا <code dir="ltr">preview</code> است، تنظیمات باید برای Preview هم تیک خورده باشند. راهنمای

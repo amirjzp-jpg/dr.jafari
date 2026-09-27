@@ -10,6 +10,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Shown on the admin login's settings box, to confirm a redeploy happened.
+  env: { BUILD_TIME: new Date().toISOString() },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

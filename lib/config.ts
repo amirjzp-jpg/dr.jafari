@@ -44,5 +44,14 @@ export function deploymentInfo() {
     env: process.env.VERCEL_ENV ?? process.env.NODE_ENV ?? "unknown",
     commit: (process.env.VERCEL_GIT_COMMIT_SHA ?? "").slice(0, 7) || null,
     host: process.env.VERCEL_URL ?? null,
+    builtAt: process.env.BUILD_TIME
+      ? new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Tehran", dateStyle: "medium", timeStyle: "short" }).format(
+          new Date(process.env.BUILD_TIME),
+        ) + " Tehran"
+      : null,
+    // Names that look like one of ours but aren't exact (typos, case, spaces). Names only, never values.
+    nearMisses: Object.keys(process.env).filter(
+      (k) => /admin.?phone|otp|database.?url/i.test(k) && !["ADMIN_PHONES", "OTP_SECRET", "DATABASE_URL"].includes(k),
+    ),
   };
 }

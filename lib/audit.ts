@@ -21,6 +21,7 @@ export const ACTION_LABELS: Record<string, string> = {
   "staff.cancelled": "لغو نوبت",
   "staff.completed": "انجام شد",
   "staff.no_show": "مراجعه نکرد",
+  "staff.reopened": "برگرداندن وضعیت",
   "staff.blocked": "بستن زمان",
   "staff.unblocked": "بازکردن زمان",
   "staff.settings": "تغییر تنظیمات",

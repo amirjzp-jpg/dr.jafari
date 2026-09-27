@@ -8,9 +8,20 @@ import "@fontsource/vazirmatn/latin-400.css";
 import "@fontsource/vazirmatn/latin-500.css";
 import "@fontsource/noto-naskh-arabic/arabic-500.css";
 import "@fontsource/noto-naskh-arabic/arabic-600.css";
+import Script from "next/script";
+import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: "کلینیک دکتر ندا جعفری",
+  openGraph: {
+    type: "website",
+    locale: "fa_IR",
+    siteName: "کلینیک دکتر ندا جعفری",
+  },
+  twitter: { card: "summary_large_image" },
+  formatDetection: { telephone: false },
   title: {
     default: "دکتر ندا جعفری | دندانپزشکی زیبایی در شیراز",
     template: "%s | دکتر ندا جعفری",
@@ -27,7 +38,17 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="min-h-dvh antialiased">{children}</body>
+      <body className="min-h-dvh antialiased">
+        {children}
+        {/* Self-hosted Umami (cookieless). Loads only when configured. */}
+        {process.env.NEXT_PUBLIC_UMAMI_SRC && process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+          <Script
+            src={process.env.NEXT_PUBLIC_UMAMI_SRC}
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="afterInteractive"
+          />
+        )}
+      </body>
     </html>
   );
 }

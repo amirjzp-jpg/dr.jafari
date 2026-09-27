@@ -7,7 +7,9 @@ import {
   staffBook,
   staffCancel,
   staffMove,
+  sendReminders,
 } from "@/lib/booking/service";
+import { addDays, dayKeyOf, tehranToUtc } from "@/lib/time";
 import { pool, query } from "@/lib/db";
 import { captureSms, expireHold, futureSlot, ip, sid } from "./helpers";
 
@@ -146,5 +148,20 @@ describe("double-booking protection", () => {
     for (let i = 0; i < 11; i++) results.push(await createHold({ sessionId: sid(), start: futureSlot(), ip: addr }));
     expect(results.slice(0, 10).every((r) => r.ok)).toBe(true);
     expect(results[10]).toEqual({ ok: false, error: "rate_limited" });
+  });
+
+  it("sends each day-before reminder exactly once, even if the job runs twice at once", async () => {
+    const tomorrow = addDays(dayKeyOf(new Date()), 1);
+    const start = tehranToUtc(tomorrow, "21:30"); // outside working hours: staff-only, no clash with other tests
+    const r = await staffBook({ start, phone: phone(9), name: "یادآوری", reason: "other", note: null, sendConfirmation: false, actor: "x" });
+    expect(r.ok).toBe(true);
+    const from = tehranToUtc(tomorrow, "00:00");
+    const to = tehranToUtc(addDays(tomorrow, 1), "00:00");
+    const sms = captureSms();
+    const [a, b] = await Promise.all([sendReminders(from, to), sendReminders(from, to)]);
+    sms.restore();
+    expect(sms.sent.filter((s) => s.phone === phone(9) && s.template === "reminder")).toHaveLength(1);
+    expect(a + b).toBeGreaterThanOrEqual(1);
+    expect(await sendReminders(from, to)).toBe(0);
   });
 });

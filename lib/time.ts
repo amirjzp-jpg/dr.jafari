@@ -3,6 +3,9 @@
 
 export const TZ = "Asia/Tehran";
 
+/** Current time in ms. A named helper so server components can read the clock per request. */
+export const nowMs = () => Date.now();
+
 /** A calendar day in Tehran, as "YYYY-MM-DD" (Gregorian). Used as a stable key. */
 export type DayKey = string;
 
@@ -98,7 +101,7 @@ const fmtDayNum = fa({ day: "numeric" });
 const fmtMonth = fa({ month: "long" });
 const fmtMonthYear = fa({ month: "long", year: "numeric" });
 const fmtDayMonth = fa({ day: "numeric", month: "long" });
-const fmtFull = fa({ weekday: "long", day: "numeric", month: "long", year: "numeric" });
+const fmtYear = fa({ year: "numeric" });
 const fmtTime = fa({ hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
 
 /** Noon avoids any edge effects when formatting a whole day. */
@@ -112,7 +115,7 @@ export const jalali = {
   /** «۵ مهر» */
   dayMonth: (d: Date) => fmtDayMonth.format(d),
   /** «یکشنبه ۵ مهر ۱۴۰۵» */
-  full: (d: Date) => fmtFull.format(d),
+  full: (d: Date) => `${fmtWeekday.format(d)} ${fmtDayMonth.format(d)} ${fmtYear.format(d).replace(/\s*ه\.ش\.?/, "")}`,
   /** «۱۰:۳۰» */
   time: (d: Date) => fmtTime.format(d),
   /** «یکشنبه ۵ مهر، ساعت ۱۰:۳۰» — the slot label used in booking. */

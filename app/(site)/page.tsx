@@ -56,11 +56,11 @@ function Hero() {
           <p className="hidden max-w-[440px] text-[17px] leading-[2] text-muted lg:block">
             کلینیکی مجهز به تجهیزات و فناوری‌های روز دندانپزشکی، برای لبخندی طبیعی و ماندگار.
           </p>
-          <div className="mt-3.5 hidden items-center gap-7 lg:flex">
+          <div className="mt-3.5 hidden flex-wrap items-center gap-x-7 gap-y-4 lg:flex">
             <ButtonLink href={bookingHref} data-umami-event="book_cta">
               {bookingLabel}
             </ButtonLink>
-            <span className="flex items-center gap-2.5 text-[15px]">
+            <span className="flex shrink-0 items-center gap-2.5 text-[15px]">
               <PhoneIcon size={18} className="text-primary" />
               <PhoneLinks />
             </span>

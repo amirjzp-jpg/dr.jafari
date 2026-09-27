@@ -43,13 +43,13 @@ function Hero() {
         aria-hidden="true"
         className="absolute inset-x-0 top-0 -z-10 h-[900px] bg-linear-to-b from-tint via-[#E8EFF3] via-58% to-ivory lg:h-[816px]"
       />
-      <Container className="flex flex-col lg:h-[720px] lg:flex-row lg:items-stretch lg:gap-10">
+      <Container className="flex flex-col lg:h-[600px] lg:flex-row lg:items-stretch lg:gap-10 xl:h-[720px]">
         {/* Text: first in reading order, shown after the portrait block on desktop (left side in RTL). */}
         <div className="order-1 flex flex-col gap-2 pt-[18px] lg:order-2 lg:grow lg:justify-center lg:gap-[22px] lg:pt-0 lg:pb-[60px]">
           <div className="hidden lg:block">
             <Eyebrow>کلینیک دندانپزشکی زیبایی</Eyebrow>
           </div>
-          <h1 className="font-display text-[34px] leading-normal font-semibold lg:text-[54px] lg:leading-normal xl:text-[68px] xl:whitespace-nowrap">
+          <h1 className="font-display text-[34px] leading-normal font-semibold text-balance lg:text-[clamp(40px,calc((100vw-600px)/9.6),68px)] xl:text-[clamp(40px,calc((min(100vw,1440px)-880px)/9.6),68px)]">
             {site.tagline}
           </h1>
           <p className="text-[19px] text-primary lg:text-[26px]">کامپوزیت · لمینت سرامیکی</p>
@@ -68,7 +68,7 @@ function Hero() {
         </div>
 
         {/* Portrait in the arch (positions from design/Mobile.dc.html and Main.dc.html, inline-start = right in RTL) */}
-        <div className="relative order-2 -mx-5 mt-4 h-[460px] w-[calc(100%+40px)] max-w-[390px] shrink-0 self-center overflow-x-clip md:mx-auto md:w-full lg:order-1 lg:m-0 lg:h-auto lg:w-[600px] lg:max-w-none lg:overflow-visible">
+        <div className="relative order-2 -mx-5 mt-4 h-[460px] w-[calc(100%+40px)] max-w-[390px] shrink-0 self-center overflow-x-clip md:mx-auto md:w-full lg:order-1 lg:m-0 lg:h-auto lg:w-[600px] lg:max-w-none lg:self-stretch lg:overflow-visible lg:[zoom:0.8] xl:[zoom:1]">
           <div className="absolute start-[55px] bottom-0 h-[400px] w-[280px] rounded-t-[140px] bg-linear-to-b from-tint-2 via-[#D8E4EE] via-70% to-[rgba(232,239,243,0)] lg:start-[70px] lg:h-[600px] lg:w-[440px] lg:rounded-t-[220px]" />
           <div className="absolute start-[54px] bottom-0 h-[401px] w-[282px] rounded-t-[141px] border border-b-0 border-champagne opacity-55 lg:start-[69px] lg:h-[601px] lg:w-[442px] lg:rounded-t-[221px]" />
           <Image

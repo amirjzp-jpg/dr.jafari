@@ -8,7 +8,7 @@ import { ServiceIcon } from "@/components/icons/services";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { PhoneLinks } from "@/components/ui/PhoneLinks";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { cases } from "@/content/cases";
 import { homeFaq } from "@/content/home";
 import { latestArticles } from "@/content/journal";
@@ -65,7 +65,7 @@ function Hero() {
             </ButtonLink>
             <span className="flex shrink-0 items-center gap-2.5 text-[15px]">
               <PhoneIcon size={18} className="text-primary" />
-              <PhoneLinks />
+              <PhoneLink />
             </span>
           </div>
         </div>
@@ -91,7 +91,7 @@ function Hero() {
         {/* Phones on mobile (the sticky bar carries the booking button). */}
         <p className="order-3 mt-6 flex items-center justify-center gap-2.5 text-[15px] lg:hidden">
           <PhoneIcon size={18} className="text-primary" />
-          <PhoneLinks />
+          <PhoneLink />
         </p>
       </Container>
     </>
@@ -349,7 +349,7 @@ function Contact() {
             <div className="flex flex-col gap-1 border-b border-[#D2DCE4] pb-5">
               <dt className="text-[13px] text-muted-2">تلفن</dt>
               <dd>
-                <PhoneLinks />
+                <PhoneLink />
               </dd>
             </div>
             <div className="flex flex-col gap-1 border-b border-[#D2DCE4] py-5">

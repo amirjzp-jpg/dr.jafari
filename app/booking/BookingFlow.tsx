@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { track } from "@/lib/analytics";
 import { toEnDigits, toFaDigits } from "@/lib/digits";
 import { appointmentIcs } from "@/lib/ics";
@@ -297,7 +298,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                     >
                       <span className="text-xs leading-none">{d.weekday}</span>
                       <span className="text-xl leading-none font-medium">{d.dayNumber}</span>
-                      <span className="text-[11px] leading-none">{d.open ? d.month : "تعطیل"}</span>
+                      <span className="text-xs leading-none">{d.open ? d.month : "تعطیل"}</span>
                     </button>
                   );
                 })}
@@ -497,14 +498,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                 <div className="flex justify-between gap-4 py-3.5">
                   <dt className="text-muted">تماس</dt>
                   <dd>
-                    {site.phones.map((p, i) => (
-                      <span key={p.tel}>
-                        {i > 0 && " · "}
-                        <a href={`tel:${p.tel}`} className="ltr-nums text-ink no-underline" onClick={() => track("phone_click")}>
-                          {p.display}
-                        </a>
-                      </span>
-                    ))}
+                    <PhoneLink />
                   </dd>
                 </div>
               </dl>

@@ -277,7 +277,7 @@ Also: add both phone numbers as tap-to-call links everywhere they appear, and a 
 
 ### Final content
 
-- **Phones:** ۰۹۰۲ ۳۰۲ ۳۱۲۰ and ۰۹۰۲ ۳۰۲ ۳۱۱۰ (`tel:+989023023120`, `tel:+989023023110`)
+- **Phone:** ۰۹۰۲ ۳۰۲ ۳۱۲۰ (`tel:+989023023120`). The second number (۳۱۱۰) was removed at the client's request; see docs/decisions.md.
 - **Address:** شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم
 - **Hours:** شنبه تا چهارشنبه، ساعت ۱۰ تا ۱۹ · پنجشنبه و جمعه تعطیل
 - **Installments:** mention only, with no terms: «امکان پرداخت اقساطی برای درمان‌های زیبایی»

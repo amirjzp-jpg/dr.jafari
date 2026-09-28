@@ -22,7 +22,7 @@ export function MobileBookingBar() {
           {bookingLabel}
         </Link>
         <a
-          href={`tel:${site.phones[0].tel}`}
+          href={`tel:${site.phone.tel}`}
           aria-label="تماس با کلینیک"
           className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-primary text-primary"
         >

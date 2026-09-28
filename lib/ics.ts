@@ -17,7 +17,7 @@ export function appointmentIcs(startIso: string, minutes = 30): string {
     `DTEND:${fmt(end)}`,
     `SUMMARY:${esc(`معاینه و مشاوره — ${site.clinicName}`)}`,
     `LOCATION:${esc(site.address)}`,
-    `DESCRIPTION:${esc(`تماس: ${site.phones.map((p) => p.tel).join(" / ")}`)}`,
+    `DESCRIPTION:${esc(`تماس: ${site.phone.tel}`)}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");

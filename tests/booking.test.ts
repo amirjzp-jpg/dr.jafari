@@ -143,11 +143,23 @@ describe("double-booking protection", () => {
   });
 
   it("rate-limits hold creation per IP", async () => {
+    // One browser re-picking times: each new hold replaces its previous one.
     const addr = "10.9.9.9";
+    const session = sid();
     const results = [];
-    for (let i = 0; i < 11; i++) results.push(await createHold({ sessionId: sid(), start: futureSlot(), ip: addr }));
+    for (let i = 0; i < 11; i++) results.push(await createHold({ sessionId: session, start: futureSlot(), ip: addr }));
     expect(results.slice(0, 10).every((r) => r.ok)).toBe(true);
     expect(results[10]).toEqual({ ok: false, error: "rate_limited" });
+  });
+
+  it("caps how many slots one IP can hold at the same time", async () => {
+    const addr = "10.8.8.8";
+    const results = [];
+    for (let i = 0; i < 4; i++) results.push(await createHold({ sessionId: sid(), start: futureSlot(), ip: addr }));
+    expect(results.slice(0, 3).every((r) => r.ok)).toBe(true);
+    expect(results[3]).toEqual({ ok: false, error: "rate_limited" });
+    // Another client is unaffected.
+    expect((await createHold({ sessionId: sid(), start: futureSlot(), ip: "10.8.8.9" })).ok).toBe(true);
   });
 
   it("sends each day-before reminder exactly once, even if the job runs twice at once", async () => {

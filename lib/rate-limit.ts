@@ -24,4 +24,8 @@ export const LIMITS = {
   holdsPerIpPerHour: 10,
   otpSendsPerIpPerHour: 10,
   otpVerifiesPerIpPerHour: 30,
+  /** Live (unexpired) holds one IP may have at once, so a few clients can't lock the calendar. */
+  liveHoldsPerIp: 3,
+  /** Ceiling on patient OTP texts across the whole site: caps the cost of SMS-pumping abuse. */
+  bookingOtpSendsPerHour: 60,
 } as const;

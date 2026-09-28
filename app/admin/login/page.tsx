@@ -9,7 +9,7 @@ export const metadata = { title: "ورود" };
 const HELP: Record<string, string> = {
   DATABASE_URL: "پایگاه داده وصل نیست. در Vercel از بخش Storage یک پایگاه داده‌ی Neon بسازید و به پروژه وصل کنید.",
   OTP_SECRET: "یک رشته‌ی تصادفی دست‌کم ۳۲ نویسه‌ای با نام OTP_SECRET اضافه کنید.",
-  ADMIN_PHONES: "شماره‌ی موبایل کارکنان را با نام ADMIN_PHONES اضافه کنید (مثلاً 09050897230).",
+  ADMIN_PHONES: "شماره‌ی موبایل کارکنان را با نام ADMIN_PHONES اضافه کنید (مثلاً 09121234567).",
 };
 
 export default async function LoginPage() {

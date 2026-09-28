@@ -9,7 +9,7 @@
    | Name | Value |
    |---|---|
    | `OTP_SECRET` | a random string of 32+ characters, e.g. from `openssl rand -hex 32` |
-   | `ADMIN_PHONES` | staff mobile numbers, comma-separated, e.g. `09050897230` |
+   | `ADMIN_PHONES` | staff mobile numbers, comma-separated, e.g. `09121234567` |
    | `CRON_SECRET` | another random string (Vercel sends it to the reminder job) |
    | `NEXT_PUBLIC_SITE_URL` | the site's address, e.g. `https://dr-jafari.vercel.app` (later the real domain) |
 
@@ -38,6 +38,7 @@ npm start            # serves on $PORT (default 3000)
 - Set the same environment variables as above.
 - **Reminder job:** schedule a daily call at 18:00 Tehran time:
   `curl -H "Authorization: Bearer $CRON_SECRET" https://<domain>/api/cron/reminders`
+- **Client IP:** the reverse proxy must append the client IP to `X-Forwarded-For` (nginx: `proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`); see `docs/SECURITY.md`.
 - Force HTTPS at the host (the app already sends HSTS).
 - Analytics (optional): run Umami on the same host and set `NEXT_PUBLIC_UMAMI_SRC` (script URL) and `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
 

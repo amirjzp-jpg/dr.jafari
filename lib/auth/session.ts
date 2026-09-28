@@ -10,17 +10,26 @@ import { query } from "../db";
 const token = () => randomBytes(32).toString("base64url");
 const sha256 = (v: string) => createHash("sha256").update(v).digest("hex");
 
+// In production the __Host- prefix makes the browser refuse these cookies
+// unless they are Secure, host-only and path=/ (no subdomain can set them).
+const P = secureCookies ? "__Host-" : "";
 const COOKIE = {
-  booking: "bk_sid",
-  device: "bk_dev",
-  admin: "adm",
+  booking: `${P}bk_sid`,
+  device: `${P}bk_dev`,
+  admin: `${P}adm`,
 } as const;
 
 const base = { httpOnly: true, secure: secureCookies, sameSite: "lax" as const, path: "/" };
 
+/**
+ * The client IP for rate limits. The right-most X-Forwarded-For entry is the one
+ * added by our own proxy (Vercel sets it to the client; nginx appends
+ * $remote_addr); entries to its left come from the client and can be forged.
+ */
 export async function clientIp(): Promise<string> {
   const h = await headers();
-  return h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip") || "unknown";
+  const xff = h.get("x-forwarded-for")?.split(",").map((s) => s.trim()).filter(Boolean);
+  return xff?.at(-1) || h.get("x-real-ip")?.trim() || "unknown";
 }
 
 // ---------------------------------------------------------------- booking session

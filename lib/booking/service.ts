@@ -12,6 +12,9 @@ import { bookableDays, checkPatientSlot, checkStaffSlot, SLOT_MINUTES, slotsForD
 // constraint. Everything here either inserts/updates inside a transaction and
 // lets that constraint reject conflicts, or reads for display only.
 
+/** Ids come from forms and cookies; reject anything that isn't a UUID before it reaches SQL. */
+const isId = (v: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
+
 export type Reason = "composite" | "veneer" | "other";
 export const REASONS: Reason[] = ["composite", "veneer", "other"];
 export const REASON_LABELS: Record<Reason, string> = { composite: "کامپوزیت", veneer: "لمینت", other: "سایر" };
@@ -122,6 +125,12 @@ export async function createHold(opts: { sessionId: string; start: Date; ip: str
   const check = checkPatientSlot(opts.start, opts.now ?? new Date(), settings);
   if (!check.ok) return { ok: false, error: "invalid" };
   if (!(await hit(`hold:ip:${opts.ip}`, LIMITS.holdsPerIpPerHour, 3600))) return { ok: false, error: "rate_limited" };
+  const live = await query<{ n: string }>(
+    `SELECT count(*) AS n FROM appointments
+     WHERE hold_ip = $1 AND status = 'held' AND hold_expires_at > now() AND session_id <> $2`,
+    [opts.ip, opts.sessionId],
+  );
+  if (Number(live.rows[0].n) >= LIMITS.liveHoldsPerIp) return { ok: false, error: "rate_limited" };
 
   const { start, end } = check.slot;
   try {
@@ -135,10 +144,10 @@ export async function createHold(opts: { sessionId: string; start: Date; ip: str
       await lockSlots(c, start, end);
       await clearExpiredHolds(c, start, end);
       const { rows } = await c.query<{ id: string; hold_expires_at: Date }>(
-        `INSERT INTO appointments (start_at, end_at, status, source, hold_expires_at, session_id, phone)
-         VALUES ($1, $2, 'held', 'web', now() + make_interval(mins => $3), $4, $5)
+        `INSERT INTO appointments (start_at, end_at, status, source, hold_expires_at, session_id, phone, hold_ip)
+         VALUES ($1, $2, 'held', 'web', now() + make_interval(mins => $3), $4, $5, $6)
          RETURNING id, hold_expires_at`,
-        [start, end, settings.holdMinutes, opts.sessionId, prev.rows.find((r) => r.phone)?.phone ?? null],
+        [start, end, settings.holdMinutes, opts.sessionId, prev.rows.find((r) => r.phone)?.phone ?? null, opts.ip],
       );
       return { ok: true as const, holdId: rows[0].id, start, expiresAt: rows[0].hold_expires_at };
     });
@@ -218,6 +227,7 @@ export async function confirmBooking(opts: {
   note: string | null;
 }): Promise<ConfirmResult> {
   const name = opts.name.trim().replace(/\s+/g, " ");
+  if (!isId(opts.holdId)) return { ok: false, error: "expired" };
   if (name.length < 2 || name.length > 80 || !REASONS.includes(opts.reason)) return { ok: false, error: "invalid" };
   const note = opts.note?.trim().slice(0, 500) || null;
 
@@ -239,7 +249,7 @@ export async function confirmBooking(opts: {
 
     const { rows } = await c.query<AppointmentRow>(
       `UPDATE appointments
-       SET status = 'confirmed', phone = $3, name = $4, reason = $5, note = $6,
+       SET status = 'confirmed', phone = $3, name = $4, reason = $5, note = $6, hold_ip = NULL,
            confirmed_at = now(), updated_at = now()
        WHERE id = $1 AND session_id = $2 AND status = 'held' AND hold_expires_at > now()
        RETURNING *`,
@@ -284,7 +294,7 @@ export async function staffBook(opts: {
   actor: string;
 }): Promise<StaffResult> {
   const name = opts.name.trim().replace(/\s+/g, " ");
-  if (!checkStaffSlot(opts.start, new Date()) || name.length < 2 || !REASONS.includes(opts.reason)) {
+  if (!checkStaffSlot(opts.start, new Date()) || name.length < 2 || name.length > 80 || !REASONS.includes(opts.reason)) {
     return { ok: false, error: "invalid" };
   }
   const end = slotEnd(opts.start);
@@ -295,7 +305,7 @@ export async function staffBook(opts: {
       const { rows } = await c.query<AppointmentRow>(
         `INSERT INTO appointments (start_at, end_at, status, source, phone, name, reason, note, created_by, confirmed_at)
          VALUES ($1, $2, 'confirmed', 'staff', $3, $4, $5, $6, $7, now()) RETURNING *`,
-        [opts.start, end, opts.phone, name, opts.reason, opts.note?.trim() || null, opts.actor],
+        [opts.start, end, opts.phone, name, opts.reason, opts.note?.trim().slice(0, 500) || null, opts.actor],
       );
       await audit(opts.actor, "staff.booked", rows[0].id, { phone: opts.phone, start: opts.start }, c);
       return rows[0];
@@ -314,6 +324,7 @@ export async function staffMove(opts: {
   notify: boolean;
   actor: string;
 }): Promise<StaffResult> {
+  if (!isId(opts.id)) return { ok: false, error: "not_found" };
   if (!checkStaffSlot(opts.start, new Date())) return { ok: false, error: "invalid" };
   const end = slotEnd(opts.start);
   try {
@@ -341,6 +352,7 @@ export async function staffMove(opts: {
 }
 
 export async function staffCancel(opts: { id: string; notify: boolean; actor: string }): Promise<StaffResult> {
+  if (!isId(opts.id)) return { ok: false, error: "not_found" };
   const row = await tx(async (c) => {
     const { rows } = await c.query<AppointmentRow>(
       `UPDATE appointments SET status = 'cancelled', cancel_reason = 'clinic', updated_at = now()
@@ -362,6 +374,7 @@ export async function staffSetOutcome(opts: {
   outcome: "completed" | "no_show" | "confirmed";
   actor: string;
 }): Promise<StaffResult> {
+  if (!isId(opts.id)) return { ok: false, error: "not_found" };
   return tx(async (c) => {
     // "confirmed" undoes a mistaken outcome; the constraint still applies.
     const from = opts.outcome === "confirmed" ? ["completed", "no_show"] : ["confirmed"];
@@ -426,7 +439,7 @@ export async function listRange(from: Date, to: Date, includeCancelled = false):
 }
 
 export async function getAppointment(id: string): Promise<AppointmentRow | null> {
-  if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
+  if (!isId(id)) return null;
   const { rows } = await query<AppointmentRow>("SELECT * FROM appointments WHERE id = $1", [id]);
   return rows[0] ?? null;
 }
@@ -482,4 +495,22 @@ export async function sendReminders(tomorrowStart: Date, tomorrowEnd: Date): Pro
     await sendSms(a.phone!, "reminder", { TIME: jalali.time(new Date(a.start_at)) });
   }
   return rows.length;
+}
+
+/**
+ * Data minimisation, run daily by the cron: drop login and verification
+ * records once they are useless. Appointments and the staff audit log are kept.
+ */
+export async function purgeExpired(): Promise<Record<string, number>> {
+  const run = async (sql: string) => (await query(sql)).rowCount ?? 0;
+  return {
+    otp_codes: await run("DELETE FROM otp_codes WHERE created_at < now() - interval '1 day'"),
+    verified_devices: await run("DELETE FROM verified_devices WHERE expires_at < now()"),
+    admin_sessions: await run("DELETE FROM admin_sessions WHERE expires_at < now()"),
+    rate_events: await run("DELETE FROM rate_events WHERE created_at < now() - interval '2 days'"),
+    // Abandoned holds carry no patient data worth keeping.
+    holds: await run(
+      "DELETE FROM appointments WHERE status = 'cancelled' AND cancel_reason IN ('hold_released', 'hold_expired') AND name IS NULL AND updated_at < now() - interval '7 days'",
+    ),
+  };
 }

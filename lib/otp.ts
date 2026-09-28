@@ -50,6 +50,10 @@ export async function requestOtp(opts: {
   }
   if (Number(rows[0].recent) >= OTP.maxSendsPerWindow) return { ok: false, error: "too_many" };
   if (!(await hit(`otp-send:ip:${ip}`, LIMITS.otpSendsPerIpPerHour, 3600))) return { ok: false, error: "too_many" };
+  // Staff login is exempt so an attack on the public form can't lock the clinic out.
+  if (purpose === "booking" && !(await hit("otp-send:booking:all", LIMITS.bookingOtpSendsPerHour, 3600))) {
+    return { ok: false, error: "too_many" };
+  }
 
   const code = String(randomInt(0, 10 ** OTP.length)).padStart(OTP.length, "0");
   await tx(async (c) => {

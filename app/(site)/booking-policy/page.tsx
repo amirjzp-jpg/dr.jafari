@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Prose, type Section } from "@/components/content/Prose";
-import { site } from "@/lib/site";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = {
   title: "قوانین نوبت‌دهی",
@@ -22,7 +22,10 @@ const sections: Section[] = [
   {
     h: "لغو یا تغییر نوبت",
     p: [
-      `اگر نمی‌توانید در زمان نوبت حاضر شوید، لطفاً دست‌کم ۲۴ ساعت پیش از آن با شماره‌ی ${site.phone.display} تماس بگیرید تا نوبت برای بیمار دیگری آزاد شود.`,
+      <>
+        اگر نمی‌توانید در زمان نوبت حاضر شوید، لطفاً دست‌کم ۲۴ ساعت پیش از آن با شماره‌ی <PhoneLink /> تماس بگیرید تا نوبت
+        برای بیمار دیگری آزاد شود.
+      </>,
     ],
   },
   {

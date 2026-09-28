@@ -7,6 +7,7 @@ Persian (RTL-first) website for a cosmetic dental clinic in Shiraz, with online 
 - `TODO-content.md`: content still missing before launch.
 
 - `docs/DEPLOY.md`: Vercel test deploy, sms.ir, and the move to an Iranian host.
+- `docs/SECURITY.md`: security model, abuse limits, and what a new host must keep.
 
 ## Development
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Prose, type Section } from "@/components/content/Prose";
-import { site } from "@/lib/site";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = {
   title: "حریم خصوصی",
@@ -47,7 +47,10 @@ const sections: Section[] = [
   {
     h: "حذف اطلاعات",
     p: [
-      `اگر می‌خواهید اطلاعات شما حذف شود، با شماره‌ی ${site.phone.display} تماس بگیرید. پس از تأیید هویت، اطلاعات شما حذف می‌شود، مگر آنچه نگهداری آن طبق قانون لازم است.`,
+      <>
+        اگر می‌خواهید اطلاعات شما حذف شود، با شماره‌ی <PhoneLink /> تماس بگیرید. پس از تأیید هویت، اطلاعات شما حذف می‌شود،
+        مگر آنچه نگهداری آن طبق قانون لازم است.
+      </>,
     ],
   },
 ];

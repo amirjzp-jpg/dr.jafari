@@ -120,9 +120,9 @@ export async function moveAppointment(form: FormData) {
   const actor = await requireAdmin();
   const id = str(form, "id");
   const start = new Date(str(form, "start"));
-  if (Number.isNaN(start.getTime())) back(`/admin/a/${id}`, "pick_time");
+  if (Number.isNaN(start.getTime())) back(`/admin/appointments/${id}`, "pick_time");
   const r = await staffMove({ id, start, notify: form.get("notify") === "on", actor });
-  if (!r.ok) back(`/admin/a/${id}`, r.error === "taken" ? "taken" : "error");
+  if (!r.ok) back(`/admin/appointments/${id}`, r.error === "taken" ? "taken" : "error");
   back(`/admin?d=${dayKeyOf(start)}`, r.sms === false ? "moved_nosms" : "moved");
 }
 

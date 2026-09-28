@@ -1,5 +1,5 @@
 import "server-only";
-import { databaseUrl } from "./database-url";
+import { databaseUrl } from "./database-url.mjs";
 import { normalizePhone } from "./phone";
 
 const isProd = process.env.NODE_ENV === "production";

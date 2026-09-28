@@ -30,7 +30,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
         {results.map((a) => (
           <li key={a.id}>
             <Link
-              href={`/admin/a/${a.id}`}
+              href={`/admin/appointments/${a.id}`}
               className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-line bg-surface p-4 text-ink no-underline hover:border-primary hover:text-ink"
             >
               <span className="font-medium">{a.name}</span>

@@ -31,7 +31,7 @@ export default async function WeekPage({ searchParams }: { searchParams: Promise
     if (hit)
       return (
         <Link
-          href={`/admin/a/${hit.id}`}
+          href={`/admin/appointments/${hit.id}`}
           className={`block truncate rounded-md px-1.5 py-1 text-xs no-underline ${
             hit.status === "confirmed" ? "bg-primary text-white hover:text-white" : "bg-tint text-primary"
           }`}

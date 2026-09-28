@@ -1,5 +1,5 @@
 import pg from "pg";
-import { databaseUrl } from "./database-url";
+import { databaseUrl } from "./database-url.mjs";
 
 // One pool per server instance, reused across hot reloads in development.
 const globalForPool = globalThis as unknown as { __pgPool?: pg.Pool };

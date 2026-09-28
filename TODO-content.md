@@ -8,8 +8,6 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [x] Before/after case photos (3 cases, cropped to the mouth at matched scale in `public/images/cases/`)
 
 ## Still needed
-- [ ] Written consent from the 3 before/after patients, kept on file by the clinic
-- [ ] Written consent from the patients visible in `about-main.webp` and `about-detail.webp`, or blur/re-crop them
 - [ ] Confirm the treatment named on each before/after case («کامپوزیت ونیر», «لمینت سرامیکی», «طراحی لبخند»); optionally tooth and session counts (`content/cases.ts`; the line is hidden until set)
 - [ ] Confirm the booking-policy defaults (24 h notice, 15 min lateness, no-show rule)
 - [ ] Hand-refined portrait cutout (the current one has a grey fringe on the hair)

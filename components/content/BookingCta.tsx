@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { PhoneLinks } from "@/components/ui/PhoneLinks";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { bookingHref, bookingLabel } from "@/lib/site";
 
 export function BookingCta({ title = "از یک جلسه‌ی مشاوره شروع کنید" }: { title?: string }) {
@@ -13,7 +13,7 @@ export function BookingCta({ title = "از یک جلسه‌ی مشاوره شر�
             <Eyebrow>رزرو نوبت</Eyebrow>
             <h2 className="font-display text-[24px] leading-normal font-semibold lg:text-[34px]">{title}</h2>
             <p className="text-[15px] text-muted-2">
-              یا تماس بگیرید: <PhoneLinks />
+              یا تماس بگیرید: <PhoneLink />
             </p>
           </div>
           <ButtonLink href={bookingHref} data-umami-event="book_cta">

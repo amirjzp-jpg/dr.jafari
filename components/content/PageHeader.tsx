@@ -25,7 +25,7 @@ export function PageHeader({
               <li key={c.path} className="flex items-center gap-2">
                 {i > 0 && <span aria-hidden="true">/</span>}
                 {i < all.length - 1 ? (
-                  <Link href={c.path} className="text-muted no-underline hover:text-primary">
+                  <Link href={c.path} className="-my-2.5 inline-block py-2.5 text-muted no-underline hover:text-primary">
                     {c.name}
                   </Link>
                 ) : (

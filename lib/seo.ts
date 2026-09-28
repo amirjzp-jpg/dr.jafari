@@ -27,7 +27,7 @@ export function dentistSchema() {
     name: site.clinicName,
     url: siteUrl,
     image: abs("/opengraph-image.png"),
-    telephone: site.phones.map((p) => p.tel),
+    telephone: site.phone.tel,
     address: {
       "@type": "PostalAddress",
       streetAddress: "پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم",

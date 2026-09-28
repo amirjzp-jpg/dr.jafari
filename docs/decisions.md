@@ -8,6 +8,7 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **University: not mentioned anywhere**, at the doctor's request.
 - **Copy:** the doctor gave full copywriting approval, so service, journal, about and policy copy is final (`reviewed: true`, no draft notices). Still no invented clinical numbers (e.g. longevity in years).
 - **Patient photos:** the clinic confirmed that no separate written consent is needed for the before/after photos or the two about-section photos; the photos are used as supplied (before/after cropped to the mouth).
+- **Phone:** one number only, ۰۹۰۲ ۳۰۲ ۳۱۲۰, shown semibold. The second number (۰۹۰۲ ۳۰۲ ۳۱۱۰) was removed at the client's request.
 - **Footer credit:** «Designed by Razats Creative Studio», small and muted.
 - **About section credentials list:** «تحصیلات» and «دوره‌های تخصصی» are replaced with three approach rows. The wording needs Dr. Jafari's approval (tracked in `TODO-content.md`):
   - رویکرد: حفظ حداکثری بافت دندان

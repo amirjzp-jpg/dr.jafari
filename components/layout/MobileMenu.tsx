@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { CloseIcon, MenuIcon } from "@/components/icons/ui";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 import { bookingHref, bookingLabel, mainNav, site } from "@/lib/site";
 
 // A native modal <dialog> gives us the focus trap, Escape to close and an inert page for free.
@@ -69,15 +70,8 @@ export function MobileMenu() {
           </nav>
 
           <div className="mt-auto flex flex-col gap-4">
-            <p className="flex flex-wrap items-center gap-x-2 text-base">
-              {site.phones.map((p, i) => (
-                <span key={p.tel} className="flex items-center gap-2">
-                  {i > 0 && <span aria-hidden="true" className="text-muted">·</span>}
-                  <a href={`tel:${p.tel}`} className="ltr-nums text-ink no-underline">
-                    {p.display}
-                  </a>
-                </span>
-              ))}
+            <p className="text-base">
+              <PhoneLink />
             </p>
             <Link
               href={bookingHref}

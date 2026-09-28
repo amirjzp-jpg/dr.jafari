@@ -86,7 +86,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <Container className="flex flex-col items-center gap-6 pt-8 lg:pt-14">
         <div className="flex w-full max-w-[680px] flex-col gap-4">
           <nav aria-label="مسیر صفحه" className="text-[13px] text-muted">
-            <Link href="/" className="text-muted no-underline">خانه</Link> / <Link href="/journal" className="text-muted no-underline">مجله</Link>
+            <Link href="/" className="-my-2.5 inline-block py-2.5 text-muted no-underline hover:text-primary">خانه</Link> / <Link href="/journal" className="-my-2.5 inline-block py-2.5 text-muted no-underline hover:text-primary">مجله</Link>
           </nav>
           <span className="self-start rounded-pill bg-tint px-3.5 py-[5px] text-xs text-primary">{a.category}</span>
           <h1 className="font-display text-[30px] leading-normal font-semibold lg:text-[44px]">{a.title}</h1>
@@ -116,7 +116,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <ButtonLink href={bookingHref} size="md" data-umami-event="book_cta">
                 {bookingLabel}
               </ButtonLink>
-              <Link href={pillar.href} className="text-sm">
+              <Link href={pillar.href} className="py-3 text-sm">
                 درباره‌ی {pillar.name} بیشتر بخوانید ←
               </Link>
             </div>

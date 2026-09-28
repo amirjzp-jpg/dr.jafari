@@ -12,7 +12,7 @@ export function Header() {
           <span className="font-display text-[19px] leading-[1.4] font-semibold lg:text-2xl">
             {site.name}
           </span>
-          <span className="text-[11px] leading-normal text-muted lg:text-xs">{site.tagline}</span>
+          <span className="text-xs leading-normal text-muted">{site.tagline}</span>
         </Link>
 
         <nav aria-label="منوی اصلی" className="hidden lg:block">

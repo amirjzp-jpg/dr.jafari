@@ -4,6 +4,7 @@ import { connection } from "next/server";
 import { site } from "@/lib/site";
 import { loadBooking } from "./actions";
 import { BookingFlow } from "./BookingFlow";
+import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = {
   title: "رزرو نوبت",
@@ -39,15 +40,8 @@ function BookingUnavailable() {
       <p className="text-[15px] leading-[1.9] text-muted">
         لطفاً برای رزرو نوبت با کلینیک تماس بگیرید. {site.hours}.
       </p>
-      <p className="flex justify-center gap-2 text-lg">
-        {site.phones.map((p, i) => (
-          <span key={p.tel}>
-            {i > 0 && "· "}
-            <a href={`tel:${p.tel}`} className="ltr-nums text-ink no-underline">
-              {p.display}
-            </a>
-          </span>
-        ))}
+      <p className="text-lg">
+        <PhoneLink />
       </p>
       <Link href="/" className="text-primary">
         بازگشت به صفحه‌ی اصلی

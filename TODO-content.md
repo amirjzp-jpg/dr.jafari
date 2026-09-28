@@ -5,12 +5,12 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 ## Done
 - [x] About copy (no university, at the doctor's request) and medical council number 169473
 - [x] Final copy for all service pages, journal articles, privacy and booking policy (doctor's full copywriting approval)
+- [x] Hero portrait: new photo from the clinic, cut out cleanly (no fringe on the hair)
 - [x] Before/after case photos (3 cases, cropped to the mouth at matched scale in `public/images/cases/`)
 
 ## Still needed
 - [ ] Confirm the treatment named on each before/after case («کامپوزیت ونیر», «لمینت سرامیکی», «طراحی لبخند»); optionally tooth and session counts (`content/cases.ts`; the line is hidden until set)
 - [ ] Confirm the booking-policy defaults (24 h notice, 15 min lateness, no-show rule)
-- [ ] Hand-refined portrait cutout (the current one has a grey fringe on the hair)
 - [ ] Exact map pins for Neshan, Balad and Google Maps (the «مسیریابی» link currently searches the address), and coordinates for structured data
 - [ ] Instagram URL (the footer link is hidden until set in `lib/site.ts`)
 - [ ] Domain and Iranian hosting account

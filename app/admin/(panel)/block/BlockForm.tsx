@@ -76,7 +76,7 @@ export function BlockForm({ days, times }: { days: { day: string; label: string 
             <ul className="list-inside list-disc text-ink">
               {state.conflicts.map((c) => (
                 <li key={c.id}>
-                  <Link href={`/admin/a/${c.id}`}>{c.label}</Link>
+                  <Link href={`/admin/appointments/${c.id}`}>{c.label}</Link>
                 </li>
               ))}
             </ul>

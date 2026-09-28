@@ -71,7 +71,7 @@ export function AppointmentCard({ a, back }: { a: AppointmentRow; back: string }
         </p>
       ) : (
         <div className="flex flex-col gap-1 text-[15px]">
-          <Link href={`/admin/a/${a.id}`} className="font-medium text-ink">
+          <Link href={`/admin/appointments/${a.id}`} className="font-medium text-ink">
             {a.name}
           </Link>
           <a href={`tel:${a.phone}`} className="ltr-nums self-start text-primary">
@@ -100,7 +100,7 @@ export function AppointmentCard({ a, back }: { a: AppointmentRow; back: string }
                 <input type="hidden" name="back" value={back} />
                 <ConfirmSubmit className={btnOutline}>نیامد</ConfirmSubmit>
               </form>
-              <Link href={`/admin/a/${a.id}`} className={`${btnOutline} inline-flex items-center no-underline`}>
+              <Link href={`/admin/appointments/${a.id}`} className={`${btnOutline} inline-flex items-center no-underline`}>
                 جابه‌جایی
               </Link>
             </>

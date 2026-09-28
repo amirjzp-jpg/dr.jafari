@@ -23,7 +23,12 @@ npm run build
 Stack: Next.js (App Router), TypeScript, Tailwind CSS v4, PostgreSQL (`pg`). Fonts are self-hosted via `@fontsource` packages; nothing loads from Google.
 
 ## Where things are
-- `app/(site)/`: public pages. `app/booking/`: the booking flow. `app/admin/`: the staff panel.
-- `lib/booking/`: schedule rules (`schedule.ts`) and all booking writes (`service.ts`).
-- `db/migrations/`: schema, including the no-overlap constraint.
-- `content/`: service pages, journal articles, before/after cases.
+- `app/(site)/`: public pages (home, services, about, journal, policies). `app/booking/`: the 5-step booking flow and its server actions.
+- `app/admin/`: staff panel. `login/` is public; everything under `(panel)/` requires a staff session. Server actions in `app/admin/actions.ts`.
+- `app/api/`: `booking/release` (frees a hold when the patient leaves) and `cron/reminders` (day-before SMS).
+- `components/`: `layout/` (header, footer, mobile bar), `home/`, `content/` (page building blocks), `admin/`, `ui/`, `icons/`.
+- `lib/booking/`: schedule rules (`schedule.ts`, pure) and every booking write (`service.ts`, guarded by the database constraint).
+- `lib/`: `db.ts` + `database-url.mjs` (connection), `otp.ts`, `sms/`, `auth/session.ts`, `rate-limit.ts`, `audit.ts`, `settings.ts`, `config.ts` (env), `time.ts` (Tehran/Jalali), `phone.ts`, `digits.ts`, `seo.ts`, `site.ts` (clinic facts).
+- `db/migrations/`: schema, including the no-overlap constraint. Run by `scripts/migrate.mjs` before each Vercel build.
+- `content/`: service pages, journal articles, before/after cases. `public/images/`: optimized images (originals in `assets/source/`).
+- `tests/`: Vitest against a real Postgres (booking concurrency, OTP, schedule, Jalali dates, database URL handling).

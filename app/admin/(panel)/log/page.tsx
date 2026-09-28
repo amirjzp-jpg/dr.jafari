@@ -24,7 +24,7 @@ export default async function LogPage() {
           <li key={r.id} className="flex flex-wrap items-center gap-x-4 gap-y-1 p-3 text-sm">
             <span className="text-muted">{jalali.slot(new Date(r.at))}</span>
             <span className="font-medium">{ACTION_LABELS[r.action] ?? r.action}</span>
-            {r.appointment_id && r.name && <Link href={`/admin/a/${r.appointment_id}`}>{r.name}</Link>}
+            {r.appointment_id && r.name && <Link href={`/admin/appointments/${r.appointment_id}`}>{r.name}</Link>}
             <span className="ltr-nums ms-auto text-muted">
               {/^09\d{9}$/.test(r.actor) ? formatPhone(r.actor) : r.actor === "patient" ? "بیمار (آنلاین)" : r.actor}
             </span>

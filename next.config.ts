@@ -41,11 +41,26 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    // AVIF first (roughly 20-30% smaller than WebP), WebP for older browsers.
+    formats: ["image/avif", "image/webp"],
+    // Optimised copies are reused for 30 days instead of being re-encoded.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+    // Fewer, well-spread widths: fewer variants to encode and cache.
+    deviceSizes: [360, 480, 640, 828, 1080, 1440, 1920],
+    imageSizes: [96, 160, 256, 384],
+  },
   // Shown on the admin login's settings box, to confirm a redeploy happened.
   env: { BUILD_TIME: new Date().toISOString() },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      // Photos in /public keep their file names when replaced, so cache for 30 days
+      // (not "immutable") and refresh in the background.
+      {
+        source: "/images/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }],
+      },
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
     ];
   },

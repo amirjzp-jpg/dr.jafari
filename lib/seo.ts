@@ -26,7 +26,7 @@ export function dentistSchema() {
     "@id": abs("/#clinic"),
     name: site.clinicName,
     url: siteUrl,
-    image: abs("/opengraph-image.png"),
+    image: abs("/opengraph-image.jpg"),
     telephone: site.phone.tel,
     address: {
       "@type": "PostalAddress",

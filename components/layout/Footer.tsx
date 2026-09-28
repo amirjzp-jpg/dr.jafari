@@ -10,7 +10,7 @@ const year = toFaDigits(new Date().getFullYear());
 export function Footer() {
   return (
     <footer className="text-[13px] text-muted">
-      <Container className="flex flex-col gap-5 border-t border-line pt-10 pb-10 md:flex-row md:items-end md:justify-between">
+      <Container className="flex flex-col gap-5 border-t border-line pt-10 pb-8 md:flex-row md:items-end md:justify-between">
         <div className="flex flex-col gap-1.5">
           <span className="font-semibold text-ink">
             © {year} {site.name}
@@ -50,10 +50,12 @@ export function Footer() {
               </li>
             )}
           </ul>
-          <span dir="ltr" lang="en" className="text-xs font-semibold tracking-wide text-ink">
-            Designed by Razats
-          </span>
         </div>
+      </Container>
+      <Container className="border-t border-line py-5 text-center">
+        <span dir="ltr" lang="en" className="text-xs font-semibold tracking-wide text-ink">
+          Designed by Razats
+        </span>
       </Container>
     </footer>
   );

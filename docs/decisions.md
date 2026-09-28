@@ -13,7 +13,7 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **Gallery (/gallery):** real clinic photos in a card-fan carousel (GSAP, self-hosted) plus a grid; each opens full-screen, pairs with the before/after slider. Photos are only cropped, rotated, straightened and cleaned of watermarks/faces; teeth are never retouched. Over-filtered or low-resolution photos, befores without an after, and tooth-jewellery photos (off-brand, not a listed service) are left out. Treatment labels were identified from the photos and approved by the creative lead, who has full creative control.
 - **No video:** the clinic's reel (480×848, 15 s) has a burned-in «DR.NEDA.JAFARI» watermark, phone camera UI in some shots, collage edits and black frames; it would add weight on Iranian connections without adding to the gallery. Left out by decision.
 - **Phone:** one number only, ۰۹۰۲ ۳۰۲ ۳۱۲۰, shown semibold. The second number (۰۹۰۲ ۳۰۲ ۳۱۱۰) was removed at the client's request.
-- **Footer:** «© ۲۰۲۶ دکتر فاطمه جعفری» (year from the build) and «Designed by Razats», both bold, on every public page and the 404. The booking flow has no footer by design.
+- **Footer:** «© ۲۰۲۶ دکتر فاطمه جعفری» (year from the build) and «Designed by Razats» (its own centred line at the very bottom), both bold, on every public page and the 404. The booking flow has no footer by design.
 - **About section credentials list:** «تحصیلات» and «دوره‌های تخصصی» are replaced with three approach rows. The wording needs Dr. Jafari's approval (tracked in `TODO-content.md`):
   - رویکرد: حفظ حداکثری بافت دندان
   - طراحی: متناسب با چهره

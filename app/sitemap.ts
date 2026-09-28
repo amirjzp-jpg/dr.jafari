@@ -11,6 +11,7 @@ const pages: { path: string; priority: number; changeFrequency: "weekly" | "mont
   { path: "/booking", priority: 0.9, changeFrequency: "weekly" },
   { path: "/about", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/gallery", priority: 0.8, changeFrequency: "monthly" },
   { path: "/journal", priority: 0.6, changeFrequency: "weekly" },
   { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },
   { path: "/booking-policy", priority: 0.3, changeFrequency: "yearly" },

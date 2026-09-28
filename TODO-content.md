@@ -7,12 +7,15 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [x] Final copy for all service pages, journal articles, privacy and booking policy (doctor's full copywriting approval)
 - [x] Hero portrait: new photo from the clinic, cut out cleanly (no fringe on the hair)
 - [x] Before/after case photos (3 cases, cropped to the mouth at matched scale in `public/images/cases/`)
+- [x] Instagram: @dr_nedajafarii (footer, contact section, gallery page, structured data)
 
 ## Still needed
 - [ ] Confirm the treatment named on each before/after case («کامپوزیت ونیر», «لمینت سرامیکی», «طراحی لبخند»); optionally tooth and session counts (`content/cases.ts`; the line is hidden until set)
 - [ ] Confirm the booking-policy defaults (24 h notice, 15 min lateness, no-show rule)
 - [ ] Exact map pins for Neshan, Balad and Google Maps (the «مسیریابی» link currently searches the address), and coordinates for structured data
-- [ ] Instagram URL (the footer link is hidden until set in `lib/site.ts`)
+- [ ] Confirm the treatment on each gallery photo (`content/gallery.ts`; identified from the photos, not yet confirmed by the clinic): smile-1 «طراحی لبخند», composite-1/2/3 «کامپوزیت ونیر», veneer-1/2/3 «لمینت سرامیکی», whitening-1 «بلیچینگ»
+- [ ] Tooth jewellery photos (the gold frame with stones): add to the gallery only if the clinic offers it
+- [ ] Video from the clinic: review and encode for slow connections, then decide where it goes
 - [ ] Domain and Iranian hosting account
 - [ ] sms.ir account, API key and approved template IDs
 - [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»

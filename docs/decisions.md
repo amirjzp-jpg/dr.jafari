@@ -8,9 +8,11 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **University: not mentioned anywhere**, at the doctor's request.
 - **Copy:** the doctor gave full copywriting approval, so service, journal, about and policy copy is final (`reviewed: true`, no draft notices). Still no invented clinical numbers (e.g. longevity in years).
 - **Patient photos:** the clinic confirmed that no separate written consent is needed for the before/after photos or the two about-section photos; the photos are used as supplied (before/after cropped to the mouth).
-- **Doctor's name:** دکتر فاطمه جعفری (Dr. Fatemeh Jafari) everywhere; an earlier draft used «ندا» by mistake. The design files in `design/` still show the old name and are reference only.
+- **Doctor's name:** دکتر فاطمه جعفری (Dr. Fatemeh Jafari), her registered name, everywhere on the site. She is known publicly as «ندا» (Neda), which is her Instagram handle; «دکتر ندا جعفری» appears only as `alternateName` in the Person structured data and in `llms.txt`, so searches for Neda find her. The design files in `design/` are reference only.
+- **Instagram:** @dr_nedajafarii, linked (never embedded: Instagram is filtered in Iran and its embed loads Meta scripts) from the footer, the contact section and the gallery page.
+- **Gallery (/gallery):** real clinic photos in a card-fan carousel (GSAP, self-hosted) plus a grid; each opens full-screen, pairs with the before/after slider. Photos are only cropped, rotated, straightened and cleaned of watermarks/faces; teeth are never retouched. Over-filtered or low-resolution photos, befores without an after, and tooth-jewellery photos are left out.
 - **Phone:** one number only, ۰۹۰۲ ۳۰۲ ۳۱۲۰, shown semibold. The second number (۰۹۰۲ ۳۰۲ ۳۱۱۰) was removed at the client's request.
-- **Footer credit:** «Designed by Razats Creative Studio», small and muted.
+- **Footer:** «© ۲۰۲۶ دکتر فاطمه جعفری» (year from the build) and «Designed by Razats», both bold, on every public page and the 404. The booking flow has no footer by design.
 - **About section credentials list:** «تحصیلات» and «دوره‌های تخصصی» are replaced with three approach rows. The wording needs Dr. Jafari's approval (tracked in `TODO-content.md`):
   - رویکرد: حفظ حداکثری بافت دندان
   - طراحی: متناسب با چهره

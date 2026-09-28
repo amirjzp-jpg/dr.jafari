@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Faq } from "@/components/content/Faq";
+import { InstagramCta } from "@/components/content/InstagramCta";
 import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
-import { PhoneIcon } from "@/components/icons/ui";
+import { InstagramIcon, PhoneIcon } from "@/components/icons/ui";
 import { ServiceIcon } from "@/components/icons/services";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 import { cases } from "@/content/cases";
+import { featuredPhoto } from "@/content/gallery";
 import { homeFaq } from "@/content/home";
 import { latestArticles } from "@/content/journal";
 import { featuredServices, otherServices } from "@/content/services";
@@ -30,6 +32,7 @@ export default function HomePage() {
       <Stats />
       <About />
       <Cases />
+      <InstagramCta className="pb-16 lg:pb-24" />
       <Services />
       <Journal />
       <HomeFaq />
@@ -205,6 +208,9 @@ function Cases() {
             <BeforeAfter key={c.label} item={c} />
           ))}
         </div>
+        <ButtonLink href="/gallery" variant="outline" size="md" className="!h-12 !px-[30px] text-sm">
+          مشاهده‌ی همه‌ی نمونه‌کارها
+        </ButtonLink>
       </Container>
     </section>
   );
@@ -222,6 +228,23 @@ function Services() {
           <p className="text-base leading-[2] text-muted">
             تمرکز اصلی کلینیک بر کامپوزیت و لمینت سرامیکی است؛ در کنار آن، خدمات کامل دندانپزشکی نیز ارائه می‌شود.
           </p>
+          {/* Desktop only: fills the column beside the service cards with a real result. */}
+          <Link
+            href="/gallery"
+            className="group relative mt-8 hidden aspect-[4/5] w-full overflow-hidden rounded-[170px_170px_24px_24px] bg-tint text-ink no-underline lg:block"
+          >
+            <Image
+              src={featuredPhoto.src}
+              alt={featuredPhoto.alt}
+              fill
+              sizes="340px"
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+            <span className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-pill bg-ivory/95 py-2.5 ps-5 pe-4 text-sm font-medium text-ink group-hover:text-primary">
+              مشاهده‌ی نمونه‌کارها
+              <span aria-hidden="true">←</span>
+            </span>
+          </Link>
         </div>
         <div className="flex grow flex-col gap-10">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -361,13 +384,31 @@ function Contact() {
                 </a>
               </dd>
             </div>
-            <div className="flex flex-col gap-1 pt-5">
+            <div className={`flex flex-col gap-1 pt-5 ${site.instagram ? "border-b border-[#D2DCE4] pb-5" : ""}`}>
               <dt className="text-[13px] text-muted-2">ساعات کاری</dt>
               <dd>
                 {site.hours}
                 <span className="block text-sm text-muted-2">{site.closedDays}</span>
               </dd>
             </div>
+            {site.instagram && (
+              <div className="flex flex-col gap-1 pt-5">
+                <dt className="text-[13px] text-muted-2">اینستاگرام</dt>
+                <dd>
+                  <a
+                    href={site.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    dir="ltr"
+                    data-umami-event="instagram_click"
+                    className="-my-2.5 inline-flex items-center gap-2 py-2.5 font-medium text-ink no-underline hover:text-primary"
+                  >
+                    <InstagramIcon size={18} className="text-primary" />
+                    {site.instagramHandle}
+                  </a>
+                </dd>
+              </div>
+            )}
           </dl>
         </div>
       </Container>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Faq } from "@/components/content/Faq";
 import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { PhoneIcon } from "@/components/icons/ui";
@@ -9,10 +10,11 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PhoneLinks } from "@/components/ui/PhoneLinks";
 import { cases } from "@/content/cases";
+import { homeFaq } from "@/content/home";
 import { latestArticles } from "@/content/journal";
 import { featuredServices, otherServices } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
-import { dentistSchema, personSchema } from "@/lib/seo";
+import { dentistSchema, faqSchema, personSchema } from "@/lib/seo";
 import { bookingHref, bookingLabel, site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
@@ -30,6 +32,7 @@ export default function HomePage() {
       <Cases />
       <Services />
       <Journal />
+      <HomeFaq />
       <Contact />
     </>
   );
@@ -127,6 +130,7 @@ function About() {
     { k: "رویکرد", v: "حفظ حداکثری بافت دندان" },
     { k: "طراحی", v: "متناسب با چهره" },
     { k: "مشاوره", v: "بررسی همه‌ی گزینه‌ها پیش از درمان" },
+    { k: "شماره نظام پزشکی", v: site.councilNumber },
   ];
   return (
     <section id="about" aria-labelledby="about-title">
@@ -161,8 +165,9 @@ function About() {
             دقت در جزئیات، برای لبخندی طبیعی
           </h2>
           <p className="text-[17px] leading-[2.1] text-muted-2">
-            دکتر ندا جعفری، دانش‌آموخته‌ی دندانپزشکی از [دانشگاه ؟]، بیش از ده سال است که در زمینه‌ی دندانپزشکی زیبایی
-            فعالیت می‌کند. [یک یا دو جمله درباره‌ی رویکرد درمان، از زبان خود دکتر.]
+            دکتر ندا جعفری بیش از ده سال است که در شیراز به دندانپزشکی زیبایی می‌پردازد و تمرکز کارش بر کامپوزیت و
+            لمینت سرامیکی است. هر لبخند را متناسب با چهره طراحی می‌کند و تا جای ممکن بافت طبیعی دندان را حفظ می‌کند؛
+            تا نتیجه، طبیعی به نظر برسد و سال‌ها زیبا بماند.
           </p>
           <dl className="mt-2 flex flex-col text-[15px]">
             {rows.map((r, i) => (
@@ -297,6 +302,25 @@ function Journal() {
             </li>
           ))}
         </ul>
+      </Container>
+    </section>
+  );
+}
+
+function HomeFaq() {
+  return (
+    <section aria-labelledby="faq-title">
+      <JsonLd data={faqSchema(homeFaq)} />
+      <Container className="flex flex-col gap-10 pb-24 lg:flex-row lg:gap-24 lg:pb-32">
+        <div className="flex shrink-0 flex-col gap-3.5 lg:w-[340px]">
+          <Eyebrow>پرسش‌های رایج</Eyebrow>
+          <h2 id="faq-title" className="font-display text-[26px] leading-normal font-semibold lg:text-[44px]">
+            پیش از اولین جلسه
+          </h2>
+        </div>
+        <div className="grow">
+          <Faq items={homeFaq} />
+        </div>
       </Container>
     </section>
   );

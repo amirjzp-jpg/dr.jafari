@@ -75,9 +75,9 @@ export function BeforeAfter({ item }: { item: Case }) {
       </div>
       <figcaption className="flex flex-col gap-1 text-center">
         <span className="font-display text-[21px] font-semibold">{item.title}</span>
-        <span className="text-[13px] text-muted">
-          {item.teeth ?? "[تعداد دندان]"} · {item.sessions ?? "[تعداد جلسات]"}
-        </span>
+        {(item.teeth || item.sessions) && (
+          <span className="text-[13px] text-muted">{[item.teeth, item.sessions].filter(Boolean).join(" · ")}</span>
+        )}
       </figcaption>
     </figure>
   );

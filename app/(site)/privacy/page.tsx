@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-// Describes what the booking system actually stores. Retention periods need the clinic's decision.
+// Describes what the booking system actually stores. Final copy.
 const sections: Section[] = [
   {
     h: "چه اطلاعاتی ذخیره می‌شود",
@@ -42,7 +42,7 @@ const sections: Section[] = [
   },
   {
     h: "مدت نگهداری",
-    p: ["سوابق نوبت‌ها به مدت [؟ مدت نگهداری، به تصمیم کلینیک] نگهداری می‌شوند. کدهای تأیید پس از چند دقیقه بی‌اعتبار می‌شوند."],
+    p: ["سوابق نوبت‌ها تا زمانی نگهداری می‌شوند که برای پیگیری درمان شما و الزامات قانونی لازم باشد. کدهای تأیید پس از دو دقیقه بی‌اعتبار می‌شوند."],
   },
   {
     h: "حذف اطلاعات",
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHeader title="حریم خصوصی" crumbs={[{ name: "حریم خصوصی", path: "/privacy" }]} />
-      <Prose sections={sections} />
+      <Prose sections={sections} reviewed />
     </>
   );
 }

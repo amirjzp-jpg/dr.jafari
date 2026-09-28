@@ -5,12 +5,13 @@ import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
 import { personSchema } from "@/lib/seo";
+import { site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
 
 export const metadata: Metadata = {
   title: "درباره‌ی دکتر",
-  description: "آشنایی با دکتر ندا جعفری، دندانپزشک زیبایی در شیراز با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی.",
+  description: "دکتر ندا جعفری، دندانپزشک زیبایی در شیراز با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی. شماره نظام پزشکی ۱۶۹۴۷۳.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,6 +19,7 @@ const rows = [
   { k: "رویکرد", v: "حفظ حداکثری بافت دندان" },
   { k: "طراحی", v: "متناسب با چهره" },
   { k: "مشاوره", v: "بررسی همه‌ی گزینه‌ها پیش از درمان" },
+  { k: "شماره نظام پزشکی", v: site.councilNumber },
 ];
 
 export default function AboutPage() {
@@ -27,11 +29,19 @@ export default function AboutPage() {
       <PageHeader title="درباره‌ی دکتر ندا جعفری" crumbs={[{ name: "درباره‌ی دکتر", path: "/about" }]} />
       <Container className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
         <div className="flex max-w-[680px] grow flex-col gap-6">
-          <p className="text-[17px] leading-[2.1] text-muted-2">
-            دکتر ندا جعفری، دانش‌آموخته‌ی دندانپزشکی از [دانشگاه ؟]، بیش از ده سال است که در زمینه‌ی دندانپزشکی زیبایی
-            فعالیت می‌کند. تمرکز اصلی کلینیک بر کامپوزیت و لمینت سرامیکی است.
+          <p className="text-[19px] leading-[2] text-ink">
+            دکتر ندا جعفری دندانپزشک زیبایی در شیراز است و بیش از ده سال است که با تمرکز بر کامپوزیت و لمینت سرامیکی کار
+            می‌کند.
           </p>
-          <p className="text-[17px] leading-[2.1] text-muted-2">[یک یا دو جمله درباره‌ی رویکرد درمان، از زبان خود دکتر.]</p>
+          <p className="text-[17px] leading-[2.1] text-muted-2">
+            به باور او، لبخند زیبا لبخندی است که به چهره‌ی خودتان بیاید؛ نه یک قالب تکراری. برای همین، هر درمان با شنیدن
+            خواسته‌ی شما و بررسی دقیق دندان‌ها شروع می‌شود و طرح لبخند متناسب با فرم صورت، لب‌ها و رنگ طبیعی دندان‌ها
+            ساخته می‌شود.
+          </p>
+          <p className="text-[17px] leading-[2.1] text-muted-2">
+            حفظ بافت طبیعی دندان برای او اولویت است. هر جا با تراش کمتر به نتیجه‌ی دلخواه برسیم، همان راه را انتخاب
+            می‌کنیم و همه‌ی گزینه‌ها، با مزایا و محدودیت‌هایشان، پیش از شروع درمان با شما مرور می‌شود.
+          </p>
           <p className="text-[17px] leading-[2.1] text-muted-2">
             کلینیک در شیراز، پل معالی‌آباد قرار دارد؛ کلینیکی مجهز به تجهیزات و فناوری‌های روز دندانپزشکی، با امکان پرداخت
             اقساطی برای درمان‌های زیبایی.

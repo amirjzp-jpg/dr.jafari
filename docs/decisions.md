@@ -4,7 +4,10 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 
 ## Content
 
-- **Medical council number (شماره نظام پزشکی): removed everywhere.** Not shown in the about section, the footer or structured data.
+- **Medical council number (شماره نظام پزشکی): 169473.** Shown in the footer, the about section and the about page, and in the Person structured data. (Earlier removed; restored when the client supplied the number.)
+- **University: not mentioned anywhere**, at the doctor's request.
+- **Copy:** the doctor gave full copywriting approval, so service, journal, about and policy copy is final (`reviewed: true`, no draft notices). Still no invented clinical numbers (e.g. longevity in years).
+- **Footer credit:** «Designed by Razats Creative Studio», small and muted.
 - **About section credentials list:** «تحصیلات» and «دوره‌های تخصصی» are replaced with three approach rows. The wording needs Dr. Jafari's approval (tracked in `TODO-content.md`):
   - رویکرد: حفظ حداکثری بافت دندان
   - طراحی: متناسب با چهره
@@ -23,6 +26,8 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - One upcoming appointment per phone number.
 - Confirm is idempotent (a repeated submit returns the same booking).
 - Day strip shows 14 days (spec), not 7 (prototype).
+
+- **Booking policy defaults:** 24 hours' notice to cancel, 15 minutes' lateness allowance, and after a no-show the next booking may need phone confirmation. Change in `app/(site)/booking-policy/page.tsx` if the clinic prefers other numbers.
 
 ## Admin
 

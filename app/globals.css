@@ -34,6 +34,8 @@
   }
 
   body {
+    /* Wide decorative elements (the gallery fan) may bleed past the page edge without a side scroll. */
+    overflow-x: clip;
     background: var(--color-ivory);
     color: var(--color-ink);
     font-family: var(--font-sans);
@@ -58,6 +60,67 @@
   .ltr-nums {
     direction: ltr;
     unicode-bidi: isolate;
+  }
+}
+
+/* Card fan carousel (components/ui/card-fan-carousel.tsx). The layout height
+   matches the component's height budget per breakpoint; GSAP positions the
+   cards with transforms, so they are placed with inset + margin, top-aligned. */
+@layer components {
+  .fan-layout {
+    height: 21rem;
+  }
+  .fan-card {
+    position: absolute;
+    inset: 1rem 0 auto;
+    margin-inline: auto;
+    width: 8.5rem;
+    height: 11.5rem;
+    overflow: hidden;
+    border: 5px solid var(--color-surface);
+    border-radius: 22px;
+    background: var(--color-tint);
+    box-shadow: 0 22px 44px -22px rgb(28 39 51 / 0.45);
+    cursor: zoom-in;
+    opacity: 0; /* until GSAP places it */
+    will-change: transform;
+  }
+  .fan-card:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  .fan-arrow {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    box-shadow: 0 6px 18px -8px rgb(28 39 51 / 0.25);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .fan-arrow:hover {
+    border-color: var(--color-primary);
+    background: var(--color-tint);
+  }
+  @media (min-width: 480px) {
+    .fan-layout { height: 24rem; }
+    .fan-card { width: 10.5rem; height: 14rem; }
+  }
+  @media (min-width: 640px) {
+    .fan-layout { height: 26.5rem; }
+    .fan-card { width: 12rem; height: 16rem; border-radius: 24px; }
+  }
+  @media (min-width: 768px) {
+    .fan-layout { height: 30.5rem; }
+    .fan-card { width: 15rem; height: 20rem; border-width: 6px; }
+  }
+  @media (min-width: 1024px) {
+    .fan-layout { height: 34.5rem; }
+    .fan-card { width: 18rem; height: 24rem; border-radius: 28px; }
   }
 }
 

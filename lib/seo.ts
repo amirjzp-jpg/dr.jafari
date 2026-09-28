@@ -63,6 +63,7 @@ export function dentistSchema() {
       target: abs("/booking"),
     },
     employee: { "@id": abs("/about#doctor") },
+    ...(site.instagram ? { sameAs: [site.instagram] } : {}),
   };
 }
 
@@ -72,6 +73,8 @@ export function personSchema() {
     "@type": "Person",
     "@id": abs("/about#doctor"),
     name: "دکتر فاطمه جعفری",
+    // Known publicly as Neda (her Instagram); Fatemeh is her registered name.
+    alternateName: "دکتر ندا جعفری",
     jobTitle: "دندانپزشک زیبایی",
     identifier: {
       "@type": "PropertyValue",
@@ -85,6 +88,7 @@ export function personSchema() {
     workLocation: { "@id": abs("/#clinic") },
     url: abs("/about"),
     image: abs("/images/doctor/dr-hero.webp"),
+    ...(site.instagram ? { sameAs: [site.instagram] } : {}),
   };
 }
 

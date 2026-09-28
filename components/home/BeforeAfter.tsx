@@ -13,7 +13,16 @@ import type { Case } from "@/content/cases";
 // Placeholders use the 378×440 arch. Real photos are close-ups of teeth, which
 // the arch would crop, so they use a 3:2 frame with 20px corners (BUILD-SPEC §8).
 
-export function BeforeAfter({ item }: { item: Case }) {
+export function BeforeAfter({
+  item,
+  sizes = "(min-width: 1024px) 378px, 90vw",
+  caption = true,
+}: {
+  item: Case;
+  /** next/image sizes; the gallery's full-screen view passes a larger one. */
+  sizes?: string;
+  caption?: boolean;
+}) {
   const arch = !(item.before && item.after);
   const [pos, setPos] = useState(50);
   const tracked = useRef(false);
@@ -29,10 +38,10 @@ export function BeforeAfter({ item }: { item: Case }) {
         style={{ borderRadius: radius }}
       >
         {/* After: full frame */}
-        <Layer src={item.after} label={`[تصویر بعد — ${item.label}]`} className="bg-[#EEF3F8] text-muted" alt={`بعد از درمان — ${item.title}`} />
+        <Layer src={item.after} sizes={sizes} label={`[تصویر بعد — ${item.label}]`} className="bg-[#EEF3F8] text-muted" alt={`بعد از درمان — ${item.title}`} />
         {/* Before: clipped from the left edge, so it stays anchored right */}
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${100 - pos}%)` }}>
-          <Layer src={item.before} label={`[تصویر قبل — ${item.label}]`} className="bg-[#E2DDD4] text-[#45494E]" alt={`قبل از درمان — ${item.title}`} />
+          <Layer src={item.before} sizes={sizes} label={`[تصویر قبل — ${item.label}]`} className="bg-[#E2DDD4] text-[#45494E]" alt={`قبل از درمان — ${item.title}`} />
         </div>
 
         <span className="absolute start-[18px] bottom-[18px] rounded-pill bg-ivory/90 px-3.5 py-[5px] text-xs text-ink">قبل</span>
@@ -73,19 +82,21 @@ export function BeforeAfter({ item }: { item: Case }) {
           style={{ borderRadius: radius, outlineStyle: "solid" }}
         />
       </div>
-      <figcaption className="flex flex-col gap-1 text-center">
-        <span className="font-display text-[21px] font-semibold">{item.title}</span>
-        {(item.teeth || item.sessions) && (
-          <span className="text-[13px] text-muted">{[item.teeth, item.sessions].filter(Boolean).join(" · ")}</span>
-        )}
-      </figcaption>
+      {caption && (
+        <figcaption className="flex flex-col gap-1 text-center">
+          <span className="font-display text-[21px] font-semibold">{item.title}</span>
+          {(item.teeth || item.sessions) && (
+            <span className="text-[13px] text-muted">{[item.teeth, item.sessions].filter(Boolean).join(" · ")}</span>
+          )}
+        </figcaption>
+      )}
     </figure>
   );
 }
 
-function Layer({ src, label, className, alt }: { src?: string; label: string; className: string; alt: string }) {
+function Layer({ src, sizes, label, className, alt }: { src?: string; sizes: string; label: string; className: string; alt: string }) {
   if (src) {
-    return <Image src={src} alt={alt} fill sizes="(min-width: 1024px) 378px, 90vw" className="object-cover" draggable={false} />;
+    return <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" draggable={false} />;
   }
   return <div className={`absolute inset-0 flex items-center justify-center text-sm ${className}`}>{label}</div>;
 }

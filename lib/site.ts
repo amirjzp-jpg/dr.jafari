@@ -15,13 +15,15 @@ export const site = {
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent("شیراز، پل معالی‌آباد، ساختمان موجودی"),
-  // TODO-content.md: Instagram URL is still missing.
-  instagram: null as string | null,
+  // The doctor's own account; she is known publicly as Neda (docs/decisions.md).
+  instagram: "https://www.instagram.com/dr_nedajafarii/" as string | null,
+  instagramHandle: "@dr_nedajafarii",
 } as const;
 
 export const mainNav = [
   { href: "/composite", label: "کامپوزیت" },
   { href: "/veneers", label: "لمینت" },
+  { href: "/gallery", label: "نمونه‌کارها" },
   { href: "/services", label: "خدمات" },
   { href: "/journal", label: "مجله" },
   { href: "/#contact", label: "تماس" },

@@ -11,7 +11,7 @@ import aboutMain from "@/public/images/doctor/about-main.webp";
 
 export const metadata: Metadata = {
   title: "درباره‌ی دکتر",
-  description: "دکتر ندا جعفری، دندانپزشک زیبایی در شیراز با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی. شماره نظام پزشکی ۱۶۹۴۷۳.",
+  description: "دکتر فاطمه جعفری، دندانپزشک زیبایی در شیراز با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی. شماره نظام پزشکی ۱۶۹۴۷۳.",
   alternates: { canonical: "/about" },
 };
 
@@ -26,11 +26,11 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={personSchema()} />
-      <PageHeader title="درباره‌ی دکتر ندا جعفری" crumbs={[{ name: "درباره‌ی دکتر", path: "/about" }]} />
+      <PageHeader title="درباره‌ی دکتر فاطمه جعفری" crumbs={[{ name: "درباره‌ی دکتر", path: "/about" }]} />
       <Container className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
         <div className="flex max-w-[680px] grow flex-col gap-6">
           <p className="text-[19px] leading-[2] text-ink">
-            دکتر ندا جعفری دندانپزشک زیبایی در شیراز است و بیش از ده سال است که با تمرکز بر کامپوزیت و لمینت سرامیکی کار
+            دکتر فاطمه جعفری دندانپزشک زیبایی در شیراز است و بیش از ده سال است که با تمرکز بر کامپوزیت و لمینت سرامیکی کار
             می‌کند.
           </p>
           <p className="text-[17px] leading-[2.1] text-muted-2">
@@ -57,10 +57,10 @@ export default function AboutPage() {
         </div>
         <div className="grid w-full max-w-[520px] grid-cols-[3fr_2fr] items-end gap-4 lg:w-[460px]">
           <div className="relative aspect-[420/580] overflow-hidden rounded-[50%_50%_24px_24px/36.2%_36.2%_24px_24px] bg-tint">
-            <Image src={aboutMain} alt="دکتر ندا جعفری در حال درمان یک بیمار در کلینیک" fill sizes="280px" className="object-cover object-[50%_30%]" />
+            <Image src={aboutMain} alt="دکتر فاطمه جعفری در حال درمان یک بیمار در کلینیک" fill sizes="280px" className="object-cover object-[50%_30%]" />
           </div>
           <div className="relative aspect-[250/270] overflow-hidden rounded-[20px] bg-tint">
-            <Image src={aboutDetail} alt="دکتر ندا جعفری هنگام معاینه" fill sizes="190px" className="object-cover object-[50%_20%]" />
+            <Image src={aboutDetail} alt="دکتر فاطمه جعفری هنگام معاینه" fill sizes="190px" className="object-cover object-[50%_20%]" />
           </div>
         </div>
       </Container>

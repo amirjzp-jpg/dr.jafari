@@ -71,7 +71,7 @@ export function personSchema() {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": abs("/about#doctor"),
-    name: "دکتر ندا جعفری",
+    name: "دکتر فاطمه جعفری",
     jobTitle: "دندانپزشک زیبایی",
     identifier: {
       "@type": "PropertyValue",

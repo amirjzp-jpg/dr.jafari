@@ -11,6 +11,7 @@ import {
 } from "@/lib/booking/service";
 import { addDays, dayKeyOf, tehranToUtc } from "@/lib/time";
 import { pool, query } from "@/lib/db";
+import { LIMITS } from "@/lib/rate-limit";
 import { captureSms, expireHold, futureSlot, ip, sid } from "./helpers";
 
 afterAll(async () => {
@@ -155,9 +156,10 @@ describe("double-booking protection", () => {
   it("caps how many slots one IP can hold at the same time", async () => {
     const addr = "10.8.8.8";
     const results = [];
-    for (let i = 0; i < 4; i++) results.push(await createHold({ sessionId: sid(), start: futureSlot(), ip: addr }));
-    expect(results.slice(0, 3).every((r) => r.ok)).toBe(true);
-    expect(results[3]).toEqual({ ok: false, error: "rate_limited" });
+    const cap = LIMITS.liveHoldsPerIp;
+    for (let i = 0; i <= cap; i++) results.push(await createHold({ sessionId: sid(), start: futureSlot(), ip: addr }));
+    expect(results.slice(0, cap).every((r) => r.ok)).toBe(true);
+    expect(results[cap]).toEqual({ ok: false, error: "rate_limited" });
     // Another client is unaffected.
     expect((await createHold({ sessionId: sid(), start: futureSlot(), ip: "10.8.8.9" })).ok).toBe(true);
   });

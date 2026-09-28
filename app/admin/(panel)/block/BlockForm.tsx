@@ -83,7 +83,7 @@ export function BlockForm({ days, times }: { days: { day: string; label: string 
           )}
         </div>
       )}
-      <button type="submit" disabled={pending} className={`${btnPrimary} self-start disabled:opacity-70`}>
+      <button type="submit" disabled={pending} className={`${btnPrimary} self-start disabled:cursor-not-allowed disabled:bg-muted`}>
         {pending ? "…" : "بستن این زمان"}
       </button>
     </form>

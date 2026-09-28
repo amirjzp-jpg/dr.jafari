@@ -5,7 +5,7 @@ import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = {
   title: "حریم خصوصی",
-  description: "چه اطلاعاتی هنگام رزرو نوبت در سایت کلینیک دکتر ندا جعفری ذخیره می‌شود، چرا و تا چه زمانی.",
+  description: "چه اطلاعاتی هنگام رزرو نوبت در سایت کلینیک دکتر فاطمه جعفری ذخیره می‌شود، چرا و تا چه زمانی.",
   alternates: { canonical: "/privacy" },
 };
 

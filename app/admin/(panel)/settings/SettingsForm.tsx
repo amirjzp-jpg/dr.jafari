@@ -105,7 +105,7 @@ export function SettingsForm({ settings, times }: { settings: ScheduleSettings; 
           {state.error}
         </p>
       )}
-      <button type="submit" disabled={pending} className={`${btnPrimary} self-start disabled:opacity-70`}>
+      <button type="submit" disabled={pending} className={`${btnPrimary} self-start disabled:cursor-not-allowed disabled:bg-muted`}>
         {pending ? "…" : "ذخیره‌ی تنظیمات"}
       </button>
     </form>

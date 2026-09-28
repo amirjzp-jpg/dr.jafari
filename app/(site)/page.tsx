@@ -76,7 +76,7 @@ function Hero() {
           <div className="absolute start-[54px] bottom-0 h-[401px] w-[282px] rounded-t-[141px] border border-b-0 border-champagne opacity-55 lg:start-[69px] lg:h-[601px] lg:w-[442px] lg:rounded-t-[221px]" />
           <Image
             src={drHero}
-            alt="دکتر ندا جعفری"
+            alt="دکتر فاطمه جعفری"
             priority
             sizes="(min-width: 1024px) 500px, 350px"
             className="absolute start-[22px] bottom-0 h-[460px] w-auto max-w-none [mask-image:linear-gradient(180deg,#000_80%,transparent_100%)] lg:start-[40px] lg:h-[660px]"
@@ -139,7 +139,7 @@ function About() {
           <div className="absolute start-0 top-0 h-[90.6%] w-[75%] overflow-hidden rounded-[50%_50%_24px_24px/36.2%_36.2%_24px_24px] bg-tint">
             <Image
               src={aboutMain}
-              alt="دکتر ندا جعفری در حال درمان یک بیمار در کلینیک"
+              alt="دکتر فاطمه جعفری در حال درمان یک بیمار در کلینیک"
               fill
               sizes="(min-width: 1024px) 420px, 75vw"
               className="object-cover object-[50%_30%]"
@@ -152,7 +152,7 @@ function About() {
           <div className="absolute end-0 bottom-0 h-[42%] w-[44.6%] overflow-hidden rounded-[20px] border-8 border-ivory bg-tint">
             <Image
               src={aboutDetail}
-              alt="دکتر ندا جعفری هنگام معاینه"
+              alt="دکتر فاطمه جعفری هنگام معاینه"
               fill
               sizes="(min-width: 1024px) 250px, 45vw"
               className="object-cover object-[50%_20%]"
@@ -165,7 +165,7 @@ function About() {
             دقت در جزئیات، برای لبخندی طبیعی
           </h2>
           <p className="text-[17px] leading-[2.1] text-muted-2">
-            دکتر ندا جعفری بیش از ده سال است که در شیراز به دندانپزشکی زیبایی می‌پردازد و تمرکز کارش بر کامپوزیت و
+            دکتر فاطمه جعفری بیش از ده سال است که در شیراز به دندانپزشکی زیبایی می‌پردازد و تمرکز کارش بر کامپوزیت و
             لمینت سرامیکی است. هر لبخند را متناسب با چهره طراحی می‌کند و تا جای ممکن بافت طبیعی دندان را حفظ می‌کند؛
             تا نتیجه، طبیعی به نظر برسد و سال‌ها زیبا بماند.
           </p>

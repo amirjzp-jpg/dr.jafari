@@ -1,4 +1,4 @@
-# Dr. Nada Jafari: clinic website
+# Dr. Fatemeh Jafari: clinic website
 
 Persian (RTL-first) website for a cosmetic dental clinic in Shiraz, with online booking and SMS verification.
 

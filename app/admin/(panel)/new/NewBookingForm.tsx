@@ -101,7 +101,7 @@ export function NewBookingForm({ day, dayLabel, slots, preselect, customTimes }:
           {state.error}
         </p>
       )}
-      <button type="submit" disabled={pending} className={`${btnPrimary} self-start disabled:opacity-70`}>
+      <button type="submit" disabled={pending} className={`${btnPrimary} self-start disabled:cursor-not-allowed disabled:bg-muted`}>
         {pending ? "در حال ثبت…" : "ثبت نوبت"}
       </button>
     </form>

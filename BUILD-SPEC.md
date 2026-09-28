@@ -1,4 +1,4 @@
-# Dr. Nada Jafari: Website Build Spec
+# Dr. Fatemeh Jafari: Website Build Spec
 
 > **Updated after handoff:** `docs/decisions.md` records later client decisions (no medical council number, a 13:00–14:00 break, an exclusion constraint for double-booking, and more). Where it differs from this spec, it wins.
 
@@ -192,7 +192,7 @@ Template texts (parameter names must match whatever is registered on sms.ir):
 
 | Template | Text |
 |---|---|
-| OTP | `کد تأیید: #CODE#` newline `کلینیک دکتر ندا جعفری` |
+| OTP | `کد تأیید: #CODE#` newline `کلینیک دکتر فاطمه جعفری` |
 | Confirmed | `#NAME# عزیز، نوبت شما #DATE# ساعت #TIME# تأیید شد.` newline `نشانی: پل معالی‌آباد، ساختمان موجودی، طبقه‌ی چهارم` newline `۰۹۰۲ ۳۰۲ ۳۱۲۰` |
 | Reminder (day before, around 18:00) | `یادآوری: نوبت شما فردا ساعت #TIME# است. برای تغییر تماس بگیرید: ۰۹۰۲ ۳۰۲ ۳۱۲۰` |
 | Cancelled by clinic | `#NAME# عزیز، نوبت #DATE# ساعت #TIME# لغو شد. برای هماهنگی: ۰۹۰۲ ۳۰۲ ۳۱۲۰` |
@@ -233,8 +233,8 @@ Functional over beautiful. Same tokens, simpler layout. `noindex`, and not linke
 ## 10. SEO
 
 - Per-page `<title>` and meta description. Homepage:
-  - Title: `دکتر ندا جعفری | دندانپزشکی زیبایی در شیراز`
-  - Description: `کامپوزیت، لمینت و طراحی لبخند در شیراز با دکتر ندا جعفری؛ بیش از ۱۰ سال تجربه، کلینیک مجهز و امکان پرداخت اقساطی. رزرو آنلاین نوبت.`
+  - Title: `دکتر فاطمه جعفری | دندانپزشکی زیبایی در شیراز`
+  - Description: `کامپوزیت، لمینت و طراحی لبخند در شیراز با دکتر فاطمه جعفری؛ بیش از ۱۰ سال تجربه، کلینیک مجهز و امکان پرداخت اقساطی. رزرو آنلاین نوبت.`
 - Schema: `Dentist` (a LocalBusiness subtype) with name, address, phones, hours, geo; `Person` for the doctor; `FAQPage` on service pages; `Article` on posts; `BreadcrumbList`.
 - `sitemap.xml` and `robots.txt` (disallow `/admin` and `/booking` steps beyond the first).
 - Open Graph and Twitter images: a 1200×630 card built from the hero.
@@ -302,7 +302,7 @@ Also: add both phone numbers as tap-to-call links everywhere they appear, and a 
 - [ ] Domain and hosting account
 - [ ] sms.ir account, API key and approved template IDs
 - [ ] Decision on buying a licensed Persian display font
-- [ ] Clinic legal name, if different from «کلینیک دکتر ندا جعفری»
+- [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»
 
 ### Image notes
 

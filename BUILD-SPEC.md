@@ -188,7 +188,7 @@ If a patient has verified their phone in the last 30 days, a session cookie lets
 - Templates must be registered and approved in the sms.ir panel first. Keep the template IDs in env vars.
 - The API key lives only in server env. **Never ship it to the client.**
 
-Template texts (parameter names must match whatever is registered on sms.ir):
+Template texts (parameter names must match whatever is registered on sms.ir). **Superseded:** the final, length-checked texts are in `docs/sms-templates.md`; the table below is the original brief.
 
 | Template | Text |
 |---|---|

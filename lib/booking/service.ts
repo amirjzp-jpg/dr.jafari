@@ -272,7 +272,8 @@ export async function confirmBooking(opts: {
 function smsParams(a: Pick<AppointmentRow, "name" | "start_at">) {
   const start = new Date(a.start_at);
   return {
-    NAME: a.name ?? "",
+    // First name only («مریم عزیز»): warmer, and keeps the SMS within its parts.
+    NAME: (a.name ?? "").trim().split(/\s+/)[0].slice(0, 20),
     DATE: `${jalali.weekday(dayKeyOf(start))} ${jalali.dayMonth(start)}`,
     TIME: jalali.time(start),
   };

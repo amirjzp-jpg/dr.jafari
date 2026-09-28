@@ -15,7 +15,7 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] Instagram URL (the footer link is hidden until set in `lib/site.ts`)
 - [ ] Domain and Iranian hosting account
 - [ ] sms.ir account, API key and approved template IDs
-- [ ] Clinic legal name, if different from «کلینیک دکتر ندا جعفری»
+- [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»
 - [ ] Decision on buying a licensed Persian display font
 - [ ] Umami analytics host (optional; `NEXT_PUBLIC_UMAMI_SRC`, `NEXT_PUBLIC_UMAMI_WEBSITE_ID`)
 - [ ] Before launch: re-save `OTP_SECRET` in Vercel as a Sensitive variable

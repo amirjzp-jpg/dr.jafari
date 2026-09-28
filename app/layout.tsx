@@ -12,19 +12,19 @@ import Script from "next/script";
 import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 
-const defaultTitle = "دکتر ندا جعفری | دندانپزشکی زیبایی در شیراز";
+const defaultTitle = "دکتر فاطمه جعفری | دندانپزشکی زیبایی در شیراز";
 const defaultDescription =
-  "کامپوزیت دندان، لمینت سرامیکی و طراحی لبخند در شیراز با دکتر ندا جعفری، دندانپزشک زیبایی با بیش از ۱۰ سال تجربه. امکان پرداخت اقساطی و رزرو آنلاین نوبت.";
+  "کامپوزیت دندان، لمینت سرامیکی و طراحی لبخند در شیراز با دکتر فاطمه جعفری، دندانپزشک زیبایی با بیش از ۱۰ سال تجربه. امکان پرداخت اقساطی و رزرو آنلاین نوبت.";
 
 // Root metadata is inherited by every page that does not override a key, so it
 // deliberately sets no alternates.canonical or openGraph.url: those would point
 // every page at "/". Each public page sets its own canonical (the home page sets "/").
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "کلینیک دکتر ندا جعفری",
+  applicationName: "کلینیک دکتر فاطمه جعفری",
   title: {
     default: defaultTitle,
-    template: "%s | دکتر ندا جعفری",
+    template: "%s | دکتر فاطمه جعفری",
   },
   description: defaultDescription,
   keywords: [
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     "طراحی لبخند شیراز",
     "بلیچینگ شیراز",
   ],
-  authors: [{ name: "دکتر ندا جعفری", url: "/about" }],
-  creator: "دکتر ندا جعفری",
-  publisher: "کلینیک دکتر ندا جعفری",
+  authors: [{ name: "دکتر فاطمه جعفری", url: "/about" }],
+  creator: "دکتر فاطمه جعفری",
+  publisher: "کلینیک دکتر فاطمه جعفری",
   category: "health",
   robots: {
     index: true,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fa_IR",
-    siteName: "کلینیک دکتر ندا جعفری",
+    siteName: "کلینیک دکتر فاطمه جعفری",
     title: defaultTitle,
     description: defaultDescription,
     // app/opengraph-image.png (file convention) takes precedence and supplies the URL;
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "کلینیک دندانپزشکی زیبایی دکتر ندا جعفری در شیراز",
+        alt: "کلینیک دندانپزشکی زیبایی دکتر فاطمه جعفری در شیراز",
       },
     ],
   },

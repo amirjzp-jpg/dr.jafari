@@ -8,7 +8,7 @@ import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = {
   title: "رزرو نوبت",
-  description: "رزرو آنلاین نوبت معاینه و مشاوره در کلینیک دکتر ندا جعفری، شیراز.",
+  description: "رزرو آنلاین نوبت معاینه و مشاوره در کلینیک دکتر فاطمه جعفری، شیراز.",
   alternates: { canonical: "/booking" },
 };
 

@@ -292,7 +292,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                         setDayIdx(i);
                         setErr("");
                       }}
-                      className={`flex h-[78px] w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-2xl border transition-colors disabled:opacity-45 ${
+                      className={`flex h-[78px] w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-2xl border transition-colors disabled:border-dashed disabled:bg-transparent disabled:text-muted ${
                         sel ? "border-primary bg-primary text-white" : "border-line bg-surface text-ink"
                       }`}
                     >
@@ -539,7 +539,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
           onClick={onPrimary}
           disabled={pending}
           aria-busy={pending}
-          className="h-14 w-full rounded-pill bg-primary text-[17px] font-medium text-white transition-colors hover:bg-primary-hover disabled:opacity-70"
+          className="h-14 w-full rounded-pill bg-primary text-[17px] font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-muted"
         >
           {pending ? "لطفاً صبر کنید…" : expired ? "انتخاب زمان جدید" : LABELS[step]}
         </button>

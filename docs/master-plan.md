@@ -1,4 +1,4 @@
-# Dr. Nada Jafari — Dental Website
+# Dr. Fatemeh Jafari — Dental Website
 ## Brand, Communications, UX/UI, SEO & Development Master Plan
 
 ---
@@ -7,11 +7,11 @@
 
 Create a premium, modern, trustworthy Persian/RTL website for:
 
-**دکتر ندا جعفری**
+**دکتر فاطمه جعفری**
 **متخصص زیبایی دندان**
 **شیراز**
 
-The website should position Dr. Nada Jafari as an experienced dental-aesthetics professional while creating a highly polished patient experience and a strong digital presence.
+The website should position Dr. Fatemeh Jafari as an experienced dental-aesthetics professional while creating a highly polished patient experience and a strong digital presence.
 
 The website is not simply a digital business card.
 
@@ -32,7 +32,7 @@ It should function as:
 
 ## Doctor
 
-- Name: دکتر ندا جعفری
+- Name: دکتر فاطمه جعفری
 - Profession: Dentist
 - Positioning: متخصص زیبایی دندان
 - Experience: بیش از ۱۰ سال سابقه
@@ -322,7 +322,7 @@ The website should:
 
 Potential structure:
 
-**دکتر ندا جعفری**
+**دکتر فاطمه جعفری**
 **متخصص زیبایی دندان در شیراز**
 
 Supporting message.
@@ -407,7 +407,7 @@ Other actual services will be added after receiving the doctor's service list.
 
 ---
 
-# 13. ABOUT DR. NADA JAFARI
+# 13. ABOUT DR. FATEMEH JAFARI
 
 Dedicated professional profile.
 
@@ -1157,7 +1157,7 @@ Does it work exceptionally well on phones?
 
 The final project should produce a complete:
 
-## Dr. Nada Jafari Digital Brand & Website System
+## Dr. Fatemeh Jafari Digital Brand & Website System
 
 Containing:
 
@@ -1208,7 +1208,7 @@ Most importantly:
 
 ## Let the quality of the work become the brand.
 
-The doctor, the photography, the cases, the typography, the whitespace, the UX and the patient journey should collectively communicate the quality of Dr. Nada Jafari's practice.
+The doctor, the photography, the cases, the typography, the whitespace, the UX and the patient journey should collectively communicate the quality of Dr. Fatemeh Jafari's practice.
 
 ---
 
@@ -1216,7 +1216,7 @@ The doctor, the photography, the cases, the typography, the whitespace, the UX a
 
 ### Confirmed
 
-- Dr. Nada Jafari
+- Dr. Fatemeh Jafari
 - Dentist
 - Dental aesthetics positioning
 - Shiraz

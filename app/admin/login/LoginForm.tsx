@@ -62,7 +62,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="h-14 rounded-pill bg-primary text-base font-medium text-white hover:bg-primary-hover disabled:opacity-70"
+        className="h-14 rounded-pill bg-primary text-base font-medium text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-muted"
       >
         {pending ? "لطفاً صبر کنید…" : state.step === "phone" ? "دریافت کد ورود" : "ورود"}
       </button>

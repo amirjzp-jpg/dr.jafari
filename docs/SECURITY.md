@@ -23,7 +23,7 @@ How the site protects patient data and the booking system, and what a new host m
 | Limit | Value |
 |---|---|
 | Holds per IP per hour | 10 |
-| Slots one IP can hold at the same time | 3 |
+| Slots one IP can hold at the same time | 5 (not lower: Iranian mobile carriers share one IP across many phones) |
 | Code requests per IP per hour | 10 |
 | Code checks per IP per hour | 30 |
 | Patient code texts, whole site, per hour | 60 (caps SMS-pumping cost; staff login is exempt) |

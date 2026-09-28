@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "کلینیک دکتر ندا جعفری",
+    name: "کلینیک دکتر فاطمه جعفری",
     short_name: "دکتر جعفری",
     description: "دندانپزشکی زیبایی شیراز · رزرو آنلاین نوبت",
     start_url: "/",

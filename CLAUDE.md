@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Website for Dr. Nada Jafari's cosmetic dental clinic in Shiraz, Iran. It's Persian and RTL-first, and its main goal is online booking with SMS verification.
+Website for Dr. Fatemeh Jafari's cosmetic dental clinic in Shiraz, Iran. It's Persian and RTL-first, and its main goal is online booking with SMS verification.
 
 ## Read first
 - `BUILD-SPEC.md` is the source of truth for behavior, rules and decisions.

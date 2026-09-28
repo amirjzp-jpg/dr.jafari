@@ -2,8 +2,8 @@
 // and docs/decisions.md; never add unverified claims here.
 
 export const site = {
-  name: "دکتر ندا جعفری",
-  clinicName: "کلینیک دکتر ندا جعفری",
+  name: "دکتر فاطمه جعفری",
+  clinicName: "کلینیک دکتر فاطمه جعفری",
   tagline: "دندانپزشکی زیبایی شیراز",
   phone: { display: "۰۹۰۲ ۳۰۲ ۳۱۲۰", tel: "+989023023120" },
   address:

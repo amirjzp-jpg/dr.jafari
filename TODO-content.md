@@ -12,7 +12,9 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] List of surgeries offered (`/services/surgery`) and orthodontic methods offered (`/services/orthodontics`)
 
 ## Photos and consent
-- [ ] Before/after case photos, with written patient consent, plus each case's tooth count and session count (`content/cases.ts`)
+- [x] Before/after case photos (3 cases, cropped to the mouth at matched scale in `public/images/cases/`)
+- [ ] Written consent from the 3 before/after patients, kept on file by the clinic
+- [ ] Confirm the treatment for each case (currently titled «کامپوزیت ونیر», «لمینت سرامیکی», «طراحی لبخند»), plus tooth count and session count (`content/cases.ts`)
 - [ ] Written consent from the patients visible in `about-main.webp` and `about-detail.webp`, or blur/re-crop them
 - [ ] Hand-refined portrait cutout (the current one has a grey fringe on the hair)
 

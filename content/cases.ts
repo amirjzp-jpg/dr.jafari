@@ -1,5 +1,6 @@
 // Before/after cases. Real clinical photos only, with written patient consent
-// (TODO-content.md). Until then the frames show labelled placeholders.
+// (TODO-content.md). Photos are cropped to the mouth at matched scale and
+// midline (3:2); only geometry was changed, never the teeth themselves.
 
 export type Case = {
   title: string;
@@ -12,7 +13,22 @@ export type Case = {
 };
 
 export const cases: Case[] = [
-  { title: "کامپوزیت ونیر", label: "نمونه‌ی ۱" },
-  { title: "لمینت سرامیکی", label: "نمونه‌ی ۲" },
-  { title: "طراحی لبخند", label: "نمونه‌ی ۳" },
+  {
+    title: "کامپوزیت ونیر",
+    label: "نمونه‌ی ۱",
+    before: "/images/cases/case-1-before.webp",
+    after: "/images/cases/case-1-after.webp",
+  },
+  {
+    title: "لمینت سرامیکی",
+    label: "نمونه‌ی ۲",
+    before: "/images/cases/case-2-before.webp",
+    after: "/images/cases/case-2-after.webp",
+  },
+  {
+    title: "طراحی لبخند",
+    label: "نمونه‌ی ۳",
+    before: "/images/cases/case-3-before.webp",
+    after: "/images/cases/case-3-after.webp",
+  },
 ];

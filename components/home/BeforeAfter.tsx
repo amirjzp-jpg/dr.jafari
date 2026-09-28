@@ -10,10 +10,11 @@ import type { Case } from "@/content/cases";
 // on top, so mouse, touch and arrow keys all work, and `touch-action: pan-y`
 // keeps vertical page scrolling on phones.
 //
-// Arch frame 378×440 with a fully rounded top. If the real photos are
-// close-ups of teeth, switch `arch` to false (20px rounded rectangle).
+// Placeholders use the 378×440 arch. Real photos are close-ups of teeth, which
+// the arch would crop, so they use a 3:2 frame with 20px corners (BUILD-SPEC §8).
 
-export function BeforeAfter({ item, arch = true }: { item: Case; arch?: boolean }) {
+export function BeforeAfter({ item }: { item: Case }) {
+  const arch = !(item.before && item.after);
   const [pos, setPos] = useState(50);
   const tracked = useRef(false);
 
@@ -22,7 +23,9 @@ export function BeforeAfter({ item, arch = true }: { item: Case; arch?: boolean 
   return (
     <figure className="flex flex-col gap-[18px]">
       <div
-        className="relative mx-auto aspect-[378/440] w-full max-w-[378px] overflow-hidden bg-[#EEF3F8] select-none"
+        className={`relative mx-auto w-full overflow-hidden bg-[#EEF3F8] select-none ${
+          arch ? "aspect-[378/440] max-w-[378px]" : "aspect-[3/2]"
+        }`}
         style={{ borderRadius: radius }}
       >
         {/* After: full frame */}

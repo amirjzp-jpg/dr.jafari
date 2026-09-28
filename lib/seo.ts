@@ -1,3 +1,4 @@
+import { services } from "@/content/services";
 import { site } from "./site";
 
 /** Absolute site URL for canonical links, sitemap and structured data. */
@@ -8,7 +9,16 @@ export const siteUrl = (
 
 export const abs = (path: string) => `${siteUrl}${path}`;
 
-/** Dentist (a LocalBusiness subtype). No geo until the exact pin is confirmed (TODO-content.md). */
+const shiraz = {
+  "@type": "City",
+  name: "شیراز",
+  containedInPlace: { "@type": "AdministrativeArea", name: "استان فارس" },
+};
+
+/**
+ * Dentist (a LocalBusiness subtype). No geo, hasMap or priceRange: the exact pin
+ * and prices are not confirmed (TODO-content.md).
+ */
 export function dentistSchema() {
   return {
     "@context": "https://schema.org",
@@ -25,6 +35,8 @@ export function dentistSchema() {
       addressRegion: "فارس",
       addressCountry: "IR",
     },
+    areaServed: shiraz,
+    knowsLanguage: "fa",
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -40,6 +52,16 @@ export function dentistSchema() {
       },
     ],
     paymentAccepted: "اقساطی برای درمان‌های زیبایی",
+    availableService: services.map((s) => ({
+      "@type": s.slug === "consultation" ? "Service" : "MedicalProcedure",
+      name: s.name,
+      url: abs(s.href),
+    })),
+    potentialAction: {
+      "@type": "ReserveAction",
+      name: "رزرو نوبت معاینه و مشاوره",
+      target: abs("/booking"),
+    },
     employee: { "@id": abs("/about#doctor") },
   };
 }
@@ -51,9 +73,30 @@ export function personSchema() {
     "@id": abs("/about#doctor"),
     name: "دکتر ندا جعفری",
     jobTitle: "دندانپزشک زیبایی",
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "IRIMC",
+      name: "شماره نظام پزشکی",
+      value: "169473",
+    },
+    knowsAbout: ["کامپوزیت دندان", "لمینت سرامیکی", "طراحی لبخند"],
+    knowsLanguage: "fa",
     worksFor: { "@id": abs("/#clinic") },
+    workLocation: { "@id": abs("/#clinic") },
     url: abs("/about"),
     image: abs("/images/doctor/dr-hero.webp"),
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": abs("/#website"),
+    name: site.clinicName,
+    url: siteUrl,
+    inLanguage: "fa",
+    publisher: { "@id": abs("/#clinic") },
   };
 }
 

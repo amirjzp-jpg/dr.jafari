@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/booking-policy" },
 };
 
-// Notice periods and no-show rules need the clinic's decision ([؟]).
+// Final copy. Notice periods are the clinic's working defaults (docs/decisions.md).
 const sections: Section[] = [
   {
     h: "رزرو آنلاین",
@@ -22,16 +22,16 @@ const sections: Section[] = [
   {
     h: "لغو یا تغییر نوبت",
     p: [
-      `اگر نمی‌توانید در زمان نوبت حاضر شوید، لطفاً دست‌کم [؟ ساعت] پیش از آن با شماره‌ی ${site.phones[0].display} تماس بگیرید تا نوبت برای بیمار دیگری آزاد شود.`,
+      `اگر نمی‌توانید در زمان نوبت حاضر شوید، لطفاً دست‌کم ۲۴ ساعت پیش از آن با شماره‌ی ${site.phones[0].display} تماس بگیرید تا نوبت برای بیمار دیگری آزاد شود.`,
     ],
   },
   {
     h: "تأخیر",
-    p: ["لطفاً چند دقیقه زودتر برسید. در صورت تأخیر بیش از [؟ دقیقه]، ممکن است جلسه کوتاه‌تر شود یا به زمان دیگری منتقل شود."],
+    p: ["لطفاً چند دقیقه زودتر برسید. اگر بیش از ۱۵ دقیقه تأخیر داشته باشید، ممکن است جلسه کوتاه‌تر شود یا به زمان دیگری منتقل شود تا نوبت بیماران بعدی به هم نریزد."],
   },
   {
     h: "عدم حضور",
-    p: ["اگر بدون اطلاع قبلی در زمان نوبت حاضر نشوید، [؟ سیاست کلینیک درباره‌ی رزرو بعدی]."],
+    p: ["اگر بدون اطلاع قبلی در زمان نوبت حاضر نشوید، رزرو بعدی شما ممکن است به تأیید تلفنی کلینیک نیاز داشته باشد."],
   },
   {
     h: "تغییر از سوی کلینیک",
@@ -43,7 +43,7 @@ export default function BookingPolicyPage() {
   return (
     <>
       <PageHeader title="قوانین نوبت‌دهی" crumbs={[{ name: "قوانین نوبت‌دهی", path: "/booking-policy" }]} />
-      <Prose sections={sections} />
+      <Prose sections={sections} reviewed />
     </>
   );
 }

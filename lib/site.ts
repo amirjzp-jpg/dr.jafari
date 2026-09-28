@@ -13,6 +13,7 @@ export const site = {
     "شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم",
   hours: "شنبه تا چهارشنبه، ساعت ۱۰ تا ۱۹",
   closedDays: "پنجشنبه و جمعه تعطیل",
+  councilNumber: "۱۶۹۴۷۳", // شماره نظام پزشکی
   // TODO-content.md: exact map pins (Neshan, Balad, Google) are still missing; this searches the address.
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=" +

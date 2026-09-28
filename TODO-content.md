@@ -7,11 +7,11 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [x] Final copy for all service pages, journal articles, privacy and booking policy (doctor's full copywriting approval)
 - [x] Hero portrait: new photo from the clinic, cut out cleanly (no fringe on the hair)
 - [x] Before/after case photos (3 cases, cropped to the mouth at matched scale in `public/images/cases/`)
+- [x] Treatment names on the homepage before/after cases, approved by the creative lead
 - [x] Gallery: 10 clinic photos with treatment labels approved (creative lead has full creative control); tooth jewellery and the clinic video left out (see docs/decisions.md)
 - [x] Instagram: @dr_nedajafarii (footer, contact section, gallery page, structured data)
 
 ## Still needed
-- [ ] Confirm the treatment named on each before/after case («کامپوزیت ونیر», «لمینت سرامیکی», «طراحی لبخند»); optionally tooth and session counts (`content/cases.ts`; the line is hidden until set)
 - [ ] Confirm the booking-policy defaults (24 h notice, 15 min lateness, no-show rule)
 - [ ] Exact map pins for Neshan, Balad and Google Maps (the «مسیریابی» link currently searches the address), and coordinates for structured data
 - [ ] Domain and Iranian hosting account

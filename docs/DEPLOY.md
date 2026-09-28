@@ -38,7 +38,7 @@ npm start            # serves on $PORT (default 3000)
 - Set the same environment variables as above.
 - **Reminder job:** schedule a daily call at 18:00 Tehran time:
   `curl -H "Authorization: Bearer $CRON_SECRET" https://<domain>/api/cron/reminders`
-  The reverse proxy must append the client IP to `X-Forwarded-For` (nginx: `proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`); see `docs/SECURITY.md`.
+- **Client IP:** the reverse proxy must append the client IP to `X-Forwarded-For` (nginx: `proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`); see `docs/SECURITY.md`.
 - Force HTTPS at the host (the app already sends HSTS).
 - Analytics (optional): run Umami on the same host and set `NEXT_PUBLIC_UMAMI_SRC` (script URL) and `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
 

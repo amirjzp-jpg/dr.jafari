@@ -1,5 +1,4 @@
-// Before/after cases. Real clinical photos only, with written patient consent
-// (TODO-content.md). Photos are cropped to the mouth at matched scale and
+// Before/after cases. Real clinical photos supplied by the clinic. Photos are cropped to the mouth at matched scale and
 // midline (3:2); only geometry was changed, never the teeth themselves.
 
 export type Case = {

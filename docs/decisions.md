@@ -7,6 +7,7 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **Medical council number (شماره نظام پزشکی): 169473.** Shown in the footer, the about section and the about page, and in the Person structured data. (Earlier removed; restored when the client supplied the number.)
 - **University: not mentioned anywhere**, at the doctor's request.
 - **Copy:** the doctor gave full copywriting approval, so service, journal, about and policy copy is final (`reviewed: true`, no draft notices). Still no invented clinical numbers (e.g. longevity in years).
+- **Patient photos:** the clinic confirmed that no separate written consent is needed for the before/after photos or the two about-section photos; the photos are used as supplied (before/after cropped to the mouth).
 - **Footer credit:** «Designed by Razats Creative Studio», small and muted.
 - **About section credentials list:** «تحصیلات» and «دوره‌های تخصصی» are replaced with three approach rows. The wording needs Dr. Jafari's approval (tracked in `TODO-content.md`):
   - رویکرد: حفظ حداکثری بافت دندان

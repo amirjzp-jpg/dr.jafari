@@ -59,7 +59,11 @@ export default async function LoginPage() {
         <>
           {smsIsMock() && (
             <div className="flex flex-col gap-2 rounded-2xl bg-[#F3EDE3] p-4 text-sm leading-[1.9] text-[#6B4F24]">
-              <p className="font-medium">پیامک واقعی هنوز فعال نیست (sms.ir وصل نشده است).</p>
+              <p className="font-medium">
+                {process.env.SMSIR_API_KEY
+                  ? "کلید sms.ir ثبت شده، اما شناسه‌ی قالب پیامک کد ورود هنوز تنظیم نشده است."
+                  : "پیامک واقعی هنوز فعال نیست (sms.ir وصل نشده است)."}
+              </p>
               <p>
                 کد ورود به گوشی ارسال نمی‌شود. پس از زدن «دریافت کد ورود»، در Vercel به بخش Logs بروید و دنبال{" "}
                 <code dir="ltr">sms:mock</code> بگردید؛ کد پنج‌رقمی جلوی <code dir="ltr">CODE</code> است.

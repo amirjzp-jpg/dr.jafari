@@ -1,7 +1,7 @@
 // The /gallery page. Real photos supplied by the clinic; only geometry and whole-image
 // colour were adjusted (crop, rotate, straighten, remove watermarks and faces), never
-// the teeth themselves. Treatment labels marked in TODO-content.md await the clinic's
-// confirmation.
+// the teeth themselves. Treatment labels were identified from the photos and approved
+// (docs/decisions.md).
 
 export type Treatment = "composite" | "veneer" | "smile" | "whitening";
 

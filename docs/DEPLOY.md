@@ -20,7 +20,7 @@ Until the sms.ir variables are set, no SMS is sent: every message (including log
 
 ### Turning on real SMS (sms.ir)
 1. Register and get approved the five templates in the sms.ir panel (texts in `BUILD-SPEC.md` section 7), with parameter names `CODE`, `NAME`, `DATE`, `TIME`.
-2. Set `SMSIR_API_KEY` and `SMSIR_TEMPLATE_OTP`, `SMSIR_TEMPLATE_CONFIRMED`, `SMSIR_TEMPLATE_REMINDER`, `SMSIR_TEMPLATE_CANCELLED`, `SMSIR_TEMPLATE_MOVED` (the numeric template IDs), then redeploy.
+2. Set `SMSIR_API_KEY` (Sensitive) and `SMSIR_TEMPLATE_OTP`, `SMSIR_TEMPLATE_CONFIRMED`, `SMSIR_TEMPLATE_REMINDER`, `SMSIR_TEMPLATE_CANCELLED`, `SMSIR_TEMPLATE_MOVED` (the numeric template IDs), then redeploy. Each message type goes live on its own as soon as the key and its template ID are both set; until then it is written to the server log (`[sms:mock]`), so the key can be added before every template is approved.
 3. Send yourself a booking and check each message.
 
 ## Production: Iranian host (Liara, ArvanCloud, etc.)

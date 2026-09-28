@@ -3,14 +3,16 @@ import { query } from "../db";
 
 // SMS goes through sms.ir's Verify (template) API. Template texts are registered
 // and approved in the sms.ir panel (see BUILD-SPEC.md section 7); we only send
-// the parameters. Without SMSIR_API_KEY a mock provider writes messages to the
-// server log instead, so development and the test deploy work without an account.
+// the parameters. Each message type goes live on its own: it is sent through
+// sms.ir only when SMSIR_API_KEY *and* its template ID are set. Otherwise a mock
+// provider writes it to the server log, so adding the key before the templates
+// are approved can't break login or booking.
 
 export type SmsTemplate = "otp" | "confirmed" | "reminder" | "cancelled" | "moved";
 
 type Params = Record<string, string>;
 
-const TEMPLATE_ENV: Record<SmsTemplate, string> = {
+export const TEMPLATE_ENV: Record<SmsTemplate, string> = {
   otp: "SMSIR_TEMPLATE_OTP",
   confirmed: "SMSIR_TEMPLATE_CONFIRMED",
   reminder: "SMSIR_TEMPLATE_REMINDER",
@@ -19,6 +21,11 @@ const TEMPLATE_ENV: Record<SmsTemplate, string> = {
 };
 
 export type SmsResult = { ok: boolean; provider: "smsir" | "mock"; detail?: string };
+
+/** True when this message type is sent for real (key and template ID both set). */
+export function smsLive(template: SmsTemplate): boolean {
+  return Boolean(process.env.SMSIR_API_KEY) && Number(process.env[TEMPLATE_ENV[template]]) > 0;
+}
 
 async function sendSmsIr(phone: string, template: SmsTemplate, params: Params): Promise<SmsResult> {
   const templateId = Number(process.env[TEMPLATE_ENV[template]]);
@@ -48,7 +55,7 @@ async function sendSmsIr(phone: string, template: SmsTemplate, params: Params): 
 
 export async function sendSms(phone: string, template: SmsTemplate, params: Params): Promise<SmsResult> {
   let result: SmsResult;
-  if (process.env.SMSIR_API_KEY) {
+  if (smsLive(template)) {
     result = await sendSmsIr(phone, template, params);
   } else {
     // Dev/test logger. This is the only place an OTP code is ever written out;

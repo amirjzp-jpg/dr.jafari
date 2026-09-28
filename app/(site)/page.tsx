@@ -14,7 +14,7 @@ import { homeFaq } from "@/content/home";
 import { latestArticles } from "@/content/journal";
 import { featuredServices, otherServices } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
-import { dentistSchema, faqSchema, personSchema } from "@/lib/seo";
+import { dentistSchema, faqSchema, personSchema, websiteSchema } from "@/lib/seo";
 import { bookingHref, bookingLabel, site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
@@ -25,7 +25,7 @@ export const metadata = { alternates: { canonical: "/" } };
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={[dentistSchema(), personSchema()]} />
+      <JsonLd data={[websiteSchema(), dentistSchema(), personSchema()]} />
       <Hero />
       <Stats />
       <About />

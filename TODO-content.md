@@ -9,6 +9,7 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [x] Before/after case photos (3 cases, cropped to the mouth at matched scale in `public/images/cases/`)
 - [x] Treatment names on the homepage before/after cases, approved by the creative lead
 - [x] Gallery: 10 clinic photos with treatment labels approved (creative lead has full creative control); tooth jewellery and the clinic video left out (see docs/decisions.md)
+- [x] `OTP_SECRET` rotated and stored as a Sensitive variable (Production + Preview); `CRON_SECRET` added (Sensitive), so reminders and the daily cleanup run
 - [x] Instagram: @dr_nedajafarii (footer, contact section, gallery page, structured data)
 
 ## Still needed
@@ -19,4 +20,3 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»
 - [ ] Decision on buying a licensed Persian display font
 - [ ] Umami analytics host (optional; `NEXT_PUBLIC_UMAMI_SRC`, `NEXT_PUBLIC_UMAMI_WEBSITE_ID`)
-- [ ] Before launch: re-save `OTP_SECRET` in Vercel as a Sensitive variable

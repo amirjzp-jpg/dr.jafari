@@ -8,9 +8,9 @@
 
    | Name | Value |
    |---|---|
-   | `OTP_SECRET` | a random string of 32+ characters, e.g. from `openssl rand -hex 32` |
+   | `OTP_SECRET` | a random string of 32+ characters, e.g. from `openssl rand -hex 32`. Add it as **Sensitive** (Production + Preview) |
    | `ADMIN_PHONES` | staff mobile numbers, comma-separated, e.g. `09121234567` |
-   | `CRON_SECRET` | another random string (Vercel sends it to the reminder job) |
+   | `CRON_SECRET` | another random string, also **Sensitive** (Vercel sends it to the reminder job; without it reminders never run) |
    | `NEXT_PUBLIC_SITE_URL` | the site's address, e.g. `https://dr-jafari.vercel.app` (later the real domain) |
 
 4. **Redeploy** (Deployments → ⋯ → Redeploy). The build log should show `[migrate] applied 001_init.sql`.

@@ -46,6 +46,6 @@ The daily cron (`/api/cron/reminders`, `Authorization: Bearer $CRON_SECRET`, com
 ## Before launch
 
 - [ ] Connect sms.ir. Until then the mock provider writes codes to the server log (visible to anyone with access to the hosting logs).
-- [ ] Re-save `OTP_SECRET` as a Sensitive variable; set `CRON_SECRET`.
+- [x] `OTP_SECRET` and `CRON_SECRET` stored as Sensitive variables in Vercel (Production + Preview). On a new host, keep them out of the repo and readable only by the app.
 - [ ] Create a least-privilege database role for the app (runtime) and keep the owner role for migrations.
 - [ ] On the Iranian host: HTTPS only, the proxy header above, and nightly database backups.

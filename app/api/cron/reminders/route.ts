@@ -1,10 +1,11 @@
 import { createHash, timingSafeEqual } from "node:crypto";
-import { purgeExpired, sendReminders } from "@/lib/booking/service";
-import { addDays, dayKeyOf, tehranToUtc } from "@/lib/time";
+import { purgeExpired, sendDueReminders } from "@/lib/booking/service";
 
-// Day-before reminder SMS. Vercel Cron calls this daily at 14:30 UTC (18:00
-// Tehran) with `Authorization: Bearer $CRON_SECRET`. On another host, call it
-// from a cron job the same way. Each appointment is reminded at most once.
+// Appointment reminders (about 6 hours ahead, quiet 22:00–08:00 Tehran) plus the
+// daily data clean-up. Call every 15 minutes with `Authorization: Bearer
+// $CRON_SECRET` from the Iranian host's crontab (docs/DEPLOY.md). The Vercel test
+// deploy runs it once a day at 08:00 Tehran (vercel.json; Hobby allows no more).
+// Each appointment is reminded once, so extra or overlapping calls are harmless.
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
   const digest = (v: string) => createHash("sha256").update(v).digest();
@@ -12,8 +13,7 @@ export async function GET(req: Request) {
   if (!secret || !timingSafeEqual(digest(given), digest(`Bearer ${secret}`))) {
     return new Response("Unauthorized", { status: 401 });
   }
-  const tomorrow = addDays(dayKeyOf(new Date()), 1);
-  const sent = await sendReminders(tehranToUtc(tomorrow, "00:00"), tehranToUtc(addDays(tomorrow, 1), "00:00"));
+  const sent = await sendDueReminders();
   const purged = await purgeExpired();
-  return Response.json({ day: tomorrow, sent, purged });
+  return Response.json({ sent, purged });
 }

@@ -10,6 +10,7 @@ import {
 } from "@/lib/auth/session";
 import { validateSettings } from "@/lib/booking/schedule";
 import {
+  isDuration,
   REASONS,
   staffBlock,
   staffBook,
@@ -140,8 +141,11 @@ export async function createBooking(_: FormState, form: FormData): Promise<FormS
   const time = str(form, "custom_time") || str(form, "time");
   if (!isDayKey(day) || !/^\d{2}:\d{2}$/.test(time)) return { error: "روز و ساعت را انتخاب کنید." };
   const start = tehranToUtc(day, time);
+  const durationMinutes = Number(str(form, "duration") || 30);
+  if (!isDuration(durationMinutes)) return { error: "مدت جلسه را انتخاب کنید." };
 
   const r = await staffBook({
+    durationMinutes,
     start,
     phone,
     name,

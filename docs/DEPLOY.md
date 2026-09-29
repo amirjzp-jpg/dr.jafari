@@ -2,7 +2,7 @@
 
 ## Test deploy: Vercel + Neon
 
-1. **Import the repo** at vercel.com → Add New → Project → `dr.jafari`. `vercel.json` sets the framework, runs database migrations and then builds, and schedules the reminder job.
+1. **Import the repo** at vercel.com → Add New → Project → `dr.jafari`. `vercel.json` sets the framework, runs database migrations and then builds, and schedules the reminder job once a day at 08:00 Tehran. That is the most the Hobby plan allows, so on the Vercel test deploy only visits before 14:00 get a reminder; the real host runs it every 15 minutes (see the crontab line below).
 2. **Add a database:** in the Vercel project, Storage → Create → **Neon** (Postgres) → connect it to the project. This sets `DATABASE_URL` automatically.
 3. **Environment variables** (Settings → Environment Variables), for Production and Preview:
 
@@ -36,8 +36,8 @@ npm start            # serves on $PORT (default 3000)
 
 - Postgres 14+ (the exclusion constraint uses a GiST index on a time range; no extensions needed).
 - Set the same environment variables as above.
-- **Reminder job:** schedule a daily call at 18:00 Tehran time:
-  `curl -H "Authorization: Bearer $CRON_SECRET" https://<domain>/api/cron/reminders`
+- **Reminder job:** call it **every 15 minutes** from the server's crontab (reminders go about 6 hours before each visit, never between 22:00 and 08:00 Tehran; the same call also runs the daily clean-up). Example crontab line:
+  `*/15 * * * * curl -fsS -H "Authorization: Bearer $CRON_SECRET" https://<domain>/api/cron/reminders > /dev/null`
 - **Client IP:** the reverse proxy must append the client IP to `X-Forwarded-For` (nginx: `proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`); see `docs/SECURITY.md`.
 - Force HTTPS at the host (the app already sends HSTS).
 - Analytics (optional): run Umami on the same host and set `NEXT_PUBLIC_UMAMI_SRC` (script URL) and `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.

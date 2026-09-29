@@ -41,7 +41,7 @@ Content-Security-Policy (same-origin only; no third-party scripts, fonts or fram
 
 ## Data minimisation
 
-The daily cron (`/api/cron/reminders`, `Authorization: Bearer $CRON_SECRET`, compared in constant time) also deletes: codes older than a day, expired device and staff sessions, rate-limit events older than two days, and abandoned holds older than a week. Appointment records and the staff audit log are kept.
+The scheduled job (`/api/cron/reminders`, every 15 minutes, `Authorization: Bearer $CRON_SECRET`, compared in constant time) also deletes: codes older than a day, expired device and staff sessions, rate-limit events older than two days, and abandoned holds older than a week. Appointment records and the staff audit log are kept.
 
 ## Before launch
 

@@ -3,6 +3,7 @@ import { cancelAppointment, setOutcome } from "@/app/admin/actions";
 import { ConfirmSubmit } from "@/components/admin/ConfirmSubmit";
 import { btnDanger, btnOutline } from "@/components/admin/styles";
 import { REASON_LABELS, type AppointmentRow } from "@/lib/booking/service";
+import { durationLabel } from "@/lib/admin-options";
 import { formatPhone } from "@/lib/phone";
 import { jalali } from "@/lib/time";
 
@@ -57,8 +58,13 @@ export function AppointmentCard({ a, back }: { a: AppointmentRow; back: string }
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <span className="ltr-nums text-lg font-medium">
           {jalali.time(start)}
-          {isBlock && ` – ${jalali.time(end)}`}
+          {(isBlock || end.getTime() - start.getTime() > 30 * 60_000) && ` – ${jalali.time(end)}`}
         </span>
+        {!isBlock && end.getTime() - start.getTime() > 30 * 60_000 && (
+          <span className="rounded-pill bg-tint px-2.5 py-0.5 text-xs text-primary">
+            {durationLabel(Math.round((end.getTime() - start.getTime()) / 60_000))}
+          </span>
+        )}
         <StatusBadge a={a} />
         {a.source === "staff" && <span className="text-xs text-muted">ثبت توسط کلینیک</span>}
       </div>
@@ -78,7 +84,7 @@ export function AppointmentCard({ a, back }: { a: AppointmentRow; back: string }
             {formatPhone(a.phone!)}
           </a>
           <span className="text-sm text-muted-2">
-            معاینه و مشاوره · {a.reason ? REASON_LABELS[a.reason] : "—"}
+            {end.getTime() - start.getTime() > 30 * 60_000 ? "جلسه‌ی درمان" : "معاینه و مشاوره"} · {a.reason ? REASON_LABELS[a.reason] : "—"}
           </span>
           {a.note && <p className="rounded-lg bg-ivory px-3 py-2 text-sm text-muted-2">{a.note}</p>}
         </div>

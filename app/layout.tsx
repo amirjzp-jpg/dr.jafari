@@ -10,12 +10,8 @@ import "@fontsource/vazirmatn/latin-600.css";
 import "@fontsource/noto-naskh-arabic/arabic-500.css";
 import "@fontsource/noto-naskh-arabic/arabic-600.css";
 import Script from "next/script";
-import { siteUrl } from "@/lib/seo";
+import { defaultDescription, defaultTitle, robotsMeta, siteUrl } from "@/lib/seo";
 import "./globals.css";
-
-const defaultTitle = "دکتر فاطمه جعفری | دندانپزشکی زیبایی در شیراز";
-const defaultDescription =
-  "کامپوزیت دندان، لمینت سرامیکی و طراحی لبخند در شیراز با دکتر فاطمه جعفری، دندانپزشک زیبایی با بیش از ۱۰ سال تجربه. امکان پرداخت اقساطی و رزرو آنلاین نوبت.";
 
 // Root metadata is inherited by every page that does not override a key, so it
 // deliberately sets no alternates.canonical or openGraph.url: those would point
@@ -28,28 +24,11 @@ export const metadata: Metadata = {
     template: "%s | دکتر فاطمه جعفری",
   },
   description: defaultDescription,
-  keywords: [
-    "کامپوزیت دندان شیراز",
-    "لمینت دندان شیراز",
-    "دندانپزشک زیبایی شیراز",
-    "طراحی لبخند شیراز",
-    "بلیچینگ شیراز",
-  ],
   authors: [{ name: "دکتر فاطمه جعفری", url: "/about" }],
   creator: "دکتر فاطمه جعفری",
   publisher: "کلینیک دکتر فاطمه جعفری",
   category: "health",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  robots: robotsMeta,
   openGraph: {
     type: "website",
     locale: "fa_IR",

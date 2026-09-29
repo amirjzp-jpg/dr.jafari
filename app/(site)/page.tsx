@@ -17,13 +17,21 @@ import { homeFaq } from "@/content/home";
 import { latestArticles } from "@/content/journal";
 import { featuredServices, otherServices } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
-import { dentistSchema, faqSchema, personSchema, websiteSchema } from "@/lib/seo";
+import {
+  buildMetadata,
+  defaultDescription,
+  defaultTitle,
+  dentistSchema,
+  faqSchema,
+  personSchema,
+  websiteSchema,
+} from "@/lib/seo";
 import { bookingHref, bookingLabel, site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
 import drHero from "@/public/images/doctor/dr-hero.webp";
 
-export const metadata = { alternates: { canonical: "/" } };
+export const metadata = buildMetadata({ title: { absolute: defaultTitle }, description: defaultDescription, path: "/" });
 
 export default function HomePage() {
   return (

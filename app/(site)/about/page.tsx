@@ -4,16 +4,16 @@ import { BookingCta } from "@/components/content/BookingCta";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
-import { personSchema } from "@/lib/seo";
+import { buildMetadata, personSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "درباره‌ی دکتر",
   description: "دکتر فاطمه جعفری، دندانپزشک زیبایی در شیراز با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی. شماره نظام پزشکی ۱۶۹۴۷۳.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const rows = [
   { k: "رویکرد", v: "حفظ حداکثری بافت دندان" },

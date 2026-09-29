@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { connection } from "next/server";
 import { site } from "@/lib/site";
@@ -6,11 +7,11 @@ import { loadBooking } from "./actions";
 import { BookingFlow } from "./BookingFlow";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "رزرو نوبت",
   description: "رزرو آنلاین نوبت معاینه و مشاوره در کلینیک دکتر فاطمه جعفری، شیراز.",
-  alternates: { canonical: "/booking" },
-};
+  path: "/booking",
+});
 
 export default async function BookingPage() {
   await connection(); // always per-request: holds and availability are live

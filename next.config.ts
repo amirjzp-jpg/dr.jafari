@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+// Only the real domain sets SITE_INDEXABLE=true; see lib/seo.ts.
+const indexable = process.env.SITE_INDEXABLE === "true";
 const isDev = process.env.NODE_ENV !== "production";
 // Analytics is the only third-party origin the site may talk to, and only when configured.
 const umami = (() => {
@@ -54,7 +56,10 @@ const nextConfig: NextConfig = {
   env: { BUILD_TIME: new Date().toISOString() },
   async headers() {
     return [
-      { source: "/:path*", headers: securityHeaders },
+      {
+        source: "/:path*",
+        headers: [...securityHeaders, ...(indexable ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }])],
+      },
       // Photos in /public keep their file names when replaced, so cache for 30 days
       // (not "immutable") and refresh in the background.
       {

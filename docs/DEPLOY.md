@@ -11,7 +11,8 @@
    | `OTP_SECRET` | a random string of 32+ characters, e.g. from `openssl rand -hex 32`. Add it as **Sensitive** (Production + Preview) |
    | `ADMIN_PHONES` | staff mobile numbers, comma-separated, e.g. `09121234567` |
    | `CRON_SECRET` | another random string, also **Sensitive** (Vercel sends it to the reminder job; without it reminders never run) |
-   | `NEXT_PUBLIC_SITE_URL` | the site's address, e.g. `https://dr-jafari.vercel.app` (later the real domain) |
+   | `NEXT_PUBLIC_SITE_URL` | the site's address, e.g. `https://dr-jafari.vercel.app` (later the real domain, `https://dandanpezeshkishiraz.ir`) |
+   | `SITE_INDEXABLE` | `true` **only on the real domain, and it must be set when the site is built** (the page tags are fixed at build time). Left unset (Vercel test, previews), every page sends `noindex` in the HTML and in the `X-Robots-Tag` header, so the test site can't compete with the real one in search |
 
 4. **Redeploy** (Deployments → ⋯ → Redeploy). The build log should show `[migrate] applied 001_init.sql`.
 

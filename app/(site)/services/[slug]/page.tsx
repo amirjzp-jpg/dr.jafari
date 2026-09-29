@@ -6,8 +6,9 @@ import { Faq } from "@/components/content/Faq";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
-import { otherServices, serviceBySlug } from "@/content/services";
-import { faqSchema } from "@/lib/seo";
+import { ReviewedBy } from "@/components/content/ReviewedBy";
+import { COPY_APPROVED, otherServices, serviceBySlug } from "@/content/services";
+import { buildMetadata, faqSchema, medicalWebPageSchema } from "@/lib/seo";
 
 // Composite and veneers have their own top-level pages.
 export const dynamicParams = false;
@@ -18,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const s = serviceBySlug((await params).slug);
   if (!s) return {};
-  return { title: s.title, description: s.metaDescription, alternates: { canonical: s.href } };
+  return buildMetadata({ title: s.title, description: s.metaDescription, path: s.href });
 }
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,7 +30,9 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       <PageHeader title={s.title} crumbs={[{ name: "خدمات", path: "/services" }, { name: s.name, path: s.href }]} />
       <Container>
         <div className="flex max-w-[760px] flex-col gap-5">
+          <JsonLd data={medicalWebPageSchema(s, s.reviewedAt ?? COPY_APPROVED)} />
           <DraftNotice reviewed={s.reviewed} />
+          <ReviewedBy reviewed={s.reviewed} date={s.reviewedAt ?? COPY_APPROVED} />
           {s.intro.map((p) => (
             <p key={p} className="text-[17px] leading-[2] text-muted-2">
               {p}

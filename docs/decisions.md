@@ -58,3 +58,11 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - Service and journal content is structured TypeScript (`content/`) rather than MDX: the service pages need structured fields (steps, FAQ for FAQPage schema), and it keeps a later CMS migration straightforward.
 - Writers for the same slot queue on a transaction-scoped advisory lock and deadlocks are retried, so concurrent requests get a clean "slot taken" instead of an error. The constraint remains the guarantee.
 - Content drafts show a «پیش‌نویس» notice until `reviewed: true`.
+
+## SEO (audit of 2026-09-29)
+- **Indexing:** only the real domain is indexable (`SITE_INDEXABLE=true` at build). Every other deployment sends `noindex` in the page and the `X-Robots-Tag` header; `robots.txt` stays open so the noindex can be seen.
+- **Per-page tags:** every page builds its title, canonical, Open Graph and Twitter tags through `buildMetadata` (lib/seo.ts).
+- **One source of facts:** name, address, phone and hours live in `lib/site.ts`; the page text, the structured data and `/llms.txt` (now generated, absolute URLs) all read from it. Hours: 10–13 and 14–19.
+- **Reviewer line:** service pages and articles show «بازبینی‌شده توسط …» with the review date, and service pages carry `MedicalWebPage` markup (`reviewedBy`, `lastReviewed`). The date is 2026-09-28, the day the copy was approved (`COPY_APPROVED` in content/services.ts); change it there if the doctor re-reviews.
+- **FAQ markup:** a question is marked up on one URL only. «کامپوزیت بهتر است یا لمینت؟» stays visible on the home and composite pages but is out of their FAQPage markup (`noSchema`); the journal article owns it.
+- **Sitemap:** real `lastmod` for services and articles, none for the rest; no priority or changefreq.

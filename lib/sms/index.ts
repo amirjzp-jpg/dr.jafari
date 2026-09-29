@@ -61,7 +61,13 @@ export async function sendSms(phone: string, template: SmsTemplate, params: Para
     // Dev/test logger. This is the only place an OTP code is ever written out;
     // it never reaches an HTTP response.
     console.info(`[sms:mock] to=${phone} template=${template} params=${JSON.stringify(params)}`);
-    result = { ok: true, provider: "mock" };
+    // Once sms.ir is connected, a patient message whose template isn't set up was
+    // NOT delivered: report it so staff see "no SMS sent" and call instead. Codes
+    // stay "ok" so login keeps working from the log until the OTP template is live.
+    const undelivered = Boolean(process.env.SMSIR_API_KEY) && template !== "otp";
+    result = undelivered
+      ? { ok: false, provider: "mock", detail: `template not set up (${TEMPLATE_ENV[template]})` }
+      : { ok: true, provider: "mock" };
   }
   if (!result.ok) console.error(`[sms] failed to=${phone} template=${template}: ${result.detail}`);
   // Never store OTP parameters in the log table.

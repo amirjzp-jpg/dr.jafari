@@ -16,7 +16,7 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] Confirm the booking-policy defaults (24 h notice, 15 min lateness, no-show rule)
 - [ ] Exact map pins for Neshan, Balad and Google Maps (the «مسیریابی» link currently searches the address), and coordinates for structured data
 - [ ] Domain and Iranian hosting account
-- [ ] sms.ir: API key saved in Vercel (Sensitive). Still needed: register the 5 templates (final texts in docs/sms-templates.md) and set their numeric IDs as `SMSIR_TEMPLATE_OTP`, `_CONFIRMED`, `_REMINDER`, `_CANCELLED`, `_MOVED`; each goes live as soon as its ID is set
+- [ ] sms.ir: API key saved in Vercel (Sensitive). Still needed: register templates 1–3 (final texts in docs/sms-templates.md) and send their numeric IDs for `SMSIR_TEMPLATE_OTP`, `_CONFIRMED`, `_REMINDER`; each goes live as soon as its ID is set (cancel/move SMS are optional; staff call instead)
 - [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»
 - [ ] Decision on buying a licensed Persian display font
 - [ ] Umami analytics host (optional; `NEXT_PUBLIC_UMAMI_SRC`, `NEXT_PUBLIC_UMAMI_WEBSITE_ID`)

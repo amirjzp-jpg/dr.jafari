@@ -1,5 +1,7 @@
 # SMS templates (sms.ir)
 
+**Decision: register templates 1–3** (code, confirmation, reminder). Templates 4 and 5 are optional: while they are not set up, the admin panel shows «بدون پیامک» after a cancel or move, so staff call the patient instead. The texts stay here in case the clinic adds them later.
+
 Final texts to register in the sms.ir panel under «قالب‌ها», one template each. Copy each block exactly; line breaks matter. Parameter names (`#CODE#`, `#NAME#`, `#DATE#`, `#TIME#`) must stay as written, because the site fills them in by name. After approval, put each template's numeric ID in the matching Vercel variable (Sensitive is not needed for IDs); that message type goes live on the next deploy.
 
 Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 characters and longer messages are billed per 67-character part. The phone number is in Latin digits so phones make it tappable. The signature «کلینیک دکتر جعفری» is used instead of a first name. Clinic-initiated changes open with an apology. The login code carries an anti-phishing line.
@@ -30,7 +32,7 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 کلینیک دکتر جعفری 09023023120
 ```
 
-## 4. Cancelled by the clinic → `SMSIR_TEMPLATE_CANCELLED`
+## 4. Cancelled by the clinic → `SMSIR_TEMPLATE_CANCELLED` (optional, not registered for now)
 2 parts (about 101 characters)
 
 ```
@@ -39,7 +41,7 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 کلینیک دکتر جعفری
 ```
 
-## 5. Moved by the clinic → `SMSIR_TEMPLATE_MOVED`
+## 5. Moved by the clinic → `SMSIR_TEMPLATE_MOVED` (optional, not registered for now)
 2 parts (about 111 characters)
 
 ```

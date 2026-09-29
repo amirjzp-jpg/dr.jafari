@@ -11,21 +11,28 @@ type Props = {
   slots: { value: string; label: string }[];
   preselect?: string;
   customTimes: string[];
+  minutes: number;
+  minutesLabel: string;
 };
 
-export function NewBookingForm({ day, dayLabel, slots, preselect, customTimes }: Props) {
+export function NewBookingForm({ day, dayLabel, slots, preselect, customTimes, minutes, minutesLabel }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(createBooking, {});
   const [custom, setCustom] = useState(false);
 
   return (
     <form action={action} className="flex max-w-[560px] flex-col gap-4 rounded-2xl border border-line bg-surface p-4">
       <input type="hidden" name="day" value={day} />
+      <input type="hidden" name="duration" value={minutes} />
       <fieldset className="flex flex-col gap-2">
-        <legend className="mb-2 text-sm font-medium">ساعت · {dayLabel}</legend>
+        <legend className="mb-2 text-sm font-medium">
+          ساعت شروع · {dayLabel} · {minutesLabel}
+        </legend>
         {!custom && (
           <>
             {slots.length === 0 ? (
-              <p className="text-sm text-muted">ساعت کاری آزادی در این روز نمانده است.</p>
+              <p className="text-sm text-muted">
+                در این روز ساعت کاری آزادی برای جلسه‌ای به این مدت نمانده است. روز یا مدت دیگری را انتخاب کنید، یا ساعت خارج از ساعت کاری را بزنید.
+              </p>
             ) : (
               <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
                 {slots.map((s) => (

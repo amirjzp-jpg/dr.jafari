@@ -3,5 +3,5 @@
   "framework": "nextjs",
   "installCommand": "npm ci",
   "buildCommand": "npm run db:migrate && npm run build",
-  "crons": [{ "path": "/api/cron/reminders", "schedule": "30 14 * * *" }]
+  "crons": [{ "path": "/api/cron/reminders", "schedule": "*/15 * * * *" }]
 }

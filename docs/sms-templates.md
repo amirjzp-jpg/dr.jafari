@@ -25,12 +25,12 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 کلینیک دندانپزشکی دکتر جعفری 09023023120
 ```
 
-## 3. Reminder, the day before at 18:00 → `SMSIR_TEMPLATE_REMINDER`
-2 parts (125–130 characters)
+## 3. Reminder, about 6 hours before the visit → `SMSIR_TEMPLATE_REMINDER`
+2 parts (125–130 characters). Sent about 6 hours ahead, never between 22:00 and 08:00 (those go at 08:00), so the visit is always «امروز»
 
 ```
 #NAME# عزیز، سلام
-یادآوری دوستانه: نوبت شما فردا ساعت #TIME# است. منتظر دیدارتان هستیم.
+یادآوری دوستانه: نوبت شما امروز ساعت #TIME# است. منتظر دیدارتان هستیم.
 کلینیک دندانپزشکی دکتر جعفری 09023023120
 ```
 

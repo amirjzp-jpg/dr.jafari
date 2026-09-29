@@ -35,7 +35,10 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 
 - **Booking policy defaults:** 24 hours' notice to cancel, 15 minutes' lateness allowance, and after a no-show the next booking may need phone confirmation. Change in `app/(site)/booking-policy/page.tsx` if the clinic prefers other numbers.
 
-- **SMS:** three sms.ir templates (code, booking confirmation, day-before reminder), texts in `docs/sms-templates.md`. Cancel/move notices are not sent by SMS for now; the admin panel shows «بدون پیامک» and staff call the patient.
+- **SMS:** three sms.ir templates (code, booking confirmation, reminder about 6 hours ahead), texts in `docs/sms-templates.md`. Cancel/move notices are not sent by SMS for now; the admin panel shows «بدون پیامک» and staff call the patient.
+
+- **Reminder timing:** about 6 hours before each visit, with quiet hours 22:00–08:00 Tehran (a reminder due then goes at 08:00). Bookings made less than 6 hours ahead get no reminder. The job runs every 15 minutes (server crontab on the Iranian host).
+- **Multi-hour sessions:** staff can book 30 minutes to 4 hours from «نوبت جدید». Picker times respect working periods and the midday break; "outside working hours" allows any time. Moving a session keeps its length. Online bookings stay 30-minute consultations.
 
 ## Admin
 

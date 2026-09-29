@@ -7,9 +7,10 @@ import {
   staffBook,
   staffCancel,
   staffMove,
-  sendReminders,
+  sendDueReminders,
+  freeSlots,
 } from "@/lib/booking/service";
-import { addDays, dayKeyOf, tehranToUtc } from "@/lib/time";
+import { addDays, dayKeyOf, tehranToUtc, weekdayOf } from "@/lib/time";
 import { pool, query } from "@/lib/db";
 import { LIMITS } from "@/lib/rate-limit";
 import { captureSms, expireHold, futureSlot, ip, sid } from "./helpers";
@@ -164,18 +165,87 @@ describe("double-booking protection", () => {
     expect((await createHold({ sessionId: sid(), start: futureSlot(), ip: "10.8.8.9" })).ok).toBe(true);
   });
 
-  it("sends each day-before reminder exactly once, even if the job runs twice at once", async () => {
-    const tomorrow = addDays(dayKeyOf(new Date()), 1);
-    const start = tehranToUtc(tomorrow, "21:30"); // outside working hours: staff-only, no clash with other tests
-    const r = await staffBook({ start, phone: phone(9), name: "یادآوری", reason: "other", note: null, sendConfirmation: false, actor: "x" });
+  // Reminder tests use staff-only times (before opening or late evening) so they never
+  // collide with the working-hour slots other tests take.
+  const HOUR = 3_600_000;
+
+  it("sends each reminder once, about 6 hours ahead, even if the job runs twice at once", async () => {
+    const day = addDays(dayKeyOf(new Date()), 2);
+    const start = tehranToUtc(day, "21:30");
+    const r = await staffBook({ start, phone: phone(9), name: "مریم احمدی", reason: "other", note: null, sendConfirmation: false, actor: "x" });
     expect(r.ok).toBe(true);
-    const from = tehranToUtc(tomorrow, "00:00");
-    const to = tehranToUtc(addDays(tomorrow, 1), "00:00");
     const sms = captureSms();
-    const [a, b] = await Promise.all([sendReminders(from, to), sendReminders(from, to)]);
+    // Too early: 7 hours before.
+    await sendDueReminders(new Date(start.getTime() - 7 * HOUR));
+    expect(sms.sent.filter((s) => s.phone === phone(9))).toHaveLength(0);
+    // 5 hours before (15:30 Tehran): due. Two overlapping runs send it once.
+    const now = new Date(start.getTime() - 5 * HOUR);
+    await Promise.all([sendDueReminders(now), sendDueReminders(now)]);
+    await sendDueReminders(now);
     sms.restore();
-    expect(sms.sent.filter((s) => s.phone === phone(9) && s.template === "reminder")).toHaveLength(1);
-    expect(a + b).toBeGreaterThanOrEqual(1);
-    expect(await sendReminders(from, to)).toBe(0);
+    const mine = sms.sent.filter((s) => s.phone === phone(9) && s.template === "reminder");
+    expect(mine).toHaveLength(1);
+    expect(mine[0].params).toMatchObject({ NAME: "مریم" });
+  });
+
+  it("holds reminders during quiet hours and sends them at 08:00", async () => {
+    const day = addDays(dayKeyOf(new Date()), 3);
+    const start = tehranToUtc(day, "09:30");
+    const r = await staffBook({ start, phone: phone(10), name: "صبح", reason: "other", note: null, sendConfirmation: false, actor: "x" });
+    expect(r.ok).toBe(true);
+    const sms = captureSms();
+    await sendDueReminders(tehranToUtc(day, "04:00")); // 5.5 h before, but 04:00 is quiet
+    expect(sms.sent.filter((s) => s.phone === phone(10))).toHaveLength(0);
+    await sendDueReminders(tehranToUtc(day, "08:00"));
+    sms.restore();
+    expect(sms.sent.filter((s) => s.phone === phone(10) && s.template === "reminder")).toHaveLength(1);
+  });
+
+  it("skips the reminder for a booking made inside the 6-hour window", async () => {
+    const day = addDays(dayKeyOf(new Date()), 4);
+    const start = tehranToUtc(day, "21:00");
+    const r = await staffBook({ start, phone: phone(11), name: "دیر", reason: "other", note: null, sendConfirmation: false, actor: "x" });
+    expect(r.ok).toBe(true);
+    await query("UPDATE appointments SET confirmed_at = start_at - interval '2 hours' WHERE phone = $1", [phone(11)]);
+    const sms = captureSms();
+    await sendDueReminders(new Date(start.getTime() - 1 * HOUR));
+    sms.restore();
+    expect(sms.sent.filter((s) => s.phone === phone(11))).toHaveLength(0);
+  });
+});
+
+describe("multi-hour sessions (staff)", () => {
+  it("a 2-hour session blocks the whole range, and a move keeps its length", async () => {
+    const day = addDays(dayKeyOf(new Date()), 5);
+    const start = tehranToUtc(day, "20:00");
+    const long = await staffBook({ start, phone: phone(20), name: "درمان", reason: "veneer", note: null, sendConfirmation: false, actor: "x", durationMinutes: 120 });
+    expect(long.ok).toBe(true);
+    if (!long.ok) return;
+    expect(new Date(long.appointment.end_at).getTime() - start.getTime()).toBe(2 * 3_600_000);
+    // 21:00 is inside the session.
+    const clash = await staffBook({ start: tehranToUtc(day, "21:00"), phone: phone(21), name: "دیگر", reason: "other", note: null, sendConfirmation: false, actor: "x" });
+    expect(clash).toMatchObject({ ok: false, error: "taken" });
+    const moved = await staffMove({ id: long.appointment.id, start: tehranToUtc(addDays(day, 1), "20:30"), notify: false, actor: "x" });
+    expect(moved.ok).toBe(true);
+    if (!moved.ok) return;
+    expect(new Date(moved.appointment.end_at).getTime() - new Date(moved.appointment.start_at).getTime()).toBe(2 * 3_600_000);
+  });
+
+  it("rejects lengths that aren't on the list", async () => {
+    const r = await staffBook({ start: tehranToUtc(addDays(dayKeyOf(new Date()), 6), "21:00"), phone: phone(22), name: "طول", reason: "other", note: null, sendConfirmation: false, actor: "x", durationMinutes: 45 });
+    expect(r).toMatchObject({ ok: false, error: "invalid" });
+  });
+
+  it("offers only start times where the whole session fits inside one working period", async () => {
+    // A quiet Saturday far ahead (beyond the online booking window).
+    let day = addDays(dayKeyOf(new Date()), 40);
+    while (weekdayOf(day) !== 6) day = addDays(day, 1);
+    const times = (await freeSlots(day, undefined, 120)).map((s) => s.time);
+    expect(times.length).toBeGreaterThan(0);
+    // 10:00–13:00 and 14:00–19:00: a 2-hour session can start by 11:00 or by 17:00.
+    for (const t of times) expect(t <= "11:00" || (t >= "14:00" && t <= "17:00")).toBe(true);
+    expect(times).toContain("11:00");
+    expect(times).toContain("17:00");
+    expect(times).not.toContain("12:00");
   });
 });

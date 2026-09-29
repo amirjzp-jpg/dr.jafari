@@ -4,7 +4,7 @@ import { cancelAppointment, moveAppointment } from "@/app/admin/actions";
 import { ConfirmSubmit } from "@/components/admin/ConfirmSubmit";
 import { btnDanger, btnPrimary, input } from "@/components/admin/styles";
 import { Flash, StatusBadge } from "@/components/admin/ui";
-import { dayOptions, todayKey } from "@/lib/admin-options";
+import { dayOptions, durationLabel, lengthOf, todayKey } from "@/lib/admin-options";
 import { freeSlots, getAppointment, REASON_LABELS } from "@/lib/booking/service";
 import { formatPhone } from "@/lib/phone";
 import { dayKeyOf, isDayKey, jalali } from "@/lib/time";
@@ -27,7 +27,8 @@ export default async function AppointmentPage({
   const today = todayKey();
   const moveDay = isDayKey(sp.d) && sp.d >= today ? sp.d : dayKeyOf(start) >= today ? dayKeyOf(start) : today;
   const canChange = a.status === "confirmed";
-  const slots = canChange ? await freeSlots(moveDay, a.id) : [];
+  const minutes = lengthOf(a);
+  const slots = canChange ? await freeSlots(moveDay, a.id, minutes) : [];
   const back = `/admin?d=${dayKeyOf(start)}`;
 
   return (
@@ -43,7 +44,12 @@ export default async function AppointmentPage({
         </div>
         <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-[15px]">
           <dt className="text-muted">زمان</dt>
-          <dd>{jalali.slot(start)}</dd>
+          <dd>
+            {jalali.slot(start)}
+            {minutes > 30 && ` تا ${jalali.time(new Date(a.end_at))}`}
+          </dd>
+          <dt className="text-muted">مدت</dt>
+          <dd>{durationLabel(minutes)}</dd>
           <dt className="text-muted">تلفن</dt>
           <dd>
             <a href={`tel:${a.phone}`} className="ltr-nums">
@@ -51,7 +57,7 @@ export default async function AppointmentPage({
             </a>
           </dd>
           <dt className="text-muted">دلیل مراجعه</dt>
-          <dd>معاینه و مشاوره · {a.reason ? REASON_LABELS[a.reason] : "—"}</dd>
+          <dd>{minutes > 30 ? "جلسه‌ی درمان" : "معاینه و مشاوره"} · {a.reason ? REASON_LABELS[a.reason] : "—"}</dd>
           <dt className="text-muted">ثبت</dt>
           <dd>{a.source === "staff" ? "توسط کلینیک" : "آنلاین"} · {jalali.slot(new Date(a.created_at))}</dd>
           {a.note && (

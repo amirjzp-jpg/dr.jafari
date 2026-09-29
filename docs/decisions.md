@@ -35,6 +35,8 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 
 - **Booking policy defaults:** 24 hours' notice to cancel, 15 minutes' lateness allowance, and after a no-show the next booking may need phone confirmation. Change in `app/(site)/booking-policy/page.tsx` if the clinic prefers other numbers.
 
+- **SMS:** three sms.ir templates (code, booking confirmation, day-before reminder), texts in `docs/sms-templates.md`. Cancel/move notices are not sent by SMS for now; the admin panel shows «بدون پیامک» and staff call the patient.
+
 ## Admin
 
 - Login by phone + SMS OTP, allowlist from the `ADMIN_PHONES` env var (comma-separated). Numbers are not committed to the repo.

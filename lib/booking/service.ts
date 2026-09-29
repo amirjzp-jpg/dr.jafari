@@ -492,10 +492,11 @@ export async function sendReminders(tomorrowStart: Date, tomorrowEnd: Date): Pro
      RETURNING *`,
     [tomorrowStart, tomorrowEnd],
   );
+  let sent = 0;
   for (const a of rows) {
-    await sendSms(a.phone!, "reminder", { TIME: jalali.time(new Date(a.start_at)) });
+    if ((await sendSms(a.phone!, "reminder", { TIME: jalali.time(new Date(a.start_at)) })).ok) sent++;
   }
-  return rows.length;
+  return sent;
 }
 
 /**

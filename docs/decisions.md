@@ -18,8 +18,10 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
   - رویکرد: حفظ حداکثری بافت دندان
   - طراحی: متناسب با چهره
   - مشاوره: بررسی همه‌ی گزینه‌ها پیش از درمان
-- **Address:** the full address is used everywhere, including the booking success screen and SMS templates:
+- **Address:** the full address is used on every page (contact section, footer, FAQ, booking success screen, structured data):
   شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم
+  The confirmation SMS keeps a short form (پل معالی‌آباد، ساختمان موجودی، طبقه‌ی ۴), because the full address would add a fourth billed part to every message.
+- **Directions:** every address has a pin icon and a «مسیریابی» button with a navigation icon (components/ui/DirectionsLink.tsx), so it reads as an action, not plain text.
 
 ## Booking
 

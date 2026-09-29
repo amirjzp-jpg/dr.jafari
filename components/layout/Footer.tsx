@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { InstagramIcon } from "@/components/icons/ui";
+import { InstagramIcon, PinIcon } from "@/components/icons/ui";
 import { Container } from "@/components/layout/Container";
+import { DirectionsLink } from "@/components/ui/DirectionsLink";
 import { toFaDigits } from "@/lib/digits";
 import { site } from "@/lib/site";
 
@@ -16,6 +17,13 @@ export function Footer() {
             © {year} {site.name}
           </span>
           <span>شماره نظام پزشکی: {site.councilNumber}</span>
+          <address className="mt-2 flex max-w-[460px] gap-2 leading-[1.9] not-italic">
+            <PinIcon size={16} className="mt-1 shrink-0 text-primary" />
+            <span>
+              {site.address}
+              <DirectionsLink variant="inline" className="ms-3 whitespace-nowrap" />
+            </span>
+          </address>
         </div>
         <div className="flex flex-col gap-3 md:items-end">
           <ul className="flex flex-wrap items-center gap-x-7 gap-y-2">

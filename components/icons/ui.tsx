@@ -42,6 +42,46 @@ export function InstagramIcon({ className, size = 20 }: IconProps) {
   );
 }
 
+export function PinIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" />
+      <circle cx="12" cy="9.5" r="2.5" />
+    </svg>
+  );
+}
+
+/** Navigation arrow, for «مسیریابی» links. */
+export function NavigateIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M20 4L4 11l7 2 2 7 7-16z" />
+    </svg>
+  );
+}
+
 /** Chevron pointing toward the inline end (left in RTL) unless `flip`. */
 export function ChevronIcon({ className, size = 20, flip = false }: IconProps & { flip?: boolean }) {
   return (

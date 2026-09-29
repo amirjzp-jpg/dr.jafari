@@ -4,10 +4,11 @@ import { Faq } from "@/components/content/Faq";
 import { InstagramCta } from "@/components/content/InstagramCta";
 import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
-import { InstagramIcon, PhoneIcon } from "@/components/icons/ui";
+import { InstagramIcon, PhoneIcon, PinIcon } from "@/components/icons/ui";
 import { ServiceIcon } from "@/components/icons/services";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { DirectionsLink } from "@/components/ui/DirectionsLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 import { cases } from "@/content/cases";
@@ -377,11 +378,12 @@ function Contact() {
             </div>
             <div className="flex flex-col gap-1 border-b border-[#D2DCE4] py-5">
               <dt className="text-[13px] text-muted-2">نشانی</dt>
-              <dd>
-                {site.address}
-                <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="ms-2 text-sm whitespace-nowrap">
-                  مسیریابی
-                </a>
+              <dd className="flex flex-col items-start gap-4">
+                <span className="flex gap-2.5">
+                  <PinIcon size={20} className="mt-1.5 shrink-0 text-primary" />
+                  {site.address}
+                </span>
+                <DirectionsLink />
               </dd>
             </div>
             <div className={`flex flex-col gap-1 pt-5 ${site.instagram ? "border-b border-[#D2DCE4] pb-5" : ""}`}>

@@ -4,31 +4,33 @@
 
 Final texts to register in the sms.ir panel under «قالب‌ها», one template each. Copy each block exactly; line breaks matter. Parameter names (`#CODE#`, `#NAME#`, `#DATE#`, `#TIME#`) must stay as written, because the site fills them in by name. After approval, put each template's numeric ID in the matching Vercel variable (Sensitive is not needed for IDs); that message type goes live on the next deploy.
 
-Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 characters and longer messages are billed per 67-character part. The phone number is in Latin digits so phones make it tappable. The signature «کلینیک دکتر جعفری» is used instead of a first name. Clinic-initiated changes open with an apology. The login code carries an anti-phishing line.
+Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 characters and longer messages are billed per 67-character part. The phone number is in Latin digits so phones make it tappable. The signature «کلینیک دکتر جعفری» is used instead of a first name. Patient messages open warmly («#NAME# عزیز، سلام», «منتظر دیدارتان هستیم»). Clinic-initiated changes open with an apology. The login code carries an anti-phishing line.
 
 ## 1. Login and booking code → `SMSIR_TEMPLATE_OTP`
-1 part (about 61 characters)
+1 part (67 characters). No name: the patient is not known yet when the code is sent
 
 ```
-کد تأیید شما: #CODE#
+سلام، کد تأیید شما: #CODE#
 این کد را به کسی ندهید.
 کلینیک دکتر جعفری
 ```
 
 ## 2. Booking confirmed → `SMSIR_TEMPLATE_CONFIRMED`
-2 parts (about 121 characters; the address is worth the second part)
+3 parts (170–183 characters). Sent once per booking, so the warm greeting, address, phone and clinic name are worth the third part
 
 ```
-#NAME# عزیز، نوبت شما #DATE# ساعت #TIME# ثبت شد.
-پل معالی‌آباد، ساختمان موجودی، طبقه‌ی ۴
+#NAME# عزیز، سلام
+نوبت شما برای #DATE# ساعت #TIME# با موفقیت ثبت شد. منتظر دیدارتان هستیم.
+نشانی: پل معالی‌آباد، ساختمان موجودی، طبقه‌ی ۴
 کلینیک دکتر جعفری 09023023120
 ```
 
 ## 3. Reminder, the day before at 18:00 → `SMSIR_TEMPLATE_REMINDER`
-1 part (about 63 characters, even for long names, because it has no name)
+2 parts (114–119 characters)
 
 ```
-یادآوری: نوبت شما فردا ساعت #TIME#
+#NAME# عزیز، سلام
+یادآوری دوستانه: نوبت شما فردا ساعت #TIME# است. منتظر دیدارتان هستیم.
 کلینیک دکتر جعفری 09023023120
 ```
 

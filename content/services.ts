@@ -5,7 +5,11 @@ import type { ServiceIconName } from "@/components/icons/services";
 // lib/site.ts, and never «متخصص», «بهترین», «تضمینی», «دائمی» or «بدون عارضه».
 // Each intro opens with a one-sentence answer, for search snippets and AI answers.
 
-export type Faq = { q: string; a: string };
+/** `noSchema`: shown on the page but left out of FAQPage markup, because another page owns this question. */
+export type Faq = { q: string; a: string; noSchema?: boolean };
+
+/** Date the doctor approved the copy (the commit that set reviewed: true). Override per service with `reviewedAt`. */
+export const COPY_APPROVED = "2026-09-28";
 
 export type ServiceDetail = {
   whatItIs: string[];
@@ -37,6 +41,8 @@ export type Service = {
   /** Short FAQ for pages without a full detail section. */
   faq?: Faq[];
   reviewed: boolean;
+  /** ISO date of the doctor's last review; defaults to COPY_APPROVED. */
+  reviewedAt?: string;
 };
 
 export const services: Service[] = [
@@ -113,6 +119,7 @@ export const services: Service[] = [
         {
           q: "کامپوزیت بهتر است یا لمینت؟",
           a: "کامپوزیت تراش کمتر و هزینه‌ی پایین‌تری دارد و ترمیم‌پذیر است؛ لمینت سرامیکی ثبات رنگ بیشتری دارد. انتخاب درست در جلسه‌ی مشاوره و بر اساس وضعیت دندان‌های شما مشخص می‌شود.",
+        noSchema: true, // owned by /journal/composite-vs-veneers
         },
         {
           q: "هزینه‌ی کامپوزیت دندان در شیراز چقدر است؟",

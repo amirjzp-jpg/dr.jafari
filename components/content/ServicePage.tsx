@@ -9,9 +9,10 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
 import { cases } from "@/content/cases";
 import { articles } from "@/content/journal";
-import type { Service } from "@/content/services";
+import { ReviewedBy } from "@/components/content/ReviewedBy";
+import { COPY_APPROVED, type Service } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
-import { faqSchema } from "@/lib/seo";
+import { faqSchema, medicalWebPageSchema } from "@/lib/seo";
 
 const H2 = ({ children, id }: { children: React.ReactNode; id: string }) => (
   <h2 id={id} className="font-display text-[24px] leading-normal font-semibold lg:text-[32px]">
@@ -42,10 +43,11 @@ export function ServicePage({ service }: { service: Service }) {
   return (
     <>
       <PageHeader title={service.title} lead={service.intro.map((p) => <p key={p}>{p}</p>)} crumbs={[{ name: service.name, path: service.href }]} />
-      <JsonLd data={faqSchema(d.faq)} />
+      <JsonLd data={[medicalWebPageSchema(service, service.reviewedAt ?? COPY_APPROVED), faqSchema(d.faq)]} />
       <Container>
         <div className="flex max-w-[760px] flex-col gap-14 pb-4">
           <DraftNotice reviewed={service.reviewed} />
+          <ReviewedBy reviewed={service.reviewed} date={service.reviewedAt ?? COPY_APPROVED} />
 
           <section aria-labelledby="what" className="flex flex-col gap-4">
             <H2 id="what">{short} چیست؟</H2>

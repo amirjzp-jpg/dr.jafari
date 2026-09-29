@@ -1,4 +1,5 @@
-import { services } from "@/content/services";
+import type { Metadata } from "next";
+import { services, type Service } from "@/content/services";
 import { site } from "./site";
 
 /** Absolute site URL for canonical links, sitemap and structured data. */
@@ -8,6 +9,70 @@ export const siteUrl = (
 ).replace(/\/$/, "");
 
 export const abs = (path: string) => `${siteUrl}${path}`;
+
+/**
+ * Search engines may index the site only where SITE_INDEXABLE=true (the real
+ * domain). Every other deployment (Vercel test, previews, local) is noindex, both
+ * in the page and in the X-Robots-Tag header (next.config.ts). robots.txt stays
+ * open on purpose: a blocked page can never show its noindex.
+ */
+export const indexable = process.env.SITE_INDEXABLE === "true";
+
+export const robotsMeta: Metadata["robots"] = indexable
+  ? {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+    }
+  : { index: false, follow: false };
+
+export const defaultTitle = "دکتر فاطمه جعفری | دندانپزشکی زیبایی در شیراز";
+export const defaultDescription =
+  "کامپوزیت دندان، لمینت سرامیکی و طراحی لبخند در شیراز با دکتر فاطمه جعفری، دندانپزشک زیبایی با بیش از ۱۰ سال تجربه. امکان پرداخت اقساطی و رزرو آنلاین نوبت.";
+
+type ShareImage = { url: string; width: number; height: number; alt: string };
+const defaultImage: ShareImage = {
+  url: "/opengraph-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "کلینیک دندانپزشکی زیبایی دکتر فاطمه جعفری در شیراز",
+};
+
+/**
+ * Metadata for one page: title, description, canonical, and its own Open Graph
+ * and Twitter tags. A page's openGraph replaces the layout's completely, so every
+ * page must go through this, or it shares the home page's preview.
+ */
+export function buildMetadata(o: {
+  title: string | { absolute: string };
+  description: string;
+  path: string;
+  type?: "website" | "article";
+  image?: ShareImage;
+  publishedTime?: string;
+  modifiedTime?: string;
+}): Metadata {
+  const plain = typeof o.title === "string" ? o.title : o.title.absolute;
+  const img = o.image ?? defaultImage;
+  return {
+    title: o.title,
+    description: o.description,
+    alternates: { canonical: o.path },
+    openGraph: {
+      type: o.type ?? "website",
+      locale: "fa_IR",
+      siteName: site.clinicName,
+      title: plain,
+      description: o.description,
+      url: abs(o.path),
+      images: [img],
+      ...(o.type === "article"
+        ? { publishedTime: o.publishedTime, modifiedTime: o.modifiedTime ?? o.publishedTime, authors: [abs("/about")] }
+        : {}),
+    },
+    twitter: { card: "summary_large_image", title: plain, description: o.description, images: [img.url] },
+  };
+}
 
 const shiraz = {
   "@type": "City",
@@ -30,27 +95,19 @@ export function dentistSchema() {
     telephone: site.phone.tel,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار",
+      streetAddress: site.address.replace(/^شیراز،\s*/, ""),
       addressLocality: "شیراز",
       addressRegion: "فارس",
       addressCountry: "IR",
     },
     areaServed: shiraz,
     knowsLanguage: "fa",
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"],
-        opens: "10:00",
-        closes: "13:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"],
-        opens: "14:00",
-        closes: "19:00",
-      },
-    ],
+    openingHoursSpecification: site.openPeriods.map(([opens, closes]) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [...site.openDays],
+      opens,
+      closes,
+    })),
     paymentAccepted: "اقساطی برای درمان‌های زیبایی",
     availableService: services.map((s) => ({
       "@type": s.slug === "consultation" ? "Service" : "MedicalProcedure",
@@ -112,10 +169,28 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
-export function faqSchema(faq: { q: string; a: string }[]) {
+export function faqSchema(faq: { q: string; a: string; noSchema?: boolean }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    mainEntity: faq.filter((f) => !f.noSchema).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+}
+
+/** A service page as a medical web page, reviewed by the doctor whose copy it is. */
+export function medicalWebPageSchema(service: Service, reviewedAt: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": abs(`${service.href}#page`),
+    url: abs(service.href),
+    name: service.title,
+    description: service.metaDescription,
+    inLanguage: "fa",
+    about: { "@type": service.slug === "consultation" ? "Service" : "MedicalProcedure", name: service.name },
+    reviewedBy: { "@id": abs("/about#doctor") },
+    lastReviewed: reviewedAt,
+    isPartOf: { "@id": abs("/#website") },
+    publisher: { "@id": abs("/#clinic") },
   };
 }

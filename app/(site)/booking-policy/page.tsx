@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Prose, type Section } from "@/components/content/Prose";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "قوانین نوبت‌دهی",
   description: "قوانین رزرو، لغو و تغییر نوبت در کلینیک دکتر فاطمه جعفری.",
-  alternates: { canonical: "/booking-policy" },
-};
+  path: "/booking-policy",
+});
 
 // Final copy. Notice periods are the clinic's working defaults (docs/decisions.md).
 const sections: Section[] = [

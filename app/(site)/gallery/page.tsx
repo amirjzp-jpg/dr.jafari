@@ -6,14 +6,13 @@ import { InstagramCta } from "@/components/content/InstagramCta";
 import { GalleryView } from "@/components/gallery/GalleryView";
 import { Container } from "@/components/layout/Container";
 import { cover, gallery, treatmentLabel } from "@/content/gallery";
-import { abs } from "@/lib/seo";
+import { abs, buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "نمونه‌کارها",
-  description:
-    "تصاویر واقعی قبل و بعد از کامپوزیت ونیر، لمینت سرامیکی، طراحی لبخند و بلیچینگ در کلینیک دکتر فاطمه جعفری، شیراز.",
-  alternates: { canonical: "/gallery" },
-};
+  description: "تصاویر واقعی قبل و بعد از کامپوزیت ونیر، لمینت سرامیکی، طراحی لبخند و بلیچینگ در کلینیک دکتر فاطمه جعفری، شیراز.",
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

@@ -12,6 +12,10 @@ export type Article = {
   pillar: "/composite" | "/veneers";
   readMinutes: number;
   published: string; // ISO date
+  /** ISO date of the last edit; defaults to `published`. */
+  updated?: string;
+  /** ISO date of the doctor's review; defaults to COPY_APPROVED. */
+  reviewedAt?: string;
   image: { card: string; hero: string; alt: string; cardW: number; cardH: number };
   body: Block[];
   reviewed: boolean;

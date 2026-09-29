@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/content/PageHeader";
@@ -6,11 +7,11 @@ import { Container } from "@/components/layout/Container";
 import { latestArticles, articles } from "@/content/journal";
 import { toFaDigits } from "@/lib/digits";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "مجله",
   description: "مقاله‌هایی درباره‌ی کامپوزیت، لمینت سرامیکی و مراقبت از لبخند، پیش از تصمیم برای درمان.",
-  alternates: { canonical: "/journal" },
-};
+  path: "/journal",
+});
 
 export default function JournalIndex() {
   return (

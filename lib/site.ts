@@ -8,8 +8,14 @@ export const site = {
   phone: { display: "۰۹۰۲ ۳۰۲ ۳۱۲۰", tel: "+989023023120" },
   address:
     "شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار",
-  hours: "شنبه تا چهارشنبه، ساعت ۱۰ تا ۱۹",
+  // Shown text and structured data both come from these lines; change hours here only.
+  hours: "شنبه تا چهارشنبه، ۱۰ تا ۱۳ و ۱۴ تا ۱۹",
   closedDays: "پنجشنبه و جمعه تعطیل",
+  openDays: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"],
+  openPeriods: [
+    ["10:00", "13:00"],
+    ["14:00", "19:00"],
+  ],
   councilNumber: "۱۶۹۴۷۳", // شماره نظام پزشکی
   // TODO-content.md: exact map pins (Neshan, Balad, Google) are still missing; this searches the address.
   mapUrl:

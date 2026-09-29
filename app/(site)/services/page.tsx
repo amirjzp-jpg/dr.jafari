@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { BookingCta } from "@/components/content/BookingCta";
 import { PageHeader } from "@/components/content/PageHeader";
@@ -6,11 +7,11 @@ import { ServiceIcon } from "@/components/icons/services";
 import { Container } from "@/components/layout/Container";
 import { services } from "@/content/services";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "خدمات کلینیک",
   description: "خدمات کلینیک دندانپزشکی زیبایی دکتر فاطمه جعفری در شیراز: کامپوزیت، لمینت سرامیکی، طراحی لبخند، بلیچینگ، ایمپلنت و دیگر خدمات.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

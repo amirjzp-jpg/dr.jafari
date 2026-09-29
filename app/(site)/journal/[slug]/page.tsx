@@ -7,9 +7,10 @@ import { JsonLd } from "@/components/content/JsonLd";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { articleBySlug, articles, type Block } from "@/content/journal";
-import { serviceBySlug } from "@/content/services";
+import { ReviewedBy } from "@/components/content/ReviewedBy";
+import { COPY_APPROVED, serviceBySlug } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
-import { abs, breadcrumbSchema } from "@/lib/seo";
+import { abs, breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { bookingHref, bookingLabel } from "@/lib/site";
 import { jalali, tehranToUtc } from "@/lib/time";
 
@@ -21,12 +22,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const a = articleBySlug((await params).slug);
   if (!a) return {};
-  return {
+  return buildMetadata({
     title: a.title,
     description: a.excerpt,
-    alternates: { canonical: `/journal/${a.slug}` },
-    openGraph: { type: "article", title: a.title, description: a.excerpt, images: [{ url: a.image.hero, width: 1600, height: 900 }] },
-  };
+    path: `/journal/${a.slug}`,
+    type: "article",
+    image: { url: a.image.hero, width: 1600, height: 900, alt: a.image.alt },
+    publishedTime: a.published,
+    modifiedTime: a.updated ?? a.published,
+  });
 }
 
 function Body({ blocks }: { blocks: Block[] }) {
@@ -71,6 +75,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             description: a.excerpt,
             image: abs(a.image.hero),
             datePublished: a.published,
+            dateModified: a.updated ?? a.published,
             inLanguage: "fa",
             author: { "@id": abs("/about#doctor") },
             publisher: { "@id": abs("/#clinic") },
@@ -107,6 +112,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         />
         <div className="flex w-full max-w-[680px] flex-col gap-5 pt-4">
           <DraftNotice reviewed={a.reviewed} />
+          <ReviewedBy reviewed={a.reviewed} date={a.reviewedAt ?? COPY_APPROVED} />
           <Body blocks={a.body.slice(0, half)} />
           {/* Inline booking CTA near the end */}
           <aside className="my-4 flex flex-col gap-3 rounded-[24px] bg-tint p-6">

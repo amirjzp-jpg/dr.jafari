@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Prose, type Section } from "@/components/content/Prose";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "حریم خصوصی",
   description: "چه اطلاعاتی هنگام رزرو نوبت در سایت کلینیک دکتر فاطمه جعفری ذخیره می‌شود، چرا و تا چه زمانی.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 // Describes what the booking system actually stores. Final copy.
 const sections: Section[] = [

@@ -62,7 +62,7 @@ export function Footer() {
       </Container>
       <Container className="border-t border-line py-5 text-center">
         <span dir="ltr" lang="en" className="text-xs font-semibold tracking-wide text-ink">
-          Designed by Razats
+          Designed by Razats Creative Studio
         </span>
       </Container>
     </footer>

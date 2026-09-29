@@ -13,14 +13,14 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **Gallery (/gallery):** real clinic photos in a card-fan carousel (GSAP, self-hosted) plus a grid; each opens full-screen, pairs with the before/after slider. Photos are only cropped, rotated, straightened and cleaned of watermarks/faces; teeth are never retouched. Over-filtered or low-resolution photos, befores without an after, and tooth-jewellery photos (off-brand, not a listed service) are left out. Treatment labels were identified from the photos and approved by the creative lead, who has full creative control.
 - **No video:** the clinic's reel (480×848, 15 s) has a burned-in «DR.NEDA.JAFARI» watermark, phone camera UI in some shots, collage edits and black frames; it would add weight on Iranian connections without adding to the gallery. Left out by decision.
 - **Phone:** one number only, ۰۹۰۲ ۳۰۲ ۳۱۲۰, shown semibold. The second number (۰۹۰۲ ۳۰۲ ۳۱۱۰) was removed at the client's request.
-- **Footer:** «© ۲۰۲۶ دکتر فاطمه جعفری» (year from the build) and «Designed by Razats» (its own centred line at the very bottom), both bold, on every public page and the 404. The booking flow has no footer by design.
+- **Footer:** «© ۲۰۲۶ دکتر فاطمه جعفری» (year from the build) and «Designed by Razats Creative Studio» (its own centred line at the very bottom), both bold, on every public page and the 404. The booking flow has no footer by design.
 - **About section credentials list:** «تحصیلات» and «دوره‌های تخصصی» are replaced with three approach rows. The wording needs Dr. Jafari's approval (tracked in `TODO-content.md`):
   - رویکرد: حفظ حداکثری بافت دندان
   - طراحی: متناسب با چهره
   - مشاوره: بررسی همه‌ی گزینه‌ها پیش از درمان
 - **Address:** the full address is used on every page (contact section, footer, FAQ, booking success screen, structured data):
-  شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم
-  The confirmation SMS keeps a short form (پل معالی‌آباد، ساختمان موجودی، طبقه‌ی ۴), because the full address would add a fourth billed part to every message.
+  شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار
+  The floor is written «طبقه‌چهار», as the client asked. The confirmation SMS also carries the full address and no phone number (client's decision; 4 billed parts per message).
 - **Directions:** every address has a pin icon and a «مسیریابی» button with a navigation icon (components/ui/DirectionsLink.tsx), so it reads as an action, not plain text.
 
 ## Booking

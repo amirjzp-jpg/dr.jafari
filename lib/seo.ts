@@ -30,7 +30,7 @@ export function dentistSchema() {
     telephone: site.phone.tel,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم",
+      streetAddress: "پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار",
       addressLocality: "شیراز",
       addressRegion: "فارس",
       addressCountry: "IR",

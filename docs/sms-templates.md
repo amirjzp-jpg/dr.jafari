@@ -16,13 +16,13 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 ```
 
 ## 2. Booking confirmed → `SMSIR_TEMPLATE_CONFIRMED`
-3 parts (181–194 characters). Sent once per booking, so the warm greeting, address, phone and clinic name are worth the third part
+4 parts (about 219–234 characters). Sent once per booking. Carries the full address so the patient can find the building from the SMS alone; no phone number, by the client's decision
 
 ```
 #NAME# عزیز، سلام
 نوبت شما برای #DATE# ساعت #TIME# با موفقیت ثبت شد. منتظر دیدارتان هستیم.
-نشانی: پل معالی‌آباد، ساختمان موجودی، طبقه‌ی ۴
-کلینیک دندانپزشکی دکتر جعفری 09023023120
+نشانی: شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار
+کلینیک دندانپزشکی دکتر جعفری
 ```
 
 ## 3. Reminder, about 6 hours before the visit → `SMSIR_TEMPLATE_REMINDER`

@@ -14,7 +14,7 @@ export const site = {
   // TODO-content.md: exact map pins (Neshan, Balad, Google) are still missing; this searches the address.
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent("شیراز، پل معالی‌آباد، ساختمان موجودی"),
+    encodeURIComponent("شیراز، پل معالی‌آباد، جنب بانک تجارت، ساختمان موجودی"),
   // The doctor's own account; she is known publicly as Neda (docs/decisions.md).
   instagram: "https://www.instagram.com/dr_nedajafarii/" as string | null,
   instagramHandle: "@dr_nedajafarii",

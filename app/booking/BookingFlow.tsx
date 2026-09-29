@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
+import { DirectionsLink } from "@/components/ui/DirectionsLink";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 import { track } from "@/lib/analytics";
 import { toEnDigits, toFaDigits } from "@/lib/digits";
@@ -503,19 +504,13 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                 </div>
               </dl>
               <div className="flex gap-2.5">
-                <a
-                  href={site.mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-12 grow items-center justify-center rounded-pill border border-primary text-sm text-primary no-underline"
-                >
-                  مسیریابی
-                </a>
+                <DirectionsLink variant="outline" className="grow basis-0" />
                 <a
                   href={icsHref}
                   download="nobat-dr-jafari.ics"
-                  className="flex h-12 grow items-center justify-center rounded-pill border border-primary text-sm text-primary no-underline"
+                  className="flex h-12 grow basis-0 items-center justify-center gap-2 rounded-pill border border-primary text-sm text-primary no-underline transition-colors hover:bg-tint"
                 >
+                  <CalendarIcon />
                   افزودن به تقویم
                 </a>
               </div>

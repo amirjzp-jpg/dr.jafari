@@ -3,9 +3,9 @@ import { purgeExpired, sendDueReminders } from "@/lib/booking/service";
 
 // Appointment reminders (about 6 hours ahead, quiet 22:00–08:00 Tehran) plus the
 // daily data clean-up. Call every 15 minutes with `Authorization: Bearer
-// $CRON_SECRET`: on the Iranian host from the server's crontab (docs/DEPLOY.md),
-// on the Vercel test deploy from vercel.json. Each appointment is reminded once,
-// so extra or overlapping calls are harmless.
+// $CRON_SECRET` from the Iranian host's crontab (docs/DEPLOY.md). The Vercel test
+// deploy runs it once a day at 08:00 Tehran (vercel.json; Hobby allows no more).
+// Each appointment is reminded once, so extra or overlapping calls are harmless.
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
   const digest = (v: string) => createHash("sha256").update(v).digest();

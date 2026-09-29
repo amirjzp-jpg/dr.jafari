@@ -2,7 +2,7 @@
 
 ## Test deploy: Vercel + Neon
 
-1. **Import the repo** at vercel.com → Add New → Project → `dr.jafari`. `vercel.json` sets the framework, runs database migrations and then builds, and schedules the reminder job.
+1. **Import the repo** at vercel.com → Add New → Project → `dr.jafari`. `vercel.json` sets the framework, runs database migrations and then builds, and schedules the reminder job once a day at 08:00 Tehran. That is the most the Hobby plan allows, so on the Vercel test deploy only visits before 14:00 get a reminder; the real host runs it every 15 minutes (see the crontab line below).
 2. **Add a database:** in the Vercel project, Storage → Create → **Neon** (Postgres) → connect it to the project. This sets `DATABASE_URL` automatically.
 3. **Environment variables** (Settings → Environment Variables), for Production and Preview:
 

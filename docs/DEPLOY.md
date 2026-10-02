@@ -20,28 +20,30 @@
 Until the sms.ir variables are set, no SMS is sent: every message (including login and booking codes) is written to the server log. To log in to `/admin` on the test site, request a code, then open Vercel → the deployment → **Logs** and look for `[sms:mock] … template=otp params={"CODE":"12345"}`.
 
 ### Turning on real SMS (sms.ir)
-1. Register and get approved the five templates in the sms.ir panel (texts in `BUILD-SPEC.md` section 7), with parameter names `CODE`, `NAME`, `DATE`, `TIME`.
-2. Set `SMSIR_API_KEY` (Sensitive) and `SMSIR_TEMPLATE_OTP`, `SMSIR_TEMPLATE_CONFIRMED`, `SMSIR_TEMPLATE_REMINDER`, `SMSIR_TEMPLATE_CANCELLED`, `SMSIR_TEMPLATE_MOVED` (the numeric template IDs), then redeploy. Each message type goes live on its own as soon as the key and its template ID are both set; until then it is written to the server log (`[sms:mock]`), so the key can be added before every template is approved.
+1. Register and get approved the three templates in the sms.ir panel (final texts in `docs/sms-templates.md`), with parameter names `CODE`, `NAME`, `DATE`, `TIME`.
+2. Set `SMSIR_API_KEY` (Sensitive) and `SMSIR_TEMPLATE_OTP`, `SMSIR_TEMPLATE_CONFIRMED`, `SMSIR_TEMPLATE_REMINDER` (the numeric template IDs; `_CANCELLED` and `_MOVED` are optional), then redeploy. Each message type goes live on its own as soon as the key and its template ID are both set; until then it is written to the server log (`[sms:mock]`), so the key can be added before every template is approved.
 3. Send yourself a booking and check each message.
 
-## Production: Iranian host (Liara, ArvanCloud, etc.)
+## Production: Iranian VPS (HostIran, Ubuntu 24.04, `dandanpezeshkishiraz.ir`)
 
-The app is a standard Node.js server with plain Postgres, so it runs anywhere:
+The app is a standard Node.js server with plain Postgres. Three scripts in `deploy/` do the work (as root on the server):
 
-```bash
-npm ci
-npm run db:migrate   # needs DATABASE_URL
-npm run build
-npm start            # serves on $PORT (default 3000)
-```
+1. **Setup (once):**
+   ```bash
+   apt-get update && apt-get install -y git
+   git clone https://github.com/amirjzp-jpg/dr.jafari.git /opt/dr-jafari
+   bash /opt/dr-jafari/deploy/setup-server.sh
+   ```
+   Installs Node 22, PostgreSQL and nginx; creates the database and `/etc/dr-jafari.env` (random `OTP_SECRET` and `CRON_SECRET`, asks for `ADMIN_PHONES`); adds 3 GB swap so the build fits in 1 GB RAM; builds the site and runs it as the `dr-jafari` systemd service behind nginx; sets up the firewall (ssh, 80, 443), fail2ban, automatic security updates, a nightly database dump (`/var/backups/dr-jafari`, 14 days) and the reminder job every 15 minutes. Safe to run again.
+2. **HTTPS (once the domain points at the server):** in HostIran's DNS add an `A` record for `dandanpezeshkishiraz.ir` and one for `www`, both to the server's IP, then `bash /opt/dr-jafari/deploy/enable-https.sh` (free Let's Encrypt certificate, renews itself, redirects HTTP to HTTPS).
+3. **Update:** `bash /opt/dr-jafari/deploy/update.sh` pulls `main`, migrates, rebuilds and restarts (a few minutes of downtime: the site is stopped so the build has the memory).
 
-- Postgres 14+ (the exclusion constraint uses a GiST index on a time range; no extensions needed).
-- Set the same environment variables as above.
-- **Reminder job:** call it **every 15 minutes** from the server's crontab (reminders go about 6 hours before each visit, never between 22:00 and 08:00 Tehran; the same call also runs the daily clean-up). Example crontab line:
-  `*/15 * * * * curl -fsS -H "Authorization: Bearer $CRON_SECRET" https://<domain>/api/cron/reminders > /dev/null`
-- **Client IP:** the reverse proxy must append the client IP to `X-Forwarded-For` (nginx: `proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`); see `docs/SECURITY.md`.
-- Force HTTPS at the host (the app already sends HSTS).
-- Analytics (optional): run Umami on the same host and set `NEXT_PUBLIC_UMAMI_SRC` (script URL) and `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
+- **sms.ir:** put the key and template IDs in `/etc/dr-jafari.env` (`nano /etc/dr-jafari.env`), then `systemctl restart dr-jafari`. Until then messages go to the log: `journalctl -u dr-jafari | grep sms:mock`.
+- **Logs:** `journalctl -u dr-jafari -n 100 --no-pager`. **Restart:** `systemctl restart dr-jafari`.
+- **Backups** live on the same disk: copy `/var/backups/dr-jafari` off the server now and then, and ask HostIran about server snapshots.
+- **Client IP:** nginx appends the client address to `X-Forwarded-For`, as `docs/SECURITY.md` requires.
+- Analytics (optional): run Umami on the same host and add `NEXT_PUBLIC_UMAMI_SRC` and `NEXT_PUBLIC_UMAMI_WEBSITE_ID` to the env file, then run `update.sh` (they are read at build time).
+- Rebuild after changing `NEXT_PUBLIC_SITE_URL` or `SITE_INDEXABLE` (`update.sh`): the page tags are fixed at build time.
 
 ## Checks before launch
 - `npm test` needs a local Postgres (`TEST_DATABASE_URL`, default `postgres://dev:dev@localhost/drjafari_test`).

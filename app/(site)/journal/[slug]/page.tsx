@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = articleBySlug((await params).slug);
   if (!a) return {};
   return buildMetadata({
-    title: a.title,
-    description: a.excerpt,
+    title: a.metaTitle ?? a.title,
+    description: a.metaDescription ?? a.excerpt,
     path: `/journal/${a.slug}`,
     type: "article",
     image: { url: a.image.hero, width: 1600, height: 900, alt: a.image.alt },

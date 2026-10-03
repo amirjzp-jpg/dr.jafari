@@ -13,6 +13,7 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [x] Instagram: @dr_nedajafarii (footer, contact section, gallery page, structured data)
 
 ## Still needed
+- [ ] **Doctor approval of the content drafts** in `docs/content-drafts/`: seven service pages (`service-pages.md`) and six articles (`articles.md`). Every `[؟]` must be answered or the sentence removed, and every «✓ تأیید شود» confirmed, before anything goes on the site. Nothing from these files is published yet.
 - [ ] SEO audit (2026-09-29), needs the doctor's decision before the code can change:
   - D1 one clinic name everywhere (site «کلینیک دکتر فاطمه جعفری» vs SMS «کلینیک دندانپزشکی دکتر جعفری»)
   - D2 whether «ندا» appears in visible text (today: only in structured data and llms.txt, per the decision to use فاطمه on the site)

@@ -9,8 +9,9 @@ import { cover, gallery, treatmentLabel } from "@/content/gallery";
 import { abs, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "نمونه‌کارها",
-  description: "تصاویر واقعی قبل و بعد از کامپوزیت ونیر، لمینت سرامیکی، طراحی لبخند و بلیچینگ در کلینیک دکتر فاطمه جعفری، شیراز.",
+  title: "نمونه‌کارهای دندانپزشکی زیبایی در شیراز",
+  description:
+    "تصاویر واقعی قبل و بعد از کامپوزیت ونیر، لمینت سرامیکی، طراحی لبخند و بلیچینگ در کلینیک دکتر فاطمه جعفری، معالی‌آباد شیراز.",
   path: "/gallery",
 });
 

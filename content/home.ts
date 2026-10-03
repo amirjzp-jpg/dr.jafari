@@ -18,6 +18,6 @@ export const homeFaq: Faq[] = [
   },
   {
     q: "کلینیک کجاست و چه روزهایی باز است؟",
-    a: `کلینیک در ${site.address} است. ساعت کاری: ${site.hours}؛ ${site.closedDays}.`,
+    a: `کلینیک دندانپزشکی زیبایی دکتر فاطمه جعفری در شیراز، معالی‌آباد است: ${site.address.replace(/^شیراز،\s*/, "")}. ساعت کاری: ${site.hours}؛ ${site.closedDays}.`,
   },
 ];

@@ -6,7 +6,7 @@ import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = buildMetadata({
   title: "قوانین نوبت‌دهی",
-  description: "قوانین رزرو، لغو و تغییر نوبت در کلینیک دکتر فاطمه جعفری.",
+  description: "قوانین رزرو، لغو و تغییر نوبت در کلینیک دکتر فاطمه جعفری در شیراز: مهلت لغو، تأخیر در مراجعه و تغییر زمان نوبت.",
   path: "/booking-policy",
 });
 

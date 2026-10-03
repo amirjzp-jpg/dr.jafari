@@ -9,7 +9,8 @@ import { PhoneLink } from "@/components/ui/PhoneLink";
 
 export const metadata: Metadata = buildMetadata({
   title: "رزرو نوبت",
-  description: "رزرو آنلاین نوبت معاینه و مشاوره در کلینیک دکتر فاطمه جعفری، شیراز.",
+  description:
+    "رزرو آنلاین نوبت معاینه و مشاوره (۳۰ دقیقه) در کلینیک دکتر فاطمه جعفری، شیراز: روز و ساعت را انتخاب کنید و با کد پیامکی تأیید کنید.",
   path: "/booking",
 });
 

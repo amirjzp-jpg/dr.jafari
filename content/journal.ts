@@ -7,6 +7,9 @@ export type Article = {
   slug: string;
   title: string;
   excerpt: string;
+  /** Search-result title and description when the page title or excerpt is too long or short for them. */
+  metaTitle?: string;
+  metaDescription?: string;
   category: string;
   /** Pillar service page this article supports. */
   pillar: "/composite" | "/veneers";
@@ -26,6 +29,9 @@ export const articles: Article[] = [
     slug: "composite-vs-veneers",
     title: "کامپوزیت یا لمینت؟ کدام برای لبخند شما مناسب‌تر است",
     excerpt: "مقایسه‌ی ماندگاری، هزینه و میزان تراش دو روش پرطرفدار زیبایی دندان.",
+    metaTitle: "کامپوزیت یا لمینت؟ کدام مناسب‌تر است",
+    metaDescription:
+      "مقایسه‌ی کامپوزیت و لمینت سرامیکی از نظر ماندگاری، هزینه و میزان تراش، برای انتخاب روش مناسب لبخند. مقاله‌ی کلینیک دکتر فاطمه جعفری در شیراز.",
     category: "کامپوزیت و لمینت",
     pillar: "/composite",
     readMinutes: 6,
@@ -61,6 +67,9 @@ export const articles: Article[] = [
     slug: "composite-longevity",
     title: "ماندگاری کامپوزیت دندان به چه عواملی بستگی دارد؟",
     excerpt: "از کیفیت مواد تا عادت‌های روزمره؛ آنچه عمر کامپوزیت را کوتاه یا بلند می‌کند.",
+    metaTitle: "ماندگاری کامپوزیت دندان و عوامل مؤثر بر آن",
+    metaDescription:
+      "کیفیت مواد و عادت‌های روزمره چه تأثیری بر ماندگاری کامپوزیت دندان دارند؟ راهنمای کلینیک دکتر فاطمه جعفری در شیراز.",
     category: "کامپوزیت",
     pillar: "/composite",
     readMinutes: 5,
@@ -94,6 +103,8 @@ export const articles: Article[] = [
     slug: "veneer-care",
     title: "مراقبت از لمینت سرامیکی بعد از درمان",
     excerpt: "نکاتی ساده برای حفظ درخشش و سلامت لمینت‌ها در سال‌های بعد.",
+    metaDescription:
+      "نکاتی ساده برای حفظ درخشش و سلامت لمینت سرامیکی در سال‌های بعد از درمان؛ مقاله‌ی کلینیک دکتر فاطمه جعفری در شیراز.",
     category: "لمینت",
     pillar: "/veneers",
     readMinutes: 4,

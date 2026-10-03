@@ -324,7 +324,7 @@ export default function CardFanCarousel({
             >
               <Image
                 src={card.src}
-                alt=""
+                alt={card.alt}
                 fill
                 sizes="(min-width: 1024px) 300px, (min-width: 640px) 220px, 150px"
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"

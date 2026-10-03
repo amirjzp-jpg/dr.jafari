@@ -9,7 +9,7 @@ import { toFaDigits } from "@/lib/digits";
 
 export const metadata: Metadata = buildMetadata({
   title: "مجله",
-  description: "مقاله‌هایی درباره‌ی کامپوزیت، لمینت سرامیکی و مراقبت از لبخند، پیش از تصمیم برای درمان.",
+  description: "مجله‌ی کلینیک دکتر فاطمه جعفری در شیراز: مقاله‌هایی درباره‌ی کامپوزیت، لمینت سرامیکی و مراقبت از لبخند، پیش از تصمیم برای درمان.",
   path: "/journal",
 });
 

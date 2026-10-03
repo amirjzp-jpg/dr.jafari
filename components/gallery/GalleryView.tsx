@@ -83,7 +83,7 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
               >
                 <Image
                   src={cover(it)}
-                  alt=""
+                  alt={it.alt}
                   fill
                   sizes="(min-width: 1024px) 300px, (min-width: 768px) 33vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"

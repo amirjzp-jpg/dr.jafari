@@ -38,9 +38,6 @@ const defaultImage: ShareImage = {
   alt: "کلینیک دندانپزشکی زیبایی دکتر فاطمه جعفری در شیراز",
 };
 
-/** A branded share card from public/images/og (1200x630), made for pages that have no hero photo of their own. */
-export const ogCard = (name: string, alt: string): ShareImage => ({ url: `/images/og/${name}.jpg`, width: 1200, height: 630, alt });
-
 /**
  * Metadata for one page: title, description, canonical, and its own Open Graph
  * and Twitter tags. A page's openGraph replaces the layout's completely, so every

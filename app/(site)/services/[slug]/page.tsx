@@ -8,7 +8,7 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
 import { ReviewedBy } from "@/components/content/ReviewedBy";
 import { COPY_APPROVED, otherServices, serviceBySlug } from "@/content/services";
-import { buildMetadata, faqSchema, medicalWebPageSchema, ogCard } from "@/lib/seo";
+import { buildMetadata, faqSchema, medicalWebPageSchema } from "@/lib/seo";
 
 // Composite and veneers have their own top-level pages.
 export const dynamicParams = false;
@@ -19,12 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const s = serviceBySlug((await params).slug);
   if (!s) return {};
-  return buildMetadata({
-    title: s.title,
-    description: s.metaDescription,
-    path: s.href,
-    ...(s.slug === "smile-design" ? { image: ogCard("smile-design", "طراحی لبخند در شیراز، کلینیک دکتر فاطمه جعفری") } : {}),
-  });
+  return buildMetadata({ title: s.title, description: s.metaDescription, path: s.href });
 }
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {

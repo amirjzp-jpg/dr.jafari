@@ -8,13 +8,14 @@ DOMAIN="${DOMAIN:-dandanpezeshkishiraz.ir}"
 
 [ "$(id -u)" -eq 0 ] || { echo "Run this as root."; exit 1; }
 
-here="$(ip -4 route get 1.1.1.1 | sed -n 's/.*src \([0-9.]*\).*/\1/p')"
+here="$(ip -4 route get 1.1.1.1 | sed -n 's/.*src \([0-9.]*\).*/\1/p' || true)"
 for host in "$DOMAIN" "www.$DOMAIN"; do
-  there="$(getent ahostsv4 "$host" | awk '{print $1; exit}')"
+  there="$(getent ahostsv4 "$host" | awk '{print $1; exit}' || true)"
   echo "$host -> ${there:-(not found)}   (this server: $here)"
   if [ "$there" != "$here" ]; then
     echo
-    echo "$host does not point at this server yet. Set the DNS records in HostIran's panel and wait a few minutes."
+    echo "$host does not point at this server yet, or this server's DNS cannot see it. If the domain already resolves on your own computer, run:  FORCE=1 bash $0"
+    echo "(Let's Encrypt checks the domain from the internet, so what matters is that it resolves publicly.)"
     echo "(Behind NAT the server's own address can differ from its public one. If the DNS record is the IP you were given, run: FORCE=1 bash $0)"
     [ "${FORCE:-}" = "1" ] || exit 1
   fi

@@ -66,3 +66,11 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **Reviewer line:** service pages and articles show «بازبینی‌شده توسط …» with the review date, and service pages carry `MedicalWebPage` markup (`reviewedBy`, `lastReviewed`). The date is 2026-09-28, the day the copy was approved (`COPY_APPROVED` in content/services.ts); change it there if the doctor re-reviews.
 - **FAQ markup:** a question is marked up on one URL only. «کامپوزیت بهتر است یا لمینت؟» stays visible on the home and composite pages but is out of their FAQPage markup (`noSchema`); the journal article owns it.
 - **Sitemap:** real `lastmod` for services and articles, none for the rest; no priority or changefreq.
+
+## Content approved by the content lead, not the doctor (2026-10-03)
+- The seven secondary service pages (smile design, whitening, implant, restoration, root canal, surgery, orthodontics) were expanded to the same layout as composite and veneers. The approved introductions are unchanged. Everything added is general information or already-approved site facts; anything clinic-specific that was unconfirmed was left out. Source drafts: `docs/content-drafts/service-pages.md`.
+- Because the doctor has not reviewed the new text, these pages (`doctorReviewed: false` in content/services.ts) show **no** «بازبینی‌شده توسط دکتر» line and carry no `reviewedBy` or `lastReviewed` markup; they use `dateModified` instead. Articles marked `doctorReviewed: false` name the clinic, not the doctor, as author. Set the flag back (or delete it) only after she reviews the text.
+- New page «دندانپزشکی زیبایی در معالی‌آباد شیراز» (`/dentist-maaliabad-shiraz`): facts only (address, hours, phone, services, booking, council number). Linked from the footer, the sitemap and llms.txt.
+- One question, one page: «بلیچینگ چقدر ماندگار است؟» belongs to the whitening article, so the whitening page has no FAQ for it.
+- SEO, AEO and GEO text is Persian throughout. The one deliberate English line is the summary in `/llms.txt`, for AI assistants answering in English.
+

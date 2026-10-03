@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { services, type Service } from "@/content/services";
+import { COPY_APPROVED, services, type Service } from "@/content/services";
 import { site } from "./site";
 
 /** Absolute site URL for canonical links, sitemap and structured data. */
@@ -51,6 +51,8 @@ export function buildMetadata(o: {
   image?: ShareImage;
   publishedTime?: string;
   modifiedTime?: string;
+  /** Article authors; defaults to the doctor's page. */
+  authors?: string[];
 }): Metadata {
   const plain = typeof o.title === "string" ? o.title : o.title.absolute;
   const img = o.image ?? defaultImage;
@@ -67,7 +69,7 @@ export function buildMetadata(o: {
       url: abs(o.path),
       images: [img],
       ...(o.type === "article"
-        ? { publishedTime: o.publishedTime, modifiedTime: o.modifiedTime ?? o.publishedTime, authors: [abs("/about")] }
+        ? { publishedTime: o.publishedTime, modifiedTime: o.modifiedTime ?? o.publishedTime, authors: o.authors ?? [abs("/about")] }
         : {}),
     },
     twitter: { card: "summary_large_image", title: plain, description: o.description, images: [img.url] },
@@ -178,7 +180,9 @@ export function faqSchema(faq: { q: string; a: string; noSchema?: boolean }[]) {
 }
 
 /** A service page as a medical web page, reviewed by the doctor whose copy it is. */
-export function medicalWebPageSchema(service: Service, reviewedAt: string) {
+export function medicalWebPageSchema(service: Service) {
+  // Only claim a doctor's review when she actually reviewed the current text.
+  const reviewed = service.doctorReviewed !== false;
   return {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
@@ -188,8 +192,10 @@ export function medicalWebPageSchema(service: Service, reviewedAt: string) {
     description: service.metaDescription,
     inLanguage: "fa",
     about: { "@type": service.slug === "consultation" ? "Service" : "MedicalProcedure", name: service.name },
-    reviewedBy: { "@id": abs("/about#doctor") },
-    lastReviewed: reviewedAt,
+    ...(reviewed
+      ? { reviewedBy: { "@id": abs("/about#doctor") }, lastReviewed: service.reviewedAt ?? COPY_APPROVED }
+      : {}),
+    ...(service.updatedAt ? { dateModified: service.updatedAt } : {}),
     isPartOf: { "@id": abs("/#website") },
     publisher: { "@id": abs("/#clinic") },
   };

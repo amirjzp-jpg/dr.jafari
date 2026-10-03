@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BookingCta } from "@/components/content/BookingCta";
+import { ServicePage } from "@/components/content/ServicePage";
 import { DraftNotice } from "@/components/content/DraftNotice";
 import { Faq } from "@/components/content/Faq";
 import { JsonLd } from "@/components/content/JsonLd";
@@ -25,12 +26,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const s = serviceBySlug((await params).slug);
   if (!s || s.featured) notFound();
+  if (s.detail) return <ServicePage service={s} />;
   return (
     <>
       <PageHeader title={s.title} crumbs={[{ name: "خدمات", path: "/services" }, { name: s.name, path: s.href }]} />
       <Container>
         <div className="flex max-w-[760px] flex-col gap-5">
-          <JsonLd data={medicalWebPageSchema(s, s.reviewedAt ?? COPY_APPROVED)} />
+          <JsonLd data={medicalWebPageSchema(s)} />
           <DraftNotice reviewed={s.reviewed} />
           <ReviewedBy reviewed={s.reviewed} date={s.reviewedAt ?? COPY_APPROVED} />
           {s.intro.map((p) => (

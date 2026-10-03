@@ -33,6 +33,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/dentist-maaliabad-shiraz" className={link}>
+                دندانپزشکی در معالی‌آباد
+              </Link>
+            </li>
+            <li>
               <Link href="/privacy" className={link}>
                 حریم خصوصی
               </Link>

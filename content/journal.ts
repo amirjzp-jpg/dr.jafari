@@ -12,7 +12,11 @@ export type Article = {
   metaDescription?: string;
   category: string;
   /** Pillar service page this article supports. */
-  pillar: "/composite" | "/veneers";
+  pillar: string;
+  /** Other service pages that should list this article as related. */
+  alsoRelatedTo?: string[];
+  /** false when the doctor has not reviewed the text: no reviewer line, and the clinic (not the doctor) is the author in markup. */
+  doctorReviewed?: boolean;
   readMinutes: number;
   published: string; // ISO date
   /** ISO date of the last edit; defaults to `published`. */

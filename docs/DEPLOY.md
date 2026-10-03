@@ -38,7 +38,7 @@ The app is a standard Node.js server with plain Postgres. Three scripts in `depl
 2. **HTTPS (once the domain points at the server):** in HostIran's DNS add an `A` record for `dandanpezeshkishiraz.ir` and one for `www`, both to the server's IP, then `bash /opt/dr-jafari/deploy/enable-https.sh` (free Let's Encrypt certificate, renews itself, redirects HTTP to HTTPS).
 3. **Update:** `bash /opt/dr-jafari/deploy/update.sh` pulls `main`, migrates, rebuilds and restarts (a few minutes of downtime: the site is stopped so the build has the memory).
 
-- **sms.ir:** put the key and template IDs in `/etc/dr-jafari.env` (`nano /etc/dr-jafari.env`), then `systemctl restart dr-jafari`. Until then messages go to the log: `journalctl -u dr-jafari | grep sms:mock`.
+- **sms.ir and admin numbers:** run `ADMIN_PHONES=09120000000,09130000000 bash /opt/dr-jafari/deploy/set-env.sh` as root. It asks for the API key (hidden), the three template IDs and sets the admin numbers in `/etc/dr-jafari.env`, then restarts the site. Secrets are typed on the server only and are never committed (the repository is public). Or edit `/etc/dr-jafari.env` by hand (`nano`) and run `systemctl restart dr-jafari`. Until then messages go to the log: `journalctl -u dr-jafari | grep sms:mock`.
 - **Logs:** `journalctl -u dr-jafari -n 100 --no-pager`. **Restart:** `systemctl restart dr-jafari`.
 - **Backups** live on the same disk: copy `/var/backups/dr-jafari` off the server now and then, and ask HostIran about server snapshots.
 - **Client IP:** nginx appends the client address to `X-Forwarded-For`, as `docs/SECURITY.md` requires.

@@ -2,7 +2,7 @@
 
 **Decision: register templates 1–3** (code, confirmation, reminder). Templates 4 and 5 are optional: while they are not set up, the admin panel shows «بدون پیامک» after a cancel or move, so staff call the patient instead. The texts stay here in case the clinic adds them later.
 
-Final texts to register in the sms.ir panel under «قالب‌ها», one template each. Copy each block exactly; line breaks matter. Parameter names (`#CODE#`, `#NAME#`, `#DATE#`, `#TIME#`) must stay as written, because the site fills them in by name. After approval, put each template's numeric ID in the matching Vercel variable (Sensitive is not needed for IDs); that message type goes live on the next deploy.
+Final texts to register in the sms.ir panel under «قالب‌ها», one template each. Copy each block exactly; line breaks matter. Parameter names (`#CODE#`, `#NAME#`, `#DATE#`, `#TIME#`) must stay as written, because the site fills them in by name. After approval, put each template's numeric ID in the matching variable (on the server: `bash /opt/dr-jafari/deploy/set-env.sh`; on Vercel: the environment variable; IDs are not secret, the API key is); that message type goes live on the next restart or deploy.
 
 Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 characters and longer messages are billed per 67-character part. The phone number is in Latin digits so phones make it tappable. The signature «کلینیک دندانپزشکی دکتر جعفری» says what the clinic is and avoids the Fatemeh/Neda question. Patient messages open warmly («#NAME# عزیز، سلام», «منتظر دیدارتان هستیم»). Clinic-initiated changes open with an apology. The login code carries an anti-phishing line.
 

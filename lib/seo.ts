@@ -26,9 +26,9 @@ export const robotsMeta: Metadata["robots"] = indexable
     }
   : { index: false, follow: false };
 
-export const defaultTitle = "دکتر فاطمه جعفری | دندانپزشکی زیبایی در شیراز";
+export const defaultTitle = "دندانپزشک زیبایی در شیراز، معالی‌آباد | دکتر فاطمه جعفری";
 export const defaultDescription =
-  "کامپوزیت دندان، لمینت سرامیکی و طراحی لبخند در شیراز با دکتر فاطمه جعفری، دندانپزشک زیبایی با بیش از ۱۰ سال تجربه. امکان پرداخت اقساطی و رزرو آنلاین نوبت.";
+  "دکتر فاطمه جعفری، دندانپزشک زیبایی با بیش از ۱۰ سال تجربه در شیراز، معالی‌آباد: کامپوزیت دندان، لمینت سرامیکی و طراحی لبخند. رزرو آنلاین نوبت.";
 
 type ShareImage = { url: string; width: number; height: number; alt: string };
 const defaultImage: ShareImage = {

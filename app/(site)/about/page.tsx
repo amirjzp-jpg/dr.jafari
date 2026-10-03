@@ -10,8 +10,10 @@ import aboutDetail from "@/public/images/doctor/about-detail.webp";
 import aboutMain from "@/public/images/doctor/about-main.webp";
 
 export const metadata: Metadata = buildMetadata({
-  title: "درباره‌ی دکتر",
-  description: "دکتر فاطمه جعفری، دندانپزشک زیبایی در شیراز با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی. شماره نظام پزشکی ۱۶۹۴۷۳.",
+  // Absolute: the doctor's name is already in the approved title, so the site suffix would repeat it.
+  title: { absolute: "دکتر فاطمه جعفری، دندانپزشک زیبایی شیراز" },
+  description:
+    "دکتر فاطمه جعفری، دندانپزشک زیبایی در شیراز، معالی‌آباد، با بیش از ده سال تجربه در کامپوزیت و لمینت سرامیکی. شماره نظام پزشکی ۱۶۹۴۷۳.",
   path: "/about",
 });
 
@@ -30,8 +32,8 @@ export default function AboutPage() {
       <Container className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
         <div className="flex max-w-[680px] grow flex-col gap-6">
           <p className="text-[19px] leading-[2] text-ink">
-            دکتر فاطمه جعفری دندانپزشک زیبایی در شیراز است و بیش از ده سال است که با تمرکز بر کامپوزیت و لمینت سرامیکی کار
-            می‌کند.
+            دکتر فاطمه جعفری، دندان‌پزشک زیبایی با بیش از ۱۰ سال تجربه، در کلینیک خود در شیراز، معالی‌آباد، به بیماران خدمت
+            می‌کند. تمرکز او بر کامپوزیت و لمینت سرامیکی است.
           </p>
           <p className="text-[17px] leading-[2.1] text-muted-2">
             به باور او، لبخند زیبا لبخندی است که به چهره‌ی خودتان بیاید؛ نه یک قالب تکراری. برای همین، هر درمان با شنیدن

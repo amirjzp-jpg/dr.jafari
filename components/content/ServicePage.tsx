@@ -37,20 +37,24 @@ function List({ items }: { items: string[] }) {
 export function ServicePage({ service }: { service: Service }) {
   const d = service.detail!;
   const short = service.name.replace(" دندان", "");
-  const related = articles.filter((a) => a.pillar === service.href);
+  const related = articles.filter((a) => a.pillar === service.href || a.alsoRelatedTo?.includes(service.href));
+  const doctorReviewed = service.doctorReviewed !== false;
+  const crumbs = service.featured
+    ? [{ name: service.name, path: service.href }]
+    : [{ name: "خدمات", path: "/services" }, { name: service.name, path: service.href }];
   const relatedCases = cases.filter((c) => service.caseTitles?.includes(c.title));
 
   return (
     <>
-      <PageHeader title={service.title} lead={service.intro.map((p) => <p key={p}>{p}</p>)} crumbs={[{ name: service.name, path: service.href }]} />
-      <JsonLd data={[medicalWebPageSchema(service, service.reviewedAt ?? COPY_APPROVED), faqSchema(d.faq)]} />
+      <PageHeader title={service.title} lead={service.intro.map((p) => <p key={p}>{p}</p>)} crumbs={crumbs} />
+      <JsonLd data={[medicalWebPageSchema(service), faqSchema(d.faq)]} />
       <Container>
         <div className="flex max-w-[760px] flex-col gap-14 pb-4">
           <DraftNotice reviewed={service.reviewed} />
-          <ReviewedBy reviewed={service.reviewed} date={service.reviewedAt ?? COPY_APPROVED} />
+          <ReviewedBy reviewed={service.reviewed && doctorReviewed} date={service.reviewedAt ?? COPY_APPROVED} />
 
           <section aria-labelledby="what" className="flex flex-col gap-4">
-            <H2 id="what">{short} چیست؟</H2>
+            <H2 id="what">{d.whatTitle ?? `${short} چیست؟`}</H2>
             {d.whatItIs.map((p) => (
               <p key={p} className="text-[17px] leading-[2] text-muted-2">
                 {p}
@@ -59,7 +63,7 @@ export function ServicePage({ service }: { service: Service }) {
           </section>
 
           <section aria-labelledby="who" className="flex flex-col gap-4">
-            <H2 id="who">برای چه کسانی مناسب است؟</H2>
+            <H2 id="who">{d.whoTitle ?? "برای چه کسانی مناسب است؟"}</H2>
             <List items={d.whoItSuits} />
           </section>
 
@@ -91,14 +95,16 @@ export function ServicePage({ service }: { service: Service }) {
             </section>
           </div>
 
-          <section aria-labelledby="longevity" className="flex flex-col gap-4">
-            <H2 id="longevity">ماندگاری</H2>
-            {d.longevity.map((p) => (
-              <p key={p} className="text-[17px] leading-[2] text-muted-2">
-                {p}
-              </p>
-            ))}
-          </section>
+          {d.longevity.length > 0 && (
+            <section aria-labelledby="longevity" className="flex flex-col gap-4">
+              <H2 id="longevity">{d.longevityTitle ?? "ماندگاری"}</H2>
+              {d.longevity.map((p) => (
+                <p key={p} className="text-[17px] leading-[2] text-muted-2">
+                  {p}
+                </p>
+              ))}
+            </section>
+          )}
 
           <section aria-labelledby="aftercare" className="flex flex-col gap-4">
             <H2 id="aftercare">مراقبت پس از درمان</H2>

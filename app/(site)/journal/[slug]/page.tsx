@@ -8,7 +8,7 @@ import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { articleBySlug, articles, type Block } from "@/content/journal";
 import { ReviewedBy } from "@/components/content/ReviewedBy";
-import { COPY_APPROVED, serviceBySlug } from "@/content/services";
+import { COPY_APPROVED, services } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
 import { abs, breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { bookingHref, bookingLabel } from "@/lib/site";
@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     image: { url: a.image.hero, width: 1600, height: 900, alt: a.image.alt },
     publishedTime: a.published,
     modifiedTime: a.updated ?? a.published,
+    authors: a.doctorReviewed === false ? [abs("/")] : undefined,
   });
 }
 
@@ -59,10 +60,13 @@ function Body({ blocks }: { blocks: Block[] }) {
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const a = articleBySlug((await params).slug);
   if (!a) notFound();
-  const pillar = serviceBySlug(a.pillar.slice(1))!;
+  const pillar = services.find((s) => s.href === a.pillar)!;
+  const doctorReviewed = a.doctorReviewed !== false;
   const date = tehranToUtc(a.published, "12:00");
   const related = articles.filter((x) => x.slug !== a.slug).slice(0, 2);
-  const half = Math.ceil(a.body.length * 0.75);
+  // The booking box sits about three quarters of the way down, never between a heading and its text.
+  let half = Math.ceil(a.body.length * 0.75);
+  while (half > 1 && "h2" in a.body[half - 1]) half--;
 
   return (
     <article>
@@ -77,7 +81,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             datePublished: a.published,
             dateModified: a.updated ?? a.published,
             inLanguage: "fa",
-            author: { "@id": abs("/about#doctor") },
+            author: { "@id": doctorReviewed ? abs("/about#doctor") : abs("/#clinic") },
             publisher: { "@id": abs("/#clinic") },
             mainEntityOfPage: abs(`/journal/${a.slug}`),
           },
@@ -112,7 +116,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         />
         <div className="flex w-full max-w-[680px] flex-col gap-5 pt-4">
           <DraftNotice reviewed={a.reviewed} />
-          <ReviewedBy reviewed={a.reviewed} date={a.reviewedAt ?? COPY_APPROVED} />
+          <ReviewedBy reviewed={a.reviewed && doctorReviewed} date={a.reviewedAt ?? COPY_APPROVED} />
           <Body blocks={a.body.slice(0, half)} />
           {/* Inline booking CTA near the end */}
           <aside className="my-4 flex flex-col gap-3 rounded-[24px] bg-tint p-6">

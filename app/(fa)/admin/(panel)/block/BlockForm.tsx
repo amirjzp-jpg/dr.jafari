@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useActionState, useState } from "react";
-import { blockTime, type FormState } from "@/app/admin/actions";
+import { blockTime, type FormState } from "@/app/(fa)/admin/actions";
 import { btnPrimary, input } from "@/components/admin/styles";
 import { toFaDigits } from "@/lib/digits";
 

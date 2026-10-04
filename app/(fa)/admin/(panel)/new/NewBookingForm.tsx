@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { createBooking, type FormState } from "@/app/admin/actions";
+import { createBooking, type FormState } from "@/app/(fa)/admin/actions";
 import { btnPrimary, input } from "@/components/admin/styles";
 import { toFaDigits } from "@/lib/digits";
 

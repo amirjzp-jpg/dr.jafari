@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { updateSettings, type FormState } from "@/app/admin/actions";
+import { updateSettings, type FormState } from "@/app/(fa)/admin/actions";
 import { btnPrimary, input } from "@/components/admin/styles";
 import type { ScheduleSettings } from "@/lib/booking/schedule";
 import { toFaDigits } from "@/lib/digits";

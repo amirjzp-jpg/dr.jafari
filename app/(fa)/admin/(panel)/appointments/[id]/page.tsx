@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { cancelAppointment, moveAppointment } from "@/app/admin/actions";
+import { cancelAppointment, moveAppointment } from "@/app/(fa)/admin/actions";
 import { ConfirmSubmit } from "@/components/admin/ConfirmSubmit";
 import { btnDanger, btnPrimary, input } from "@/components/admin/styles";
 import { Flash, StatusBadge } from "@/components/admin/ui";

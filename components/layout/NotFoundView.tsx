@@ -4,9 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { bookingHref, bookingLabel } from "@/lib/site";
 
-export const metadata = { title: "صفحه پیدا نشد" };
-
-export default function NotFound() {
+export function NotFoundView() {
   return (
     <div className="relative isolate flex min-h-dvh flex-col">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[520px] bg-linear-to-b from-tint to-ivory" />

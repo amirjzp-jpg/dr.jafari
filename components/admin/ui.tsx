@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { cancelAppointment, setOutcome } from "@/app/admin/actions";
+import { cancelAppointment, setOutcome } from "@/app/(fa)/admin/actions";
 import { ConfirmSubmit } from "@/components/admin/ConfirmSubmit";
 import { btnDanger, btnOutline } from "@/components/admin/styles";
 import { REASON_LABELS, type AppointmentRow } from "@/lib/booking/service";

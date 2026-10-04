@@ -42,7 +42,7 @@ export async function adminLogin(prev: LoginState, form: FormData): Promise<Logi
     // redirect() works by throwing; let it through.
     if (err && typeof err === "object" && "digest" in err && String(err.digest).startsWith("NEXT_REDIRECT")) throw err;
     console.error("[admin login]", err);
-    return { ...prev, error: "خطای سرور. لطفاً دوباره تلاش کنید؛ اگر تکرار شد، Logs را در Vercel ببینید." };
+    return { ...prev, error: "خطای سرور. لطفاً دوباره تلاش کنید؛ اگر تکرار شد، گزارش سرور را بررسی کنید." };
   }
 }
 

@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
 import { adminPhone } from "@/lib/auth/session";
-import { configProblems, deploymentInfo, smsIsMock } from "@/lib/config";
+import { configProblems, deploymentInfo } from "@/lib/config";
 import { LoginForm } from "./LoginForm";
 
 export const metadata = { title: "ورود" };
 
 const HELP: Record<string, string> = {
-  DATABASE_URL: "پایگاه داده وصل نیست. در Vercel از بخش Storage یک پایگاه داده‌ی Neon بسازید و به پروژه وصل کنید.",
+  DATABASE_URL: "پایگاه داده وصل نیست. نشانی اتصال PostgreSQL را در فایل تنظیمات سرور بگذارید.",
   OTP_SECRET: "یک رشته‌ی تصادفی دست‌کم ۳۲ نویسه‌ای با نام OTP_SECRET اضافه کنید.",
   ADMIN_PHONES: "شماره‌ی موبایل کارکنان را با نام ADMIN_PHONES اضافه کنید (مثلاً 09121234567).",
 };
@@ -39,9 +39,9 @@ export default async function LoginPage() {
             ))}
           </ul>
           <p className="text-ink">
-            این‌ها را در Vercel، بخش Settings ← Environment Variables اضافه کنید. هنگام افزودن، هر سه گزینه‌ی Production،
-            Preview و Development را تیک بزنید. سپس از بخش Deployments روی آخرین نسخه Redeploy بزنید؛ تنظیمات تازه فقط
-            روی نسخه‌ای که بعد از آن ساخته شود اثر دارند.
+            این‌ها را در فایل <code dir="ltr">/etc/dr-jafari.env</code> روی سرور اضافه کنید و سپس سرویس{" "}
+            <code dir="ltr">dr-jafari</code> را دوباره راه‌اندازی کنید. راهنمای کامل در{" "}
+            <code dir="ltr">docs/DEPLOY.md</code> است.
           </p>
           <p dir="ltr" className="rounded-lg bg-surface px-3 py-2 text-left font-mono text-xs text-muted-2">
             environment: {dep.env}
@@ -50,28 +50,9 @@ export default async function LoginPage() {
             {dep.builtAt && <> · built: {dep.builtAt}</>}
             {dep.nearMisses.length > 0 && <> · similar names found: {dep.nearMisses.map((k) => JSON.stringify(k)).join(", ")}</>}
           </p>
-          <p className="text-ink">
-            اگر environment بالا <code dir="ltr">preview</code> است، تنظیمات باید برای Preview هم تیک خورده باشند. راهنمای
-            کامل در فایل <code dir="ltr">docs/DEPLOY.md</code> است.
-          </p>
         </div>
       ) : (
-        <>
-          {smsIsMock() && (
-            <div className="flex flex-col gap-2 rounded-2xl bg-[#F3EDE3] p-4 text-sm leading-[1.9] text-[#6B4F24]">
-              <p className="font-medium">
-                {process.env.SMSIR_API_KEY
-                  ? "کلید sms.ir ثبت شده، اما شناسه‌ی قالب پیامک کد ورود هنوز تنظیم نشده است."
-                  : "پیامک واقعی هنوز فعال نیست (sms.ir وصل نشده است)."}
-              </p>
-              <p>
-                کد ورود به گوشی ارسال نمی‌شود. پس از زدن «دریافت کد ورود»، در Vercel به بخش Logs بروید و دنبال{" "}
-                <code dir="ltr">sms:mock</code> بگردید؛ کد پنج‌رقمی جلوی <code dir="ltr">CODE</code> است.
-              </p>
-            </div>
-          )}
-          <LoginForm />
-        </>
+        <LoginForm />
       )}
     </main>
   );

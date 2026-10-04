@@ -23,7 +23,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
               lang={l}
               hrefLang={l}
               data-umami-event={`lang_${l}`}
-              className="-my-2.5 inline-block py-2.5 text-muted no-underline hover:text-primary"
+              className="-my-3 inline-block px-1.5 py-3 text-muted no-underline hover:text-primary md:px-0"
             >
               {languageNames[l]}
             </Link>

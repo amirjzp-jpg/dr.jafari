@@ -4,7 +4,7 @@ import { Faq } from "@/components/content/Faq";
 import { InstagramCta } from "@/components/content/InstagramCta";
 import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
-import { InstagramIcon, PhoneIcon, PinIcon } from "@/components/icons/ui";
+import { InstagramIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/icons/ui";
 import { ServiceIcon } from "@/components/icons/services";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -383,8 +383,9 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
                     {...externalProps}
                     dir="ltr"
                     data-umami-event="whatsapp_click"
-                    className="-my-2.5 inline-block whitespace-nowrap py-2.5 font-semibold text-ink no-underline hover:text-primary"
+                    className="-my-2.5 inline-flex items-center gap-2.5 whitespace-nowrap py-2.5 font-semibold text-ink no-underline hover:text-primary"
                   >
+                    <WhatsAppIcon size={20} className="text-[#1f8f5f]" />
                     {site.whatsapp.display}
                   </a>
                 </dd>

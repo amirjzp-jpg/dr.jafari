@@ -54,8 +54,9 @@ export function Header({ lang = "fa" }: { lang?: Locale }) {
         <div
           className={`flex items-center gap-3 ${intl ? "shrink-0 whitespace-nowrap" : ""}`}
         >
-          <nav aria-label={t.language} className="hidden md:block">
-            <LanguageSwitcher className="me-2" />
+          {/* One tap on every screen size: the language links sit in the bar itself, not inside the menu. */}
+          <nav aria-label={t.language}>
+            <LanguageSwitcher className="gap-1 text-[13px] md:me-2 md:gap-4 md:text-sm" />
           </nav>
           {/* Below md the sticky bottom bar carries the booking CTA. */}
           <span className="hidden md:contents">

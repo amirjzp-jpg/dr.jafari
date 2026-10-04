@@ -139,3 +139,24 @@ export function CloseIcon({ className, size = 24 }: IconProps) {
     </svg>
   );
 }
+
+/** WhatsApp mark: a speech bubble with a handset, drawn like the other line icons. */
+export function WhatsAppIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M3.5 20.5l1.2-4.3A8.5 8.5 0 1 1 8 19.4z" />
+      <path d="M9 8.2c.2-.4.6-.4.9-.2l.8 1.5c.1.3 0 .5-.2.7l-.5.6a5 5 0 0 0 2.4 2.4l.6-.5c.2-.2.5-.3.7-.2l1.5.8c.3.2.3.6.1.9-.5 1-1.6 1.3-2.7.9A7.3 7.3 0 0 1 8.2 11c-.3-1 0-2 .8-2.8" />
+    </svg>
+  );
+}

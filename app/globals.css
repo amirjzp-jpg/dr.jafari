@@ -143,6 +143,10 @@
    win over the Tailwind utilities that carry the Persian values. */
 html[lang="en"] {
   --font-display: "Playfair Display", "Vazirmatn", Georgia, serif;
+  /* A real Latin text face (Vazirmatn's Latin letters read as generic), and darker greys. */
+  --font-sans: "Inter", "Vazirmatn", system-ui, sans-serif;
+  --color-muted: #4b5866;
+  --color-muted-2: #36414d;
 }
 html[lang="en"] body {
   line-height: 1.65;
@@ -169,4 +173,22 @@ html[lang="en"] main li {
 /* The bullet dots are placed for the Persian line height; re-centre them on English lines. */
 html[lang="en"] main li > span[aria-hidden="true"].rounded-full {
   margin-top: 0.67em;
+}
+
+/* English polish: small uppercase labels, slightly larger running text, steadier nav and buttons. */
+html[lang="en"] [data-eyebrow] {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+html[lang="en"] body {
+  font-size: 17px;
+  letter-spacing: -0.003em;
+  -webkit-font-smoothing: antialiased;
+}
+html[lang="en"] a[class*="rounded-full"],
+html[lang="en"] button[class*="rounded-full"] {
+  font-weight: 600;
+  letter-spacing: 0;
 }

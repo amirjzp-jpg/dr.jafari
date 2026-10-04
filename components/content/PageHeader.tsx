@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { pagesCopy } from "@/content/i18n/pages";
 import { localePath, type Locale } from "@/lib/i18n";
 import { breadcrumbSchema } from "@/lib/seo";
+import { displayTitle } from "@/lib/title-case";
 
 /** Breadcrumbs + H1 + optional lead, on the soft tint that fades into ivory. */
 export function PageHeader({
@@ -41,7 +42,7 @@ export function PageHeader({
             ))}
           </ol>
         </nav>
-        <h1 className="max-w-[860px] font-display text-[30px] leading-normal font-semibold lg:text-[52px]">{title}</h1>
+        <h1 className="max-w-[860px] font-display text-[30px] leading-normal font-semibold lg:text-[52px]">{displayTitle(lang, title)}</h1>
         {lead && <div className="max-w-[680px] text-[17px] leading-[2] text-muted-2">{lead}</div>}
       </Container>
     </>

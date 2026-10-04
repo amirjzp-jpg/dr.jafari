@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import "../fonts";
+// English headings (see the html[lang="en"] rules in globals.css). Only the Latin subset, and a file
+// downloads only on a page that has text in it.
+import "@fontsource/playfair-display/latin-500.css";
+import "@fontsource/playfair-display/latin-600.css";
 import "../globals.css";
 import { Analytics } from "@/components/layout/Analytics";
 import { SiteShell } from "@/components/layout/SiteShell";

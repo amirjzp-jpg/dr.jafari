@@ -13,6 +13,7 @@ import { articleBySlug, articles, type Block } from "@/content/journal";
 import { services } from "@/content/services";
 import { intlLocales, isIntl, localePath } from "@/lib/i18n";
 import { abs, breadcrumbSchema, buildMetadata, faqSchema } from "@/lib/seo";
+import { displayTitle } from "@/lib/title-case";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -85,7 +86,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
           {
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: t.title,
+            headline: displayTitle(lang, t.title),
             description: t.excerpt,
             image: abs(a.image.hero),
             datePublished: INTL_UPDATED,
@@ -115,7 +116,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
             </Link>
           </nav>
           <span className="self-start rounded-pill bg-tint px-3.5 py-[5px] text-xs text-primary">{t.category}</span>
-          <h1 className="font-display text-[30px] leading-normal font-semibold lg:text-[44px]">{t.title}</h1>
+          <h1 className="font-display text-[30px] leading-normal font-semibold lg:text-[44px]">{displayTitle(lang, t.title)}</h1>
           <p className="flex gap-3 text-[13px] text-muted">
             <time dateTime={INTL_UPDATED}>{articleDate(INTL_UPDATED, lang)}</time>
             <span aria-hidden="true">·</span>

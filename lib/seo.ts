@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { COPY_APPROVED, services, type Service } from "@/content/services";
 import { INTL_UPDATED, type ServiceContent } from "@/content/i18n/services";
 import { facts } from "@/content/i18n/ui";
+import { displayTitle } from "./title-case";
 import { intlOnlyPaths, intlLocales, isTranslated, localePath, locales, ogLocale, splitLocale, type IntlLocale, type Locale } from "./i18n";
 import { site } from "./site";
 
@@ -79,11 +80,12 @@ export function buildMetadata(o: {
   lang?: Locale;
 }): Metadata {
   const lang = o.lang ?? "fa";
-  const plain = typeof o.title === "string" ? o.title : o.title.absolute;
+  const title = typeof o.title === "string" ? displayTitle(lang, o.title) : { absolute: displayTitle(lang, o.title.absolute) };
+  const plain = typeof title === "string" ? title : title.absolute;
   const img = o.image ?? { ...defaultImage, alt: imageAlt[lang] };
   const languages = languageAlternates(o.path);
   return {
-    title: o.title,
+    title,
     description: o.description,
     alternates: { canonical: o.path, ...(languages ? { languages } : {}) },
     openGraph: {

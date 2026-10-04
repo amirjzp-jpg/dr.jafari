@@ -44,9 +44,9 @@ export const serviceText: Record<IntlLocale, Record<string, ServiceText>> = {
 
 export const homeCopy: Record<IntlLocale, HomeCopy> = {
   ar: {
-    metaTitle: "طبيبة أسنان تجميلية في شيراز، معالي‌آباد | د. فاطمة جعفري",
+    metaTitle: "تجميل الأسنان في شيراز، إيران | د. فاطمة جعفري",
     metaDescription:
-      "الدكتورة فاطمة جعفري، طبيبة أسنان تجميلية بخبرة تزيد عن 10 سنوات في شيراز، معالي‌آباد: الكومبوزيت والفينير الخزفي وتصميم الابتسامة. تواصل لحجز موعد.",
+      "الدكتورة فاطمة جعفري، طبيبة أسنان تجميلية بخبرة تزيد عن 10 سنوات في شيراز، إيران: الكومبوزيت وفينير البورسلين وتصميم الابتسامة. تواصل عبر واتساب.",
     heroEyebrow: "عيادة طب الأسنان التجميلي",
     heroLine: "الكومبوزيت · الفينير الخزفي",
     heroText: "عيادة مجهزة بأحدث معدات وتقنيات طب الأسنان، لابتسامة طبيعية تدوم.",
@@ -113,9 +113,9 @@ export const homeCopy: Record<IntlLocale, HomeCopy> = {
     featuredAlt: "ابتسامة بفينير خزفي لامع وطبيعي، من الجانب",
   },
   en: {
-    metaTitle: "Cosmetic dentist in Shiraz, Maaliabad | Dr. Fatemeh Jafari",
+    metaTitle: "Cosmetic dentist in Shiraz, Iran | Dr. Fatemeh Jafari",
     metaDescription:
-      "Dr. Fatemeh Jafari, a cosmetic dentist with more than 10 years of experience in Maaliabad, Shiraz: composite bonding, ceramic veneers and smile design. Contact us to book.",
+      "Dr. Fatemeh Jafari, cosmetic dentist with 10+ years of experience in Shiraz, Iran: composite bonding, porcelain veneers and smile design. Book on WhatsApp.",
     heroEyebrow: "Cosmetic dental clinic",
     heroLine: "Composite · Ceramic veneers",
     heroText: "A clinic equipped with modern dental equipment and technology, for a natural smile that lasts.",

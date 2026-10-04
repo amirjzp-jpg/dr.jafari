@@ -52,8 +52,8 @@ export const serviceLabels = {
       "تقدّم عيادة الدكتورة فاطمة جعفري لطب الأسنان التجميلي في شيراز، معالي‌آباد، الخدمات التالية. للبدء، احجز جلسة فحص واستشارة لتُفحص حالة أسنانك ونراجع معًا خيارات العلاج.",
     ],
     servicesMeta:
-      "خدمات عيادة الدكتورة فاطمة جعفري لطب الأسنان التجميلي في شيراز، معالي‌آباد: الكومبوزيت والفينير الخزفي وتصميم الابتسامة والتبييض وزراعة الأسنان والترميم وعلاج العصب وجراحة الفم وتقويم الأسنان.",
-    servicesMetaTitle: "خدمات طب الأسنان في شيراز، معالي‌آباد",
+      "خدمات عيادة د. فاطمة جعفري في شيراز، إيران: الكومبوزيت وفينير البورسلين وتصميم الابتسامة والتبييض وزراعة الأسنان والترميم وعلاج العصب وتقويم الأسنان.",
+    servicesMetaTitle: "خدمات طب الأسنان في شيراز، إيران",
     more: "اعرف المزيد",
   },
   en: {
@@ -70,8 +70,8 @@ export const serviceLabels = {
       "Dr. Fatemeh Jafari's cosmetic dental clinic in Maaliabad, Shiraz, offers the services below. To start, book an examination and consultation so that your teeth can be checked and we can go through the treatment options together.",
     ],
     servicesMeta:
-      "Services at Dr. Fatemeh Jafari's cosmetic dental clinic in Maaliabad, Shiraz: composite bonding, ceramic veneers, smile design, whitening, implants, restorations, root canal treatment, oral surgery and orthodontics.",
-    servicesMetaTitle: "Dental services in Shiraz, Maaliabad",
+      "Services at Dr. Fatemeh Jafari's clinic in Shiraz, Iran: composite bonding, porcelain veneers, smile design, whitening, implants, restorations, root canal treatment and orthodontics.",
+    servicesMetaTitle: "Dental services in Shiraz, Iran",
     more: "Learn more",
   },
 } as const;

@@ -1,6 +1,6 @@
 # Arabic and English keyword plan (draft for approval)
 
-Status: draft, written 2026-10-04. Nothing in section 4 is applied to the live Arabic and English pages yet; it waits for your approval. The four translated articles (section 5) already use this plan, because they are new.
+Status: **applied on 2026-10-04.** The client asked for the best decision and best practice, so section 4 was applied with these adjustments: descriptions were also shortened to about 155 characters, with the Gulf terms and «إيران» near the start. The four translated articles (section 5) use the same plan. Revisit with Search Console data four to six weeks after launch.
 
 ## 1. How this was made, and its limit
 No keyword-volume tool was available, so there are **no search-volume numbers** here. I read the Arabic and English search results for the questions a Gulf patient would type (veneers, composite, implants, "in Iran", "in Shiraz") on 2026-10-04 and noted the words clinics and medical-tourism agencies use. Treat this as vocabulary and intent, not as ranked demand. After launch, Google Search Console (Queries report, filtered to /ar and /en) will give real numbers, and the plan should be revised then.
@@ -32,7 +32,7 @@ Search results also show queries as questions: «كم يدوم الفينير؟�
 | Location page | طبيب أسنان معالي‌آباد شيراز | dentist Maaliabad Shiraz | |
 | Contact | حجز موعد أسنان شيراز | book dentist Shiraz | |
 
-## 4. Proposed new titles (not applied; please approve or change)
+## 4. New titles (applied)
 
 Pattern: service name + «في شيراز، إيران». The brand suffix « | الدكتورة فاطمة جعفري» is added by the site.
 
@@ -63,7 +63,7 @@ The agencies that rank for «… في إيران» lead with a price in US dolla
 ## 7. Words and claims to avoid
 «أفضل» / "best", «متخصص» / "specialist", «مضمون» / "guaranteed", «أرخص» / "cheapest", brand names such as Lumineers or the phrase "Hollywood smile" (they sound like claims), and any price or length of stay without the clinic's confirmation.
 
-## 8. Decisions needed
-1. Approve, or change, the titles in section 4.
-2. Decide whether to add the short page for foreign patients (section 6), and who supplies the facts.
+## 8. What was decided
+1. Titles in section 4: applied.
+2. Short page for patients abroad (section 6): added as `/ar/plan-your-visit` and `/en/plan-your-visit`, with the clinic's own figures (composite about 1 day, veneers about 1 month, implants about 1 month, all approximate and set after the examination). Still open: the figure for a general or restorative treatment, how to pay as a foreigner, and how to reach the clinic.
 3. After launch, check Search Console after four to six weeks and revise.

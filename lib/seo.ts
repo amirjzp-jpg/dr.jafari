@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { COPY_APPROVED, services, type Service } from "@/content/services";
 import { INTL_UPDATED, type ServiceContent } from "@/content/i18n/services";
 import { facts } from "@/content/i18n/ui";
-import { isTranslated, localePath, locales, ogLocale, splitLocale, type IntlLocale, type Locale } from "./i18n";
+import { intlOnlyPaths, intlLocales, isTranslated, localePath, locales, ogLocale, splitLocale, type IntlLocale, type Locale } from "./i18n";
 import { site } from "./site";
 
 /** Absolute site URL for canonical links, sitemap and structured data. */
@@ -50,6 +50,9 @@ const imageAlt: Record<Locale, string> = {
 /** hreflang links between the language versions of a page, once it has been translated. */
 function languageAlternates(path: string): Record<string, string> | undefined {
   const base = splitLocale(path).path;
+  if (intlOnlyPaths.includes(base)) {
+    return { ...Object.fromEntries(intlLocales.map((l) => [l, abs(localePath(l, base))])), "x-default": abs(localePath("en", base)) };
+  }
   if (!isTranslated(base)) return undefined;
   return {
     ...Object.fromEntries(locales.map((l) => [l, abs(localePath(l, base))])),
@@ -86,7 +89,7 @@ export function buildMetadata(o: {
     openGraph: {
       type: o.type ?? "website",
       locale: ogLocale[lang],
-      ...(languages ? { alternateLocale: locales.filter((l) => l !== lang).map((l) => ogLocale[l]) } : {}),
+      ...(languages ? { alternateLocale: locales.filter((l) => l !== lang && l in languages).map((l) => ogLocale[l]) } : {}),
       siteName: site.clinicName,
       title: plain,
       description: o.description,

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/content/journal";
 import { COPY_APPROVED, services } from "@/content/services";
 import { INTL_UPDATED } from "@/content/i18n/services";
-import { isTranslated, localePath, locales } from "@/lib/i18n";
+import { intlLocales, intlOnlyPaths, isTranslated, localePath, locales } from "@/lib/i18n";
 import { abs } from "@/lib/seo";
 
 // Only pages with a real content date carry lastModified. A build-time stamp
@@ -27,6 +27,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...pages.flatMap((path) => pageEntries(path)),
     ...services.flatMap((s) => pageEntries(s.href, new Date(s.updatedAt ?? s.reviewedAt ?? COPY_APPROVED))),
+    ...intlOnlyPaths.flatMap((path) => {
+      const languages = Object.fromEntries(intlLocales.map((l) => [l, abs(localePath(l, path))]));
+      return intlLocales.map((l) => ({ url: abs(localePath(l, path)), alternates: { languages }, lastModified: new Date(INTL_UPDATED) }));
+    }),
     ...articles.flatMap((a) => pageEntries(`/journal/${a.slug}`, new Date(a.updated ?? a.published))),
   ];
 }

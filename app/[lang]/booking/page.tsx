@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
 import { PhoneIcon, PinIcon } from "@/components/icons/ui";
@@ -90,6 +91,9 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           <section aria-labelledby="visit" className="flex flex-col gap-3">
             <H2 id="visit">{c.visitTitle}</H2>
             <p className="text-[17px] leading-[2] text-muted-2">{c.visitBody}</p>
+            <p className="text-[17px] leading-[2]">
+              <Link href={localePath(lang, "/plan-your-visit")}>{pagesCopy[lang].stay.contactLink}</Link>
+            </p>
           </section>
 
           <section aria-labelledby="iran" className={`${card} bg-linear-160 from-tint to-[#EDF1F3] border-transparent`}>

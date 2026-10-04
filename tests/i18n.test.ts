@@ -7,7 +7,7 @@ import { articleText, qaFromArticle } from "@/content/i18n/articles";
 import { articles } from "@/content/journal";
 import { serviceContent } from "@/content/i18n/services";
 import { pagesCopy } from "@/content/i18n/pages";
-import { dirOf, isIntl, isTranslated, localeHref, localePath, locales, splitLocale, switchTarget, translatedPaths } from "@/lib/i18n";
+import { dirOf, intlOnlyPaths, isIntl, isTranslated, localeHref, localePath, locales, splitLocale, switchTarget, translatedPaths } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 describe("language paths", () => {
@@ -198,5 +198,28 @@ describe("journal articles in Arabic and English", () => {
   it("names porcelain next to ceramic in the Arabic and English veneer articles (Gulf wording)", () => {
     expect(articleText.ar["veneer-care"].title).toContain("البورسلين");
     expect(articleText.en["veneer-care"].title).toContain("porcelain");
+  });
+});
+
+describe("plan-your-visit page (patients abroad)", () => {
+  it("exists only in Arabic and English and links just those two", () => {
+    expect(intlOnlyPaths).toContain("/plan-your-visit");
+    expect(isTranslated("/plan-your-visit")).toBe(false);
+    expect(existsSync("app/[lang]/plan-your-visit/page.tsx")).toBe(true);
+    expect(switchTarget("/ar/plan-your-visit", "en")).toBe("/en/plan-your-visit");
+    expect(switchTarget("/en/plan-your-visit", "ar")).toBe("/ar/plan-your-visit");
+    expect(switchTarget("/en/plan-your-visit", "fa")).toBe("/");
+  });
+
+  it("states only the clinic's own approximate figures", () => {
+    for (const l of ["ar", "en"] as const) {
+      const rows = pagesCopy[l].stay.rows;
+      expect(rows.map((r) => r.slug)).toEqual(["composite", "veneers", "implant"]);
+      expect(rows[0].time).toMatch(l === "ar" ? /يوم واحد/ : /1 day/);
+      expect(rows[1].time).toMatch(l === "ar" ? /شهر واحد/ : /1 month/);
+      expect(rows[2].time).toMatch(l === "ar" ? /شهر واحد/ : /1 month/);
+      // every figure is called approximate and set after the examination
+      expect(pagesCopy[l].stay.lead).toMatch(l === "ar" ? /تقريبية.*بعد الفحص/ : /approximate.*after the examination/);
+    }
   });
 });

@@ -51,6 +51,22 @@ export type PagesCopy = {
   };
   privacy: { metaTitle: string; metaDescription: string; h1: string; crumb: string; sections: RichSection[] };
   policy: { metaTitle: string; metaDescription: string; h1: string; crumb: string; sections: RichSection[] };
+  stay: {
+    metaTitle: string;
+    metaDescription: string;
+    h1: string;
+    crumb: string;
+    lead: string;
+    tableTitle: string;
+    colTreatment: string;
+    colTime: string;
+    rows: { slug: string; time: string; note?: string }[];
+    faq: { q: string; a: string }[];
+    ctaTitle: string;
+    ctaBody: string;
+    footerLink: string;
+    contactLink: string;
+  };
   contact: {
     metaTitle: string;
     metaDescription: string;
@@ -116,7 +132,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
       doctorLink: "اقرأ المزيد عن الطبيبة",
     },
     gallery: {
-      metaTitle: "نماذج من أعمال طب الأسنان التجميلي في شيراز",
+      metaTitle: "نماذج من أعمال تجميل الأسنان في شيراز، إيران",
       metaDescription:
         "صور حقيقية قبل العلاج وبعده للكومبوزيت والفينير الخزفي وتصميم الابتسامة والتبييض في عيادة الدكتورة فاطمة جعفري، معالي‌آباد، شيراز.",
       h1: "نماذج من أعمالنا",
@@ -220,6 +236,32 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         },
       ],
     },
+    stay: {
+      metaTitle: "خطّط لزيارتك إلى شيراز: مدة العلاج",
+      metaDescription:
+        "المدة التقريبية للتخطيط في شيراز: الكومبوزيت نحو يوم واحد، والفينير الخزفي (البورسلين) والزراعة نحو شهر. عيادة د. فاطمة جعفري، شيراز، إيران.",
+      h1: "خطّط لزيارتك إلى شيراز",
+      crumb: "خطّط لزيارتك",
+      lead: "هذه المدد تقريبية لمساعدتك في التخطيط. وتُحدَّد المدة الدقيقة بعد الفحص، بحسب حالة أسنانك وعدد الأسنان.",
+      tableTitle: "المدة التقريبية لكل علاج",
+      colTreatment: "العلاج",
+      colTime: "المدة التي تُخطَّط في شيراز",
+      rows: [
+        { slug: "composite", time: "نحو يوم واحد" },
+        { slug: "veneers", time: "نحو شهر واحد" },
+        { slug: "implant", time: "نحو شهر واحد", note: "مدة التحام الزرعة بالعظم تختلف من شخص إلى آخر، ويشرحها الطبيب بعد الفحص." },
+      ],
+      faq: [
+        { q: "كم من الوقت أحتاج في شيراز لعلاج الكومبوزيت؟", a: "نحو يوم واحد، وتُحدَّد المدة الدقيقة بعد الفحص." },
+        { q: "كم من الوقت أحتاج في شيراز لتركيب الفينير الخزفي؟", a: "نحو شهر واحد، وتُحدَّد المدة الدقيقة بعد الفحص." },
+        { q: "كم من الوقت أحتاج في شيراز لزراعة الأسنان؟", a: "نحو شهر واحد. وتختلف مدة التحام الزرعة بالعظم من شخص إلى آخر، ويشرحها الطبيب بعد الفحص." },
+        { q: "كيف أعرف المدة التي يحتاجها علاجي؟", a: "في جلسة الفحص والاستشارة (نحو 30 دقيقة) يفحص طبيب الأسنان أسنانك ويحدّد المدة لحالتك." },
+      ],
+      ctaTitle: "لمزيد من التفاصيل، تواصل معنا",
+      ctaBody: "راسل العيادة عبر واتساب أو اتصل بها.",
+      footerLink: "خطّط لزيارتك",
+      contactLink: "كم من الوقت أحتاج في شيراز؟ خطّط لزيارتك",
+    },
     contact: {
       metaTitle: "احجز موعدًا في عيادة الدكتورة فاطمة جعفري، شيراز",
       metaDescription:
@@ -284,7 +326,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
       doctorLink: "Read more about the doctor",
     },
     gallery: {
-      metaTitle: "Cosmetic dentistry results in Shiraz",
+      metaTitle: "Cosmetic dentistry results in Shiraz, Iran",
       metaDescription:
         "Real before and after photos of composite bonding, ceramic veneers, smile design and whitening at Dr. Fatemeh Jafari's clinic, Maaliabad, Shiraz.",
       h1: "Our work",
@@ -388,6 +430,32 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
           p: ["If the clinic has to change or cancel your appointment, you will be told by text message and, if needed, by phone."],
         },
       ],
+    },
+    stay: {
+      metaTitle: "Plan your visit to Shiraz: how long treatments take",
+      metaDescription:
+        "Approximate time to plan in Shiraz: composite about 1 day; ceramic (porcelain) veneers and implants about 1 month. Dr. Fatemeh Jafari's clinic, Shiraz, Iran.",
+      h1: "Plan your visit to Shiraz",
+      crumb: "Plan your visit",
+      lead: "These times are approximate, to help you plan. The exact time is set after the examination, based on your teeth and how many are treated.",
+      tableTitle: "Approximate time for each treatment",
+      colTreatment: "Treatment",
+      colTime: "Time to plan in Shiraz",
+      rows: [
+        { slug: "composite", time: "About 1 day" },
+        { slug: "veneers", time: "About 1 month" },
+        { slug: "implant", time: "About 1 month", note: "How long the implant takes to bond with the bone differs from person to person, and your dentist explains it after the examination." },
+      ],
+      faq: [
+        { q: "How long do I need in Shiraz for composite bonding?", a: "About 1 day. The exact time is set after the examination." },
+        { q: "How long do I need in Shiraz for ceramic veneers?", a: "About 1 month. The exact time is set after the examination." },
+        { q: "How long do I need in Shiraz for a dental implant?", a: "About 1 month. How long the implant takes to bond with the bone differs from person to person, and your dentist explains it after the examination." },
+        { q: "How do I find out how long my treatment will take?", a: "At the examination and consultation (about 30 minutes) your dentist checks your teeth and sets the time for your case." },
+      ],
+      ctaTitle: "For more details, contact us",
+      ctaBody: "Message the clinic on WhatsApp or call.",
+      footerLink: "Plan your visit",
+      contactLink: "How long do I need in Shiraz? Plan your visit",
     },
     contact: {
       metaTitle: "Book an appointment at Dr. Fatemeh Jafari's clinic, Shiraz",

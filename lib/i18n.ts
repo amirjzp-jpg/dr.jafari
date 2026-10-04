@@ -42,6 +42,12 @@ export const translatedPaths: readonly string[] = [
   "/journal/whitening-longevity",
 ];
 
+/**
+ * Pages that exist only in Arabic and English (for patients abroad) and have no Persian
+ * counterpart. They link to each other with hreflang but not to the Persian site.
+ */
+export const intlOnlyPaths: readonly string[] = ["/plan-your-visit"];
+
 export const isTranslated = (path: string) => translatedPaths.includes(path);
 
 /** "/about" in language `lang`: Persian keeps the bare path, the others get a prefix. */
@@ -65,6 +71,7 @@ export function splitLocale(pathname: string): { lang: Locale; path: string } {
 /** Where the language switcher sends a visitor: the same page, or that language's home page. */
 export function switchTarget(pathname: string, to: Locale): string {
   const { path } = splitLocale(pathname);
+  if (intlOnlyPaths.includes(path)) return to === "fa" ? "/" : localePath(to, path);
   return localePath(to, to === "fa" || isTranslated(path) ? path : "/");
 }
 

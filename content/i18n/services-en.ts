@@ -8,10 +8,10 @@ import type { ServiceContent } from "./services";
 export const servicesEn: Record<string, ServiceContent> = {
   composite: {
     name: "Composite bonding",
-    title: "Composite bonding in Shiraz",
+    title: "Composite bonding (composite veneers) in Shiraz, Iran",
     short: "Corrects the colour, shape and gaps of teeth with minimal tooth reduction.",
     metaDescription:
-      "Composite bonding in Shiraz, Maaliabad, with Dr. Fatemeh Jafari: correcting the colour, shape and gaps of teeth with minimal tooth reduction, in a short time. The treatment process, aftercare and common questions.",
+      "Composite bonding (composite veneers) in Shiraz, Iran with Dr. Fatemeh Jafari: correcting the colour, shape and gaps of teeth with minimal tooth reduction.",
     intro: [
       "A composite veneer is a thin layer of tooth-coloured resin shaped directly on the tooth to correct the colour, shape and gaps of your teeth, usually with very little tooth reduction or none at all.",
     ],
@@ -87,10 +87,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   veneers: {
     name: "Ceramic veneers",
-    title: "Ceramic veneers in Shiraz",
+    title: "Porcelain (ceramic) veneers in Shiraz, Iran",
     short: "An even smile with thin ceramic shells and high colour stability.",
     metaDescription:
-      "Ceramic veneers in Shiraz, Maaliabad, with Dr. Fatemeh Jafari: an even, natural smile with thin ceramic shells and high colour stability. The treatment process, aftercare and common questions.",
+      "Porcelain (ceramic) veneers in Shiraz, Iran with Dr. Fatemeh Jafari: an even, natural smile with thin ceramic shells and high colour stability.",
     intro: [
       "A ceramic veneer is a very thin ceramic shell bonded to the front surface of a tooth to even out the colour, shape and size of your teeth, with a natural look and a colour that stays stable.",
     ],
@@ -164,10 +164,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   "smile-design": {
     name: "Smile design",
-    title: "Smile design in Shiraz",
+    title: "Smile design in Shiraz, Iran",
     short: "A plan for the shape, size and colour of your teeth, matched to your face.",
     metaDescription:
-      "Smile design in Shiraz, Maaliabad, with Dr. Fatemeh Jafari: planning the shape, size and colour of your teeth to suit your face, with composite, veneers or a combination of treatments.",
+      "Smile design in Shiraz, Iran with Dr. Fatemeh Jafari: planning the shape, size and colour of your teeth to suit your face, with composite or veneers.",
     intro: [
       "Smile design means planning the shape, size, colour and arrangement of your teeth so that they suit your face, lips and gums.",
       "The result of the plan may be carried out with composite, veneers, whitening or a combination of them. Before any work starts, we review the final plan together so that you know what your smile will look like.",
@@ -233,10 +233,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   whitening: {
     name: "Teeth whitening",
-    title: "Teeth whitening in Shiraz",
+    title: "Teeth whitening in Shiraz, Iran",
     short: "Lightening the natural shade of your teeth under a dentist's supervision.",
     metaDescription:
-      "Teeth whitening in Shiraz with Dr. Fatemeh Jafari: lightening the natural shade of your teeth with whitening agents, safely and under a dentist's supervision.",
+      "Teeth whitening in Shiraz, Iran with Dr. Fatemeh Jafari: lightening the natural shade of your teeth, safely and under a dentist's supervision.",
     intro: [
       "Whitening is a way of lightening the natural colour of your teeth, carried out with whitening agents under a dentist's supervision.",
       "Whitening only works on natural teeth and does not change the colour of composite, crowns or veneers. How much lighter the teeth become varies from person to person, and the condition of your teeth is checked before starting.",
@@ -300,10 +300,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   implant: {
     name: "Dental implants",
-    title: "Dental implants in Shiraz",
+    title: "Dental implants in Shiraz, Iran",
     short: "Replacing a missing tooth with an implant and a crown.",
     metaDescription:
-      "Dental implants in Shiraz with Dr. Fatemeh Jafari: replacing a missing tooth with an implant in the jawbone and a crown that matches your other teeth.",
+      "Dental implants in Shiraz, Iran with Dr. Fatemeh Jafari: replacing a missing tooth with an implant in the jawbone and a crown that matches your other teeth.",
     intro: [
       "An implant replaces a missing tooth: a post placed in the jawbone in place of the root, with a crown made on top of it.",
       "Whether an implant is suitable depends on your general health and the condition of your jawbone and gums, and is decided after an examination and imaging.",
@@ -370,10 +370,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   restoration: {
     name: "Restorations",
-    title: "Tooth restoration in Shiraz",
+    title: "Tooth restoration (fillings) in Shiraz, Iran",
     short: "Rebuilding a damaged tooth with tooth-coloured materials.",
     metaDescription:
-      "Tooth restoration in Shiraz with Dr. Fatemeh Jafari: repairing a decayed or broken tooth with tooth-coloured materials, for a natural look and function.",
+      "Tooth restoration in Shiraz, Iran with Dr. Fatemeh Jafari: repairing a decayed or broken tooth with tooth-coloured materials, for a natural look and function.",
     intro: [
       "A restoration means removing the decayed or damaged part of a tooth and rebuilding it with tooth-coloured materials, so that the tooth works and looks natural again.",
       "The sooner decay is treated, the more healthy tooth structure is kept.",
@@ -435,10 +435,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   "root-canal": {
     name: "Root canal treatment",
-    title: "Root canal treatment in Shiraz",
+    title: "Root canal treatment in Shiraz, Iran",
     short: "Root treatment to save a tooth whose nerve is damaged.",
     metaDescription:
-      "Root canal treatment in Shiraz with Dr. Fatemeh Jafari: a treatment to save a tooth whose nerve is damaged or infected.",
+      "Root canal treatment in Shiraz, Iran with Dr. Fatemeh Jafari: a treatment to save a tooth whose nerve is damaged or infected.",
     intro: [
       "Root canal treatment is a treatment to save a tooth whose nerve is damaged or infected; the root canals are cleaned and filled and the tooth is kept.",
       "After root canal treatment, the tooth usually needs a restoration or a crown to protect it from breaking.",
@@ -507,10 +507,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   surgery: {
     name: "Oral surgery",
-    title: "Oral surgery in Shiraz",
+    title: "Oral surgery and impacted tooth removal in Shiraz, Iran",
     short: "Outpatient oral surgery, such as removing impacted teeth.",
     metaDescription:
-      "Outpatient oral and dental surgery in Shiraz with Dr. Fatemeh Jafari, such as removing impacted teeth, with a careful assessment before treatment.",
+      "Outpatient oral and dental surgery in Shiraz, Iran with Dr. Fatemeh Jafari, such as removing impacted teeth, with a careful assessment before treatment.",
     intro: [
       "Outpatient oral surgery, such as removing impacted teeth, is carried out after an examination and, if needed, imaging.",
       "Before the surgery, we go through the procedure, the aftercare and the recovery time with you.",
@@ -571,10 +571,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   orthodontics: {
     name: "Orthodontics",
-    title: "Orthodontics in Shiraz",
+    title: "Orthodontics in Shiraz, Iran",
     short: "Correcting crooked teeth and the bite between the jaws.",
     metaDescription:
-      "Orthodontics in Shiraz with Dr. Fatemeh Jafari: correcting crooked teeth and the way the jaws meet, with gentle, gradual force.",
+      "Orthodontics in Shiraz, Iran with Dr. Fatemeh Jafari: correcting crooked teeth and the way the jaws meet, with gentle, gradual force.",
     intro: [
       "Orthodontics is a treatment for straightening teeth and correcting the way the jaws meet, carried out with gentle, gradual force.",
       "The suitable method and the length of treatment are decided after an examination and a check of your bite.",
@@ -639,10 +639,10 @@ export const servicesEn: Record<string, ServiceContent> = {
 
   consultation: {
     name: "Examination and consultation",
-    title: "Dental examination and consultation in Shiraz",
+    title: "Dental examination and consultation in Shiraz, Iran",
     short: "Checking the state of your teeth and reviewing treatment options.",
     metaDescription:
-      "Dental examination and consultation in Shiraz with Dr. Fatemeh Jafari: checking your teeth and reviewing treatment options.",
+      "Dental examination and consultation in Shiraz, Iran with Dr. Fatemeh Jafari: checking your teeth and reviewing treatment options.",
     intro: [
       "Every treatment starts with an examination and consultation; we check your teeth and gums and go through the treatment options that suit you together.",
       "Online appointments on the website (for Iranian numbers) are for this session. Treatment sessions after it are arranged with the clinic, at a time that suits you.",

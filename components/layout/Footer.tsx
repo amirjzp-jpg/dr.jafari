@@ -4,8 +4,9 @@ import { Container } from "@/components/layout/Container";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { DirectionsLink } from "@/components/ui/DirectionsLink";
 import { facts, ui } from "@/content/i18n/ui";
+import { pagesCopy } from "@/content/i18n/pages";
 import { toFaDigits } from "@/lib/digits";
-import { localeHref, type Locale } from "@/lib/i18n";
+import { localeHref, localePath, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 const link = "text-muted no-underline hover:text-primary";
@@ -23,6 +24,8 @@ export function Footer({ lang = "fa" }: { lang?: Locale }) {
   ]
     .map((l) => ({ ...l, href: localeHref(lang, l.path) }))
     .filter((l): l is typeof l & { href: string } => l.href !== null);
+  // For patients abroad: how long to plan in Shiraz (exists only in Arabic and English).
+  if (lang !== "fa") links.push({ path: "/plan-your-visit", label: pagesCopy[lang].stay.footerLink, href: localePath(lang, "/plan-your-visit") });
   return (
     <footer className="text-[13px] text-muted">
       <Container className="flex flex-col gap-5 border-t border-line pt-10 pb-8 md:flex-row md:items-end md:justify-between">

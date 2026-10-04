@@ -15,6 +15,7 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [x] Instagram: @dr_nedajafarii (footer, contact section, gallery page, structured data)
 
 ## Still needed
+- [ ] **Arabic and English (in progress, round 1).** Home page is drafted in `content/i18n/`; about, location, gallery, policies and the 10 services are next. Needs: a native Arabic and a native English proofreader; the doctor's confirmation of every treatment description; does the clinic have Arabic- or English-speaking staff (until confirmed the site must not claim it, and WhatsApp messages may arrive in Arabic)?; confirm +98 917 720 3937 is the number patients abroad should message (it is also one of the three admin login numbers); confirm instalment payment applies to patients from abroad (it is stated on the Persian site and translated as is); Arabic and English alt texts and the Instagram page are mostly Persian
 - [ ] Register the site in Google Search Console and Bing Webmaster Tools (domain property by DNS TXT record at HostIran), then submit /sitemap.xml
 - [ ] Delete the four sms.ir API keys that were pasted into a chat; keep only the one stored on the server
 - [ ] **Doctor approval of the content drafts** in `docs/content-drafts/`: seven service pages (`service-pages.md`) and six articles (`articles.md`). Every `[؟]` must be answered or the sentence removed, and every «✓ تأیید شود» confirmed, before anything goes on the site. Nothing from these files is published yet.

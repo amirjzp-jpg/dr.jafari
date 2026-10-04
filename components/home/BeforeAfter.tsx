@@ -4,6 +4,13 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { track } from "@/lib/analytics";
 import type { Case } from "@/content/cases";
+import type { Locale } from "@/lib/i18n";
+
+const words = {
+  fa: { before: "قبل", after: "بعد", imgBefore: "تصویر قبل", imgAfter: "تصویر بعد", afterAlt: "بعد از درمان", beforeAlt: "قبل از درمان", compare: "مقایسه‌ی قبل و بعد", pct: (n: number) => `${n}٪ قبل` },
+  ar: { before: "قبل", after: "بعد", imgBefore: "صورة قبل العلاج", imgAfter: "صورة بعد العلاج", afterAlt: "بعد العلاج", beforeAlt: "قبل العلاج", compare: "مقارنة قبل وبعد", pct: (n: number) => `${n}% قبل` },
+  en: { before: "Before", after: "After", imgBefore: "Before image", imgAfter: "After image", afterAlt: "After treatment", beforeAlt: "Before treatment", compare: "Before and after comparison", pct: (n: number) => `${n}% before` },
+} as const;
 
 // BUILD-SPEC.md section 8. "Before" is clipped by width and anchored to the
 // right (read first in RTL); "after" fills the frame. A real range input sits
@@ -17,12 +24,17 @@ export function BeforeAfter({
   item,
   sizes = "(min-width: 1024px) 378px, 90vw",
   caption = true,
+  lang = "fa",
 }: {
   item: Case;
   /** next/image sizes; the gallery's full-screen view passes a larger one. */
   sizes?: string;
   caption?: boolean;
+  lang?: Locale;
 }) {
+  const w = words[lang];
+  // Persian and Arabic read right to left, so "before" is anchored to the right; English is the mirror image.
+  const rtl = lang !== "en";
   const arch = !(item.before && item.after);
   const [pos, setPos] = useState(50);
   const tracked = useRef(false);
@@ -38,20 +50,20 @@ export function BeforeAfter({
         style={{ borderRadius: radius }}
       >
         {/* After: full frame */}
-        <Layer src={item.after} sizes={sizes} label={`[تصویر بعد — ${item.label}]`} className="bg-[#EEF3F8] text-muted" alt={`بعد از درمان — ${item.title}`} />
+        <Layer src={item.after} sizes={sizes} label={`[${w.imgAfter} — ${item.label}]`} className="bg-[#EEF3F8] text-muted" alt={`${w.afterAlt} — ${item.title}`} />
         {/* Before: clipped from the left edge, so it stays anchored right */}
-        <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${100 - pos}%)` }}>
-          <Layer src={item.before} sizes={sizes} label={`[تصویر قبل — ${item.label}]`} className="bg-[#E2DDD4] text-[#45494E]" alt={`قبل از درمان — ${item.title}`} />
+        <div className="absolute inset-0" style={{ clipPath: rtl ? `inset(0 0 0 ${100 - pos}%)` : `inset(0 ${100 - pos}% 0 0)` }}>
+          <Layer src={item.before} sizes={sizes} label={`[${w.imgBefore} — ${item.label}]`} className="bg-[#E2DDD4] text-[#45494E]" alt={`${w.beforeAlt} — ${item.title}`} />
         </div>
 
-        <span className="absolute start-[18px] bottom-[18px] rounded-pill bg-ivory/90 px-3.5 py-[5px] text-xs text-ink">قبل</span>
-        <span className="absolute end-[18px] bottom-[18px] rounded-pill bg-ivory/90 px-3.5 py-[5px] text-xs text-ink">بعد</span>
+        <span className="absolute start-[18px] bottom-[18px] rounded-pill bg-ivory/90 px-3.5 py-[5px] text-xs text-ink">{w.before}</span>
+        <span className="absolute end-[18px] bottom-[18px] rounded-pill bg-ivory/90 px-3.5 py-[5px] text-xs text-ink">{w.after}</span>
 
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-px bg-white" style={{ right: `${pos}%` }} />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-px bg-white" style={rtl ? { right: `${pos}%` } : { left: `${pos}%` }} />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 flex size-11 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-ivory shadow-[0_1px_4px_rgba(28,39,51,0.15)]"
-          style={{ right: `${pos}%` }}
+          className={`pointer-events-none absolute top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-ivory shadow-[0_1px_4px_rgba(28,39,51,0.15)] ${rtl ? "translate-x-1/2" : "-translate-x-1/2"}`}
+          style={rtl ? { right: `${pos}%` } : { left: `${pos}%` }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4A6E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 6l-6 6 6 6" />
@@ -64,9 +76,9 @@ export function BeforeAfter({
           min={0}
           max={100}
           value={pos}
-          dir="rtl"
-          aria-label={`مقایسه‌ی قبل و بعد — ${item.title}`}
-          aria-valuetext={`${pos}٪ قبل`}
+          dir={rtl ? "rtl" : "ltr"}
+          aria-label={`${w.compare} — ${item.title}`}
+          aria-valuetext={w.pct(pos)}
           onChange={(e) => setPos(Number(e.target.value))}
           onPointerUp={() => {
             if (!tracked.current) track("slider_use", { case: item.title });

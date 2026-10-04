@@ -16,6 +16,8 @@ export const site = {
     ["10:00", "13:00"],
     ["14:00", "19:00"],
   ],
+  // WhatsApp for patients abroad (Arabic and English pages), who cannot use the SMS-code booking.
+  whatsapp: { display: "+98 917 720 3937", url: "https://wa.me/989177203937" },
   councilNumber: "۱۶۹۴۷۳", // شماره نظام پزشکی
   // TODO-content.md: exact map pins (Neshan, Balad, Google) are still missing; this searches the address.
   mapUrl:

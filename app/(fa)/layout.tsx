@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "../fonts";
-import Script from "next/script";
+import { Analytics } from "@/components/layout/Analytics";
 import { defaultDescription, defaultTitle, robotsMeta, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
@@ -51,14 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fa" dir="rtl">
       <body className="min-h-dvh antialiased">
         {children}
-        {/* Self-hosted Umami (cookieless). Loads only when configured. */}
-        {process.env.NEXT_PUBLIC_UMAMI_SRC && process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
-          <Script
-            src={process.env.NEXT_PUBLIC_UMAMI_SRC}
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="afterInteractive"
-          />
-        )}
+        <Analytics />
       </body>
     </html>
   );

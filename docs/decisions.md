@@ -74,3 +74,12 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - One question, one page: «بلیچینگ چقدر ماندگار است؟» belongs to the whitening article, so the whitening page has no FAQ for it.
 - SEO, AEO and GEO text is Persian throughout. The one deliberate English line is the summary in `/llms.txt`, for AI assistants answering in English.
 
+## Languages: Arabic and English (2026-10-04)
+- **Why:** to reach Arabic-speaking patients abroad (Iraq, Gulf), with English as a second language. Arabic matters most.
+- **Addresses:** Persian stays at the root and does not move. Arabic is under `/ar/…`, English under `/en/…`. Every language page links to its other versions with `hreflang` (also in the sitemap), and `x-default` is the Persian page.
+- **Direction:** Arabic is right to left like Persian; English is left to right and mirrors the layout (hero, before/after slider). Each language has its own root layout, so `<html lang dir>` is correct on every page (`app/(fa)`, `app/[lang]`).
+- **Rollout:** a page appears in a language only when its translation ships. `lib/i18n.ts` `translatedPaths` is the list; menus, the footer, the language switcher, hreflang and the sitemap all read it, so nothing links to a page that does not exist. Round 1 is the core pages (home first, then about, location, gallery, policies, all 10 services); articles come later.
+- **Booking for patients abroad:** the SMS code only works with Iranian numbers. Arabic and English pages send visitors to WhatsApp (+98 917 720 3937, with a ready first message) and the clinic phone; Iranian numbers can still book on the Persian booking page. Booking, admin panel, SMS and the reminder text stay Persian.
+- **Text:** written by the assistant from the approved Persian copy, with no new claims (`content/i18n/`). Modern Standard Arabic, Latin digits. Drafts: a native Arabic and English reader must proofread them, and the doctor has not reviewed them (no review claim on these pages).
+- **Structured data:** the clinic and doctor names and addresses are localized; service names and the booking action stay Persian-only. `knowsLanguage` stays `fa` until the clinic confirms Arabic or English is spoken.
+

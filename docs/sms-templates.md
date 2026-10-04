@@ -30,8 +30,9 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 
 ```
 #NAME# عزیز، سلام
-یادآوری دوستانه: نوبت شما امروز ساعت #TIME# است. منتظر دیدارتان هستیم.
-دندانپزشکی شیراز، دکتر جعفری 09023023120
+یادآوری نوبت شما: امروز ساعت #TIME# در کلینیک منتظرتان هستیم.
+دندانپزشکی شیراز، دکتر جعفری
+تماس: 09023023120
 ```
 
 ## 4. Cancelled by the clinic → `SMSIR_TEMPLATE_CANCELLED` (optional, not registered for now)

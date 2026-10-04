@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
-import { PhoneIcon, PinIcon } from "@/components/icons/ui";
+import { PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/icons/ui";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { DirectionsLink } from "@/components/ui/DirectionsLink";
@@ -68,9 +68,16 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
                 <ButtonLink href={waLink(lang)} data-umami-event="whatsapp_click" {...externalProps}>
                   {c.waButton}
                 </ButtonLink>
-                <span dir="ltr" className="ltr-nums text-sm font-semibold text-ink">
+                <a
+                  href={waLink(lang)}
+                  {...externalProps}
+                  dir="ltr"
+                  data-umami-event="whatsapp_click"
+                  className="ltr-nums -my-2.5 inline-flex items-center gap-2 py-2.5 text-sm font-semibold text-ink no-underline hover:text-primary"
+                >
+                  <WhatsAppIcon size={18} className="text-[#1f8f5f]" />
                   {site.whatsapp.display}
-                </span>
+                </a>
               </div>
             </section>
 

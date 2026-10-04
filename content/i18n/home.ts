@@ -113,7 +113,7 @@ export const homeCopy: Record<IntlLocale, HomeCopy> = {
     featuredAlt: "ابتسامة بفينير خزفي لامع وطبيعي، من الجانب",
   },
   en: {
-    metaTitle: "Cosmetic dentist in Shiraz, Iran | Dr. Fatemeh Jafari",
+    metaTitle: "Cosmetic dentistry in Shiraz, Iran | Dr. Fatemeh Jafari",
     metaDescription:
       "Dr. Fatemeh Jafari, cosmetic dentist with 10+ years of experience in Shiraz, Iran: composite bonding, porcelain veneers and smile design. Book on WhatsApp.",
     heroEyebrow: "Cosmetic dental clinic",

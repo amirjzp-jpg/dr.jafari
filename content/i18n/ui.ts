@@ -121,7 +121,7 @@ export const ui: Record<Locale, Ui> = {
     footer: {
       council: "Iran Medical Council no.",
       gallery: "Our work",
-      location: "Dentist in Maaliabad",
+      location: "Dentistry in Maaliabad",
       privacy: "Privacy",
       policy: "Booking policy",
       instagramAria: (h) => `Instagram ${h}`,
@@ -158,7 +158,7 @@ export const facts: Record<Locale, Facts> = {
   en: {
     name: "Dr. Fatemeh Jafari",
     clinicName: "Dr. Fatemeh Jafari's Clinic",
-    tagline: "Cosmetic dentistry in Shiraz",
+    tagline: "Cosmetic Dentistry in Shiraz",
     address: "Maaliabad Bridge, start of Tachara Street, opposite the bridge, next to Bank Tejarat, Mojoodi Building, 4th floor, Shiraz, Iran",
     addressFa: site.address,
     hours: "Saturday to Wednesday, 10:00–13:00 and 14:00–19:00 (Iran time, UTC+3:30)",

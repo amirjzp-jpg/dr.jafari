@@ -311,11 +311,11 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
       altDetail: "Dr. Fatemeh Jafari during an examination",
     },
     location: {
-      metaTitle: "Cosmetic dentist in Maaliabad, Shiraz",
+      metaTitle: "Cosmetic dentistry in Maaliabad, Shiraz",
       metaDescription:
         "Dr. Fatemeh Jafari's cosmetic dental clinic in Shiraz, by the Maaliabad Bridge, next to Bank Tejarat. Address, opening hours, services and how to book.",
-      h1: "Cosmetic dentist in Maaliabad, Shiraz",
-      crumb: "Dentist in Maaliabad",
+      h1: "Cosmetic dentistry in Maaliabad, Shiraz",
+      crumb: "Dentistry in Maaliabad",
       lead: "Dr. Fatemeh Jafari's cosmetic dental clinic is by the Maaliabad Bridge in Shiraz: at the start of Tachara Street, opposite the bridge and next to Bank Tejarat, in the Mojoodi Building, 4th floor.",
       whereTitle: "Address and opening hours",
       treatmentsTitle: "Which treatments are done at this clinic?",

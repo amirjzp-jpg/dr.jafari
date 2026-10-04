@@ -16,12 +16,11 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 ```
 
 ## 2. Booking confirmed → `SMSIR_TEMPLATE_CONFIRMED`
-4 parts (about 219–234 characters). Sent once per booking. Carries the full address so the patient can find the building from the SMS alone; no phone number, by the client's decision
+2 parts (about 90–105 characters). Sent once per booking. Short on purpose, with no address and no phone number: the earlier 4-part version with the full address (it also named a bank) reached the phone 13 minutes late in the first live test (2026-10-04), while 1–2 part messages arrived in under two minutes. The address is on the booking-confirmed page and on /dentist-maaliabad-shiraz
 
 ```
 #NAME# عزیز، سلام
-نوبت شما برای #DATE# ساعت #TIME# با موفقیت ثبت شد. منتظر دیدارتان هستیم.
-نشانی: شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار
+نوبت شما برای #DATE# ساعت #TIME# ثبت شد. منتظر دیدارتان هستیم.
 دندانپزشکی شیراز، دکتر جعفری
 ```
 

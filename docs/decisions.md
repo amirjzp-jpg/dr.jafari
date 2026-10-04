@@ -20,7 +20,7 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
   - مشاوره: بررسی همه‌ی گزینه‌ها پیش از درمان
 - **Address:** the full address is used on every page (contact section, footer, FAQ, booking success screen, structured data):
   شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار
-  The floor is written «طبقه‌چهار», as the client asked. The confirmation SMS also carries the full address and no phone number (client's decision; 4 billed parts per message).
+  The floor is written «طبقه‌چهار», as the client asked. The confirmation SMS first carried the full address and no phone number (4 billed parts). In the first live test it reached the phone 13 minutes late, so on 2026-10-04 the client chose a short confirmation without the address (about 2 parts); see docs/sms-templates.md.
 - **Directions:** every address has a pin icon and a «مسیریابی» button with a navigation icon (components/ui/DirectionsLink.tsx), so it reads as an action, not plain text.
 
 ## Booking

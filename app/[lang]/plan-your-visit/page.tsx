@@ -75,11 +75,15 @@ export default async function PlanYourVisit({ params }: { params: Promise<{ lang
                 </thead>
                 <tbody>
                   {c.rows.map((r) => (
-                    <tr key={r.slug} className="border-t border-line align-top">
+                    <tr key={r.slug ?? r.label} className="border-t border-line align-top">
                       <th scope="row" className="px-5 py-4 text-start font-medium lg:px-7">
-                        <Link href={localePath(lang, r.slug === "composite" ? "/composite" : r.slug === "veneers" ? "/veneers" : `/services/${r.slug}`)}>
-                          {serviceContent[lang][r.slug].name}
-                        </Link>
+                        {r.slug ? (
+                          <Link href={localePath(lang, r.slug === "composite" ? "/composite" : r.slug === "veneers" ? "/veneers" : `/services/${r.slug}`)}>
+                            {serviceContent[lang][r.slug].name}
+                          </Link>
+                        ) : (
+                          r.label
+                        )}
                       </th>
                       <td className="px-5 py-4 lg:px-7">
                         <span className="font-semibold">{r.time}</span>

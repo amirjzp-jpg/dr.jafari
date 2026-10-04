@@ -60,7 +60,8 @@ export type PagesCopy = {
     tableTitle: string;
     colTreatment: string;
     colTime: string;
-    rows: { slug: string; time: string; note?: string }[];
+    /** A service row links to its page (`slug`); a row with only a `label` is a general kind of visit. */
+    rows: { slug?: string; label?: string; time: string; note?: string }[];
     faq: { q: string; a: string }[];
     ctaTitle: string;
     ctaBody: string;
@@ -247,15 +248,17 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
       colTreatment: "العلاج",
       colTime: "المدة التي تُخطَّط في شيراز",
       rows: [
+        { label: "علاج سريع (زيارة قصيرة لإصلاح مشكلة بسيطة)", time: "نحو يوم واحد" },
         { slug: "composite", time: "نحو يوم واحد" },
         { slug: "veneers", time: "نحو شهر واحد" },
-        { slug: "implant", time: "نحو شهر واحد", note: "مدة التحام الزرعة بالعظم تختلف من شخص إلى آخر، ويشرحها الطبيب بعد الفحص." },
+        { slug: "implant", time: "نحو شهر واحد لتركيب الزرعة", note: "مدة التحام الزرعة بالعظم تختلف من شخص إلى آخر، ويشرحها الطبيب بعد الفحص." },
       ],
       faq: [
-        { q: "كم من الوقت أحتاج في شيراز لعلاج الكومبوزيت؟", a: "نحو يوم واحد، وتُحدَّد المدة الدقيقة بعد الفحص." },
-        { q: "كم من الوقت أحتاج في شيراز لتركيب الفينير الخزفي؟", a: "نحو شهر واحد، وتُحدَّد المدة الدقيقة بعد الفحص." },
-        { q: "كم من الوقت أحتاج في شيراز لزراعة الأسنان؟", a: "نحو شهر واحد. وتختلف مدة التحام الزرعة بالعظم من شخص إلى آخر، ويشرحها الطبيب بعد الفحص." },
-        { q: "كيف أعرف المدة التي يحتاجها علاجي؟", a: "في جلسة الفحص والاستشارة (نحو 30 دقيقة) يفحص طبيب الأسنان أسنانك ويحدّد المدة لحالتك." },
+        { q: "العلاج السريع: كم يستغرق؟", a: "الزيارة القصيرة لإصلاح مشكلة بسيطة تستغرق نحو يوم واحد. وتُحدَّد المدة الدقيقة بعد الفحص." },
+        { q: "كم جلسة يحتاج الكومبوزيت؟", a: "نحو يوم واحد: بحسب عدد الأسنان يتم عادةً في جلسة أو جلستين. ويُحدَّد الوقت الدقيق بعد الفحص." },
+        { q: "كم جلسة يحتاج الفينير الخزفي؟", a: "نحو شهر واحد: عادةً عدة جلسات على مدى أسابيع، هي الاستشارة والتصميم، ثم التحضير وأخذ الطبعة، وفي النهاية اللصق. ويُحدَّد البرنامج الدقيق بعد الفحص." },
+        { q: "كم تستغرق زراعة الأسنان؟", a: "نحو شهر واحد لتركيب الزرعة. وتعتمد مدة العلاج على حالة العظم وعدد الزرعات، وتُحدَّد بعد الفحص والتصوير." },
+        { q: "كم تستغرق جلسة الاستشارة؟", a: "نحو 30 دقيقة. وفي هذا الوقت تُفحص الأسنان ونجيب عن أسئلتك حول الخيارات." },
       ],
       ctaTitle: "لمزيد من التفاصيل، تواصل معنا",
       ctaBody: "راسل العيادة عبر واتساب أو اتصل بها.",
@@ -442,15 +445,17 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
       colTreatment: "Treatment",
       colTime: "Time to plan in Shiraz",
       rows: [
+        { label: "Quick treatment (a short visit to fix something small)", time: "About 1 day" },
         { slug: "composite", time: "About 1 day" },
         { slug: "veneers", time: "About 1 month" },
-        { slug: "implant", time: "About 1 month", note: "How long the implant takes to bond with the bone differs from person to person, and your dentist explains it after the examination." },
+        { slug: "implant", time: "About 1 month for installing the implant", note: "How long the implant takes to bond with the bone differs from person to person, and your dentist explains it after the examination." },
       ],
       faq: [
-        { q: "How long do I need in Shiraz for composite bonding?", a: "About 1 day. The exact time is set after the examination." },
-        { q: "How long do I need in Shiraz for ceramic veneers?", a: "About 1 month. The exact time is set after the examination." },
-        { q: "How long do I need in Shiraz for a dental implant?", a: "About 1 month. How long the implant takes to bond with the bone differs from person to person, and your dentist explains it after the examination." },
-        { q: "How do I find out how long my treatment will take?", a: "At the examination and consultation (about 30 minutes) your dentist checks your teeth and sets the time for your case." },
+        { q: "How long does a quick treatment take?", a: "A short visit to fix something small takes about 1 day. The exact time is set after the examination." },
+        { q: "How many visits does composite take?", a: "About 1 day: depending on the number of teeth, it is usually done in one or two visits. The exact time is set after the examination." },
+        { q: "How many visits do ceramic veneers take?", a: "About 1 month: usually several visits over a few weeks, namely consultation and design, preparation and impression, and finally bonding. The exact schedule is set after the examination." },
+        { q: "How long does a dental implant take?", a: "About 1 month for installing the implant. The length of treatment depends on the condition of the bone and the number of implants, and is set after an examination and imaging." },
+        { q: "How long does the consultation take?", a: "About 30 minutes. In this time your teeth are examined and we answer your questions about the options." },
       ],
       ctaTitle: "For more details, contact us",
       ctaBody: "Message the clinic on WhatsApp or call.",

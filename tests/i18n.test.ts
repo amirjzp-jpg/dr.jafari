@@ -214,10 +214,15 @@ describe("plan-your-visit page (patients abroad)", () => {
   it("states only the clinic's own approximate figures", () => {
     for (const l of ["ar", "en"] as const) {
       const rows = pagesCopy[l].stay.rows;
-      expect(rows.map((r) => r.slug)).toEqual(["composite", "veneers", "implant"]);
-      expect(rows[0].time).toMatch(l === "ar" ? /يوم واحد/ : /1 day/);
-      expect(rows[1].time).toMatch(l === "ar" ? /شهر واحد/ : /1 month/);
-      expect(rows[2].time).toMatch(l === "ar" ? /شهر واحد/ : /1 month/);
+      expect(rows.map((r) => r.slug ?? "quick")).toEqual(["quick", "composite", "veneers", "implant"]);
+      const day = l === "ar" ? /يوم واحد/ : /1 day/;
+      const month = l === "ar" ? /شهر واحد/ : /1 month/;
+      expect(rows[0].time).toMatch(day);
+      expect(rows[1].time).toMatch(day);
+      expect(rows[2].time).toMatch(month);
+      expect(rows[3].time).toMatch(month);
+      // the implant figure is for installing, not for the whole treatment
+      expect(rows[3].time).toMatch(l === "ar" ? /لتركيب الزرعة/ : /installing the implant/);
       // every figure is called approximate and set after the examination
       expect(pagesCopy[l].stay.lead).toMatch(l === "ar" ? /تقريبية.*بعد الفحص/ : /approximate.*after the examination/);
     }

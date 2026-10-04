@@ -36,7 +36,7 @@ export function Header({ lang = "fa" }: { lang?: Locale }) {
 
         <nav aria-label={t.mainMenu} className="hidden lg:block">
           <ul
-            className={`flex ${intl ? "gap-4 text-sm whitespace-nowrap xl:gap-9 xl:text-[15px]" : "gap-10 text-[15px]"}`}
+            className={`flex ${intl ? "gap-4 text-sm whitespace-nowrap xl:gap-6 xl:text-[15px] min-[1360px]:gap-9" : "gap-10 text-[15px]"}`}
           >
             {navFor(lang).map((item) => (
               <li key={item.href}>

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/content/journal";
 import { COPY_APPROVED, services } from "@/content/services";
+import { INTL_UPDATED } from "@/content/i18n/services";
 import { isTranslated, localePath, locales } from "@/lib/i18n";
 import { abs } from "@/lib/seo";
 
@@ -10,17 +11,22 @@ import { abs } from "@/lib/seo";
 const pages = ["/", "/booking", "/about", "/dentist-maaliabad-shiraz", "/services", "/gallery", "/journal", "/privacy", "/booking-policy"];
 
 // A page that exists in more than one language is listed once per language, each entry
-// pointing at all of its versions (Google's hreflang-in-sitemap format).
-function pageEntries(path: string): MetadataRoute.Sitemap {
-  if (!isTranslated(path)) return [{ url: abs(path) }];
+// pointing at all of its versions (Google's hreflang-in-sitemap format). `modified` is the
+// Persian page's content date; the Arabic and English versions carry INTL_UPDATED.
+function pageEntries(path: string, modified?: Date): MetadataRoute.Sitemap {
+  if (!isTranslated(path)) return [{ url: abs(path), ...(modified ? { lastModified: modified } : {}) }];
   const languages = Object.fromEntries(locales.map((l) => [l, abs(localePath(l, path))]));
-  return locales.map((l) => ({ url: abs(localePath(l, path)), alternates: { languages } }));
+  return locales.map((l) => ({
+    url: abs(localePath(l, path)),
+    alternates: { languages },
+    ...(modified ? { lastModified: l === "fa" ? modified : new Date(INTL_UPDATED) } : {}),
+  }));
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    ...pages.flatMap(pageEntries),
-    ...services.map((s) => ({ url: abs(s.href), lastModified: new Date(s.updatedAt ?? s.reviewedAt ?? COPY_APPROVED) })),
+    ...pages.flatMap((path) => pageEntries(path)),
+    ...services.flatMap((s) => pageEntries(s.href, new Date(s.updatedAt ?? s.reviewedAt ?? COPY_APPROVED))),
     ...articles.map((a) => ({ url: abs(`/journal/${a.slug}`), lastModified: new Date(a.updated ?? a.published) })),
   ];
 }

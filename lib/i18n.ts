@@ -14,9 +14,28 @@ export const ogLocale: Record<Locale, string> = { fa: "fa_IR", ar: "ar_AR", en: 
 /**
  * Persian paths that also exist in Arabic and English. A page is added here only
  * when its translation ships, so the language switcher, hreflang tags, sitemap and
- * menus never point at a page that does not exist.
+ * menus never point at a page that does not exist. (The journal is not translated yet.)
  */
-export const translatedPaths: readonly string[] = ["/"];
+export const translatedPaths: readonly string[] = [
+  "/",
+  "/about",
+  "/dentist-maaliabad-shiraz",
+  "/gallery",
+  "/privacy",
+  "/booking-policy",
+  "/booking",
+  "/services",
+  "/composite",
+  "/veneers",
+  "/services/smile-design",
+  "/services/whitening",
+  "/services/implant",
+  "/services/restoration",
+  "/services/root-canal",
+  "/services/surgery",
+  "/services/orthodontics",
+  "/services/consultation",
+];
 
 export const isTranslated = (path: string) => translatedPaths.includes(path);
 

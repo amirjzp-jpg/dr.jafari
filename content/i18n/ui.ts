@@ -149,7 +149,7 @@ export const facts: Record<Locale, Facts> = {
     tagline: "طب الأسنان التجميلي في شيراز",
     address: "شيراز، جسر معالي‌آباد، بداية شارع تاچارا، مقابل الجسر، بجوار بنك تجارت، مبنى «موجودي»، الطابق الرابع",
     addressFa: site.address,
-    hours: "السبت إلى الأربعاء، 10:00–13:00 و14:00–19:00 (بتوقيت إيران)",
+    hours: "السبت إلى الأربعاء، من 10:00 إلى 13:00 ومن 14:00 إلى 19:00 (بتوقيت إيران)",
     closedDays: "الخميس والجمعة عطلة",
     phoneDisplay: "+98 902 302 3120",
     council: "169473",
@@ -209,7 +209,12 @@ export function bookingFor(lang: Locale): { href: string; external: boolean; lab
   const t = ui[lang];
   if (lang === "fa") return { href: "/booking", external: false, label: t.book };
   if (isTranslated("/booking")) return { href: `/${lang}/booking`, external: false, label: t.book };
-  return { href: `${site.whatsapp.url}?text=${encodeURIComponent(waText[lang])}`, external: true, label: t.bookWhatsapp };
+  return { href: waLink(lang), external: true, label: t.bookWhatsapp };
+}
+
+/** WhatsApp chat with the clinic, opened with a ready first message in the visitor's language. */
+export function waLink(lang: "ar" | "en"): string {
+  return `${site.whatsapp.url}?text=${encodeURIComponent(waText[lang])}`;
 }
 
 /** Extra props for a link that leaves the site. */

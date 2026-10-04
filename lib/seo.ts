@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { COPY_APPROVED, services, type Service } from "@/content/services";
+import { INTL_UPDATED, type ServiceContent } from "@/content/i18n/services";
 import { facts } from "@/content/i18n/ui";
-import { isTranslated, localePath, locales, ogLocale, splitLocale, type Locale } from "./i18n";
+import { isTranslated, localePath, locales, ogLocale, splitLocale, type IntlLocale, type Locale } from "./i18n";
 import { site } from "./site";
 
 /** Absolute site URL for canonical links, sitemap and structured data. */
@@ -135,11 +136,11 @@ export function dentistSchema(lang: Locale = "fa") {
       opens,
       closes,
     })),
-    paymentAccepted: "اقساطی برای درمان‌های زیبایی",
-    // Service names and the booking action are Persian; the other languages describe the clinic only.
+    // Instalments, service names and the booking action are for Persian-speaking patients; the other languages describe the clinic only.
     ...(intl
       ? {}
       : {
+          paymentAccepted: "اقساطی برای درمان‌های زیبایی",
           availableService: services.map((s) => ({
             "@type": s.slug === "consultation" ? "Service" : "MedicalProcedure",
             name: s.name,
@@ -216,23 +217,27 @@ export function faqSchema(faq: { q: string; a: string; noSchema?: boolean }[]) {
   };
 }
 
-/** A service page as a medical web page, reviewed by the doctor whose copy it is. */
-export function medicalWebPageSchema(service: Service) {
+/**
+ * A service page as a medical web page, reviewed by the doctor whose copy it is.
+ * `intl` gives the Arabic or English version of the page: translated, never marked as reviewed.
+ */
+export function medicalWebPageSchema(service: Service, intl?: { lang: IntlLocale; text: ServiceContent }) {
   // Only claim a doctor's review when she actually reviewed the current text.
-  const reviewed = service.doctorReviewed !== false;
+  const reviewed = !intl && service.doctorReviewed !== false;
+  const path = intl ? localePath(intl.lang, service.href) : service.href;
   return {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "@id": abs(`${service.href}#page`),
-    url: abs(service.href),
-    name: service.title,
-    description: service.metaDescription,
-    inLanguage: "fa",
-    about: { "@type": service.slug === "consultation" ? "Service" : "MedicalProcedure", name: service.name },
+    "@id": abs(`${path}#page`),
+    url: abs(path),
+    name: intl ? intl.text.title : service.title,
+    description: intl ? intl.text.metaDescription : service.metaDescription,
+    inLanguage: intl ? intl.lang : "fa",
+    about: { "@type": service.slug === "consultation" ? "Service" : "MedicalProcedure", name: intl ? intl.text.name : service.name },
     ...(reviewed
       ? { reviewedBy: { "@id": abs("/about#doctor") }, lastReviewed: service.reviewedAt ?? COPY_APPROVED }
       : {}),
-    ...(service.updatedAt ? { dateModified: service.updatedAt } : {}),
+    ...(intl ? { dateModified: INTL_UPDATED } : service.updatedAt ? { dateModified: service.updatedAt } : {}),
     isPartOf: { "@id": abs("/#website") },
     publisher: { "@id": abs("/#clinic") },
   };

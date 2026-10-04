@@ -1,4 +1,5 @@
 import type { IntlLocale } from "@/lib/i18n";
+import { serviceContent } from "./services";
 import { facts } from "./ui";
 
 // Arabic and English home-page copy: drafts translated from the approved Persian
@@ -35,32 +36,10 @@ export type HomeCopy = {
   featuredAlt: string;
 };
 
-/** Names and one-line summaries of the ten services, keyed by service slug. */
+/** Names and one-line summaries of the ten services, keyed by service slug (from the full service text). */
 export const serviceText: Record<IntlLocale, Record<string, ServiceText>> = {
-  ar: {
-    composite: { name: "الكومبوزيت التجميلي", short: "تصحيح لون الأسنان وشكلها والمسافات بينها بأقل قدر من برد السن." },
-    veneers: { name: "الفينير الخزفي", short: "ابتسامة متناسقة بقشور خزفية رقيقة وثبات لوني عالٍ." },
-    "smile-design": { name: "تصميم الابتسامة", short: "خطة لشكل الأسنان وحجمها ولونها بما يتناسب مع ملامح وجهك." },
-    whitening: { name: "تبييض الأسنان", short: "تفتيح لون الأسنان الطبيعي تحت إشراف طبيب الأسنان." },
-    implant: { name: "زراعة الأسنان", short: "تعويض السن المفقود بزرعة وتاج." },
-    restoration: { name: "ترميم الأسنان", short: "ترميم السن المتضرر بمواد بلون الأسنان." },
-    "root-canal": { name: "علاج العصب", short: "علاج الجذور للحفاظ على سنٍّ تضرر عصبها." },
-    surgery: { name: "جراحة الفم", short: "جراحات الفم الخارجية دون مبيت، مثل خلع الأسنان المطمورة." },
-    orthodontics: { name: "تقويم الأسنان", short: "تصحيح تزاحم الأسنان وإطباق الفكين." },
-    consultation: { name: "الفحص والاستشارة", short: "فحص حالة الأسنان ومراجعة خيارات العلاج." },
-  },
-  en: {
-    composite: { name: "Composite bonding", short: "Corrects the colour, shape and gaps of teeth with minimal tooth reduction." },
-    veneers: { name: "Ceramic veneers", short: "An even smile with thin ceramic shells and high colour stability." },
-    "smile-design": { name: "Smile design", short: "A plan for the shape, size and colour of your teeth, matched to your face." },
-    whitening: { name: "Teeth whitening", short: "Lightening the natural shade of your teeth under a dentist's supervision." },
-    implant: { name: "Dental implants", short: "Replacing a missing tooth with an implant and a crown." },
-    restoration: { name: "Restorations", short: "Rebuilding a damaged tooth with tooth-coloured materials." },
-    "root-canal": { name: "Root canal treatment", short: "Root treatment to save a tooth whose nerve is damaged." },
-    surgery: { name: "Oral surgery", short: "Outpatient oral surgery, such as removing impacted teeth." },
-    orthodontics: { name: "Orthodontics", short: "Correcting crooked teeth and the bite between the jaws." },
-    consultation: { name: "Examination and consultation", short: "Checking the state of your teeth and reviewing treatment options." },
-  },
+  ar: Object.fromEntries(Object.entries(serviceContent.ar).map(([k, v]) => [k, { name: v.name, short: v.short }])),
+  en: Object.fromEntries(Object.entries(serviceContent.en).map(([k, v]) => [k, { name: v.name, short: v.short }])),
 };
 
 export const homeCopy: Record<IntlLocale, HomeCopy> = {
@@ -75,7 +54,7 @@ export const homeCopy: Record<IntlLocale, HomeCopy> = {
     stats: [
       { big: "+10 سنوات", small: "من الخبرة في طب الأسنان التجميلي" },
       { big: "الكومبوزيت والفينير الخزفي", small: "محور عمل العيادة" },
-      { big: "الدفع بالتقسيط", small: "للعلاجات التجميلية" },
+      { big: "زيارة أولى مدتها 30 دقيقة", small: "فحص واستشارة لمراجعة خيارات العلاج" },
     ],
     statsLabel: "عن العيادة",
     about: {
@@ -123,8 +102,8 @@ export const homeCopy: Record<IntlLocale, HomeCopy> = {
         a: "راسل العيادة عبر واتساب أو اتصل بها لتحديد موعد. أصحاب الأرقام الإيرانية يمكنهم أيضًا الحجز مباشرة عبر الموقع بتأكيد رقم الجوال برمز نصي.",
       },
       {
-        q: "هل يمكن الدفع بالتقسيط؟",
-        a: "نعم. تتوفّر إمكانية الدفع بالتقسيط للعلاجات التجميلية مثل الكومبوزيت والفينير، وتُشرح شروطها في جلسة الاستشارة.",
+        q: "كم تستغرق الزيارة الأولى؟",
+        a: "الزيارة الأولى عادةً جلسة فحص واستشارة مدتها نحو 30 دقيقة، نفحص فيها الأسنان ونراجع معًا خيارات العلاج.",
       },
       {
         q: "أين تقع العيادة وما أيام الدوام؟",
@@ -144,7 +123,7 @@ export const homeCopy: Record<IntlLocale, HomeCopy> = {
     stats: [
       { big: "10+ years", small: "of experience in cosmetic dentistry" },
       { big: "Composite and ceramic veneers", small: "The clinic's main focus" },
-      { big: "Payment in instalments", small: "for cosmetic treatments" },
+      { big: "A 30-minute first visit", small: "examination and consultation to review your options" },
     ],
     statsLabel: "About the clinic",
     about: {
@@ -192,8 +171,8 @@ export const homeCopy: Record<IntlLocale, HomeCopy> = {
         a: "Message the clinic on WhatsApp or call to arrange an appointment. Patients with an Iranian mobile number can also book directly on the website by confirming their number with a text-message code.",
       },
       {
-        q: "Is payment in instalments available?",
-        a: "Yes. Payment in instalments is available for cosmetic treatments such as composite bonding and veneers. The terms are explained at the consultation.",
+        q: "How long is the first visit?",
+        a: "The first visit is usually an examination and consultation of about 30 minutes, in which your teeth are examined and we go through the treatment options together.",
       },
       {
         q: "Where is the clinic and which days is it open?",

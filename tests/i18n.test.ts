@@ -1,8 +1,11 @@
+import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { bookingFor, facts, navFor, ui } from "@/content/i18n/ui";
+import { bookingFor, facts, navFor, ui, waLink } from "@/content/i18n/ui";
 import { homeCopy, serviceText } from "@/content/i18n/home";
 import { services } from "@/content/services";
-import { dirOf, isIntl, isTranslated, localeHref, localePath, locales, splitLocale, switchTarget } from "@/lib/i18n";
+import { serviceContent } from "@/content/i18n/services";
+import { pagesCopy } from "@/content/i18n/pages";
+import { dirOf, isIntl, isTranslated, localeHref, localePath, locales, splitLocale, switchTarget, translatedPaths } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 describe("language paths", () => {
@@ -25,18 +28,23 @@ describe("language paths", () => {
 
   it("only offers links to pages that have a translation", () => {
     expect(isTranslated("/")).toBe(true);
-    expect(isTranslated("/about")).toBe(false);
+    expect(isTranslated("/about")).toBe(true);
+    expect(isTranslated("/journal")).toBe(false); // articles are not translated yet
     expect(localeHref("ar", "/")).toBe("/ar");
-    expect(localeHref("ar", "/about")).toBeNull();
-    expect(localeHref("fa", "/about")).toBe("/about");
+    expect(localeHref("en", "/about")).toBe("/en/about");
+    expect(localeHref("ar", "/journal")).toBeNull();
+    expect(localeHref("fa", "/journal")).toBe("/journal");
   });
 
   it("switches language to the same page, or to that language's home when it is not translated", () => {
     expect(switchTarget("/", "ar")).toBe("/ar");
     expect(switchTarget("/en", "fa")).toBe("/");
     expect(switchTarget("/ar", "en")).toBe("/en");
-    expect(switchTarget("/about", "ar")).toBe("/ar");
+    expect(switchTarget("/about", "ar")).toBe("/ar/about");
     expect(switchTarget("/en/about", "fa")).toBe("/about");
+    expect(switchTarget("/journal", "ar")).toBe("/ar");
+    expect(switchTarget("/journal/veneer-care", "en")).toBe("/en");
+    expect(switchTarget("/services/implant", "en")).toBe("/en/services/implant");
   });
 
   it("knows the text direction", () => {
@@ -79,20 +87,68 @@ describe("language content", () => {
   });
 
   it("states the clinic hours and address the same way as the Persian facts", () => {
-    expect(facts.ar.hours).toContain("10:00–13:00");
+    expect(facts.ar.hours).toContain("10:00");
+    expect(facts.ar.hours).toContain("19:00");
     expect(facts.en.hours).toContain("14:00–19:00");
     expect(facts.ar.addressFa).toBe(site.address);
   });
 });
 
 describe("booking route", () => {
-  it("sends Persian to the SMS-code booking and the others to WhatsApp until their contact page exists", () => {
+  it("sends Persian to the SMS-code booking and the others to their contact page", () => {
     expect(bookingFor("fa")).toMatchObject({ href: "/booking", external: false });
+    expect(bookingFor("ar")).toMatchObject({ href: "/ar/booking", external: false });
+    expect(bookingFor("en")).toMatchObject({ href: "/en/booking", external: false });
+  });
+
+  it("opens WhatsApp on the clinic number with a ready first message", () => {
     for (const l of ["ar", "en"] as const) {
-      const b = bookingFor(l);
-      expect(b.external).toBe(true);
-      expect(b.href.startsWith(site.whatsapp.url)).toBe(true);
-      expect(decodeURIComponent(b.href.split("text=")[1]).length).toBeGreaterThan(20);
+      const href = waLink(l);
+      expect(href.startsWith("https://wa.me/989177203937?text=")).toBe(true);
+      expect(decodeURIComponent(href.split("text=")[1]).length).toBeGreaterThan(20);
     }
+  });
+});
+
+describe("translated pages", () => {
+  it("lists every service page, and every listed page has a route", () => {
+    for (const s of services) expect(isTranslated(s.href), s.href).toBe(true);
+    for (const p of translatedPaths) {
+      if (p === "/") continue;
+      const file = p.startsWith("/services/") ? "app/[lang]/services/[slug]/page.tsx" : `app/[lang]${p}/page.tsx`;
+      expect(existsSync(file), `${p} -> ${file}`).toBe(true);
+    }
+  });
+
+  it("has complete service text: every list filled, every FAQ answered", () => {
+    for (const l of ["ar", "en"] as const) {
+      for (const s of services) {
+        const t = serviceContent[l][s.slug];
+        expect(t.intro.length, `${l} ${s.slug} intro`).toBeGreaterThan(0);
+        const d = t.detail;
+        if (s.detail) {
+          expect(d, `${l} ${s.slug} detail`).toBeTruthy();
+          expect(d!.process.length, `${l} ${s.slug} process`).toBe(s.detail.process.length);
+          expect(d!.whoItSuits.length, `${l} ${s.slug} who`).toBe(s.detail.whoItSuits.length);
+          expect(d!.benefits.length, `${l} ${s.slug} benefits`).toBe(s.detail.benefits.length);
+          expect(d!.limitations.length, `${l} ${s.slug} limits`).toBe(s.detail.limitations.length);
+          expect(d!.aftercare.length, `${l} ${s.slug} aftercare`).toBe(s.detail.aftercare.length);
+          // One translated question per Persian one, except where a Persian question was dropped on purpose.
+          expect(d!.faq.length, `${l} ${s.slug} faq`).toBe(s.detail.faq.length);
+          for (const f of d!.faq) expect(f.q && f.a, `${l} ${s.slug} faq text`).toBeTruthy();
+        }
+      }
+    }
+  });
+
+  it("never offers instalments or prices to patients abroad", () => {
+    const text = JSON.stringify([serviceContent, pagesCopy]);
+    expect(text).not.toMatch(/instalment|installment|تقسيط|اقساط|قسط/i);
+    expect(text).not.toMatch(/\b(USD|EUR|\$|€)\b|دولار|يورو/);
+  });
+
+  it("states that the clinic team speaks Persian, and nothing more about languages", () => {
+    expect(pagesCopy.en.contact.teamNote).toMatch(/speaks Persian/);
+    expect(pagesCopy.ar.contact.teamNote).toContain("الفارسية");
   });
 });

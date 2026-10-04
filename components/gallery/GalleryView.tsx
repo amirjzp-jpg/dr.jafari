@@ -5,22 +5,25 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { ChevronIcon, CloseIcon } from "@/components/icons/ui";
 import CardFanCarousel from "@/components/ui/card-fan-carousel";
-import { cover, treatmentLabel, treatments, type GalleryItem, type Treatment } from "@/content/gallery";
+import { cover, treatments, type GalleryItem, type Treatment } from "@/content/gallery";
+import { galleryWords, treatmentLabelFor } from "@/content/i18n/gallery";
 import { track } from "@/lib/analytics";
-import { toFaDigits } from "@/lib/digits";
+import type { Locale } from "@/lib/i18n";
 
 type Filter = Treatment | "all";
 
 /** Filter chips, the card fan, a plain grid of every item, and a full-screen viewer. */
-export function GalleryView({ items }: { items: GalleryItem[] }) {
+export function GalleryView({ items, lang = "fa" }: { items: GalleryItem[]; lang?: Locale }) {
+  const w = galleryWords[lang];
+  const treatmentLabel = (t: Treatment) => treatmentLabelFor(lang, t);
   const [filter, setFilter] = useState<Filter>("all");
   const [open, setOpen] = useState<number | null>(null);
 
   const shown = useMemo(() => (filter === "all" ? items : items.filter((i) => i.treatment === filter)), [items, filter]);
   const chips: { key: Filter; label: string; count: number }[] = [
-    { key: "all", label: "همه", count: items.length },
+    { key: "all", label: w.all, count: items.length },
     ...treatments
-      .map((t) => ({ key: t.key as Filter, label: t.label, count: items.filter((i) => i.treatment === t.key).length }))
+      .map((t) => ({ key: t.key as Filter, label: treatmentLabel(t.key), count: items.filter((i) => i.treatment === t.key).length }))
       .filter((c) => c.count > 0),
   ];
 
@@ -31,7 +34,7 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
 
   return (
     <>
-      <div role="group" aria-label="نمایش بر اساس درمان" className="flex flex-wrap justify-center gap-2.5">
+      <div role="group" aria-label={w.filterLabel} className="flex flex-wrap justify-center gap-2.5">
         {chips.map((c) => {
           const active = filter === c.key;
           return (
@@ -45,7 +48,7 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
               }`}
             >
               {c.label}
-              <span className={`text-xs ${active ? "text-white" : "text-muted"}`}>{toFaDigits(c.count)}</span>
+              <span className={`text-xs ${active ? "text-white" : "text-muted"}`}>{w.num(c.count)}</span>
             </button>
           );
         })}
@@ -54,7 +57,8 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
       <div className="mt-6 lg:mt-10">
         <CardFanCarousel
           key={filter}
-          label="نمونه‌کارها"
+          label={w.carousel}
+          lang={lang}
           onOpen={openAt}
           cards={shown.map((it) => ({
             id: it.id,
@@ -64,12 +68,12 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
             pair: it.kind === "pair",
           }))}
         />
-        <p className="mt-4 text-center text-sm text-muted">روی هر تصویر بزنید تا بزرگ‌تر ببینید.</p>
+        <p className="mt-4 text-center text-sm text-muted">{w.hint}</p>
       </div>
 
       <section aria-labelledby="all-title" className="mt-20 lg:mt-28">
         <h2 id="all-title" className="font-display text-[24px] font-semibold lg:text-[34px]">
-          همه‌ی نمونه‌ها
+          {w.allExamples}
           {filter !== "all" && <span className="text-muted"> · {treatmentLabel(filter)}</span>}
         </h2>
         <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
@@ -78,7 +82,7 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
               <button
                 type="button"
                 onClick={() => openAt(i)}
-                aria-label={`${it.alt}${it.kind === "pair" ? " (قبل و بعد)" : ""}، بزرگ‌نمایی`}
+                aria-label={w.zoom(it.alt, it.kind === "pair")}
                 className="group relative block aspect-[4/5] w-full cursor-zoom-in overflow-hidden rounded-[20px] bg-tint lg:rounded-[24px]"
               >
                 <Image
@@ -93,7 +97,7 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
                     {treatmentLabel(it.treatment)}
                   </span>
                   {it.kind === "pair" && (
-                    <span className="rounded-pill bg-primary px-2.5 py-0.5 text-xs leading-5 text-white">قبل و بعد</span>
+                    <span className="rounded-pill bg-primary px-2.5 py-0.5 text-xs leading-5 text-white">{w.beforeAfter}</span>
                   )}
                 </span>
               </button>
@@ -102,13 +106,26 @@ export function GalleryView({ items }: { items: GalleryItem[] }) {
         </ul>
       </section>
 
-      <Viewer items={shown} index={open} onIndex={setOpen} />
+      <Viewer items={shown} index={open} onIndex={setOpen} lang={lang} />
     </>
   );
 }
 
 /** Full-screen viewer on a native <dialog>: Esc and the close button dismiss it, focus stays inside. */
-function Viewer({ items, index, onIndex }: { items: GalleryItem[]; index: number | null; onIndex: (i: number | null) => void }) {
+function Viewer({
+  items,
+  index,
+  onIndex,
+  lang,
+}: {
+  items: GalleryItem[];
+  index: number | null;
+  onIndex: (i: number | null) => void;
+  lang: Locale;
+}) {
+  const w = galleryWords[lang];
+  // English reads left to right: arrow keys, swipes and arrow buttons are the mirror image of Persian and Arabic.
+  const ltr = lang === "en";
   const ref = useRef<HTMLDialogElement>(null);
   const start = useRef<number | null>(null);
   const item = index === null ? null : items[index];
@@ -129,7 +146,7 @@ function Viewer({ items, index, onIndex }: { items: GalleryItem[]; index: number
   return (
     <dialog
       ref={ref}
-      aria-label="نمایش تصویر"
+      aria-label={w.viewer}
       onClose={() => {
         document.documentElement.style.overflow = "";
         onIndex(null);
@@ -137,8 +154,8 @@ function Viewer({ items, index, onIndex }: { items: GalleryItem[]; index: number
       onKeyDown={(e) => {
         // The before/after slider uses the arrow keys itself.
         if ((e.target as HTMLElement).tagName === "INPUT") return;
-        if (e.key === "ArrowLeft") step(1);
-        else if (e.key === "ArrowRight") step(-1);
+        if (e.key === "ArrowLeft") step(ltr ? -1 : 1);
+        else if (e.key === "ArrowRight") step(ltr ? 1 : -1);
       }}
       onClick={(e) => {
         if (e.target === e.currentTarget) ref.current?.close();
@@ -150,15 +167,15 @@ function Viewer({ items, index, onIndex }: { items: GalleryItem[]; index: number
           <div className="flex h-14 shrink-0 items-center justify-between gap-3">
             <div className="flex items-center gap-3 text-sm">
               <span className="text-muted-2">
-                {toFaDigits(index + 1)} از {toFaDigits(items.length)}
+                {w.of(index + 1, items.length)}
               </span>
-              <span className="rounded-pill border border-line bg-surface px-3 py-0.5">{treatmentLabel(item.treatment)}</span>
+              <span className="rounded-pill border border-line bg-surface px-3 py-0.5">{treatmentLabelFor(lang, item.treatment)}</span>
             </div>
             <button
               type="button"
               autoFocus
               onClick={() => ref.current?.close()}
-              aria-label="بستن"
+              aria-label={w.close}
               className="-me-2 flex size-11 items-center justify-center rounded-full text-ink hover:bg-tint"
             >
               <CloseIcon />
@@ -174,14 +191,15 @@ function Viewer({ items, index, onIndex }: { items: GalleryItem[]; index: number
               if (start.current === null || item.kind === "pair") return;
               const dx = e.clientX - start.current;
               start.current = null;
-              // RTL: swipe right for the next photo.
-              if (Math.abs(dx) > 50) step(dx > 0 ? 1 : -1);
+              // RTL: swipe right for the next photo; LTR: swipe left.
+              if (Math.abs(dx) > 50) step(dx > 0 !== ltr ? 1 : -1);
             }}
           >
             {item.kind === "pair" ? (
               <div className="w-full max-w-[min(900px,calc((100dvh-220px)*1.5))]">
                 <BeforeAfter
-                  item={{ title: treatmentLabel(item.treatment), label: item.id, before: item.before, after: item.after }}
+                  item={{ title: treatmentLabelFor(lang, item.treatment), label: item.id, before: item.before, after: item.after }}
+                  lang={lang}
                   sizes="(min-width: 1024px) 900px, 100vw"
                   caption={false}
                 />
@@ -205,22 +223,22 @@ function Viewer({ items, index, onIndex }: { items: GalleryItem[]; index: number
             <button
               type="button"
               onClick={() => step(-1)}
-              aria-label="تصویر قبلی"
+              aria-label={w.prev}
               className="fan-arrow shrink-0"
             >
-              <ChevronIcon flip />
+              <ChevronIcon flip={!ltr} />
             </button>
             <p className="line-clamp-2 text-center text-sm leading-[1.9] text-muted-2">
               {item.alt}
-              {item.kind === "pair" && <span className="block text-muted">خط وسط را بکشید تا قبل و بعد را ببینید.</span>}
+              {item.kind === "pair" && <span className="block text-muted">{w.dragHint}</span>}
             </p>
             <button
               type="button"
               onClick={() => step(1)}
-              aria-label="تصویر بعدی"
+              aria-label={w.next}
               className="fan-arrow shrink-0"
             >
-              <ChevronIcon />
+              <ChevronIcon flip={ltr} />
             </button>
           </div>
         </div>

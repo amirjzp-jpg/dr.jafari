@@ -4,7 +4,7 @@
 
 Final texts to register in the sms.ir panel under «قالب‌ها», one template each. Copy each block exactly; line breaks matter. Parameter names (`#CODE#`, `#NAME#`, `#DATE#`, `#TIME#`) must stay as written, because the site fills them in by name. After approval, put each template's numeric ID in the matching variable (on the server: `bash /opt/dr-jafari/deploy/set-env.sh`; on Vercel: the environment variable; IDs are not secret, the API key is); that message type goes live on the next restart or deploy.
 
-Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 characters and longer messages are billed per 67-character part. The phone number is in Latin digits so phones make it tappable. The signature «کلینیک دندانپزشکی دکتر جعفری» says what the clinic is and avoids the Fatemeh/Neda question. Patient messages open warmly («#NAME# عزیز، سلام», «منتظر دیدارتان هستیم»). Clinic-initiated changes open with an apology. The login code carries an anti-phishing line.
+Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 characters and longer messages are billed per 67-character part. The phone number is in Latin digits so phones make it tappable. The signature «دندانپزشکی شیراز، دکتر جعفری» says what the clinic is and where, and avoids the Fatemeh/Neda question. Patient messages open warmly («#NAME# عزیز، سلام», «منتظر دیدارتان هستیم»). Clinic-initiated changes open with an apology. The login code carries an anti-phishing line.
 
 ## 1. Login and booking code → `SMSIR_TEMPLATE_OTP`
 1 part (68 characters). No name or greeting: the patient is not known yet, and the longer signature needs the room
@@ -12,17 +12,16 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 ```
 کد تأیید: #CODE#
 این کد را به کسی ندهید.
-کلینیک دندانپزشکی دکتر جعفری
+دندانپزشکی شیراز، دکتر جعفری
 ```
 
 ## 2. Booking confirmed → `SMSIR_TEMPLATE_CONFIRMED`
-4 parts (about 219–234 characters). Sent once per booking. Carries the full address so the patient can find the building from the SMS alone; no phone number, by the client's decision
+2 parts (about 90–105 characters). Sent once per booking. Short on purpose, with no address and no phone number: the earlier 4-part version with the full address (it also named a bank) reached the phone 13 minutes late in the first live test (2026-10-04), while 1–2 part messages arrived in under two minutes. The address is on the booking-confirmed page and on /dentist-maaliabad-shiraz
 
 ```
 #NAME# عزیز، سلام
-نوبت شما برای #DATE# ساعت #TIME# با موفقیت ثبت شد. منتظر دیدارتان هستیم.
-نشانی: شیراز، پل معالی‌آباد، ابتدای تاچارا، روبه‌روی پل، جنب بانک تجارت، ساختمان موجودی، طبقه‌چهار
-کلینیک دندانپزشکی دکتر جعفری
+نوبت شما برای #DATE# ساعت #TIME# ثبت شد. منتظر دیدارتان هستیم.
+دندانپزشکی شیراز، دکتر جعفری
 ```
 
 ## 3. Reminder, about 6 hours before the visit → `SMSIR_TEMPLATE_REMINDER`
@@ -30,8 +29,9 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 
 ```
 #NAME# عزیز، سلام
-یادآوری دوستانه: نوبت شما امروز ساعت #TIME# است. منتظر دیدارتان هستیم.
-کلینیک دندانپزشکی دکتر جعفری 09023023120
+یادآوری نوبت شما: امروز ساعت #TIME# در کلینیک منتظرتان هستیم.
+دندانپزشکی شیراز، دکتر جعفری
+تماس: 09023023120
 ```
 
 ## 4. Cancelled by the clinic → `SMSIR_TEMPLATE_CANCELLED` (optional, not registered for now)
@@ -40,7 +40,7 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 ```
 #NAME# عزیز، با پوزش نوبت #DATE# ساعت #TIME# لغو شد.
 برای زمان جدید: 09023023120
-کلینیک دندانپزشکی دکتر جعفری
+دندانپزشکی شیراز، دکتر جعفری
 ```
 
 ## 5. Moved by the clinic → `SMSIR_TEMPLATE_MOVED` (optional, not registered for now)
@@ -49,7 +49,7 @@ Writing rules behind these texts: Persian SMS are Unicode, so one part is 70 cha
 ```
 #NAME# عزیز، با پوزش نوبت شما به #DATE# ساعت #TIME# تغییر کرد.
 اگر مناسب نیست: 09023023120
-کلینیک دندانپزشکی دکتر جعفری
+دندانپزشکی شیراز، دکتر جعفری
 ```
 
 ## What the site sends

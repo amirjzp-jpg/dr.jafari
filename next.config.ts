@@ -43,6 +43,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // One 404 page for the whole app: the site has several root layouts (see app/global-not-found.tsx).
+  experimental: { globalNotFound: true },
   images: {
     // AVIF first (roughly 20-30% smaller than WebP), WebP for older browsers.
     formats: ["image/avif", "image/webp"],

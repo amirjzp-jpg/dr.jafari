@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ChevronIcon } from "@/components/icons/ui";
-import { toFaDigits } from "@/lib/digits";
+import { galleryWords } from "@/content/i18n/gallery";
+import type { Locale } from "@/lib/i18n";
 
 // A fan of photo cards animated with GSAP (adapted from the 21st.dev "card fan
 // carousel"). Changes for this site:
@@ -27,8 +28,6 @@ export type FanCard = {
 
 const MAX_VISIBLE = 7;
 const HALF = 3;
-/** -1 mirrors the fan for right-to-left reading. */
-const DIR = -1;
 
 const FAN_POSITIONS = [
   { rot: -21, scale: 0.7756, x: -30, y: 7.3, zIndex: 1 },
@@ -56,7 +55,7 @@ function heightMultiplier(width: number) {
   return available >= ideal ? 1 : available / ideal;
 }
 
-function slotConfig(total: number, slot: number) {
+function slotConfig(total: number, slot: number, DIR: number) {
   const base =
     total >= MAX_VISIBLE
       ? FAN_POSITIONS[slot]
@@ -75,11 +74,16 @@ export default function CardFanCarousel({
   cards,
   onOpen,
   label,
+  lang = "fa",
 }: {
   cards: FanCard[];
   onOpen?: (index: number) => void;
   label: string;
+  lang?: Locale;
 }) {
+  const w = galleryWords[lang];
+  /** -1 mirrors the fan for right-to-left reading (Persian, Arabic); English reads left to right. */
+  const DIR = lang === "en" ? 1 : -1;
   const containerRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
   const hasEntered = useRef(false);
@@ -137,7 +141,7 @@ export default function CardFanCarousel({
     const wm = widthMultiplier(window.innerWidth);
     const hm = heightMultiplier(window.innerWidth);
     const slots = paginated ? MAX_VISIBLE : total;
-    const config = (slot: number) => slotConfig(slots, slot);
+    const config = (slot: number) => slotConfig(slots, slot, DIR);
 
     if (first) isAnimating.current = true;
     let done = 0;
@@ -266,7 +270,7 @@ export default function CardFanCarousel({
       window.removeEventListener("resize", onResize);
       if (leaveTimer) clearTimeout(leaveTimer);
     };
-  }, [center, total, visibleMap, paginated]);
+  }, [center, total, visibleMap, paginated, DIR]);
 
   if (!total) return null;
   const visible = visibleMap(center);
@@ -311,7 +315,7 @@ export default function CardFanCarousel({
               type="button"
               tabIndex={shown ? 0 : -1}
               aria-hidden={shown ? undefined : true}
-              aria-label={`${card.alt}${card.pair ? " (قبل و بعد)" : ""}، بزرگ‌نمایی`}
+              aria-label={w.zoom(card.alt, !!card.pair)}
               onClick={() => {
                 if (swipe.current?.moved) return;
                 onOpen?.(i);
@@ -339,7 +343,7 @@ export default function CardFanCarousel({
                   )}
                   {card.pair && (
                     <span className="rounded-pill bg-primary px-2.5 py-0.5 text-xs leading-5 text-white lg:px-3 lg:leading-6">
-                      قبل و بعد
+                      {w.beforeAfter}
                     </span>
                   )}
                 </span>
@@ -351,11 +355,11 @@ export default function CardFanCarousel({
 
       {paginated && (
         <div className="relative z-30 mt-6 flex items-center justify-center gap-3 lg:mt-8">
-          <button type="button" onClick={() => go("prev")} aria-label="تصویر قبلی" className="fan-arrow">
-            <ChevronIcon flip size={20} />
+          <button type="button" onClick={() => go("prev")} aria-label={w.prev} className="fan-arrow">
+            <ChevronIcon flip={DIR < 0} size={20} />
           </button>
           <span aria-live="polite" className="min-w-16 text-center text-sm text-muted-2 sm:hidden">
-            {toFaDigits(center + 1)} از {toFaDigits(total)}
+            {w.of(center + 1, total)}
           </span>
           <div className="hidden items-center sm:flex">
             {cards.map((c, i) => (
@@ -363,7 +367,7 @@ export default function CardFanCarousel({
                 key={c.id}
                 type="button"
                 onClick={() => jump(i)}
-                aria-label={`نمونه‌ی ${toFaDigits(i + 1)}`}
+                aria-label={w.example(i + 1)}
                 aria-current={i === center ? "true" : undefined}
                 className="flex size-6 items-center justify-center"
               >
@@ -375,8 +379,8 @@ export default function CardFanCarousel({
               </button>
             ))}
           </div>
-          <button type="button" onClick={() => go("next")} aria-label="تصویر بعدی" className="fan-arrow">
-            <ChevronIcon size={20} />
+          <button type="button" onClick={() => go("next")} aria-label={w.next} className="fan-arrow">
+            <ChevronIcon flip={DIR > 0} size={20} />
           </button>
         </div>
       )}

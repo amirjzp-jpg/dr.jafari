@@ -18,7 +18,7 @@ Website for Dr. Fatemeh Jafari's cosmetic dental clinic in Shiraz, Iran. It's Pe
 ## Working style
 - Build in the order in BUILD-SPEC.md section 13. Stop after each step and show the result.
 - When the spec and the designs disagree, ask rather than guess.
-- UI copy is Persian; code, comments and commits are English.
+- UI copy is Persian; Arabic and English versions live under `/ar` and `/en` (see `docs/decisions.md`, "Languages"). Code, comments and commits are English.
 
 ## Project decisions
 `docs/decisions.md` records decisions made with the client after the handoff. Where it differs from BUILD-SPEC.md, the decisions file wins.

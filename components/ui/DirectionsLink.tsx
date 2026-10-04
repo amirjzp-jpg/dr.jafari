@@ -1,4 +1,6 @@
 import { NavigateIcon } from "@/components/icons/ui";
+import { ui } from "@/content/i18n/ui";
+import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 const styles = {
@@ -16,21 +18,23 @@ const styles = {
 export function DirectionsLink({
   variant = "solid",
   className = "",
+  lang = "fa",
 }: {
   variant?: keyof typeof styles;
   className?: string;
+  lang?: Locale;
 }) {
   return (
     <a
       href={site.mapUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="مسیریابی تا کلینیک روی نقشه"
+      aria-label={ui[lang].directionsAria}
       data-umami-event="directions_click"
       className={`${styles[variant]} ${className}`}
     >
       <NavigateIcon size={variant === "inline" ? 15 : 18} />
-      مسیریابی
+      {ui[lang].directions}
     </a>
   );
 }

@@ -2,7 +2,26 @@ import Image from "next/image";
 import { InstagramIcon } from "@/components/icons/ui";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
+
+const copy = {
+  fa: {
+    eyebrow: "اینستاگرام",
+    title: "لبخندهای تازه، در اینستاگرام",
+    body: "نمونه‌کارهای جدید، نکته‌های مراقبت و روزهای کلینیک را در صفحه‌ی اینستاگرام دکتر جعفری دنبال کنید.",
+  },
+  ar: {
+    eyebrow: "إنستغرام",
+    title: "ابتسامات جديدة على إنستغرام",
+    body: "تابعوا النماذج الجديدة ونصائح العناية ويوميات العيادة على صفحة الدكتورة جعفري في إنستغرام.",
+  },
+  en: {
+    eyebrow: "Instagram",
+    title: "New smiles, on Instagram",
+    body: "Follow new results, aftercare tips and days at the clinic on Dr. Jafari's Instagram page.",
+  },
+} as const;
 
 // Three real results fanned like prints, a small static echo of the gallery's card fan.
 const prints = [
@@ -12,20 +31,21 @@ const prints = [
 ];
 
 /** Follow-on-Instagram band. Links out only: no embed (Instagram is filtered in Iran and would load Meta scripts). */
-export function InstagramCta({ className = "" }: { className?: string }) {
+export function InstagramCta({ className = "", lang = "fa" }: { className?: string; lang?: Locale }) {
   if (!site.instagram) return null;
+  const c = copy[lang];
   return (
     <section aria-labelledby="ig-title" className={className}>
       <Container>
         <div className="relative flex flex-col items-center gap-10 overflow-hidden rounded-[32px] bg-linear-160 from-tint to-[#EDF1F3] px-6 py-12 lg:flex-row lg:justify-between lg:gap-16 lg:px-[88px] lg:py-16">
           <div aria-hidden="true" className="pointer-events-none absolute -end-24 -top-24 hidden size-72 rounded-full border border-champagne opacity-50 lg:block" />
           <div className="flex max-w-[480px] flex-col items-center gap-4 text-center lg:items-start lg:text-start">
-            <Eyebrow>اینستاگرام</Eyebrow>
+            <Eyebrow>{c.eyebrow}</Eyebrow>
             <h2 id="ig-title" className="font-display text-[26px] leading-normal font-semibold lg:text-[38px]">
-              لبخندهای تازه، در اینستاگرام
+              {c.title}
             </h2>
             <p className="text-base leading-[2] text-muted-2">
-              نمونه‌کارهای جدید، نکته‌های مراقبت و روزهای کلینیک را در صفحه‌ی اینستاگرام دکتر جعفری دنبال کنید.
+              {c.body}
             </p>
             <a
               href={site.instagram}

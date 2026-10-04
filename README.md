@@ -24,8 +24,8 @@ npm run build
 Stack: Next.js (App Router), TypeScript, Tailwind CSS v4, PostgreSQL (`pg`). Fonts are self-hosted via `@fontsource` packages; nothing loads from Google.
 
 ## Where things are
-- `app/(site)/`: public pages (home, services, about, journal, policies). `app/booking/`: the 5-step booking flow and its server actions.
-- `app/admin/`: staff panel. `login/` is public; everything under `(panel)/` requires a staff session. Server actions in `app/admin/actions.ts`.
+- `app/(fa)/(site)/`: public Persian pages (home, services, about, journal, policies). `app/(fa)/booking/`: the 5-step booking flow and its server actions. `app/[lang]/`: the Arabic (`/ar`) and English (`/en`) versions; their text is in `content/i18n/` and `lib/i18n.ts` lists which pages are translated.
+- `app/(fa)/admin/`: staff panel. `login/` is public; everything under `(panel)/` requires a staff session. Server actions in `app/(fa)/admin/actions.ts`.
 - `app/api/`: `booking/release` (frees a hold when the patient leaves) and `cron/reminders` (reminder SMS about 6 hours ahead, plus daily clean-up; call every 15 minutes).
 - `components/`: `layout/` (header, footer, mobile bar), `home/`, `content/` (page building blocks), `admin/`, `ui/`, `icons/`.
 - `lib/booking/`: schedule rules (`schedule.ts`, pure) and every booking write (`service.ts`, guarded by the database constraint).

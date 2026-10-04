@@ -1,5 +1,6 @@
 import { articles } from "@/content/journal";
 import { services } from "@/content/services";
+import { isTranslated, languageNames, localePath } from "@/lib/i18n";
 import { abs } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -46,6 +47,17 @@ export function GET() {
     link("رزرو آنلاین نوبت", "/booking", "نوبت «معاینه و مشاوره» (۳۰ دقیقه) با تأیید پیامکی."),
     link("قوانین رزرو", "/booking-policy"),
     "",
+    ...(isTranslated("/")
+      ? [
+          "## Other languages",
+          "",
+          link(languageNames.ar, localePath("ar", "/"), "الصفحة الرئيسية بالعربية"),
+          link(languageNames.en, localePath("en", "/"), "Home page in English"),
+          link("المجلة", localePath("ar", "/journal"), "مقالات بالعربية عن الكومبوزيت والفينير الخزفي (البورسلين) والتبييض"),
+          link("Journal", localePath("en", "/journal"), "Articles in English on composite bonding, ceramic (porcelain) veneers and whitening"),
+          "",
+        ]
+      : []),
     "## Optional",
     "",
     link("مجله", "/journal", "مقاله‌های آموزشی درباره‌ی کامپوزیت و لمینت."),

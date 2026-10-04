@@ -24,13 +24,6 @@ export function adminPhones(): Set<string> {
 export const secureCookies = isProd;
 
 /**
- * True while staff login codes still go to the server log: until both the sms.ir
- * key and the OTP template ID are set (each message type goes live on its own,
- * see lib/sms).
- */
-export const smsIsMock = () => !process.env.SMSIR_API_KEY || !(Number(process.env.SMSIR_TEMPLATE_OTP) > 0);
-
-/**
  * Settings the booking system and staff login can't work without. Names only,
  * never values, so this is safe to show on the login page of a test deploy.
  */

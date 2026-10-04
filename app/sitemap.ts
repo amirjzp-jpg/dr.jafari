@@ -27,6 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...pages.flatMap((path) => pageEntries(path)),
     ...services.flatMap((s) => pageEntries(s.href, new Date(s.updatedAt ?? s.reviewedAt ?? COPY_APPROVED))),
-    ...articles.map((a) => ({ url: abs(`/journal/${a.slug}`), lastModified: new Date(a.updated ?? a.published) })),
+    ...articles.flatMap((a) => pageEntries(`/journal/${a.slug}`, new Date(a.updated ?? a.published))),
   ];
 }

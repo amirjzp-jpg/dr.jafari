@@ -13,10 +13,12 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 import { cases } from "@/content/cases";
 import { featuredPhoto } from "@/content/gallery";
+import { articleText, journalLabels } from "@/content/i18n/articles";
 import { homeCopy, serviceText } from "@/content/i18n/home";
 import { bookingFor, externalProps, facts, ui } from "@/content/i18n/ui";
+import { latestArticles } from "@/content/journal";
 import { featuredServices, otherServices } from "@/content/services";
-import { localeHref, type IntlLocale } from "@/lib/i18n";
+import { localeHref, localePath, type IntlLocale } from "@/lib/i18n";
 import { dentistSchema, faqSchema, personSchema, websiteSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import aboutDetail from "@/public/images/doctor/about-detail.webp";
@@ -291,6 +293,46 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
               })}
             </ul>
           </div>
+        </Container>
+      </section>
+
+      {/* Journal */}
+      <section id="journal" aria-labelledby="journal-title">
+        <Container className="flex flex-col gap-12 pt-10 pb-24 lg:pb-32">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="flex flex-col gap-3.5">
+              <Eyebrow>{journalLabels[lang].homeEyebrow}</Eyebrow>
+              <h2 id="journal-title" className="font-display text-[26px] leading-normal font-semibold lg:text-[40px]">
+                {journalLabels[lang].homeTitle}
+              </h2>
+            </div>
+            <ButtonLink href={localePath(lang, "/journal")} variant="outline" size="md" className="!h-12 !px-[30px] text-sm">
+              {journalLabels[lang].allArticles}
+            </ButtonLink>
+          </div>
+          <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {latestArticles(3).map((a) => {
+              const t = articleText[lang][a.slug];
+              return (
+                <li key={a.slug}>
+                  <Link href={localePath(lang, `/journal/${a.slug}`)} className="flex flex-col gap-4 text-ink no-underline hover:text-ink">
+                    <Image
+                      src={a.image.card}
+                      alt={t.imageAlt}
+                      width={a.image.cardW}
+                      height={a.image.cardH}
+                      sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw"
+                      className="h-[250px] w-full rounded-[20px] bg-tint object-cover"
+                    />
+                    <span className="self-start rounded-pill bg-tint px-3.5 py-[5px] text-xs text-primary">{t.category}</span>
+                    <span className="font-display text-[22px] leading-[1.6] font-semibold">{t.title}</span>
+                    <span className="text-[15px] leading-[1.9] text-muted">{t.excerpt}</span>
+                    <span className="text-[13px] text-muted">{journalLabels[lang].minutes(a.readMinutes)}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </Container>
       </section>
 

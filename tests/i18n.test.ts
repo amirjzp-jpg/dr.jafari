@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 import { bookingFor, facts, navFor, ui, waLink } from "@/content/i18n/ui";
 import { homeCopy, serviceText } from "@/content/i18n/home";
 import { services } from "@/content/services";
+import { articleText, qaFromArticle } from "@/content/i18n/articles";
+import { articles } from "@/content/journal";
 import { serviceContent } from "@/content/i18n/services";
 import { pagesCopy } from "@/content/i18n/pages";
 import { dirOf, isIntl, isTranslated, localeHref, localePath, locales, splitLocale, switchTarget, translatedPaths } from "@/lib/i18n";
@@ -29,11 +31,12 @@ describe("language paths", () => {
   it("only offers links to pages that have a translation", () => {
     expect(isTranslated("/")).toBe(true);
     expect(isTranslated("/about")).toBe(true);
-    expect(isTranslated("/journal")).toBe(false); // articles are not translated yet
+    expect(isTranslated("/journal")).toBe(true);
+    expect(isTranslated("/some-new-page")).toBe(false); // a page added in Persian first
     expect(localeHref("ar", "/")).toBe("/ar");
     expect(localeHref("en", "/about")).toBe("/en/about");
-    expect(localeHref("ar", "/journal")).toBeNull();
-    expect(localeHref("fa", "/journal")).toBe("/journal");
+    expect(localeHref("ar", "/some-new-page")).toBeNull();
+    expect(localeHref("fa", "/some-new-page")).toBe("/some-new-page");
   });
 
   it("switches language to the same page, or to that language's home when it is not translated", () => {
@@ -42,8 +45,8 @@ describe("language paths", () => {
     expect(switchTarget("/ar", "en")).toBe("/en");
     expect(switchTarget("/about", "ar")).toBe("/ar/about");
     expect(switchTarget("/en/about", "fa")).toBe("/about");
-    expect(switchTarget("/journal", "ar")).toBe("/ar");
-    expect(switchTarget("/journal/veneer-care", "en")).toBe("/en");
+    expect(switchTarget("/some-new-page", "ar")).toBe("/ar");
+    expect(switchTarget("/journal/veneer-care", "en")).toBe("/en/journal/veneer-care");
     expect(switchTarget("/services/implant", "en")).toBe("/en/services/implant");
   });
 
@@ -70,6 +73,7 @@ describe("language content", () => {
     expect(facts.fa.address).toBe(site.address);
     expect(facts.fa.hours).toBe(site.hours);
     expect(navFor("fa").map((n) => n.href)).toEqual(["/composite", "/veneers", "/gallery", "/services", "/journal", "/#contact"]);
+    expect(navFor("en").map((n) => n.href)).toContain("/en/journal");
   });
 
   it("names and summarises every service in Arabic and English", () => {
@@ -82,7 +86,7 @@ describe("language content", () => {
   });
 
   it("never uses the banned superlatives in Arabic or English copy", () => {
-    const text = JSON.stringify([homeCopy, serviceText, ui.ar, ui.en, facts.ar, facts.en]);
+    const text = JSON.stringify([homeCopy, serviceText, ui.ar, ui.en, facts.ar, facts.en, articleText]);
     expect(text).not.toMatch(/\bbest\b|\bspecialist\b|أفضل|أخصائي|اختصاصي|متخصص|بهترین|متخصص/i);
   });
 
@@ -115,7 +119,11 @@ describe("translated pages", () => {
     for (const s of services) expect(isTranslated(s.href), s.href).toBe(true);
     for (const p of translatedPaths) {
       if (p === "/") continue;
-      const file = p.startsWith("/services/") ? "app/[lang]/services/[slug]/page.tsx" : `app/[lang]${p}/page.tsx`;
+      const file = p.startsWith("/services/")
+        ? "app/[lang]/services/[slug]/page.tsx"
+        : p.startsWith("/journal/")
+          ? "app/[lang]/journal/[slug]/page.tsx"
+          : `app/[lang]${p}/page.tsx`;
       expect(existsSync(file), `${p} -> ${file}`).toBe(true);
     }
   });
@@ -142,7 +150,7 @@ describe("translated pages", () => {
   });
 
   it("never offers instalments or prices to patients abroad", () => {
-    const text = JSON.stringify([serviceContent, pagesCopy]);
+    const text = JSON.stringify([serviceContent, pagesCopy, articleText]);
     expect(text).not.toMatch(/instalment|installment|تقسيط|اقساط|قسط/i);
     expect(text).not.toMatch(/\b(USD|EUR|\$|€)\b|دولار|يورو/);
   });
@@ -150,5 +158,45 @@ describe("translated pages", () => {
   it("states that the clinic team speaks Persian, and nothing more about languages", () => {
     expect(pagesCopy.en.contact.teamNote).toMatch(/speaks Persian/);
     expect(pagesCopy.ar.contact.teamNote).toContain("الفارسية");
+  });
+});
+
+describe("journal articles in Arabic and English", () => {
+  it("translates every article, section by section", () => {
+    for (const l of ["ar", "en"] as const) {
+      for (const a of articles) {
+        const t = articleText[l][a.slug];
+        expect(t, `${l} ${a.slug}`).toBeTruthy();
+        expect(t.body.length, `${l} ${a.slug} blocks`).toBe(a.body.length);
+        // Same shape as the Persian article: headings, paragraphs and lists in the same places.
+        a.body.forEach((b, i) => expect(Object.keys(t.body[i])[0], `${l} ${a.slug} block ${i}`).toBe(Object.keys(b)[0]));
+        expect(t.metaDescription.length, `${l} ${a.slug} description`).toBeLessThan(200);
+        expect(t.metaDescription, `${l} ${a.slug} description`).toMatch(l === "ar" ? /شيراز/ : /Shiraz/);
+      }
+    }
+  });
+
+  it("builds question-and-answer pairs from the article's own text", () => {
+    const a = articleText.en["whitening-longevity"];
+    const qa = qaFromArticle("en", a.title, a.body);
+    expect(qa[0].q).toBe("How long does teeth whitening last?");
+    expect(qa[0].a).toBe(a.body.find((b) => "p" in b && b.p)!["p" as keyof typeof a.body[0]]);
+    expect(qa.map((x) => x.q)).toContain("Why do teeth darken again?");
+    // Every answer comes from the article: nothing is invented.
+    const all = JSON.stringify(a.body);
+    for (const x of qa.slice(1)) expect(x.a.length).toBeGreaterThan(20);
+    expect(all).toContain("Teeth are exposed to coloured foods");
+  });
+
+  it("makes the question-style titles produce a question-and-answer entry in both languages", () => {
+    for (const l of ["ar", "en"] as const) {
+      const a = articleText[l]["composite-vs-veneers"];
+      expect(qaFromArticle(l, a.title, a.body)[0].q, l).toBe(a.title);
+    }
+  });
+
+  it("names porcelain next to ceramic in the Arabic and English veneer articles (Gulf wording)", () => {
+    expect(articleText.ar["veneer-care"].title).toContain("البورسلين");
+    expect(articleText.en["veneer-care"].title).toContain("porcelain");
   });
 });

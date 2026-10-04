@@ -175,12 +175,14 @@ const intlNav: Record<"ar" | "en", { path: string; label: string }[]> = {
     { path: "/veneers", label: "الفينير" },
     { path: "/gallery", label: "نماذج الأعمال" },
     { path: "/services", label: "الخدمات" },
+    { path: "/journal", label: "المجلة" },
   ],
   en: [
     { path: "/composite", label: "Composite" },
     { path: "/veneers", label: "Veneers" },
     { path: "/gallery", label: "Our work" },
     { path: "/services", label: "Services" },
+    { path: "/journal", label: "Journal" },
   ],
 };
 

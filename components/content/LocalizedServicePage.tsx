@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { BookingCta } from "@/components/content/BookingCta";
 import { Faq } from "@/components/content/Faq";
@@ -5,8 +7,10 @@ import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
 import { cases } from "@/content/cases";
+import { articleText, journalLabels } from "@/content/i18n/articles";
 import { homeCopy } from "@/content/i18n/home";
 import { serviceContent, serviceLabels, type ServiceContent } from "@/content/i18n/services";
+import { articles } from "@/content/journal";
 import type { Service } from "@/content/services";
 import { localePath, type IntlLocale } from "@/lib/i18n";
 import { faqSchema, medicalWebPageSchema } from "@/lib/seo";
@@ -49,6 +53,7 @@ export function LocalizedServicePage({ lang, service }: { lang: IntlLocale; serv
     .map((c, i) => ({ ...c, title: homeCopy[lang].cases.titles[i] ?? c.title, label: `${i + 1}`, persianTitle: c.title }))
     .filter((c) => service.caseTitles?.includes(c.persianTitle));
   const faq = d ? d.faq : (text.faq ?? []);
+  const related = articles.filter((a) => a.pillar === service.href || a.alsoRelatedTo?.includes(service.href));
 
   return (
     <>
@@ -136,6 +141,32 @@ export function LocalizedServicePage({ lang, service }: { lang: IntlLocale; serv
                 <BeforeAfter key={c.label} item={c} lang={lang} />
               ))}
             </div>
+          </section>
+        )}
+
+        {related.length > 0 && (
+          <section aria-labelledby="articles" className="flex flex-col gap-8 pt-16">
+            <H2 id="articles">{journalLabels[lang].related}</H2>
+            <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {related.map((a) => {
+                const t = articleText[lang][a.slug];
+                return (
+                  <li key={a.slug}>
+                    <Link href={localePath(lang, `/journal/${a.slug}`)} className="flex flex-col gap-3 text-ink no-underline hover:text-primary">
+                      <Image
+                        src={a.image.card}
+                        alt={t.imageAlt}
+                        width={a.image.cardW}
+                        height={a.image.cardH}
+                        sizes="(min-width: 1024px) 380px, 100vw"
+                        className="h-[200px] w-full rounded-[20px] bg-tint object-cover"
+                      />
+                      <span className="font-display text-xl leading-[1.6] font-semibold">{t.title}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </section>
         )}
       </Container>

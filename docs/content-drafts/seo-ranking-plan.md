@@ -1,6 +1,6 @@
 # SEO / GEO / AEO ranking plan (draft for approval)
 
-Status: **proposal. Nothing on the site has changed.** Written 2026-10-06 after the site went live and began indexing.
+Status: **C, D and E applied on 2026-10-06** (hasMap in the clinic markup; «خدمات دندانپزشکی در شیراز» as the services H1; links to the Maaliabad page from home, services and about). Articles A and B and the rest are still proposals. B stays factors-only because real prices are not available; Google Business Profile is not claimed yet, so no profile URL or rating markup. Written 2026-10-06 after the site went live and began indexing.
 
 ## 1. Skills
 No SEO, GEO or AEO skills are installed on this account (searched 2026-10-06). This plan comes from reading the code, `docs/decisions.md` and the earlier keyword drafts. It is not backed by search-volume or ranking data: none was available.

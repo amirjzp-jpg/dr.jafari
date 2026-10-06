@@ -112,8 +112,8 @@ const shiraz = {
 };
 
 /**
- * Dentist (a LocalBusiness subtype). No geo, hasMap or priceRange: the exact pin
- * and prices are not confirmed (TODO-content.md).
+ * Dentist (a LocalBusiness subtype). hasMap is the address search link in site.mapUrl;
+ * no geo or priceRange: the exact pin and prices are not confirmed (TODO-content.md).
  */
 export function dentistSchema(lang: Locale = "fa") {
   const f = facts[lang];
@@ -133,6 +133,7 @@ export function dentistSchema(lang: Locale = "fa") {
       addressRegion: intl ? (lang === "ar" ? "فارس" : "Fars") : "فارس",
       addressCountry: "IR",
     },
+    hasMap: site.mapUrl,
     areaServed: shiraz,
     knowsLanguage: "fa",
     openingHoursSpecification: site.openPeriods.map(([opens, closes]) => ({

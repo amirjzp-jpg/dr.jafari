@@ -392,6 +392,9 @@ function Contact() {
                   {site.address}
                 </span>
                 <DirectionsLink />
+                <Link href="/dentist-maaliabad-shiraz" className="font-medium text-primary no-underline hover:underline">
+                  دندانپزشکی زیبایی در معالی‌آباد شیراز ←
+                </Link>
               </dd>
             </div>
             <div className={`flex flex-col gap-1 pt-5 ${site.instagram ? "border-b border-[#D2DCE4] pb-5" : ""}`}>

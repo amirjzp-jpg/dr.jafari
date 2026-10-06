@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { BookingCta } from "@/components/content/BookingCta";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
@@ -45,7 +46,7 @@ export default function AboutPage() {
             می‌کنیم و همه‌ی گزینه‌ها، با مزایا و محدودیت‌هایشان، پیش از شروع درمان با شما مرور می‌شود.
           </p>
           <p className="text-[17px] leading-[2.1] text-muted-2">
-            کلینیک در شیراز، پل معالی‌آباد قرار دارد؛ کلینیکی مجهز به تجهیزات و فناوری‌های روز دندانپزشکی، با امکان پرداخت
+            کلینیک در شیراز، <Link href="/dentist-maaliabad-shiraz">پل معالی‌آباد</Link> قرار دارد؛ کلینیکی مجهز به تجهیزات و فناوری‌های روز دندانپزشکی، با امکان پرداخت
             اقساطی برای درمان‌های زیبایی.
           </p>
           <dl className="mt-2 flex flex-col text-[15px]">

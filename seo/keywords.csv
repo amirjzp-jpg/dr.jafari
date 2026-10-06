@@ -1,0 +1,74 @@
+keyword,variant_type,cluster,intent,target_url,priority,competition_guess,notes
+دندانپزشک شیراز,core,A-Core city,commercial,/ (home),P1,very high,SERP = directories (doctoreto/nobat/paziresh24/doctor-yab) + big clinics; win via GBP + directory listings first
+دندانپزشکی شیراز,core,A-Core city,commercial,/ (home),P1,very high,same SERP as above
+دندان پزشک شیراز,spelling variant (space),A-Core city,commercial,/ (home),P2,very high,Google merges variants; use naturally in body copy and anchors
+دندان پزشکی شیراز,spelling variant (space),A-Core city,commercial,/ (home),P2,very high,
+دنندان بزشک شیراز,typo variant,A-Core city,commercial,/ (home),P3,very high,Do not target; track only. Google corrects typos
+دنندان بزشکی شیراز,typo variant,A-Core city,commercial,/ (home),P3,very high,Do not target; track only
+dandanpezeshki shiraz,finglish,A-Core city,commercial,/ (home),P2,medium,Add Finglish to domain/brand mentions and one FAQ; domain already matches
+dndan pezeshki shiraz,finglish variant,A-Core city,commercial,/ (home),P3,medium,Track only
+dentist shiraz,english,A-Core city,commercial,/ (home),P3,high,Medical-tourist/expat intent; needs English page later
+cosmetic dentist shiraz,english,A-Core city,commercial,/ (home),P2,medium,English page candidate (see plan month 6)
+کلینیک دندانپزشکی شیراز,core,A-Core city,commercial,/ (home),P1,very high,
+دندانپزشک خوب در شیراز,core,A-Core city,commercial,/journal/how-to-choose-cosmetic-dentist-shiraz,P1,high,Informational guide to capture 'good dentist' queries without self-praise
+بهترین دندانپزشک شیراز,superlative,A-Core city,commercial,/journal/how-to-choose-cosmetic-dentist-shiraz,P2,very high,SERP = listicles/directories. Get listed in them; do not claim 'best' on-page
+نوبت دندانپزشک شیراز,core,A-Core city,transactional,/booking,P2,very high,Directories own this; GBP booking link helps
+دندانپزشک نزدیک من,near me,B-Area,transactional,GBP + /,P1,high,Driven by Google Business Profile not website
+دندانپزشکی معالی آباد,area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,medium,Create dedicated area page; SERP has directories + few clinic sites
+دندان پزشکی معالی اباد,area spelling variant,B-Area,commercial,/dandanpezeshki-maaliabad (new),P2,medium,Variant without hamza/space
+دندانپزشک معالی آباد شیراز,area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,medium,
+کلینیک دندانپزشکی معالی آباد,area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,medium,
+دندانپزشک زیبایی معالی آباد,area+cosmetic,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,low-medium,Best winnable area+service combo
+لمینت معالی آباد,area+service,B-Area,commercial,/veneers + area page,P1,low-medium,realtimedentist has a page here; beatable with a real page
+کامپوزیت معالی آباد,area+service,B-Area,commercial,/composite + area page,P1,low-medium,
+دندانپزشک پل معالی آباد,micro-local,B-Area,commercial,/dandanpezeshki-maaliabad (new),P3,low,Landmark query; include address phrasing on area page
+دندانپزشک زیبایی شیراز,core cosmetic,C-Cosmetic,commercial,/ (home),P1,high,Home title already targets this
+دندانپزشکی زیبایی شیراز,core cosmetic,C-Cosmetic,commercial,/ (home),P1,high,
+بهترین دندانپزشک زیبایی شیراز,superlative,C-Cosmetic,commercial,/journal/how-to-choose-cosmetic-dentist-shiraz,P1,high,Top SERP = listicles (pezeshkanbeauty/dandanpezeshka/darshirazkojast); pursue inclusion + the guide
+دندانپزشک زیبایی و ترمیمی شیراز,core cosmetic,C-Cosmetic,commercial,/ (home),P2,high,
+دکتر زیبایی دندان شیراز,core cosmetic,C-Cosmetic,commercial,/ (home),P2,medium,
+طراحی لبخند شیراز,service,C-Cosmetic,commercial,/services/smile-design,P1,medium,Expand page: process
+هزینه طراحی لبخند شیراز,price,C-Cosmetic,commercial,/services/smile-design,P2,medium,Add 'how cost is determined' section (no fixed prices if clinic prefers)
+هالیوود اسمایل شیراز,service,C-Cosmetic,commercial,/services/smile-design,P3,medium,Only if the clinic offers it
+لیفت لثه شیراز,service,C-Cosmetic,commercial,/services/gum-contouring (new),P3,low,Only if the clinic offers it
+بلیچینگ دندان شیراز,service,C-Cosmetic,commercial,/services/whitening,P2,medium,
+سفید کردن دندان شیراز,service,C-Cosmetic,commercial,/services/whitening,P2,medium,
+لمینت دندان شیراز,core service,D-Veneer,commercial,/veneers,P1,high,
+لمینت سرامیکی شیراز,core service,D-Veneer,commercial,/veneers,P1,high,
+دندانپزشک لمینت شیراز,core service,D-Veneer,commercial,/veneers,P1,high,
+بهترین دکتر لمینت شیراز,superlative,D-Veneer,commercial,/journal/how-to-choose-veneer-dentist-shiraz (new),P2,high,SERP = directories + listicles
+قیمت لمینت دندان شیراز,price,D-Veneer,commercial,/journal/veneer-price-shiraz-1405 (new),P1,high,Strong demand; SERP shows price pages (dentalclinicmaryam/shirazbeauty). Publish factors-based price guide
+قیمت لمینت دندان شیراز ۱۴۰۵,price+year,D-Veneer,commercial,/journal/veneer-price-shiraz-1405 (new),P1,medium,Year in title; update yearly (Farvardin)
+هزینه لمینت دندان شیراز,price,D-Veneer,commercial,/journal/veneer-price-shiraz-1405 (new),P1,high,
+لمینت اقساطی شیراز,installment,D-Veneer,transactional,/veneers#installment + /journal/veneer-installment-shiraz (new),P1,medium,Clinic offers installments: unique selling point; competitors target this too
+لمینت دندان جلو شیراز,service,D-Veneer,commercial,/veneers,P2,medium,
+لمینت کامپوزیتی شیراز,service,D-Veneer,commercial,/composite,P2,medium,Clarify composite veneer vs ceramic veneer
+لمینت ایمکس شیراز,service,D-Veneer,commercial,/veneers,P3,low,Only if material is used
+عوارض لمینت دندان,informational,D-Veneer,informational,/journal (new),P2,high,National query; AEO answer-box candidate
+لمینت چند سال دوام دارد,informational,D-Veneer,informational,/journal (new),P2,high,
+مراقبت از لمینت,informational,D-Veneer,informational,/journal/veneer-care,P2,medium,Existing
+کامپوزیت دندان شیراز,core service,E-Composite,commercial,/composite,P1,high,
+کامپوزیت ونیر شیراز,core service,E-Composite,commercial,/composite,P1,medium,Clinic's term on the site
+دندانپزشک کامپوزیت شیراز,core service,E-Composite,commercial,/composite,P1,high,
+بهترین دکتر کامپوزیت شیراز,superlative,E-Composite,commercial,/journal/how-to-choose-composite-dentist-shiraz (new),P2,high,Directories dominate
+قیمت کامپوزیت دندان شیراز,price,E-Composite,commercial,/journal/composite-price-shiraz-1405 (new),P1,high,
+قیمت کامپوزیت دندان شیراز ۱۴۰۵,price+year,E-Composite,commercial,/journal/composite-price-shiraz-1405 (new),P1,medium,
+هزینه کامپوزیت دندان شیراز,price,E-Composite,commercial,/journal/composite-price-shiraz-1405 (new),P1,high,
+کامپوزیت اقساطی شیراز,installment,E-Composite,transactional,/composite#installment,P1,medium,
+فیس کامپوزیت شیراز,service,E-Composite,commercial,/composite,P2,medium,Competitors use 'فیسینگ'
+کامپوزیت دندان جلو شیراز,service,E-Composite,commercial,/composite,P2,medium,
+بستن فاصله بین دندان ها شیراز,service,E-Composite,commercial,/composite,P2,low,Diastema closure; good fit for composite
+کامپوزیت دندان درد دارد,informational,F-Informational,informational,/composite (FAQ),P2,high,Already in FAQ schema
+کامپوزیت یا لمینت,informational,F-Informational,informational,/journal/composite-vs-veneers,P1,high,Existing article; strengthen
+تفاوت کامپوزیت و لمینت,informational,F-Informational,informational,/journal/composite-vs-veneers,P1,high,
+ماندگاری کامپوزیت دندان,informational,F-Informational,informational,/journal/composite-longevity,P2,medium,Existing
+بلیچینگ دندان چقدر ماندگار است,informational,F-Informational,informational,/journal/whitening-longevity,P2,medium,Existing
+بعد از لمینت چه نخوریم,informational,F-Informational,informational,/journal (new),P3,medium,
+چطور دندانپزشک زیبایی خوب انتخاب کنیم,informational,F-Informational,informational,/journal/how-to-choose-cosmetic-dentist-shiraz (new),P1,medium,Pillar guide
+ایمپلنت دندان شیراز,secondary service,G-Other services,commercial,/services/implant,P3,very high,Not a focus; keep page useful but do not invest
+عصب کشی دندان شیراز,secondary service,G-Other services,commercial,/services/root-canal,P3,very high,
+ارتودنسی شیراز,secondary service,G-Other services,commercial,/services/orthodontics,P3,very high,
+دکتر فاطمه جعفری دندانپزشک شیراز,brand,H-Brand,navigational,/about,P1,low,Should rank #1; verify
+دکتر ندا جعفری دندانپزشک شیراز,brand alias,H-Brand,navigational,/about,P1,low,Alias used on Instagram; make About page mention both
+دکتر جعفری دندانپزشک معالی آباد,brand+area,H-Brand,navigational,/about,P2,low,
+dr_nedajafarii,brand,H-Brand,navigational,Instagram + /about,P3,low,

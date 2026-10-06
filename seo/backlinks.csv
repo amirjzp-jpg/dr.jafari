@@ -1,0 +1,19 @@
+priority,type,target,why,action,status,notes
+P1,Google Business Profile,business.google.com,Biggest lever for 'نزدیک من' and map pack; reviews drive ranking,Claim/verify; category 'Cosmetic dentist' + 'Dentist'; add services photos hours booking link; ask for reviews monthly,todo,Use exact same name/address/phone as site schema
+P1,Map apps,neshan.org / balad.ir,Iranian map apps used heavily in Shiraz,Register business listing with identical NAP,todo,
+P1,Directory,doctoreto.com,#1 for 'دندانپزشک شیراز' and for veneer/composite/معالی آباد pages,Create doctor profile; add services (composite/veneer/cosmetic); collect patient reviews there,todo,Appears in every SERP checked
+P1,Directory,nobat.ir,#2 for core query,Create profile with all services,todo,
+P1,Directory,paziresh24.com,Large booking platform; ranks for city+specialty,Create profile,todo,
+P1,Directory,doctor-yab.ir,Ranks for 'دندانپزشک شیراز' and for veneer,Create profile,todo,
+P1,Official registry,membersearch.irimc.org (نظام پزشکی),Authoritative proof of license no. 169473 (trust/E-E-A-T),Confirm profile is correct; link/mention in About page,todo,Already in SERP
+P1,Social,instagram.com/dr_nedajafarii,Brand entity link,Put site link in bio + highlight; keep name consistent,todo,Add sameAs in schema (already present)
+P2,Directory,pezeshkanbeauty.com / shirazbeauty.com / darshirazkojast.com / dandanpezeshka.com / simorghedarmangar.com / jarahyab.com,These listicles rank top 10 for 'بهترین دندانپزشک زیبایی/لمینت/کامپوزیت شیراز',Request free inclusion with real case photos; avoid paid rankings that pass PageRank without rel=sponsored,todo,Paid placement without rel=sponsored/nofollow violates Google link policy
+P2,Directory,realtimedentist.com / karshod.ir / pezeshkonline24.ir / pezeshke-shahr.com / meidane.com / behtarino.com,Area (معالی آباد) and service pages rank here,Add/claim listing under Maaliabad + cosmetic categories,todo,
+P2,Local media,Shiraz news/health sites,Local authority + brand mentions,Pitch expert commentary (e.g. 'composite vs veneer' guidance) with real data,todo,
+P2,Professional,Shiraz dental society / university alumni pages,High-trust .ir/.ac.ir mentions,Ask for profile/mention if eligible,todo,
+P2,Digital PR,Persian health blogs/podcasts,Expert quote backlinks,Offer 3-4 expert answers per month,todo,
+P2,Digital PR,Mehr/Persian cosmetic sites,Brand authority,Before/after case study with patient consent,todo,Consent and medical-ad rules apply
+P3,Local sponsorship,Shiraz community/sports/culture orgs,Relevant local links,Sponsor with link on their site,todo,
+P3,Resource,Persian Wikipedia / related entries,Entity recognition,Only if notability criteria met; do not self-edit,hold,
+P3,Aparat/YouTube,Aparat + YouTube channel,Video embeds and entity signals,Short explainer videos (composite process) embedded on pages,todo,
+AVOID,Link schemes,Bought link packages / PBNs / mass directory spam,Violates Google spam policy; risks manual action,Do not do,never,

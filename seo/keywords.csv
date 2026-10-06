@@ -72,3 +72,10 @@ cosmetic dentist shiraz,english,A-Core city,commercial,/ (home),P2,medium,Englis
 دکتر ندا جعفری دندانپزشک شیراز,brand alias,H-Brand,navigational,/about,P1,low,Alias used on Instagram; make About page mention both
 دکتر جعفری دندانپزشک معالی آباد,brand+area,H-Brand,navigational,/about,P2,low,
 dr_nedajafarii,brand,H-Brand,navigational,Instagram + /about,P3,low,
+dandan pezeshki shiraz,finglish exact,A-Core city,commercial,/ (home),P1,medium,"User-requested exact phrase. Domain dandanpezeshkishiraz.ir already matches; use 'dandan pezeshki shiraz' in alt text of logo, footer brand line, one FAQ, Instagram bio and directory profile names"
+dandan pezeshk shiraz,finglish variant,A-Core city,commercial,/ (home),P2,medium,Without final i
+dandanpezeshkishiraz,brand/domain,H-Brand,navigational,/ (home),P1,low,Domain name as query; should rank #1; verify in Search Console
+dandan pezeshki shiraz maaliabad,finglish+area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P2,low,Finglish + area
+dandan pezeshki ziba shiraz,finglish+cosmetic,C-Cosmetic,commercial,/ (home),P2,low,'ziba' = cosmetic
+laminat dandan shiraz,finglish+service,D-Veneer,commercial,/veneers,P3,low,Track only
+kompozit dandan shiraz,finglish+service,E-Composite,commercial,/composite,P3,low,Track only

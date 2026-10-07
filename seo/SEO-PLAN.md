@@ -128,3 +128,15 @@ Monthly review questions: which queries gained impressions but have a low CTR (r
 - `content-calendar.csv`: 12-month schedule
 - `backlinks.csv`: link and listing targets
 - `ai-visibility-prompts.csv`: monthly AI answer checks
+
+## 11. Constraints from the site repo (added 2026-10-07)
+
+The site code is on `main`. Its rules change parts of this plan:
+
+- **Never use «بهترین» or «متخصص» in site copy** (`CLAUDE.md`). Do not put them on any page, title or schema. Win "بهترین ..." queries through directory and list-site presence and reviews instead (section 7). Target the on-page phrase `دندانپزشک خوب` / `دندانپزشک زیبایی`.
+- **Nothing ships without the doctor's approval** and no invented facts. New copy goes to `docs/content-drafts/` first. See `docs/content-drafts/seo-fixes-for-approval.md`.
+- **No price numbers** (decision D3: say what drives the cost). Price pages explain factors only; keep `priceRange` out of schema.
+- **No Google Business Profile yet.** Creating it (with the exact pin, D5) is now the first action. It unlocks `geo`, `hasMap`, `sameAs` and map-pack ranking.
+- **Search Console and Bing Webmaster are not registered yet** (TODO-content.md). Register them before any rank tracking: this plan's baseline depends on them.
+- **Sitemap `lastmod`** is deliberately omitted where there is no real content date. Do not add build-time dates.
+- The Maaliabad page is live at `/dentist-maaliabad-shiraz`; the plan's other new pages (price guides, how-to-choose guide) need copy approval before they can be built.

@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* Design tokens (BUILD-SPEC.md section 4). Contrast is pre-checked; do not
+   add new text colors without checking 4.5:1. */
+@theme {
+  --color-ivory: #faf8f4;
+  --color-surface: #ffffff;
+  --color-tint: #e4eef6;
+  --color-tint-2: #d3e2ee;
+  --color-blue-soft: #cfe0ee;
+  --color-blue-mid: #7fa6cb; /* decorative only, never text */
+  --color-primary: #1f4a6e; /* the only action color */
+  --color-primary-hover: #173a57;
+  --color-ink: #1c2733;
+  --color-muted: #5b6875;
+  --color-muted-2: #45505c;
+  --color-line: #e6e1d8;
+  --color-champagne: #c9b79c; /* hairlines and arch outlines only, never text */
+  --color-danger: #a3312d;
+
+  /* The display face is a placeholder for a licensed Persian font; swap it here only. */
+  --font-display: "Noto Naskh Arabic", "Vazirmatn", serif;
+  --font-sans: "Vazirmatn", Tahoma, sans-serif;
+
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-tile: 16px;
+}
+
+@layer base {
+  html {
+    background: var(--color-ivory);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    /* Wide decorative elements (the gallery fan) may bleed past the page edge without a side scroll. */
+    overflow-x: clip;
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.9;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Phone numbers and codes read left to right inside RTL text. */
+  .ltr-nums {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}
+
+/* Card fan carousel (components/ui/card-fan-carousel.tsx). The layout height
+   matches the component's height budget per breakpoint; GSAP positions the
+   cards with transforms, so they are placed with inset + margin, top-aligned. */
+@layer components {
+  .fan-layout {
+    height: 21rem;
+  }
+  .fan-card {
+    position: absolute;
+    inset: 1rem 0 auto;
+    margin-inline: auto;
+    width: 8.5rem;
+    height: 11.5rem;
+    overflow: hidden;
+    border: 5px solid var(--color-surface);
+    border-radius: 22px;
+    background: var(--color-tint);
+    box-shadow: 0 22px 44px -22px rgb(28 39 51 / 0.45);
+    cursor: zoom-in;
+    opacity: 0; /* until GSAP places it */
+    will-change: transform;
+  }
+  .fan-card:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  .fan-arrow {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    box-shadow: 0 6px 18px -8px rgb(28 39 51 / 0.25);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .fan-arrow:hover {
+    border-color: var(--color-primary);
+    background: var(--color-tint);
+  }
+  @media (min-width: 480px) {
+    .fan-layout { height: 24rem; }
+    .fan-card { width: 10.5rem; height: 14rem; }
+  }
+  @media (min-width: 640px) {
+    .fan-layout { height: 26.5rem; }
+    .fan-card { width: 12rem; height: 16rem; border-radius: 24px; }
+  }
+  @media (min-width: 768px) {
+    .fan-layout { height: 30.5rem; }
+    .fan-card { width: 15rem; height: 20rem; border-width: 6px; }
+  }
+  @media (min-width: 1024px) {
+    .fan-layout { height: 34.5rem; }
+    .fan-card { width: 18rem; height: 24rem; border-radius: 28px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* English (left to right). The Persian and Arabic type is set for tall, connected scripts:
+   very loose leading, a calligraphic serif for headings, wide columns. Latin needs the
+   opposite: leading of about 1.7 for text and about 1.2 for headings, a text measure under
+   75 characters, and its own heading serif (Playfair Display, self-hosted; it pairs with the
+   Vazirmatn text face like the Naskh serif does in Persian). Rules are unlayered so they
+   win over the Tailwind utilities that carry the Persian values. */
+html[lang="en"] {
+  --font-display: "Playfair Display", "Vazirmatn", Georgia, serif;
+  /* A real Latin text face (Vazirmatn's Latin letters read as generic), and darker greys. */
+  --font-sans: "Inter", "Vazirmatn", system-ui, sans-serif;
+  --color-muted: #4b5866;
+  --color-muted-2: #36414d;
+}
+html[lang="en"] body {
+  line-height: 1.65;
+}
+html[lang="en"] [class*="leading-[2"],
+html[lang="en"] [class*="leading-[1.9"] {
+  line-height: 1.7;
+}
+html[lang="en"] [class*="leading-[1.8"] {
+  line-height: 1.65;
+}
+html[lang="en"] .font-display {
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+}
+html[lang="en"] h1.font-display {
+  font-weight: 500;
+  letter-spacing: -0.012em;
+}
+html[lang="en"] main p,
+html[lang="en"] main li {
+  max-width: 70ch;
+}
+/* The bullet dots are placed for the Persian line height; re-centre them on English lines. */
+html[lang="en"] main li > span[aria-hidden="true"].rounded-full {
+  margin-top: 0.67em;
+}
+
+/* English polish: small uppercase labels, slightly larger running text, steadier nav and buttons. */
+html[lang="en"] [data-eyebrow] {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+html[lang="en"] body {
+  font-size: 17px;
+  letter-spacing: -0.003em;
+  -webkit-font-smoothing: antialiased;
+}
+html[lang="en"] a[class*="rounded-full"],
+html[lang="en"] button[class*="rounded-full"] {
+  font-weight: 600;
+  letter-spacing: 0;
+}

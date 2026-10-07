@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>رزرو نوبت — موبایل</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;600&amp;family=Vazirmatn:wght@300;400;500&amp;display=swap">
+<style>
+body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:#FAF8F4;color:#1C2733}
+a{color:#1F4A6E}a:hover{color:#173A57}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #1F4A6E;outline-offset:2px}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: #FAF8F4; font-family: Vazirmatn, Tahoma, sans-serif; color: #1C2733; overflow: hidden">
+
+<header style="height: 60px; flex-shrink: 0; box-sizing: border-box; padding: 0 12px; display: flex; align-items: center; gap: 4px">
+<button type="button" onClick="{{onBack}}" aria-label="بازگشت" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1C2733" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+<span style="flex-grow: 1; font-size: 16px; font-weight: 500">رزرو نوبت</span>
+<span style="font-size: 13px; color: #5B6875; padding-left: 8px">{{stepLabel}}</span>
+</header>
+
+<div style="flex-shrink: 0; padding: 0 20px; display: flex; gap: 6px">
+<span style="flex-grow: 1; height: 3px; border-radius: 3px; background: {{seg1}}"></span>
+<span style="flex-grow: 1; height: 3px; border-radius: 3px; background: {{seg2}}"></span>
+<span style="flex-grow: 1; height: 3px; border-radius: 3px; background: {{seg3}}"></span>
+<span style="flex-grow: 1; height: 3px; border-radius: 3px; background: {{seg4}}"></span>
+</div>
+
+<sc-if value="{{showHold}}" hint-placeholder-val="{{false}}">
+<div role="status" style="flex-shrink: 0; margin: 14px 20px 0; padding: 10px 14px; border-radius: 12px; background: #E4EEF6; display: flex; align-items: center; gap: 10px; font-size: 13px; color: #1F4A6E">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F4A6E" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>
+<span style="flex-grow: 1">{{slotLabel}} برای شما نگه داشته شده است</span>
+<span style="font-weight: 500; direction: ltr; unicode-bidi: isolate">{{timer}}</span>
+</div>
+</sc-if>
+
+<div style="flex-grow: 1; overflow-y: auto; padding: 24px 20px 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+<sc-if value="{{expired}}" hint-placeholder-val="{{false}}">
+<div role="alert" style="margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="width: 64px; height: 64px; border-radius: 50%; background: #F3EDE3; display: flex; align-items: center; justify-content: center">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8A6A3A" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>
+</div>
+<span style="font-family: 'Noto Naskh Arabic', serif; font-size: 22px; font-weight: 600">زمان نگهداری این نوبت تمام شد</span>
+<span style="font-size: 15px; line-height: 1.9; color: #5B6875">اطلاعاتی که وارد کرده‌اید حفظ شده است. فقط یک زمان جدید انتخاب کنید.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 1.5; font-weight: 600">زمان مراجعه را انتخاب کنید</h1>
+<p style="margin: 0; font-size: 14px; line-height: 1.8; color: #5B6875">نوبت‌های آنلاین برای جلسه‌ی معاینه و مشاوره است.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 500">مهر ۱۴۰۵</span>
+<div role="listbox" aria-label="روز" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 2px 20px 6px">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+<button type="button" onClick="{{d.pick}}" disabled="{{d.closed}}" aria-pressed="{{d.sel}}" style="flex-shrink: 0; width: 64px; height: 78px; border-radius: 16px; border: 1px solid {{d.bd}}; background: {{d.bg}}; color: {{d.fg}}; opacity: {{d.op}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-family: inherit; cursor: pointer; padding: 0">
+<span style="font-size: 12px">{{d.wd}}</span>
+<span style="font-size: 20px; font-weight: 500">{{d.num}}</span>
+<span style="font-size: 11px">{{d.sub}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 500">صبح</span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{amTimes}}" as="t" hint-placeholder-count="4">
+<button type="button" onClick="{{t.pick}}" disabled="{{t.taken}}" aria-pressed="{{t.sel}}" style="height: 46px; border-radius: 999px; border: 1px solid {{t.bd}}; background: {{t.bg}}; color: {{t.fg}}; text-decoration: {{t.deco}}; font-family: inherit; font-size: 14px; cursor: pointer">{{t.label}}</button>
+</sc-for>
+</div>
+<span style="font-size: 14px; font-weight: 500; margin-top: 6px">بعدازظهر</span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{pmTimes}}" as="t" hint-placeholder-count="14">
+<button type="button" onClick="{{t.pick}}" disabled="{{t.taken}}" aria-pressed="{{t.sel}}" style="height: 46px; border-radius: 999px; border: 1px solid {{t.bd}}; background: {{t.bg}}; color: {{t.fg}}; text-decoration: {{t.deco}}; font-family: inherit; font-size: 14px; cursor: pointer">{{t.label}}</button>
+</sc-for>
+</div>
+<span style="font-size: 12px; color: #5B6875">ساعت‌های خط‌خورده رزرو شده‌اند.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 1.5; font-weight: 600">شماره موبایل شما</h1>
+<p style="margin: 0; font-size: 14px; line-height: 1.8; color: #5B6875">کد تأیید و پیامک نوبت به این شماره ارسال می‌شود.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="phone" style="font-size: 14px; font-weight: 500">شماره موبایل</label>
+<input id="phone" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" value="{{phone}}" onChange="{{onPhone}}" placeholder="۰۹۱۲ ۳۴۵ ۶۷۸۹" style="height: 56px; border-radius: 14px; border: 1px solid {{inputBd}}; background: #FFFFFF; padding: 0 16px; font-family: inherit; font-size: 18px; text-align: left; color: #1C2733; box-sizing: border-box">
+</div>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 1.5; font-weight: 600">کد تأیید را وارد کنید</h1>
+<p style="margin: 0; font-size: 14px; line-height: 1.8; color: #5B6875">کد ۵ رقمی به شماره‌ی <span style="direction: ltr; unicode-bidi: isolate">{{masked}}</span> پیامک شد.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="otp" style="font-size: 14px; font-weight: 500">کد تأیید</label>
+<input id="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="5" dir="ltr" value="{{code}}" onChange="{{onCode}}" placeholder="—————" style="height: 60px; border-radius: 14px; border: 1px solid {{inputBd}}; background: #FFFFFF; padding: 0 16px; font-family: inherit; font-size: 26px; letter-spacing: 14px; text-align: center; color: #1C2733; box-sizing: border-box">
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 14px">
+<button type="button" onClick="{{onChangePhone}}" style="border: 0; background: transparent; color: #1F4A6E; font-family: inherit; font-size: 14px; padding: 8px 0; cursor: pointer">تغییر شماره</button>
+<span style="color: #5B6875; padding: 8px 0">ارسال دوباره‌ی کد (۰۱:۵۹)</span>
+</div>
+</sc-if>
+
+<sc-if value="{{s4}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 1.5; font-weight: 600">مشخصات شما</h1>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E6E1D8; border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4A6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"></rect><path d="M3.5 9.5h17M8 3v4M16 3v4"></path></svg>
+<span style="flex-grow: 1; font-size: 14px">{{slotLabel}}</span>
+<button type="button" onClick="{{onEditTime}}" style="border: 0; background: transparent; color: #1F4A6E; font-family: inherit; font-size: 13px; padding: 8px 0; cursor: pointer">تغییر</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="name" style="font-size: 14px; font-weight: 500">نام و نام خانوادگی</label>
+<input id="name" type="text" autocomplete="name" value="{{name}}" onChange="{{onName}}" placeholder="مریم احمدی" style="height: 56px; border-radius: 14px; border: 1px solid {{inputBd}}; background: #FFFFFF; padding: 0 16px; font-family: inherit; font-size: 16px; color: #1C2733; box-sizing: border-box">
+</div>
+<div role="radiogroup" aria-label="دلیل مراجعه" style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 500">دلیل مراجعه</span>
+<div style="display: flex; gap: 10px">
+<sc-for list="{{reasons}}" as="r" hint-placeholder-count="3">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.sel}}" style="flex-grow: 1; height: 48px; border-radius: 999px; border: 1px solid {{r.bd}}; background: {{r.bg}}; color: {{r.fg}}; font-family: inherit; font-size: 15px; cursor: pointer">{{r.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="note" style="font-size: 14px; font-weight: 500">توضیحات <span style="font-weight: 400; color: #5B6875">(اختیاری)</span></label>
+<textarea id="note" rows="3" placeholder="اگر نکته‌ای هست که بهتر است بدانیم، اینجا بنویسید." style="border-radius: 14px; border: 1px solid #E6E1D8; background: #FFFFFF; padding: 12px 16px; font-family: inherit; font-size: 15px; line-height: 1.8; color: #1C2733; resize: none; box-sizing: border-box"></textarea>
+</div>
+</sc-if>
+
+<sc-if value="{{s5}}" hint-placeholder-val="{{false}}">
+<div style="margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="width: 72px; height: 72px; border-radius: 50%; background: #E4EEF6; display: flex; align-items: center; justify-content: center">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1F4A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+</div>
+<span style="font-family: 'Noto Naskh Arabic', serif; font-size: 26px; font-weight: 600">نوبت شما ثبت شد</span>
+<span style="font-size: 15px; line-height: 1.9; color: #5B6875">پیامک تأیید برای شما ارسال شد.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E6E1D8; border-radius: 20px; padding: 6px 18px; display: flex; flex-direction: column">
+<div style="padding: 14px 0; border-bottom: 1px solid #EFEBE4; display: flex; justify-content: space-between; font-size: 14px"><span style="color: #5B6875">زمان</span><span>{{slotLabel}}</span></div>
+<div style="padding: 14px 0; border-bottom: 1px solid #EFEBE4; display: flex; justify-content: space-between; font-size: 14px"><span style="color: #5B6875">نوع مراجعه</span><span>معاینه و مشاوره · {{reasonLabel}}</span></div>
+<div style="padding: 14px 0; border-bottom: 1px solid #EFEBE4; display: flex; flex-direction: column; gap: 4px; font-size: 14px"><span style="color: #5B6875">نشانی</span><span style="line-height: 1.8">پل معالی‌آباد، ابتدای تاچارا، جنب بانک تجارت، ساختمان موجودی، طبقه‌ی چهارم</span></div>
+<div style="padding: 14px 0; display: flex; justify-content: space-between; font-size: 14px"><span style="color: #5B6875">تماس</span><span><a href="tel:+989023023120" style="color: #1C2733; text-decoration: none; direction: ltr; unicode-bidi: isolate">۰۹۰۲ ۳۰۲ ۳۱۲۰</a> · <a href="tel:+989023023110" style="color: #1C2733; text-decoration: none; direction: ltr; unicode-bidi: isolate">۰۹۰۲ ۳۰۲ ۳۱۱۰</a></span></div>
+</div>
+<div style="display: flex; gap: 10px">
+<a href="#" style="flex-grow: 1; height: 48px; border-radius: 999px; border: 1px solid #1F4A6E; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; color: #1F4A6E">مسیریابی</a>
+<a href="#" style="flex-grow: 1; height: 48px; border-radius: 999px; border: 1px solid #1F4A6E; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; color: #1F4A6E">افزودن به تقویم</a>
+</div>
+</sc-if>
+
+<sc-if value="{{hasErr}}" hint-placeholder-val="{{false}}">
+<p role="alert" style="margin: 0; font-size: 14px; color: #A3312D; display: flex; align-items: center; gap: 8px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A3312D" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.1"></path></svg>
+{{err}}
+</p>
+</sc-if>
+
+</div>
+
+<div style="flex-shrink: 0; padding: 12px 20px 20px; border-top: 1px solid #E6E1D8; background: #FAF8F4">
+<button type="button" onClick="{{onPrimary}}" style="width: 100%; height: 56px; border: 0; border-radius: 999px; background: #1F4A6E; color: #FFFFFF; font-family: inherit; font-size: 17px; font-weight: 500; cursor: pointer">{{primaryLabel}}</button>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 1, day: 0, time: null, phone: '', code: '', name: '', reason: 0, secs: 600, expired: false, err: '' };
+  }
+  componentDidMount() {
+    var self = this;
+    this.tick = setInterval(function () {
+      var s = self.state;
+      if (s.step >= 2 && s.step <= 4 && !s.expired) {
+        if (s.secs <= 1) { self.setState({ secs: 0, expired: true, err: '' }); }
+        else { self.setState({ secs: s.secs - 1 }); }
+      }
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this.tick); }
+  renderVals() {
+    var self = this;
+    var st = this.state;
+    var fa = function (v) { return String(v).replace(/[0-9]/g, function (c) { return '۰۱۲۳۴۵۶۷۸۹'[+c]; }); };
+    var en = function (v) { return String(v).replace(/[۰-۹]/g, function (c) { return '۰۱۲۳۴۵۶۷۸۹'.indexOf(c); }).replace(/[٠-٩]/g, function (c) { return '٠١٢٣٤٥٦٧٨٩'.indexOf(c); }); };
+    var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
+    var dayDefs = [
+      { wd: 'یکشنبه', n: 5, open: true }, { wd: 'دوشنبه', n: 6, open: true }, { wd: 'سه‌شنبه', n: 7, open: true },
+      { wd: 'چهارشنبه', n: 8, open: true }, { wd: 'پنجشنبه', n: 9, open: false }, { wd: 'جمعه', n: 10, open: false },
+      { wd: 'شنبه', n: 11, open: true }
+    ];
+    var timeDefs = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30'];
+    var taken = { 0: [0, 1, 5, 9, 14], 1: [2, 7, 8], 2: [4], 3: [0, 3, 12, 13, 17], 6: [1, 10] };
+    var sel = { bg: '#1F4A6E', fg: '#FFFFFF', bd: '#1F4A6E' };
+    var idle = { bg: '#FFFFFF', fg: '#1C2733', bd: '#E6E1D8' };
+    var days = dayDefs.map(function (d, i) {
+      var c = st.day === i ? sel : idle;
+      return { wd: d.wd, num: fa(d.n), sub: d.open ? 'مهر' : 'تعطیل', closed: !d.open, sel: st.day === i, bg: c.bg, fg: c.fg, bd: c.bd, op: d.open ? '1' : '0.45',
+        pick: function () { self.setState({ day: i, time: null, err: '' }); } };
+    });
+    var tk = taken[st.day] || [];
+    var times = timeDefs.map(function (t, j) {
+      var isT = tk.indexOf(j) >= 0;
+      var c = st.time === j ? sel : idle;
+      return { label: fa(t), taken: isT, sel: st.time === j, bg: isT ? '#F3F1EC' : c.bg, fg: isT ? '#8A949E' : c.fg, bd: isT ? '#F3F1EC' : c.bd, deco: isT ? 'line-through' : 'none',
+        pick: function () { if (!isT) self.setState({ time: j, err: '' }); } };
+    });
+    var reasonDefs = ['کامپوزیت', 'لمینت', 'سایر'];
+    var reasons = reasonDefs.map(function (r, k) {
+      var c = st.reason === k ? sel : idle;
+      return { label: r, sel: st.reason === k, bg: c.bg, fg: c.fg, bd: c.bd, pick: function () { self.setState({ reason: k }); } };
+    });
+    var d = dayDefs[st.day];
+    var slotLabel = st.time === null ? '' : d.wd + ' ' + fa(d.n) + ' مهر، ساعت ' + fa(timeDefs[st.time]);
+    var p = en(st.phone).replace(/\s/g, '');
+    var masked = p.length === 11 ? fa(p.slice(0, 4) + '•••' + p.slice(7)) : '';
+    var active = '#1F4A6E', rest = '#E2DDD4';
+    var stepNum = Math.min(st.step, 4);
+    var labels = { 1: 'ادامه', 2: 'دریافت کد تأیید', 3: 'تأیید کد', 4: 'ثبت نوبت', 5: 'بازگشت به صفحه‌ی اصلی' };
+    var next = function () {
+      if (st.expired) { self.setState({ step: 1, time: null, expired: false, secs: 600, err: '' }); return; }
+      if (st.step === 1) {
+        if (st.time === null) { self.setState({ err: 'یک ساعت را انتخاب کنید.' }); return; }
+        self.setState({ step: /^\d{5}$/.test(en(st.code)) ? 4 : (st.phone ? 3 : 2), secs: 600, err: '' });
+      } else if (st.step === 2) {
+        if (!/^09\d{9}$/.test(p)) { self.setState({ err: 'شماره موبایل باید ۱۱ رقم باشد و با ۰۹ شروع شود.' }); return; }
+        self.setState({ step: 3, err: '' });
+      } else if (st.step === 3) {
+        if (!/^\d{5}$/.test(en(st.code))) { self.setState({ err: 'کد ۵ رقمی را کامل وارد کنید.' }); return; }
+        self.setState({ step: 4, err: '' });
+      } else if (st.step === 4) {
+        if (st.name.trim().length < 2) { self.setState({ err: 'نام و نام خانوادگی را وارد کنید.' }); return; }
+        self.setState({ step: 5, err: '' });
+      } else {
+        self.setState({ step: 1, time: null, code: '', secs: 600, err: '' });
+      }
+    };
+    return {
+      s1: st.step === 1 && !st.expired, s2: st.step === 2 && !st.expired, s3: st.step === 3 && !st.expired, s4: st.step === 4 && !st.expired, s5: st.step === 5,
+      expired: st.expired,
+      stepLabel: st.step === 5 ? '' : 'مرحله‌ی ' + fa(stepNum) + ' از ۴',
+      seg1: active, seg2: st.step >= 2 ? active : rest, seg3: st.step >= 3 ? active : rest, seg4: st.step >= 4 ? active : rest,
+      showHold: st.step >= 2 && st.step <= 4 && !st.expired,
+      timer: fa(pad(Math.floor(st.secs / 60)) + ':' + pad(st.secs % 60)),
+      slotLabel: slotLabel, days: days, amTimes: times.slice(0, 4), pmTimes: times.slice(4), reasons: reasons, reasonLabel: reasonDefs[st.reason],
+      phone: st.phone, code: st.code, name: st.name, masked: masked,
+      inputBd: st.err ? '#A3312D' : '#E6E1D8',
+      hasErr: !!st.err, err: st.err,
+      primaryLabel: st.expired ? 'انتخاب زمان جدید' : labels[st.step],
+      onPrimary: next,
+      onPhone: function (e) { self.setState({ phone: e.target.value, err: '' }); },
+      onCode: function (e) { self.setState({ code: e.target.value, err: '' }); },
+      onName: function (e) { self.setState({ name: e.target.value, err: '' }); },
+      onChangePhone: function () { self.setState({ step: 2, code: '', err: '' }); },
+      onEditTime: function () { self.setState({ step: 1, err: '' }); },
+      onBack: function () { if (st.step > 1 && st.step < 5) self.setState({ step: st.step - 1, err: '' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 month,week,type,title_or_task,target_keyword,target_url,intent,est_words,notes
 M1,1,tech,Fix sitemap lastmod + add geo/hasMap/logo/priceRange to Dentist schema,schema,sitewide,-,-,Verify in Search Console
 M1,1,local,Claim/verify Google Business Profile + Neshan + Balad,دندانپزشک نزدیک من,GBP,transactional,-,Identical NAP everywhere
-M1,2,page,Create area landing page 'دندانپزشک زیبایی معالی آباد شیراز',دندانپزشکی معالی آباد,/dandanpezeshki-maaliabad,commercial,900,Map embed (link out) + directions + FAQ + schema
+M1,2,page,Create area landing page 'دندانپزشک زیبایی معالی آباد شیراز',دندانپزشکی معالی آباد,/dentist-maaliabad-shiraz,commercial,900,Map embed (link out) + directions + FAQ + schema
 M1,2,page,Expand About page: education/training/memberships + explain Fatemeh/Neda names,دکتر ندا جعفری دندانپزشک شیراز,/about,navigational,700,E-E-A-T
 M1,3,local,Create profiles on doctoreto/nobat/paziresh24/doctor-yab,دندانپزشک شیراز,directories,commercial,-,Backlinks + reviews
 M1,4,article,قیمت لمینت دندان شیراز ۱۴۰۵ (factors + ranges + installment),قیمت لمینت دندان شیراز,/journal/veneer-price-shiraz-1405,commercial,1800,Ranges must match what clinic really charges

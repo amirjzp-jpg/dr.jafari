@@ -14,14 +14,14 @@ cosmetic dentist shiraz,english,A-Core city,commercial,/ (home),P2,medium,Englis
 بهترین دندانپزشک شیراز,superlative,A-Core city,commercial,/journal/how-to-choose-cosmetic-dentist-shiraz,P2,very high,SERP = listicles/directories. Get listed in them; do not claim 'best' on-page
 نوبت دندانپزشک شیراز,core,A-Core city,transactional,/booking,P2,very high,Directories own this; GBP booking link helps
 دندانپزشک نزدیک من,near me,B-Area,transactional,GBP + /,P1,high,Driven by Google Business Profile not website
-دندانپزشکی معالی آباد,area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,medium,Create dedicated area page; SERP has directories + few clinic sites
-دندان پزشکی معالی اباد,area spelling variant,B-Area,commercial,/dandanpezeshki-maaliabad (new),P2,medium,Variant without hamza/space
-دندانپزشک معالی آباد شیراز,area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,medium,
-کلینیک دندانپزشکی معالی آباد,area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,medium,
-دندانپزشک زیبایی معالی آباد,area+cosmetic,B-Area,commercial,/dandanpezeshki-maaliabad (new),P1,low-medium,Best winnable area+service combo
+دندانپزشکی معالی آباد,area,B-Area,commercial,/dentist-maaliabad-shiraz (live),P1,medium,Create dedicated area page; SERP has directories + few clinic sites
+دندان پزشکی معالی اباد,area spelling variant,B-Area,commercial,/dentist-maaliabad-shiraz (live),P2,medium,Variant without hamza/space
+دندانپزشک معالی آباد شیراز,area,B-Area,commercial,/dentist-maaliabad-shiraz (live),P1,medium,
+کلینیک دندانپزشکی معالی آباد,area,B-Area,commercial,/dentist-maaliabad-shiraz (live),P1,medium,
+دندانپزشک زیبایی معالی آباد,area+cosmetic,B-Area,commercial,/dentist-maaliabad-shiraz (live),P1,low-medium,Best winnable area+service combo
 لمینت معالی آباد,area+service,B-Area,commercial,/veneers + area page,P1,low-medium,realtimedentist has a page here; beatable with a real page
 کامپوزیت معالی آباد,area+service,B-Area,commercial,/composite + area page,P1,low-medium,
-دندانپزشک پل معالی آباد,micro-local,B-Area,commercial,/dandanpezeshki-maaliabad (new),P3,low,Landmark query; include address phrasing on area page
+دندانپزشک پل معالی آباد,micro-local,B-Area,commercial,/dentist-maaliabad-shiraz (live),P3,low,Landmark query; include address phrasing on area page
 دندانپزشک زیبایی شیراز,core cosmetic,C-Cosmetic,commercial,/ (home),P1,high,Home title already targets this
 دندانپزشکی زیبایی شیراز,core cosmetic,C-Cosmetic,commercial,/ (home),P1,high,
 بهترین دندانپزشک زیبایی شیراز,superlative,C-Cosmetic,commercial,/journal/how-to-choose-cosmetic-dentist-shiraz,P1,high,Top SERP = listicles (pezeshkanbeauty/dandanpezeshka/darshirazkojast); pursue inclusion + the guide
@@ -75,7 +75,7 @@ dr_nedajafarii,brand,H-Brand,navigational,Instagram + /about,P3,low,
 dandan pezeshki shiraz,finglish exact,A-Core city,commercial,/ (home),P1,medium,"User-requested exact phrase. Domain dandanpezeshkishiraz.ir already matches; use 'dandan pezeshki shiraz' in alt text of logo, footer brand line, one FAQ, Instagram bio and directory profile names"
 dandan pezeshk shiraz,finglish variant,A-Core city,commercial,/ (home),P2,medium,Without final i
 dandanpezeshkishiraz,brand/domain,H-Brand,navigational,/ (home),P1,low,Domain name as query; should rank #1; verify in Search Console
-dandan pezeshki shiraz maaliabad,finglish+area,B-Area,commercial,/dandanpezeshki-maaliabad (new),P2,low,Finglish + area
+dandan pezeshki shiraz maaliabad,finglish+area,B-Area,commercial,/dentist-maaliabad-shiraz (live),P2,low,Finglish + area
 dandan pezeshki ziba shiraz,finglish+cosmetic,C-Cosmetic,commercial,/ (home),P2,low,'ziba' = cosmetic
 laminat dandan shiraz,finglish+service,D-Veneer,commercial,/veneers,P3,low,Track only
 kompozit dandan shiraz,finglish+service,E-Composite,commercial,/composite,P3,low,Track only

@@ -48,8 +48,8 @@ Targets are guesses until the Month 1 baseline exists.
 | `/veneers` | لمینت دندان شیراز | live; expand |
 | `/services/smile-design` | طراحی لبخند شیراز | live; expand |
 | `/services/whitening` | بلیچینگ دندان شیراز | live; light |
-| `/dandanpezeshki-maaliabad` | دندانپزشکی معالی آباد | **new, M1** |
-| `/journal/veneer-price-shiraz-1405` | قیمت لمینت دندان شیراز | **new, M1** |
+| `/dentist-maaliabad-shiraz` | دندانپزشکی معالی آباد | **live (Oct 2026); expand** |
+| `/journal/veneer-price-shiraz-1405` | قیمت لمینت دندان شیراز | **live (Oct 2026); expand** |
 | `/journal/composite-price-shiraz-1405` | قیمت کامپوزیت دندان شیراز | **new, M2** |
 | `/journal/how-to-choose-cosmetic-dentist-shiraz` | دندانپزشک خوب / بهترین در شیراز | **new, M3** |
 | `/journal/veneer-installment-shiraz` | لمینت اقساطی شیراز | **new, M3** |

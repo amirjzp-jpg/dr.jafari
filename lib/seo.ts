@@ -105,11 +105,17 @@ export function buildMetadata(o: {
   };
 }
 
-const shiraz = {
-  "@type": "City",
-  name: "شیراز",
-  containedInPlace: { "@type": "AdministrativeArea", name: "استان فارس" },
+const shirazNames: Record<Locale, { city: string; province: string }> = {
+  fa: { city: "شیراز", province: "استان فارس" },
+  ar: { city: "شيراز", province: "محافظة فارس" },
+  en: { city: "Shiraz", province: "Fars Province" },
 };
+
+const shirazArea = (lang: Locale) => ({
+  "@type": "City",
+  name: shirazNames[lang].city,
+  containedInPlace: { "@type": "AdministrativeArea", name: shirazNames[lang].province },
+});
 
 /**
  * Dentist (a LocalBusiness subtype). No geo, hasMap or priceRange: the exact pin
@@ -133,7 +139,7 @@ export function dentistSchema(lang: Locale = "fa") {
       addressRegion: intl ? (lang === "ar" ? "فارس" : "Fars") : "فارس",
       addressCountry: "IR",
     },
-    areaServed: shiraz,
+    areaServed: shirazArea(lang),
     knowsLanguage: "fa",
     openingHoursSpecification: site.openPeriods.map(([opens, closes]) => ({
       "@type": "OpeningHoursSpecification",

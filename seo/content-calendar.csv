@@ -1,0 +1,51 @@
+month,week,type,title_or_task,target_keyword,target_url,intent,est_words,notes
+M1,1,tech,Fix sitemap lastmod + add geo/hasMap/logo/priceRange to Dentist schema,schema,sitewide,-,-,Verify in Search Console
+M1,1,local,Claim/verify Google Business Profile + Neshan + Balad,دندانپزشک نزدیک من,GBP,transactional,-,Identical NAP everywhere
+M1,2,page,Create area landing page 'دندانپزشک زیبایی معالی آباد شیراز',دندانپزشکی معالی آباد,/dentist-maaliabad-shiraz,commercial,900,Map embed (link out) + directions + FAQ + schema
+M1,2,page,Expand About page: education/training/memberships + explain Fatemeh/Neda names,دکتر ندا جعفری دندانپزشک شیراز,/about,navigational,700,E-E-A-T
+M1,3,local,Create profiles on doctoreto/nobat/paziresh24/doctor-yab,دندانپزشک شیراز,directories,commercial,-,Backlinks + reviews
+M1,4,article,قیمت لمینت دندان شیراز ۱۴۰۵ (factors + ranges + installment),قیمت لمینت دندان شیراز,/journal/veneer-price-shiraz-1405,commercial,1800,Ranges must match what clinic really charges
+M2,1,article,قیمت کامپوزیت دندان شیراز ۱۴۰۵,قیمت کامپوزیت دندان شیراز,/journal/composite-price-shiraz-1405,commercial,1800,
+M2,2,page,Expand /veneers (process, materials, candidacy, installment block, 6+ FAQ),لمینت دندان شیراز,/veneers,commercial,1500,
+M2,3,page,Expand /composite same way + 'بستن فاصله دندان',کامپوزیت دندان شیراز,/composite,commercial,1500,
+M2,4,outreach,Pitch 5 listicle sites for free inclusion,بهترین دندانپزشک زیبایی شیراز,listicles,commercial,-,
+M3,1,article,چطور دندانپزشک زیبایی خوب در شیراز انتخاب کنیم,دندانپزشک خوب در شیراز,/journal/how-to-choose-cosmetic-dentist-shiraz,informational,2000,Pillar; honest checklist
+M3,2,page,Expand /services/smile-design (digital smile design process),طراحی لبخند شیراز,/services/smile-design,commercial,1200,
+M3,3,article,لمینت اقساطی شیراز: شرایط و نکات,لمینت اقساطی شیراز,/journal/veneer-installment-shiraz,transactional,1200,
+M3,4,review,Month-3 review: GSC queries → adjust titles/H1 for pages with impressions but low CTR,-,sitewide,-,-,
+M4,1,article,عوارض لمینت دندان + چه کسانی نباید لمینت کنند,عوارض لمینت دندان,/journal/veneer-risks,informational,1500,
+M4,2,article,لمینت چند سال دوام دارد؟,لمینت چند سال دوام دارد,/journal/veneer-lifespan,informational,1300,
+M4,3,page,Expand /services/whitening + link to whitening-longevity,بلیچینگ دندان شیراز,/services/whitening,commercial,1000,
+M4,4,outreach,Digital PR: 3 expert-quote pitches,-,media,-,-,
+M5,1,article,فیس کامپوزیت چیست و برای چه کسانی مناسب است,فیس کامپوزیت شیراز,/journal/composite-facing,informational,1400,
+M5,2,article,تفاوت کامپوزیت و لمینت (refresh composite-vs-veneers with table),تفاوت کامپوزیت و لمینت,/journal/composite-vs-veneers,informational,1800,Update not new
+M5,3,video,Aparat/YouTube: روند کامپوزیت قدم به قدم (embed on /composite),-,/composite,-,-,
+M5,4,local,Review-collection push (QR at clinic + SMS follow-up),-,GBP,-,-,Never buy/fake reviews
+M6,1,page,English page 'Cosmetic dentist in Shiraz' (+ hreflang fa/en),cosmetic dentist shiraz,/en,commercial,900,Add hreflang
+M6,2,article,بعد از لمینت چه نخوریم؟ راهنمای ۷ روز اول,بعد از لمینت چه نخوریم,/journal/after-veneer-diet,informational,1000,
+M6,3,article,کامپوزیت دندان درد دارد؟ (patient-experience FAQ),کامپوزیت دندان درد دارد,/journal/composite-pain,informational,1100,
+M6,4,review,Half-year review + re-prioritize keyword list,-,sitewide,-,-,
+M7,1,page,Add case-study pages from gallery (consented before/after),لمینت سرامیکی شیراز,/gallery/case-*,commercial,500 each,Schema ImageObject
+M7,2,article,راهنمای کامل طراحی لبخند,طراحی لبخند,/journal/smile-design-guide,informational,2000,
+M7,3,article,لیفت لثه و طراحی لبخند (if offered),لیفت لثه شیراز,/services/gum-contouring,commercial,1000,
+M7,4,outreach,Link round 2: sponsorships + local orgs,-,-,-,-,
+M8,1,article,لمینت یا کامپوزیت برای دندان‌های کوچک,-,/journal/small-teeth-options,informational,1200,
+M8,2,article,هزینه ارتودنسی نامرئی vs لمینت (only if relevant),-,/journal,informational,1200,Optional
+M8,3,tech,Core Web Vitals + image audit (WebP sizes),-,sitewide,-,-,
+M8,4,geo,Refresh llms.txt + FAQ schema + test 20 Persian prompts in ChatGPT/Gemini/Perplexity,-,sitewide,-,-,Log in ai-visibility tab
+M9,1,article,Update both price articles with latest ranges,قیمت لمینت/کامپوزیت,price articles,commercial,-,Prices change often
+M9,2,article,سؤالات رایج قبل از ونیر کردن,-,/journal,informational,1300,
+M9,3,local,Add Q&A + posts to GBP (weekly),-,GBP,-,-,
+M9,4,review,Q3 review,-,sitewide,-,-,
+M10,1,article,مقایسه ماندگاری لمینت سرامیکی و کامپوزیتی,-,/journal,informational,1500,
+M10,2,page,Refresh home hero copy + FAQ with GSC question queries,-,/,-,-,
+M10,3,outreach,Guest article on a Persian health site,-,media,-,1200,
+M10,4,tech,Re-crawl: broken links + redirects + orphan check,-,sitewide,-,-,
+M11,1,article,Seasonal: آماده شدن برای نوروز (smile before Eid),-,/journal/nowruz-smile,commercial,1200,Publish Esfand
+M11,2,article,تغییرات قیمت ۱۴۰۶ (update year in titles),-,price articles,commercial,-,Farvardin rollover
+M11,3,video,Second video: روند لمینت,-,/veneers,-,-,
+M11,4,review,Backlink audit (disavow nothing unless spammy),-,-,-,-,
+M12,1,review,12-month report: rankings clicks calls bookings,-,-,-,-,
+M12,2,plan,Next-year keyword research with real GSC data,-,-,-,-,
+M12,3,article,Refresh top 3 articles by GSC clicks,-,-,-,-,
+M12,4,plan,Set next 12-month targets,-,-,-,-,

@@ -32,3 +32,6 @@ sleep 4
 code="$(curl -s -o /dev/null -w '%{http_code}' -m 20 http://127.0.0.1:3000/ || true)"
 echo "site answers: $code (200 is good)"
 [ "$code" = "200" ] || { echo "Look at: journalctl -u dr-jafari -n 50 --no-pager"; exit 1; }
+
+echo "==> Notifying search engines (IndexNow: Bing, Yandex)"
+as_app "npm run --silent indexnow" || true

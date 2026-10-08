@@ -1,0 +1,32 @@
+priority,type,target,why,action,status,notes
+P1,Google Business Profile,business.google.com,Biggest lever for 'نزدیک من' and map pack; reviews drive ranking,Claim/verify; category 'Cosmetic dentist' + 'Dentist'; add services photos hours booking link; ask for reviews monthly,todo,Use exact same name/address/phone as site schema
+P1,Map apps,neshan.org / balad.ir,Iranian map apps used heavily in Shiraz,Register business listing with identical NAP,todo,
+P1,Directory,doctoreto.com,#1 for 'دندانپزشک شیراز' and for veneer/composite/معالی آباد pages,Create doctor profile; add services (composite/veneer/cosmetic); collect patient reviews there,todo,Appears in every SERP checked
+P1,Directory,nobat.ir,#2 for core query,Create profile with all services,todo,
+P1,Directory,paziresh24.com,Large booking platform; ranks for city+specialty,Create profile,todo,
+P1,Directory,doctor-yab.ir,Ranks for 'دندانپزشک شیراز' and for veneer,Create profile,todo,
+P1,Official registry,membersearch.irimc.org (نظام پزشکی),Authoritative proof of license no. 169473 (trust/E-E-A-T),Confirm profile is correct; link/mention in About page,todo,Already in SERP
+P1,Social,instagram.com/dr_nedajafarii,Brand entity link,Put site link in bio + highlight; keep name consistent,todo,Add sameAs in schema (already present)
+P2,Directory,pezeshkanbeauty.com / shirazbeauty.com / darshirazkojast.com / dandanpezeshka.com / simorghedarmangar.com / jarahyab.com,These listicles rank top 10 for 'بهترین دندانپزشک زیبایی/لمینت/کامپوزیت شیراز',Request free inclusion with real case photos; avoid paid rankings that pass PageRank without rel=sponsored,todo,Paid placement without rel=sponsored/nofollow violates Google link policy
+P2,Directory,realtimedentist.com / karshod.ir / pezeshkonline24.ir / pezeshke-shahr.com / meidane.com / behtarino.com,Area (معالی آباد) and service pages rank here,Add/claim listing under Maaliabad + cosmetic categories,todo,
+P2,Local media,Shiraz news/health sites,Local authority + brand mentions,Pitch expert commentary (e.g. 'composite vs veneer' guidance) with real data,todo,
+P2,Professional,Shiraz dental society / university alumni pages,High-trust .ir/.ac.ir mentions,Ask for profile/mention if eligible,todo,
+P2,Digital PR,Persian health blogs/podcasts,Expert quote backlinks,Offer 3-4 expert answers per month,todo,
+P2,Digital PR,Mehr/Persian cosmetic sites,Brand authority,Before/after case study with patient consent,todo,Consent and medical-ad rules apply
+P3,Local sponsorship,Shiraz community/sports/culture orgs,Relevant local links,Sponsor with link on their site,todo,
+P3,Resource,Persian Wikipedia / related entries,Entity recognition,Only if notability criteria met; do not self-edit,hold,
+P3,Aparat/YouTube,Aparat + YouTube channel,Video embeds and entity signals,Short explainer videos (composite process) embedded on pages,todo,
+AVOID,Link schemes,Bought link packages / PBNs / mass directory spam,Violates Google spam policy; risks manual action,Do not do,never,
+P1,Social profile,Aparat + YouTube channel,Brand entity + video embeds,Create channel named 'دندانپزشکی زیبایی شیراز | دکتر فاطمه جعفری'; link site in description,todo,Use brand name 'dandan pezeshki shiraz' in channel About
+P1,Social profile,Telegram channel / Rubika / Eitaa,Iranian audience and brand mentions,Create channel; link site,todo,Eitaa/Rubika are widely used locally
+P1,Social profile,LinkedIn + Google Maps profile link,Entity consistency,Create page/profile with same NAP,todo,
+P2,Directory,"Google-friendly Iranian dental/medical directories (e.g. salamat, azmoon-style lists)",Citation + referral,Add only if listing is free and editorial; keep NAP identical,todo,Quality over quantity: 10 good > 100 spammy
+P2,Q&A / community,Persian Q&A on doctoreto / paziresh24 / Instagram comments,Brand mentions and topical authority,Answer real patient questions as the doctor (no link spam),todo,Mentions help AI answers
+P2,Press release,Local news: 'launch of the clinic's online booking',Brand + dofollow chance,Write 300-word release; send to Shiraz outlets,todo,
+P2,Guest post,Persian dental/health blogs,Contextual links,Offer 1 original article/month with real expertise,todo,Disclose authorship; one link max
+P2,Partnership,Local dental lab / supplier / dental school mentions,"Relevant, trusted links",Ask for a 'partners' or 'clinic we work with' page link,todo,
+P3,Resource page,Shiraz tourism/medical-travel pages,Local relevance,Pitch listing for visitors needing dental care,todo,Pairs with English page (M6)
+P3,Competitor-gap,Sites linking to nobat/doctoreto/negin/amin but not to you,Fastest relevant links,Pull via backlink tool (HarborRank/Ahrefs) and pitch,todo,Needs a paid backlink data source
+INTERNAL,Internal links,"Home → /composite, /veneers, /services/smile-design, /dentist-maaliabad-shiraz with keyword anchors",Passes authority to money pages,"Add contextual anchors: 'کامپوزیت دندان در شیراز', 'لمینت سرامیکی شیراز'",todo,Vary anchors; avoid exact-match overuse
+INTERNAL,Internal links,Every journal article → its service page + /booking,Funnels informational traffic,Add 1 service link + 1 CTA per article,todo,
+INTERNAL,Internal links,Footer: add area page + price guides,Sitewide discovery,Add 3 links,todo,

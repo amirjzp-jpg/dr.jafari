@@ -19,6 +19,7 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] Register the site in Google Search Console and Bing Webmaster Tools (domain property by DNS TXT record at HostIran), then submit /sitemap.xml
 - [ ] Delete the four sms.ir API keys that were pasted into a chat; keep only the one stored on the server
 - [ ] **Doctor approval of the content drafts** in `docs/content-drafts/`: seven service pages (`service-pages.md`) and six articles (`articles.md`). Every `[؟]` must be answered or the sentence removed, and every «✓ تأیید شود» confirmed, before anything goes on the site. Nothing from these files is published yet.
+- [ ] **SEO fix drafts (2026-10-07)** in `docs/content-drafts/seo-fixes-for-approval.md`: Maaliabad FAQ, shorter `/composite` meta description, «هزینه» section, and the «انتخاب دندانپزشک» guide outline. Needs the doctor's approval.
 - [ ] SEO audit (2026-09-29), needs the doctor's decision before the code can change:
   - D1 one clinic name everywhere (site «کلینیک دکتر فاطمه جعفری» vs SMS «کلینیک دندانپزشکی دکتر جعفری»)
   - D2 whether «ندا» appears in visible text (today: only in structured data and llms.txt, per the decision to use فاطمه on the site)

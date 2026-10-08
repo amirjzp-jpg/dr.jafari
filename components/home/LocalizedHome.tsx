@@ -4,6 +4,7 @@ import { Faq } from "@/components/content/Faq";
 import { InstagramCta } from "@/components/content/InstagramCta";
 import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
+import { Reviews } from "@/components/home/Reviews";
 import { InstagramIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/icons/ui";
 import { ServiceIcon } from "@/components/icons/services";
 import { Container } from "@/components/layout/Container";
@@ -335,6 +336,8 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
           </ul>
         </Container>
       </section>
+
+      <Reviews lang={lang} />
 
       {/* FAQ */}
       <section aria-labelledby="faq-title">

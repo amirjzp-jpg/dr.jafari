@@ -92,7 +92,7 @@ export function buildMetadata(o: {
       type: o.type ?? "website",
       locale: ogLocale[lang],
       ...(languages ? { alternateLocale: locales.filter((l) => l !== lang && l in languages).map((l) => ogLocale[l]) } : {}),
-      siteName: site.clinicName,
+      siteName: facts[lang].clinicName,
       title: plain,
       description: o.description,
       url: abs(o.path),

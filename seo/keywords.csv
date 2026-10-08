@@ -79,3 +79,364 @@ dandan pezeshki shiraz maaliabad,finglish+area,B-Area,commercial,/dentist-maalia
 dandan pezeshki ziba shiraz,finglish+cosmetic,C-Cosmetic,commercial,/ (home),P2,low,'ziba' = cosmetic
 laminat dandan shiraz,finglish+service,D-Veneer,commercial,/veneers,P3,low,Track only
 kompozit dandan shiraz,finglish+service,E-Composite,commercial,/composite,P3,low,Track only
+دندانپزشک معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین دندانپزشکی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+دندانپزشکی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دندانپزشکی نزدیک من,persian near-me,P-near,transactional,GBP,P1,high,Won by Google Business Profile
+دندان پزشک معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشک معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشک معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشک پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشک تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین دندان پزشک شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+دندان پزشک خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دندان پزشک نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+دندان پزشکی معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشکی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشکی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندان پزشکی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین دندان پزشکی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+دندان پزشکی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دندان پزشکی نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+کلینیک دندانپزشکی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندانپزشکی معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندانپزشکی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندانپزشکی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین کلینیک دندانپزشکی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P1,very high,Target via guide in question form + directory listings; never claim on-page
+کلینیک دندانپزشکی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+کلینیک دندانپزشکی نزدیک من,persian near-me,P-near,transactional,GBP,P1,high,Won by Google Business Profile
+کلینیک دندان پزشکی شیراز,persian,P-core×loc,commercial,/,P2,high,
+کلینیک دندان پزشکی معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندان پزشکی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندان پزشکی معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندان پزشکی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک دندان پزشکی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین کلینیک دندان پزشکی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+کلینیک دندان پزشکی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+کلینیک دندان پزشکی نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+مطب دندانپزشکی شیراز,persian,P-core×loc,commercial,/,P2,high,
+مطب دندانپزشکی معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+مطب دندانپزشکی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+مطب دندانپزشکی معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+مطب دندانپزشکی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+مطب دندانپزشکی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین مطب دندانپزشکی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+مطب دندانپزشکی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+مطب دندانپزشکی نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+دکتر دندانپزشک شیراز,persian,P-core×loc,commercial,/,P2,high,
+دکتر دندانپزشک معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر دندانپزشک معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر دندانپزشک معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر دندانپزشک پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر دندانپزشک تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین دکتر دندانپزشک شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+دکتر دندانپزشک خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دکتر دندانپزشک نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+دندانپزشک زیبایی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک زیبایی معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک زیبایی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک زیبایی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشک زیبایی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دندانپزشک زیبایی نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+دندانپزشکی زیبایی معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی زیبایی معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی زیبایی معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی زیبایی پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دندانپزشکی زیبایی تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین دندانپزشکی زیبایی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+دندانپزشکی زیبایی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دندانپزشکی زیبایی نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+کلینیک زیبایی دندان شیراز,persian,P-core×loc,commercial,/,P2,high,
+کلینیک زیبایی دندان معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک زیبایی دندان معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک زیبایی دندان معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک زیبایی دندان پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+کلینیک زیبایی دندان تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین کلینیک زیبایی دندان شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+کلینیک زیبایی دندان خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+کلینیک زیبایی دندان نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+دکتر زیبایی دندان معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر زیبایی دندان معالی‌آباد شیراز,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر زیبایی دندان معالی اباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر زیبایی دندان پل معالی آباد,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+دکتر زیبایی دندان تاچارا,persian,P-area,commercial,/dentist-maaliabad-shiraz,P2,low-medium,
+بهترین دکتر زیبایی دندان شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+دکتر زیبایی دندان خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+دکتر زیبایی دندان نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+کامپوزیت دندان معالی آباد,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت دندان معالی‌آباد شیراز,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت دندان معالی اباد,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت دندان پل معالی آباد,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت دندان تاچارا,persian,P-area,commercial,/composite,P2,low-medium,
+بهترین کامپوزیت دندان شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P1,very high,Target via guide in question form + directory listings; never claim on-page
+کامپوزیت دندان خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+کامپوزیت دندان نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+کامپوزیت ونیر معالی آباد,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت ونیر معالی‌آباد شیراز,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت ونیر معالی اباد,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت ونیر پل معالی آباد,persian,P-area,commercial,/composite,P2,low-medium,
+کامپوزیت ونیر تاچارا,persian,P-area,commercial,/composite,P2,low-medium,
+بهترین کامپوزیت ونیر شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+کامپوزیت ونیر خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+کامپوزیت ونیر نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+فیس کامپوزیت معالی آباد,persian,P-area,commercial,/composite,P2,low-medium,
+فیس کامپوزیت معالی‌آباد شیراز,persian,P-area,commercial,/composite,P2,low-medium,
+فیس کامپوزیت معالی اباد,persian,P-area,commercial,/composite,P2,low-medium,
+فیس کامپوزیت پل معالی آباد,persian,P-area,commercial,/composite,P2,low-medium,
+فیس کامپوزیت تاچارا,persian,P-area,commercial,/composite,P2,low-medium,
+بهترین فیس کامپوزیت شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+فیس کامپوزیت خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+فیس کامپوزیت نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+لمینت دندان معالی آباد,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت دندان معالی‌آباد شیراز,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت دندان معالی اباد,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت دندان پل معالی آباد,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت دندان تاچارا,persian,P-area,commercial,/veneers,P2,low-medium,
+بهترین لمینت دندان شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P1,very high,Target via guide in question form + directory listings; never claim on-page
+لمینت دندان خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+لمینت دندان نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+لمینت سرامیکی معالی آباد,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت سرامیکی معالی‌آباد شیراز,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت سرامیکی معالی اباد,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت سرامیکی پل معالی آباد,persian,P-area,commercial,/veneers,P2,low-medium,
+لمینت سرامیکی تاچارا,persian,P-area,commercial,/veneers,P2,low-medium,
+بهترین لمینت سرامیکی شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+لمینت سرامیکی خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+لمینت سرامیکی نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+طراحی لبخند معالی آباد,persian,P-area,commercial,/services/smile-design,P2,low-medium,
+طراحی لبخند معالی‌آباد شیراز,persian,P-area,commercial,/services/smile-design,P2,low-medium,
+طراحی لبخند معالی اباد,persian,P-area,commercial,/services/smile-design,P2,low-medium,
+طراحی لبخند پل معالی آباد,persian,P-area,commercial,/services/smile-design,P2,low-medium,
+طراحی لبخند تاچارا,persian,P-area,commercial,/services/smile-design,P2,low-medium,
+بهترین طراحی لبخند شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+طراحی لبخند خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+طراحی لبخند نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+بلیچینگ دندان معالی آباد,persian,P-area,commercial,/services/whitening,P2,low-medium,
+بلیچینگ دندان معالی‌آباد شیراز,persian,P-area,commercial,/services/whitening,P2,low-medium,
+بلیچینگ دندان معالی اباد,persian,P-area,commercial,/services/whitening,P2,low-medium,
+بلیچینگ دندان پل معالی آباد,persian,P-area,commercial,/services/whitening,P2,low-medium,
+بلیچینگ دندان تاچارا,persian,P-area,commercial,/services/whitening,P2,low-medium,
+بهترین بلیچینگ دندان شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+بلیچینگ دندان خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+بلیچینگ دندان نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+سفید کردن دندان معالی آباد,persian,P-area,commercial,/services/whitening,P2,low-medium,
+سفید کردن دندان معالی‌آباد شیراز,persian,P-area,commercial,/services/whitening,P2,low-medium,
+سفید کردن دندان معالی اباد,persian,P-area,commercial,/services/whitening,P2,low-medium,
+سفید کردن دندان پل معالی آباد,persian,P-area,commercial,/services/whitening,P2,low-medium,
+سفید کردن دندان تاچارا,persian,P-area,commercial,/services/whitening,P2,low-medium,
+بهترین سفید کردن دندان شیراز,persian superlative,P-best,commercial,/journal (guide) + directories,P2,very high,Target via guide in question form + directory listings; never claim on-page
+سفید کردن دندان خوب در شیراز,persian,P-good,commercial,/journal (guide),P2,high,
+سفید کردن دندان نزدیک من,persian near-me,P-near,transactional,GBP,P3,high,Won by Google Business Profile
+لمینت دندان اقساطی شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+کامپوزیت دندان اقساطی شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+قیمت طراحی لبخند شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+طراحی لبخند اقساطی شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+قیمت بلیچینگ دندان شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+هزینه بلیچینگ دندان شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+بلیچینگ دندان اقساطی شیراز,persian,P-price,commercial,/composite|/veneers (cost FAQ),P1,high,No numbers on site (D3); answer 'what decides the cost'
+دندانپزشک خانم شیراز,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+دندانپزشک زن شیراز,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+دندانپزشک خانم معالی آباد,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+دندانپزشک شنبه شیراز,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+نوبت دندانپزشک شیراز آنلاین,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+رزرو آنلاین دندانپزشک شیراز,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+دندانپزشک قسطی شیراز,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+دندانپزشکی اقساطی شیراز,persian,P-intent,transactional,/ or /booking,P2,medium,Only if true for the clinic (female doctor: yes)
+کلینیک دکتر جعفری شیراز,brand,H-Brand,navigational,/about,P1,low,
+دکتر جعفری دندانپزشک,brand,H-Brand,navigational,/about,P1,low,
+دکتر فاطمه جعفری,brand,H-Brand,navigational,/about,P1,low,
+دکتر ندا جعفری,brand,H-Brand,navigational,/about,P1,low,
+دکتر ندا جعفری دندانپزشک,brand,H-Brand,navigational,/about,P1,low,
+dr neda jafari,brand,H-Brand,navigational,/about,P1,low,
+dr fatemeh jafari dentist shiraz,brand,H-Brand,navigational,/about,P1,low,
+dr jafari dentist shiraz,brand,H-Brand,navigational,/about,P1,low,
+dandanpezeshk shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+dandanpezeshk moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandanpezeshk shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandanpezeshk nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandanpezeshk nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandan pezeshk moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshk moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshk maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshk maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshk moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandan pezeshk shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandan pezeshk nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandan pezeshk nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandanpezeshki moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandanpezeshki shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandanpezeshki nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandanpezeshki nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandan pezeshki moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandan pezeshki shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandan pezeshki nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandan pezeshki nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandoonpezeshk shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+dandoonpezeshk moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoonpezeshk moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoonpezeshk maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoonpezeshk maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoonpezeshk moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandoonpezeshk shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandoonpezeshk nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandoonpezeshk nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandoon pezeshki shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+dandoon pezeshki moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoon pezeshki moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoon pezeshki maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoon pezeshki maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandoon pezeshki moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandoon pezeshki shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandoon pezeshki nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandoon pezeshki nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+clinic dandanpezeshki shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+clinic dandanpezeshki moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+clinic dandanpezeshki moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+clinic dandanpezeshki maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+clinic dandanpezeshki maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+clinic dandanpezeshki moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin clinic dandanpezeshki shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+clinic dandanpezeshki nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+clinic dandanpezeshki nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+cilinic dandanpezeshki shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+cilinic dandanpezeshki moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+cilinic dandanpezeshki moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+cilinic dandanpezeshki maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+cilinic dandanpezeshki maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+cilinic dandanpezeshki moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin cilinic dandanpezeshki shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+cilinic dandanpezeshki nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+cilinic dandanpezeshki nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+kelinik dandanpezeshki shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+kelinik dandanpezeshki moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+kelinik dandanpezeshki moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+kelinik dandanpezeshki maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+kelinik dandanpezeshki maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+kelinik dandanpezeshki moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin kelinik dandanpezeshki shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+kelinik dandanpezeshki nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+kelinik dandanpezeshki nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandanpezeshk zibaei shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+dandanpezeshk zibaei moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk zibaei moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk zibaei maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk zibaei maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshk zibaei moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandanpezeshk zibaei shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandanpezeshk zibaei nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandanpezeshk zibaei nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandanpezeshki zibaee shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+dandanpezeshki zibaee moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki zibaee moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki zibaee maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki zibaee maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandanpezeshki zibaee moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandanpezeshki zibaee shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandanpezeshki zibaee nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandanpezeshki zibaee nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+dandan pezeshki zibayi shiraz,finglish,F-core×loc,commercial,/,P2,medium,
+dandan pezeshki zibayi moaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki zibayi moali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki zibayi maali abad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki zibayi maaliabad,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+dandan pezeshki zibayi moaliabad shiraz,finglish,F-area,commercial,/dentist-maaliabad-shiraz,P3,low,
+behtarin dandan pezeshki zibayi shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+dandan pezeshki zibayi nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+dandan pezeshki zibayi nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+laminet dandan shiraz,finglish,F-core×loc,commercial,/veneers,P2,medium,
+laminet dandan moaliabad,finglish,F-area,commercial,/veneers,P3,low,
+laminet dandan moali abad,finglish,F-area,commercial,/veneers,P3,low,
+laminet dandan maali abad,finglish,F-area,commercial,/veneers,P3,low,
+laminet dandan maaliabad,finglish,F-area,commercial,/veneers,P3,low,
+laminet dandan moaliabad shiraz,finglish,F-area,commercial,/veneers,P3,low,
+behtarin laminet dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+laminet dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+laminet dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+laminate dandan shiraz,finglish,F-core×loc,commercial,/veneers,P2,medium,
+laminate dandan moaliabad,finglish,F-area,commercial,/veneers,P3,low,
+laminate dandan moali abad,finglish,F-area,commercial,/veneers,P3,low,
+laminate dandan maali abad,finglish,F-area,commercial,/veneers,P3,low,
+laminate dandan maaliabad,finglish,F-area,commercial,/veneers,P3,low,
+laminate dandan moaliabad shiraz,finglish,F-area,commercial,/veneers,P3,low,
+behtarin laminate dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+laminate dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+laminate dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+lamint dandan shiraz,finglish,F-core×loc,commercial,/veneers,P2,medium,
+lamint dandan moaliabad,finglish,F-area,commercial,/veneers,P3,low,
+lamint dandan moali abad,finglish,F-area,commercial,/veneers,P3,low,
+lamint dandan maali abad,finglish,F-area,commercial,/veneers,P3,low,
+lamint dandan maaliabad,finglish,F-area,commercial,/veneers,P3,low,
+lamint dandan moaliabad shiraz,finglish,F-area,commercial,/veneers,P3,low,
+behtarin lamint dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+lamint dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+lamint dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+composit dandan shiraz,finglish,F-core×loc,commercial,/composite,P2,medium,
+composit dandan moaliabad,finglish,F-area,commercial,/composite,P3,low,
+composit dandan moali abad,finglish,F-area,commercial,/composite,P3,low,
+composit dandan maali abad,finglish,F-area,commercial,/composite,P3,low,
+composit dandan maaliabad,finglish,F-area,commercial,/composite,P3,low,
+composit dandan moaliabad shiraz,finglish,F-area,commercial,/composite,P3,low,
+behtarin composit dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+composit dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+composit dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+kompozit dandan moaliabad,finglish,F-area,commercial,/composite,P3,low,
+kompozit dandan moali abad,finglish,F-area,commercial,/composite,P3,low,
+kompozit dandan maali abad,finglish,F-area,commercial,/composite,P3,low,
+kompozit dandan maaliabad,finglish,F-area,commercial,/composite,P3,low,
+kompozit dandan moaliabad shiraz,finglish,F-area,commercial,/composite,P3,low,
+behtarin kompozit dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+kompozit dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+kompozit dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+composite dandan shiraz,finglish,F-core×loc,commercial,/composite,P2,medium,
+composite dandan moaliabad,finglish,F-area,commercial,/composite,P3,low,
+composite dandan moali abad,finglish,F-area,commercial,/composite,P3,low,
+composite dandan maali abad,finglish,F-area,commercial,/composite,P3,low,
+composite dandan maaliabad,finglish,F-area,commercial,/composite,P3,low,
+composite dandan moaliabad shiraz,finglish,F-area,commercial,/composite,P3,low,
+behtarin composite dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+composite dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+composite dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+tarahi labkhand shiraz,finglish,F-core×loc,commercial,/services/smile-design,P2,medium,
+tarahi labkhand moaliabad,finglish,F-area,commercial,/services/smile-design,P3,low,
+tarahi labkhand moali abad,finglish,F-area,commercial,/services/smile-design,P3,low,
+tarahi labkhand maali abad,finglish,F-area,commercial,/services/smile-design,P3,low,
+tarahi labkhand maaliabad,finglish,F-area,commercial,/services/smile-design,P3,low,
+tarahi labkhand moaliabad shiraz,finglish,F-area,commercial,/services/smile-design,P3,low,
+behtarin tarahi labkhand shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+tarahi labkhand nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+tarahi labkhand nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+bleaching dandan shiraz,finglish,F-core×loc,commercial,/services/whitening,P2,medium,
+bleaching dandan moaliabad,finglish,F-area,commercial,/services/whitening,P3,low,
+bleaching dandan moali abad,finglish,F-area,commercial,/services/whitening,P3,low,
+bleaching dandan maali abad,finglish,F-area,commercial,/services/whitening,P3,low,
+bleaching dandan maaliabad,finglish,F-area,commercial,/services/whitening,P3,low,
+bleaching dandan moaliabad shiraz,finglish,F-area,commercial,/services/whitening,P3,low,
+behtarin bleaching dandan shiraz,finglish superlative,F-best,commercial,/journal (guide) + directories,P2,high,Never claim on-page
+bleaching dandan nazdik,finglish near-me,F-near,transactional,GBP,P3,medium,
+bleaching dandan nazdik moaliabad,finglish near-me,F-near,transactional,/dentist-maaliabad-shiraz + GBP,P3,low,
+gheimat laminet dandan shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,
+gheymat composit dandan shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,
+hazine laminate shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,
+laminet aghsati shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,
+composit aghsati shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,
+nobat dandanpezeshk shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,
+dandanpezeshk khanom shiraz,finglish,F-intent,commercial,/composite|/veneers|/booking,P3,low,

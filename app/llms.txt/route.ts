@@ -1,5 +1,6 @@
 import { articles } from "@/content/journal";
-import { services } from "@/content/services";
+import { homeFaq } from "@/content/home";
+import { services, type Faq } from "@/content/services";
 import { isTranslated, languageNames, localePath } from "@/lib/i18n";
 import { abs } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -10,6 +11,11 @@ export const dynamic = "force-static";
 
 const link = (label: string, path: string, note?: string) => `- [${label}](${abs(path)})${note ? `: ${note}` : ""}`;
 const service = (slug: string) => services.find((s) => s.slug === slug)!;
+
+// Approved questions and answers exactly as the pages show them, so AI answers can quote them.
+// Only questions a page also marks up as FAQPage (noSchema ones belong to another page and repeat).
+const qa = (faq: Faq[], path: string) =>
+  faq.filter((f) => !f.noSchema).flatMap((f) => [`### ${f.q}`, "", `${f.a} (${abs(path)})`, ""]);
 
 export function GET() {
   const doctor = "دکتر فاطمه جعفری";
@@ -58,6 +64,10 @@ export function GET() {
           "",
         ]
       : []),
+    "## پرسش‌های رایج",
+    "",
+    ...qa(homeFaq, "/"),
+    ...["composite", "veneers", "smile-design"].flatMap((slug) => qa(service(slug).faq ?? [], service(slug).href)),
     "## Optional",
     "",
     link("مجله", "/journal", "مقاله‌های آموزشی درباره‌ی کامپوزیت و لمینت."),

@@ -23,15 +23,20 @@ const main = ["composite", "veneers", "smile-design"];
 const faqHeading: Record<IntlLocale, string> = { ar: "## الأسئلة الشائعة (العربية)", en: "## Frequently asked questions (English)" };
 
 // The same approved questions in Arabic and English, linking to each language's own pages.
-const intlQa = (lang: IntlLocale) => [
-  faqHeading[lang],
-  "",
-  ...qa(homeCopy[lang].faq, localePath(lang, "/")),
-  ...main.flatMap((slug) => {
-    const c = serviceContent[lang][slug];
-    return c ? qa(c.detail?.faq ?? c.faq ?? [], localePath(lang, service(slug).href)) : [];
-  }),
-];
+// A question asked on more than one page is listed once, with the first page that asks it.
+const intlQa = (lang: IntlLocale) => {
+  const seen = new Set<string>();
+  const once = (faq: Faq[]) => faq.filter((f) => !seen.has(f.q) && seen.add(f.q));
+  return [
+    faqHeading[lang],
+    "",
+    ...qa(once(homeCopy[lang].faq), localePath(lang, "/")),
+    ...main.flatMap((slug) => {
+      const c = serviceContent[lang][slug];
+      return c ? qa(once(c.detail?.faq ?? c.faq ?? []), localePath(lang, service(slug).href)) : [];
+    }),
+  ];
+};
 
 export function GET() {
   const doctor = "دکتر فاطمه جعفری";

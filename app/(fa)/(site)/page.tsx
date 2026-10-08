@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Faq } from "@/components/content/Faq";
 import { InstagramCta } from "@/components/content/InstagramCta";
+import { Reviews } from "@/components/home/Reviews";
 import { JsonLd } from "@/components/content/JsonLd";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { InstagramIcon, PhoneIcon, PinIcon } from "@/components/icons/ui";
@@ -44,6 +45,7 @@ export default function HomePage() {
       <InstagramCta className="pb-16 lg:pb-24" />
       <Services />
       <Journal />
+      <Reviews lang="fa" />
       <HomeFaq />
       <Contact />
     </>

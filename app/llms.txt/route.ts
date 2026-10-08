@@ -67,7 +67,7 @@ export function GET() {
     "## پرسش‌های رایج",
     "",
     ...qa(homeFaq, "/"),
-    ...["composite", "veneers", "smile-design"].flatMap((slug) => qa(service(slug).faq ?? [], service(slug).href)),
+    ...["composite", "veneers", "smile-design"].flatMap((slug) => qa(service(slug).detail?.faq ?? service(slug).faq ?? [], service(slug).href)),
     "## Optional",
     "",
     link("مجله", "/journal", "مقاله‌های آموزشی درباره‌ی کامپوزیت و لمینت."),

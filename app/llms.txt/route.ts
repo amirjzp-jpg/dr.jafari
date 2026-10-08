@@ -1,7 +1,9 @@
 import { articles } from "@/content/journal";
 import { homeFaq } from "@/content/home";
+import { homeCopy } from "@/content/i18n/home";
+import { serviceContent } from "@/content/i18n/services";
 import { services, type Faq } from "@/content/services";
-import { isTranslated, languageNames, localePath } from "@/lib/i18n";
+import { intlLocales, isTranslated, languageNames, localePath, type IntlLocale } from "@/lib/i18n";
 import { abs } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -16,6 +18,20 @@ const service = (slug: string) => services.find((s) => s.slug === slug)!;
 // Only questions a page also marks up as FAQPage (noSchema ones belong to another page and repeat).
 const qa = (faq: Faq[], path: string) =>
   faq.filter((f) => !f.noSchema).flatMap((f) => [`### ${f.q}`, "", `${f.a} (${abs(path)})`, ""]);
+
+const main = ["composite", "veneers", "smile-design"];
+const faqHeading: Record<IntlLocale, string> = { ar: "## الأسئلة الشائعة (العربية)", en: "## Frequently asked questions (English)" };
+
+// The same approved questions in Arabic and English, linking to each language's own pages.
+const intlQa = (lang: IntlLocale) => [
+  faqHeading[lang],
+  "",
+  ...qa(homeCopy[lang].faq, localePath(lang, "/")),
+  ...main.flatMap((slug) => {
+    const c = serviceContent[lang][slug];
+    return c ? qa(c.detail?.faq ?? c.faq ?? [], localePath(lang, service(slug).href)) : [];
+  }),
+];
 
 export function GET() {
   const doctor = "دکتر فاطمه جعفری";
@@ -67,7 +83,8 @@ export function GET() {
     "## پرسش‌های رایج",
     "",
     ...qa(homeFaq, "/"),
-    ...["composite", "veneers", "smile-design"].flatMap((slug) => qa(service(slug).detail?.faq ?? service(slug).faq ?? [], service(slug).href)),
+    ...main.flatMap((slug) => qa(service(slug).detail?.faq ?? service(slug).faq ?? [], service(slug).href)),
+    ...(isTranslated("/") ? intlLocales.flatMap(intlQa) : []),
     "## Optional",
     "",
     link("مجله", "/journal", "مقاله‌های آموزشی درباره‌ی کامپوزیت و لمینت."),

@@ -49,8 +49,8 @@ These stay out until the inputs exist. When they do, the change is in `dentistSc
 
 | Property | Needs | Decision |
 |---|---|---|
-| `geo` | exact coordinates from Neshan/Google pin | D5 |
-| `hasMap` | a real Google Maps pin (current link only searches the address) | D5 |
+| `geo` | done 2026-10-08 (Google pin) | - |
+| `hasMap` | done 2026-10-08 (Google pin) | - |
 | `logo` | a logo file, or a real clinic photo for `image` | open |
 | `priceRange` | a price decision | D3 (no numbers: leave out) |
 | `sameAs` additions | Google Business Profile URL, Neshan/Balad, the council profile URL | D5 / off-site |

@@ -44,6 +44,7 @@ The app is a standard Node.js server with plain Postgres. Three scripts in `depl
 - **Client IP:** nginx appends the client address to `X-Forwarded-For`, as `docs/SECURITY.md` requires.
 - Analytics (optional): run Umami on the same host and add `NEXT_PUBLIC_UMAMI_SRC` and `NEXT_PUBLIC_UMAMI_WEBSITE_ID` to the env file, then run `update.sh` (they are read at build time).
 - Rebuild after changing `NEXT_PUBLIC_SITE_URL` or `SITE_INDEXABLE` (`update.sh`): the page tags are fixed at build time.
+- **IndexNow:** `update.sh` ends by running `npm run indexnow`, which sends every sitemap URL to Bing and Yandex so they recrawl at once (Google ignores IndexNow). The key file is `public/4ba3ae2f06139493b65e815135ee927b.txt`; it is public by design. It only runs where `SITE_INDEXABLE=true`, and a failure never stops the deploy.
 
 ## Checks before launch
 - `npm test` needs a local Postgres (`TEST_DATABASE_URL`, default `postgres://dev:dev@localhost/drjafari_test`).

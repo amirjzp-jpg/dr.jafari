@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/i18n";
 // Each review is shown in every language; `original` marks the language the patient wrote in,
 // and other versions are labelled as translations. «بهترین» is reworded per CLAUDE.md.
 // No Review/AggregateRating markup: Google does not show stars for a business's own reviews.
+// Order: the most specific experience first (treatment, place, outcome), then care and the clinic.
 // TODO-content.md: confirm each patient agreed to their comment being shown.
 
 export type PatientReview = {
@@ -14,6 +15,15 @@ export type PatientReview = {
 };
 
 export const reviews: PatientReview[] = [
+  {
+    original: "en",
+    treatment: { fa: "لمینت سرامیکی", ar: "فينير خزفي", en: "Ceramic veneers" },
+    text: {
+      fa: "به‌شدت پیشنهاد می‌کنم. در سفرم به شیراز لمینت سرامیکی انجام دادم؛ در هر مرحله کمکم کردند و راهنمایی‌ام کردند و تجربه‌ی بسیار خوبی داشتم.",
+      ar: "أنصح بها بشدة. أجريت فينير خزفي خلال زيارتي إلى شيراز، وقد ساعدوني ورافقوني في كل خطوة. كانت تجربة رائعة.",
+      en: "Highly recommended. I had ceramic veneers during my visit to Shiraz, and they helped me and guided me through each step. I had a great experience.",
+    },
+  },
   {
     original: "fa",
     text: {
@@ -31,12 +41,11 @@ export const reviews: PatientReview[] = [
     },
   },
   {
-    original: "en",
-    treatment: { fa: "لمینت سرامیکی", ar: "فينير خزفي", en: "Ceramic veneers" },
+    original: "fa",
     text: {
-      fa: "به‌شدت پیشنهاد می‌کنم. در سفرم به شیراز لمینت سرامیکی انجام دادم؛ در هر مرحله کمکم کردند و راهنمایی‌ام کردند و تجربه‌ی بسیار خوبی داشتم.",
-      ar: "أنصح بها بشدة. أجريت فينير خزفي خلال زيارتي إلى شيراز، وقد ساعدوني ورافقوني في كل خطوة. كانت تجربة رائعة.",
-      en: "Highly recommended. I had ceramic veneers during my visit to Shiraz, and they helped me and guided me through each step. I had a great experience.",
+      fa: "دکتر جعفری خوش‌اخلاق و باتجربه هستند و کمکتان می‌کنند مناسب‌ترین راه را انتخاب کنید.",
+      ar: "الدكتورة جعفري لطيفة وذات خبرة، وتساعدك على اختيار الطريقة الأنسب.",
+      en: "Dr. Jafari is kind and experienced, and helps you choose the right option.",
     },
   },
   {
@@ -47,18 +56,28 @@ export const reviews: PatientReview[] = [
       en: "Excellent, clean and professional, with up-to-date equipment.",
     },
   },
-  {
-    original: "fa",
-    text: {
-      fa: "دکتر جعفری خوش‌اخلاق و باتجربه هستند و کمکتان می‌کنند مناسب‌ترین راه را انتخاب کنید.",
-      ar: "الدكتورة جعفري لطيفة وذات خبرة، وتساعدك على اختيار الطريقة الأنسب.",
-      en: "Dr. Jafari is kind and experienced, and helps you choose the right option.",
-    },
-  },
 ];
 
-export const reviewsCopy: Record<Locale, { eyebrow: string; title: string; patient: string; translated: string }> = {
-  fa: { eyebrow: "نظر بیماران", title: "تجربه‌ی بیماران کلینیک", patient: "بیمار کلینیک", translated: "ترجمه از انگلیسی" },
-  ar: { eyebrow: "آراء المرضى", title: "تجارب مرضى العيادة", patient: "مريض في العيادة", translated: "مترجم" },
-  en: { eyebrow: "Patient reviews", title: "What patients say about the clinic", patient: "Clinic patient", translated: "Translated from Persian" },
+export const reviewsCopy: Record<Locale, { eyebrow: string; title: string; lead: string; patient: string; translated: string }> = {
+  fa: {
+    eyebrow: "نظر بیماران",
+    title: "تجربه‌ی بیماران کلینیک دکتر فاطمه جعفری در شیراز",
+    lead: "بیماران بیشتر از مشاوره‌ی دقیق پیش از درمان، رفتار حرفه‌ای و محترمانه‌ی دکتر و همکاران، و تمیزی و تجهیزات به‌روز کلینیک گفته‌اند. متن‌ها همان نوشته‌های بیماران است.",
+    patient: "بیمار کلینیک",
+    translated: "ترجمه از انگلیسی",
+  },
+  ar: {
+    eyebrow: "آراء المرضى",
+    title: "تجارب المرضى في عيادة الدكتورة فاطمة جعفري في شيراز",
+    lead: "يتحدث المرضى غالباً عن الاستشارة الدقيقة قبل العلاج، وعن احترافية الطبيبة وفريقها واحترامهم، وعن نظافة العيادة وأجهزتها الحديثة. النصوص هي كلمات المرضى أنفسهم.",
+    patient: "مريض في العيادة",
+    translated: "مترجم",
+  },
+  en: {
+    eyebrow: "Patient reviews",
+    title: "What patients say about Dr. Fatemeh Jafari's clinic in Shiraz",
+    lead: "Patients most often mention the careful consultation before treatment, the professional and respectful doctor and staff, and a clean clinic with up-to-date equipment. The quotes are the patients' own words.",
+    patient: "Clinic patient",
+    translated: "Translated from Persian",
+  },
 };

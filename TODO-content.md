@@ -25,14 +25,14 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
   - D1 one clinic name everywhere (site «کلینیک دکتر فاطمه جعفری» vs SMS «کلینیک دندانپزشکی دکتر جعفری»)
   - D2 whether «ندا» appears in visible text (today: only in structured data and llms.txt, per the decision to use فاطمه on the site)
   - D3 prices: publish ranges, or only what drives the cost, plus a copy approval for the new «هزینه» section
-  - D5 exact Neshan/Balad pins (also unlocks `geo` and `hasMap` in structured data)
+  - D5 exact Neshan/Balad pins (Google pin done 2026-10-08: `geo` and `hasMap` are live)
   - D6 written patient consent for every before/after photo, and a check against the medical council's advertising rules
   - D7 confirm the spelling «طبقه‌چهار»
   - a real photo of the clinic (entrance or interior) for the `Dentist` structured data image
   - the medical council's public profile URL for number 169473, if one exists (verify by hand before adding to `sameAs`)
   - off-site listings: Instagram bio, Neshan, Balad, Google Maps, Paziresh24, Doctoreto, Nobat.ir (same name, address, phone and hours as the site)
 - [ ] Confirm the booking-policy defaults (24 h notice, 15 min lateness, no-show rule)
-- [ ] Exact map pins for Neshan, Balad and Google Maps (the «مسیریابی» link currently searches the address), and coordinates for structured data
+- [ ] Exact map pins for Neshan and Balad. Done for Google Maps (2026-10-08): the «مسیریابی» link and the structured data (`geo`, `hasMap`) use the clinic's pin in `lib/site.ts`
 
 - [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»
 - [ ] Decision on buying a licensed Persian display font

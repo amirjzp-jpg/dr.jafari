@@ -118,8 +118,8 @@ const shirazArea = (lang: Locale) => ({
 });
 
 /**
- * Dentist (a LocalBusiness subtype). No geo, hasMap or priceRange: the exact pin
- * and prices are not confirmed (TODO-content.md).
+ * Dentist (a LocalBusiness subtype). geo and hasMap come from the clinic's Google Maps pin
+ * (lib/site.ts); no priceRange, because no prices are published (decision D3).
  */
 export function dentistSchema(lang: Locale = "fa") {
   const f = facts[lang];
@@ -139,6 +139,8 @@ export function dentistSchema(lang: Locale = "fa") {
       addressRegion: intl ? (lang === "ar" ? "فارس" : "Fars") : "فارس",
       addressCountry: "IR",
     },
+    geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
+    hasMap: site.mapUrl,
     areaServed: shirazArea(lang),
     knowsLanguage: "fa",
     openingHoursSpecification: site.openPeriods.map(([opens, closes]) => ({

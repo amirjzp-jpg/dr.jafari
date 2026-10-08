@@ -19,10 +19,11 @@ export const site = {
   // WhatsApp for patients abroad (Arabic and English pages), who cannot use the SMS-code booking.
   whatsapp: { display: "+98 917 720 3937", url: "https://wa.me/989177203937" },
   councilNumber: "۱۶۹۴۷۳", // شماره نظام پزشکی
-  // TODO-content.md: exact map pins (Neshan, Balad, Google) are still missing; this searches the address.
+  // Exact pin of the clinic's building (ساختمان موجودی), from the clinic's Google Maps link
+  // https://maps.app.goo.gl/RBviRFDAiBidWmaf8 (2026-10-08). Used by the «مسیریابی» link and structured data.
+  geo: { latitude: 29.6885153, longitude: 52.4724134 },
   mapUrl:
-    "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent("شیراز، پل معالی‌آباد، جنب بانک تجارت، ساختمان موجودی"),
+    "https://www.google.com/maps/search/?api=1&query=29.6885153%2C52.4724134&query_place_id=ChIJEWrUf1IRsj8RO0pXnmNMjXQ",
   // The doctor's own account; she is known publicly as Neda (docs/decisions.md).
   instagram: "https://www.instagram.com/dr_nedajafarii/" as string | null,
   instagramHandle: "@dr_nedajafarii",

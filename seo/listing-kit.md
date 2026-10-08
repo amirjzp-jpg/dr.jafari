@@ -40,7 +40,7 @@ Do 1-4 this week. Each one is a profile Google and AI engines trust, and most li
 |---|---|---|---|
 | 1 | **Google Business Profile** (business.google.com) | Map results and "near me"; the biggest single lever | Verification may be by postcard or video. Put the pin exactly on the building. Add photos, hours, the booking link, all services. |
 | 2 | **Instagram bio** (@dr_nedajafarii) | Your strongest asset; sends real visitors and brand searches | See section 4 |
-| 3 | **Neshan** and **Balad** | Most-used maps in Iran; send the exact pin back to us (it unlocks `geo`/`hasMap` in the site's data) | Add the place from the app |
+| 3 | **Neshan** and **Balad** | Most-used maps in Iran; use the same pin as Google Maps: 29.6885153, 52.4724134 | Add the place from the app |
 | 4 | **Doctoreto**, **Paziresh24**, **Nobat.ir**, **Doctor-yab** | They rank top 3 for «دندانپزشک شیراز»; patients book there too | Doctor profile with the website link; ask patients for reviews there |
 | 5 | **Bing Places** (bingplaces.com) | Bing and ChatGPT search | Can import straight from Google Business Profile |
 | 6 | **Bing Webmaster Tools** | Indexing in Bing | Can import the site from Google Search Console in one click |

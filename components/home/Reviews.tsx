@@ -14,6 +14,7 @@ export function Reviews({ lang }: { lang: Locale }) {
           <h2 id="reviews-title" className="font-display text-[26px] leading-normal font-semibold lg:text-[40px]">
             {c.title}
           </h2>
+          <p className="max-w-[720px] text-[17px] leading-[2] text-muted-2">{c.lead}</p>
         </div>
         <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r, i) => (

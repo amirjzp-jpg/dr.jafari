@@ -2,6 +2,7 @@ import Image from "next/image";
 import { InstagramIcon } from "@/components/icons/ui";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { galleryFor } from "@/content/i18n/gallery";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
@@ -24,16 +25,18 @@ const copy = {
 } as const;
 
 // Three real results fanned like prints, a small static echo of the gallery's card fan.
+// Alt text comes from the gallery entry (same id), in the page's language.
 const prints = [
-  { src: "/images/gallery/veneer-2.webp", className: "-rotate-[9deg] translate-x-[46%] translate-y-3" },
-  { src: "/images/gallery/smile-1-after.webp", className: "rotate-[8deg] -translate-x-[46%] translate-y-3" },
-  { src: "/images/gallery/veneer-1.webp", className: "z-10 -translate-y-1" },
+  { id: "veneer-2", src: "/images/gallery/veneer-2.webp", className: "-rotate-[9deg] translate-x-[46%] translate-y-3" },
+  { id: "smile-1", src: "/images/gallery/smile-1-after.webp", className: "rotate-[8deg] -translate-x-[46%] translate-y-3" },
+  { id: "veneer-1", src: "/images/gallery/veneer-1.webp", className: "z-10 -translate-y-1" },
 ];
 
 /** Follow-on-Instagram band. Links out only: no embed (Instagram is filtered in Iran and would load Meta scripts). */
 export function InstagramCta({ className = "", lang = "fa" }: { className?: string; lang?: Locale }) {
   if (!site.instagram) return null;
   const c = copy[lang];
+  const alts = new Map(galleryFor(lang).map((g) => [g.id, g.alt]));
   return (
     <section aria-labelledby="ig-title" className={className}>
       <Container>
@@ -64,7 +67,7 @@ export function InstagramCta({ className = "", lang = "fa" }: { className?: stri
                 key={p.src}
                 className={`absolute aspect-[4/5] w-[128px] overflow-hidden rounded-[18px] border-[5px] border-surface bg-tint shadow-[0_22px_44px_-22px_rgba(28,39,51,0.45)] sm:w-[150px] lg:w-[190px] ${p.className}`}
               >
-                <Image src={p.src} alt="" fill sizes="190px" className="object-cover" />
+                <Image src={p.src} alt={alts.get(p.id) ?? ""} fill sizes="190px" className="object-cover" />
               </div>
             ))}
           </div>

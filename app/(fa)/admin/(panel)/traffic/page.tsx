@@ -16,6 +16,7 @@ const day = new Intl.DateTimeFormat("fa-IR-u-ca-persian", { day: "numeric", mont
 const stamp = new Intl.DateTimeFormat("fa-IR-u-ca-persian", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: TZ });
 
 type Row = Record<string, string | number | null>;
+const asDate = (v: unknown) => (v instanceof Date ? v : new Date(String(v)));
 const q = async (sql: string, p: unknown[] = []) => (await query<Row>(sql, p)).rows;
 
 const REF_LABEL: Record<string, string> = { direct: "مستقیم", search: "موتور جستجو", ai: "هوش مصنوعی", social: "شبکه‌ی اجتماعی", other: "سایر سایت‌ها" };
@@ -66,13 +67,15 @@ function Bars({ rows, labels }: { rows: { k: string; v: number }[]; labels?: Rec
 function Columns({ data }: { data: { label: string; a: number; b?: number }[] }) {
   const max = Math.max(1, ...data.map((d) => d.a));
   const w = 100 / Math.max(1, data.length);
+  const bw = Math.min(w * 0.76, 6); // keep a lone day from becoming one huge block
+  const bx = (i: number) => i * w + (w - bw) / 2;
   return (
     <div>
       <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="h-40 w-full" role="img" aria-label="نمودار">
         {data.map((d, i) => (
           <g key={i}>
-            <rect x={i * w + w * 0.12} y={40 - (d.a / max) * 38} width={w * 0.76} height={(d.a / max) * 38} rx="0.6" fill="var(--color-tint-2)" />
-            {d.b ? <rect x={i * w + w * 0.12} y={40 - (d.b / max) * 38} width={w * 0.76} height={(d.b / max) * 38} rx="0.6" fill="var(--color-primary)" /> : null}
+            <rect x={bx(i)} y={40 - (d.a / max) * 38} width={bw} height={(d.a / max) * 38} rx="0.6" fill="var(--color-tint-2)" />
+            {d.b ? <rect x={bx(i)} y={40 - (d.b / max) * 38} width={bw} height={(d.b / max) * 38} rx="0.6" fill="var(--color-primary)" /> : null}
           </g>
         ))}
       </svg>
@@ -97,7 +100,7 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
          count(*) FILTER (WHERE at > date_trunc('day', now() AT TIME ZONE '${TZ}') AT TIME ZONE '${TZ}') AS today,
          count(*) FILTER (WHERE at > now() - interval '30 minutes') AS live
        FROM analytics_hits WHERE ${V}`),
-    q(`SELECT (at AT TIME ZONE '${TZ}')::date AS d, count(*) AS v, count(DISTINCT sid) AS u FROM analytics_hits WHERE ${V} GROUP BY 1 ORDER BY 1`),
+    q(`SELECT to_char((at AT TIME ZONE '${TZ}')::date, 'YYYY-MM-DD') AS d, count(*) AS v, count(DISTINCT sid) AS u FROM analytics_hits WHERE ${V} GROUP BY 1 ORDER BY 1`),
     q(`SELECT extract(hour FROM at AT TIME ZONE '${TZ}')::int AS h, count(*) AS v FROM analytics_hits WHERE ${V} GROUP BY 1`),
     q(`SELECT device AS k, count(*) AS v FROM analytics_hits WHERE ${V} GROUP BY 1 ORDER BY 2 DESC`),
     q(`SELECT browser AS k, count(*) AS v FROM analytics_hits WHERE ${V} GROUP BY 1 ORDER BY 2 DESC LIMIT 6`),
@@ -179,7 +182,7 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
                     <td className="py-1.5" dir="ltr">{b.k}</td>
                     <td className="text-muted">{BOT_LABEL[String(b.bot_kind)] ?? b.bot_kind}</td>
                     <td className="text-end">{n(b.v ?? 0)}</td>
-                    <td className="text-end text-xs text-muted">{stamp.format(new Date(String(b.last)))}</td>
+                    <td className="text-end text-xs text-muted">{stamp.format(asDate(b.last))}</td>
                   </tr>
                 ))}
               </tbody>
@@ -189,7 +192,7 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
       </div>
 
       <h2 className="mt-2 font-display text-xl font-semibold">گزارش سئو</h2>
-      <Card title="بررسی فنی همه‌ی صفحه‌ها" hint={a ? `آخرین اجرا: ${stamp.format(new Date(String(audit[0].at)))} · ${n(a.pages.length)} صفحه · ${n(bad.length)} صفحه با نکته` : "هنوز اجرا نشده است. دکمه را بزنید (حدود ۱۰ ثانیه)."} wide>
+      <Card title="بررسی فنی همه‌ی صفحه‌ها" hint={a ? `آخرین اجرا: ${stamp.format(asDate(audit[0].at))} · ${n(a.pages.length)} صفحه · ${n(bad.length)} صفحه با نکته` : "هنوز اجرا نشده است. دکمه را بزنید (حدود ۱۰ ثانیه)."} wide>
         <form action={runSeoAudit} className="mb-3"><button type="submit" className={btnPrimary}>اجرای بررسی</button></form>
         {a && (
           <>
@@ -230,7 +233,7 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
         {recent.length === 0 && <li className="p-4 text-muted">هنوز رویدادی ثبت نشده است.</li>}
         {recent.map((r, i) => (
           <li key={i} className="flex flex-wrap items-center gap-x-3 gap-y-0.5 p-2.5">
-            <span className="text-xs text-muted">{stamp.format(new Date(String(r.at)))}</span>
+            <span className="text-xs text-muted">{stamp.format(asDate(r.at))}</span>
             <span className={`rounded-pill px-2 py-0.5 text-xs ${r.kind === "bot" ? "bg-[#F1E8D4] text-[#6B4E12]" : "bg-tint text-primary"}`}>{r.kind === "bot" ? String(r.bot_name) : DEVICE_LABEL[String(r.device)] ?? "—"}</span>
             <span dir="ltr" className="font-medium">{r.path}</span>
             <span dir="ltr" className="ms-auto text-xs text-muted">{r.kind === "bot" ? BOT_LABEL[String(r.bot_kind)] : [r.browser, r.os, r.ref_host && `← ${r.ref_host}`].filter(Boolean).join(" · ")}</span>

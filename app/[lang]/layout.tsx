@@ -10,6 +10,7 @@ import "@fontsource/inter/latin-500.css";
 import "@fontsource/inter/latin-600.css";
 import "../globals.css";
 import { Analytics } from "@/components/layout/Analytics";
+import { Tracker } from "@/components/layout/Tracker";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { facts } from "@/content/i18n/ui";
 import { dirOf, intlLocales, isIntl } from "@/lib/i18n";
@@ -57,6 +58,7 @@ export default async function LangLayout({
       <body className="min-h-dvh antialiased">
         <SiteShell lang={lang}>{children}</SiteShell>
         <Analytics />
+        <Tracker />
       </body>
     </html>
   );

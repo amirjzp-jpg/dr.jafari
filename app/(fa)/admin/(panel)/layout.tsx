@@ -3,6 +3,7 @@ import { connection } from "next/server";
 import { adminLogout } from "../actions";
 import { requireAdmin } from "@/lib/auth/session";
 import { formatPhone } from "@/lib/phone";
+import { trafficPhones } from "@/lib/traffic";
 import { AdminNav } from "./AdminNav";
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
@@ -24,7 +25,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
             </form>
           </div>
         </div>
-        <AdminNav />
+        <AdminNav traffic={trafficPhones().has(phone)} />
       </header>
       <main className="flex grow flex-col gap-5 px-4 py-5">{children}</main>
     </div>

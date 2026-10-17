@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../fonts";
 import { Analytics } from "@/components/layout/Analytics";
+import { Tracker } from "@/components/layout/Tracker";
 import { defaultDescription, defaultTitle, robotsMeta, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-dvh antialiased">
         {children}
         <Analytics />
+        <Tracker />
       </body>
     </html>
   );

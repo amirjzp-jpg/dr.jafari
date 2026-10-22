@@ -312,7 +312,7 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
             </ButtonLink>
           </div>
           <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {latestArticles(3).map((a) => {
+            {latestArticles(99).filter((a) => articleText[lang][a.slug]).slice(0, 3).map((a) => {
               const t = articleText[lang][a.slug];
               return (
                 <li key={a.slug}>

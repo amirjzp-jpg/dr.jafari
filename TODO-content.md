@@ -37,3 +37,8 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] Clinic legal name, if different from «کلینیک دکتر فاطمه جعفری»
 - [ ] Decision on buying a licensed Persian display font
 - [ ] Umami analytics host (optional; `NEXT_PUBLIC_UMAMI_SRC`, `NEXT_PUBLIC_UMAMI_WEBSITE_ID`)
+
+## Article: دکتر بلیچینگ در شیراز (`whitening-doctor-shiraz`)
+- Added 2026-10-22 in Persian only (Arabic/English versions not written). `doctorReviewed: false` until the doctor confirms the text; then flip it so the reviewer line shows.
+- Image: AI-generated stock photo added (public/images/blog/whitening-doctor-shiraz-*.webp).
+- Open with the doctor: the clinic's exact bleaching method and number of sessions; whether to publish a price range (D3).

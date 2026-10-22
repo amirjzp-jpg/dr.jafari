@@ -161,11 +161,18 @@ describe("translated pages", () => {
   });
 });
 
+const PERSIAN_ONLY = ["whitening-doctor-shiraz"];
+
 describe("journal articles in Arabic and English", () => {
   it("translates every article, section by section", () => {
     for (const l of ["ar", "en"] as const) {
       for (const a of articles) {
         const t = articleText[l][a.slug];
+        // Persian-only articles are not listed in Arabic or English until they are translated.
+        if (PERSIAN_ONLY.includes(a.slug)) {
+          expect(t, `${l} ${a.slug} should be absent`).toBeUndefined();
+          continue;
+        }
         expect(t, `${l} ${a.slug}`).toBeTruthy();
         expect(t.body.length, `${l} ${a.slug} blocks`).toBe(a.body.length);
         // Same shape as the Persian article: headings, paragraphs and lists in the same places.

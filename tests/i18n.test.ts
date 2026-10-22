@@ -161,7 +161,7 @@ describe("translated pages", () => {
   });
 });
 
-const PERSIAN_ONLY = ["whitening-doctor-shiraz"];
+const PERSIAN_ONLY: string[] = [];
 
 describe("journal articles in Arabic and English", () => {
   it("translates every article, section by section", () => {

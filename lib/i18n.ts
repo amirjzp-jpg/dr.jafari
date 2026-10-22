@@ -40,6 +40,7 @@ export const translatedPaths: readonly string[] = [
   "/journal/composite-longevity",
   "/journal/veneer-care",
   "/journal/whitening-longevity",
+  "/journal/whitening-doctor-shiraz",
 ];
 
 /**

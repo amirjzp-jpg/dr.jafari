@@ -183,9 +183,9 @@ export const articles: Article[] = [
     readMinutes: 5,
     published: "2026-10-22",
     image: {
-      card: "/images/blog/whitening-longevity-card.webp",
-      hero: "/images/blog/whitening-longevity-hero.webp",
-      alt: "لبخند طبیعی و روشن؛ تصویر تزئینی",
+      card: "/images/blog/whitening-doctor-shiraz-card.webp",
+      hero: "/images/blog/whitening-doctor-shiraz-hero.webp",
+      alt: "لبخند طبیعی و روشن در کنار فنجان آب و مسواک؛ تصویر تزئینی",
       cardW: 760,
       cardH: 486,
     },

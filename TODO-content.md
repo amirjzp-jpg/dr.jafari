@@ -38,5 +38,5 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 
 ## Article: دکتر بلیچینگ در شیراز (`whitening-doctor-shiraz`)
 - Added 2026-10-22 in Persian only (Arabic/English versions not written). `doctorReviewed: false` until the doctor confirms the text; then flip it so the reviewer line shows.
-- Image is a placeholder (reuses the whitening-longevity picture). Replace with a dedicated one (prompt given to the client).
+- Image: AI-generated stock photo added (public/images/blog/whitening-doctor-shiraz-*.webp).
 - Open with the doctor: the clinic's exact bleaching method and number of sessions; whether to publish a price range (D3).

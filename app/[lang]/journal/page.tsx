@@ -27,7 +27,7 @@ export default async function JournalIndex({ params }: { params: Promise<{ lang:
       <PageHeader lang={lang} title={l.indexTitle} lead={l.indexLead} crumbs={[{ name: l.crumb, path: localePath(lang, "/journal") }]} />
       <Container className="pb-24">
         <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {latestArticles(articles.length).map((a, i) => {
+          {latestArticles(articles.length).filter((a) => articleText[lang][a.slug]).map((a, i) => {
             const t = articleText[lang][a.slug];
             return (
               <li key={a.slug}>

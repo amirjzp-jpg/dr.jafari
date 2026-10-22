@@ -17,7 +17,7 @@ import { displayTitle } from "@/lib/title-case";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return intlLocales.flatMap((lang) => articles.map((a) => ({ lang, slug: a.slug })));
+  return intlLocales.flatMap((lang) => articles.filter((a) => articleText[lang][a.slug]).map((a) => ({ lang, slug: a.slug })));
 }
 
 type Params = Promise<{ lang: string; slug: string }>;
@@ -25,7 +25,7 @@ type Params = Promise<{ lang: string; slug: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { lang, slug } = await params;
   const a = articleBySlug(slug);
-  if (!isIntl(lang) || !a) return {};
+  if (!isIntl(lang) || !a || !articleText[lang][slug]) return {};
   const t = articleText[lang][slug];
   return buildMetadata({
     lang,
@@ -66,14 +66,14 @@ function Body({ blocks }: { blocks: Block[] }) {
 export default async function ArticlePage({ params }: { params: Params }) {
   const { lang, slug } = await params;
   const a = articleBySlug(slug);
-  if (!isIntl(lang) || !a) notFound();
+  if (!isIntl(lang) || !a || !articleText[lang][slug]) notFound();
   const t = articleText[lang][slug];
   const l = journalLabels[lang];
   const here = localePath(lang, `/journal/${a.slug}`);
   const pillar = services.find((s) => s.href === a.pillar)!;
   const pillarName = serviceContent[lang][pillar.slug].name;
   const book = bookingFor(lang);
-  const related = articles.filter((x) => x.slug !== a.slug).slice(0, 2);
+  const related = articles.filter((x) => x.slug !== a.slug && articleText[lang][x.slug]).slice(0, 2);
   const qa = qaFromArticle(lang, t.title, t.body);
   // The booking box sits about three quarters of the way down, never between a heading and its text.
   let half = Math.ceil(t.body.length * 0.75);

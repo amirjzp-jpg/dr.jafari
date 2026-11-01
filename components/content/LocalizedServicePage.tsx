@@ -53,7 +53,7 @@ export function LocalizedServicePage({ lang, service }: { lang: IntlLocale; serv
     .map((c, i) => ({ ...c, title: homeCopy[lang].cases.titles[i] ?? c.title, label: `${i + 1}`, persianTitle: c.title }))
     .filter((c) => service.caseTitles?.includes(c.persianTitle));
   const faq = d ? d.faq : (text.faq ?? []);
-  const related = articles.filter((a) => a.pillar === service.href || a.alsoRelatedTo?.includes(service.href));
+  const related = articles.filter((a) => articleText[lang][a.slug] && (a.pillar === service.href || a.alsoRelatedTo?.includes(service.href)));
 
   return (
     <>

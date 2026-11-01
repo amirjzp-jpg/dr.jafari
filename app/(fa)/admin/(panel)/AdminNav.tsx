@@ -13,12 +13,13 @@ const items = [
   { href: "/admin/log", label: "تاریخچه" },
 ];
 
-export function AdminNav() {
+export function AdminNav({ traffic = false }: { traffic?: boolean }) {
   const path = usePathname();
+  const all = traffic ? [...items, { href: "/admin/traffic", label: "ترافیک" }] : items;
   return (
     <nav aria-label="بخش‌های پنل" className="overflow-x-auto">
       <ul className="flex gap-1 px-2 pb-2">
-        {items.map((it) => {
+        {all.map((it) => {
           const active = it.href === "/admin" ? path === "/admin" : path.startsWith(it.href);
           return (
             <li key={it.href}>

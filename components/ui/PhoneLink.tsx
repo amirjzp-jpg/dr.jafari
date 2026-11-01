@@ -6,8 +6,8 @@ import { site } from "@/lib/site";
 /**
  * The clinic phone as a tap-to-call link. Semibold so it reads as the
  * clinic's contact point, and nowrap so it never breaks at its inner spaces.
- * In Arabic and English a WhatsApp mark sits beside it and opens a chat, since
- * visitors from abroad use WhatsApp rather than a call.
+ * A WhatsApp mark sits beside it in every language and opens a plain chat
+ * (no prefilled text).
  */
 export function PhoneLink({ className = "", lang = "fa" }: { className?: string; lang?: Locale }) {
   const phone = (
@@ -20,7 +20,6 @@ export function PhoneLink({ className = "", lang = "fa" }: { className?: string;
       {facts[lang].phoneDisplay}
     </a>
   );
-  if (lang === "fa") return phone;
   return (
     <span className="inline-flex items-center gap-3">
       {phone}
@@ -28,8 +27,8 @@ export function PhoneLink({ className = "", lang = "fa" }: { className?: string;
         href={site.whatsapp.url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={ui[lang].whatsapp}
-        title={ui[lang].whatsapp}
+        aria-label={lang === "fa" ? "واتساپ" : ui[lang].whatsapp}
+        title={lang === "fa" ? "واتساپ" : ui[lang].whatsapp}
         data-umami-event="whatsapp_click"
         className="-mx-1 -my-3 inline-flex size-11 items-center justify-center text-[#1f8f5f] hover:text-[#176f49]"
       >

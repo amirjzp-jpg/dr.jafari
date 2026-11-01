@@ -93,3 +93,10 @@ Decisions made with the client after the handoff. Where these differ from `BUILD
 - **Staff translation:** the staff will use Google Translate or a chatbot for WhatsApp messages. Rule: no patient names, numbers or photos in a public tool. A reply pack and glossary can be drafted on request.
 - **Titles applied (client, 2026-10-04, "best decision and best practice"):** the new Arabic and English titles from the keyword plan, with descriptions shortened to about 155 characters.
 - **Plan your visit:** `/ar/plan-your-visit` and `/en/plan-your-visit` (no Persian counterpart) give the clinic's approximate times: composite about 1 day, ceramic veneers about 1 month, implants about 1 month; all approximate and set after the examination, with "contact us for details". Added later the same day: a first row for a quick treatment (a short visit to fix something small, about 1 day), and the implant row now reads about 1 month for installing the implant (client). The questions mirror the Persian service questions.
+
+## SEO round (2026-11-01)
+- **Prices:** none on the website, final (client). D3 is closed: no price ranges, no `priceRange` in structured data.
+- **Photo consent:** written patient consent exists for the before/after photos, and the doctor authorized their use (client, 2026-11-01). D6 is closed.
+- **WhatsApp on the Persian site:** the WhatsApp icon now sits beside the phone number on every Persian page (`components/ui/PhoneLink.tsx`), opening a plain chat with +98 917 720 3937, no prefilled text.
+- **Structured data:** `Dentist` has `medicalSpecialty: Dentistry` and contact points; the doctor has `hasOccupation`. Each language has its own node ids (`clinicId`, `doctorId`, `websiteId` in lib/seo.ts); Persian ids are unchanged.
+- **Headings:** FAQ questions and the featured service cards on the home pages are H3.

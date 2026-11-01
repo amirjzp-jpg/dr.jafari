@@ -111,6 +111,11 @@ const shirazNames: Record<Locale, { city: string; province: string }> = {
   en: { city: "Shiraz", province: "Fars Province" },
 };
 
+/** Structured-data node ids, one set per language so the localized names never clash (Persian ids are the original ones). */
+export const clinicId = (lang: Locale = "fa") => abs(`${localePath(lang, "/")}#clinic`);
+export const doctorId = (lang: Locale = "fa") => abs(`${localePath(lang, "/about")}#doctor`);
+export const websiteId = (lang: Locale = "fa") => abs(`${localePath(lang, "/")}#website`);
+
 const shirazArea = (lang: Locale) => ({
   "@type": "City",
   name: shirazNames[lang].city,
@@ -127,7 +132,7 @@ export function dentistSchema(lang: Locale = "fa") {
   return {
     "@context": "https://schema.org",
     "@type": "Dentist",
-    "@id": abs("/#clinic"),
+    "@id": clinicId(lang),
     name: f.clinicName,
     url: siteUrl,
     image: abs("/opengraph-image.jpg"),
@@ -178,7 +183,7 @@ export function dentistSchema(lang: Locale = "fa") {
             },
           },
         }),
-    employee: { "@id": abs("/about#doctor") },
+    employee: { "@id": doctorId(lang) },
     ...(site.instagram ? { sameAs: [site.instagram] } : {}),
   };
 }
@@ -194,7 +199,7 @@ export function personSchema(lang: Locale = "fa") {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": abs("/about#doctor"),
+    "@id": doctorId(lang),
     name: p.name,
     // Known publicly as Neda (her Instagram); Fatemeh is her registered name.
     alternateName: p.alt,
@@ -208,8 +213,8 @@ export function personSchema(lang: Locale = "fa") {
     },
     knowsAbout: p.knows,
     knowsLanguage: "fa",
-    worksFor: { "@id": abs("/#clinic") },
-    workLocation: { "@id": abs("/#clinic") },
+    worksFor: { "@id": clinicId(lang) },
+    workLocation: { "@id": clinicId(lang) },
     url: abs("/about"),
     image: abs("/images/doctor/dr-hero.webp"),
     ...(site.instagram ? { sameAs: [site.instagram] } : {}),
@@ -220,11 +225,11 @@ export function websiteSchema(lang: Locale = "fa") {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": abs("/#website"),
+    "@id": websiteId(lang),
     name: facts[lang].clinicName,
     url: lang === "fa" ? siteUrl : abs(localePath(lang, "/")),
     inLanguage: lang,
-    publisher: { "@id": abs("/#clinic") },
+    publisher: { "@id": clinicId(lang) },
   };
 }
 
@@ -262,10 +267,10 @@ export function medicalWebPageSchema(service: Service, intl?: { lang: IntlLocale
     inLanguage: intl ? intl.lang : "fa",
     about: { "@type": service.slug === "consultation" ? "Service" : "MedicalProcedure", name: intl ? intl.text.name : service.name },
     ...(reviewed
-      ? { reviewedBy: { "@id": abs("/about#doctor") }, lastReviewed: service.reviewedAt ?? COPY_APPROVED }
+      ? { reviewedBy: { "@id": doctorId() }, lastReviewed: service.reviewedAt ?? COPY_APPROVED }
       : {}),
     ...(intl ? { dateModified: INTL_UPDATED } : service.updatedAt ? { dateModified: service.updatedAt } : {}),
-    isPartOf: { "@id": abs("/#website") },
-    publisher: { "@id": abs("/#clinic") },
+    isPartOf: { "@id": websiteId(intl?.lang ?? "fa") },
+    publisher: { "@id": clinicId(intl?.lang ?? "fa") },
   };
 }

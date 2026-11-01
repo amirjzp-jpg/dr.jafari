@@ -14,7 +14,7 @@ import { bookingFor, externalProps, facts, ui } from "@/content/i18n/ui";
 import { services } from "@/content/services";
 import { intlStaticParams, metaLang, pageLang } from "@/lib/intl-route";
 import { localePath } from "@/lib/i18n";
-import { abs, buildMetadata } from "@/lib/seo";
+import { abs, buildMetadata, clinicId, websiteId } from "@/lib/seo";
 
 const path = "/dentist-maaliabad-shiraz";
 
@@ -53,8 +53,8 @@ export default async function MaaliabadPage({ params }: { params: Promise<{ lang
           url: abs(here),
           name: c.h1,
           inLanguage: lang,
-          about: { "@id": abs("/#clinic") },
-          isPartOf: { "@id": abs("/#website") },
+          about: { "@id": clinicId(lang) },
+          isPartOf: { "@id": websiteId(lang) },
           dateModified: INTL_UPDATED,
         }}
       />

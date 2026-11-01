@@ -10,7 +10,7 @@ import { pagesCopy } from "@/content/i18n/pages";
 import { externalProps, waLink } from "@/content/i18n/ui";
 import { intlStaticParams, metaLang, pageLang } from "@/lib/intl-route";
 import { localePath } from "@/lib/i18n";
-import { abs, breadcrumbSchema, buildMetadata, faqSchema } from "@/lib/seo";
+import { abs, breadcrumbSchema, buildMetadata, clinicId, faqSchema, websiteId } from "@/lib/seo";
 
 const path = "/plan-your-visit";
 
@@ -43,8 +43,8 @@ export default async function PlanYourVisit({ params }: { params: Promise<{ lang
             url: abs(here),
             name: c.h1,
             inLanguage: lang,
-            about: { "@id": abs("/#clinic") },
-            isPartOf: { "@id": abs("/#website") },
+            about: { "@id": clinicId(lang) },
+            isPartOf: { "@id": websiteId(lang) },
             dateModified: INTL_UPDATED,
           },
           breadcrumbSchema([

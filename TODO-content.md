@@ -24,9 +24,9 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - [ ] SEO audit (2026-09-29), needs the doctor's decision before the code can change:
   - D1 one clinic name everywhere (site «کلینیک دکتر فاطمه جعفری» vs SMS «کلینیک دندانپزشکی دکتر جعفری»)
   - D2 whether «ندا» appears in visible text (today: only in structured data and llms.txt, per the decision to use فاطمه on the site)
-  - D3 prices: publish ranges, or only what drives the cost, plus a copy approval for the new «هزینه» section
+  - ~~D3 prices~~ closed 2026-11-01: no prices on the website
   - D5 exact Neshan/Balad pins (Google pin done 2026-10-08: `geo` and `hasMap` are live)
-  - D6 written patient consent for every before/after photo, and a check against the medical council's advertising rules
+  - ~~D6 photo consent~~ closed 2026-11-01: written consent exists and the doctor authorized
   - D7 confirm the spelling «طبقه‌چهار»
   - a real photo of the clinic (entrance or interior) for the `Dentist` structured data image
   - the medical council's public profile URL for number 169473, if one exists (verify by hand before adding to `sameAs`)

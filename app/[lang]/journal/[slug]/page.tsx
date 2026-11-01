@@ -12,7 +12,7 @@ import { pagesCopy } from "@/content/i18n/pages";
 import { articleBySlug, articles, type Block } from "@/content/journal";
 import { services } from "@/content/services";
 import { intlLocales, isIntl, localePath } from "@/lib/i18n";
-import { abs, breadcrumbSchema, buildMetadata, faqSchema } from "@/lib/seo";
+import { abs, breadcrumbSchema, buildMetadata, clinicId, faqSchema } from "@/lib/seo";
 import { displayTitle } from "@/lib/title-case";
 
 export const dynamicParams = false;
@@ -92,8 +92,8 @@ export default async function ArticlePage({ params }: { params: Params }) {
             datePublished: INTL_UPDATED,
             dateModified: INTL_UPDATED,
             inLanguage: lang,
-            author: { "@id": abs("/#clinic") },
-            publisher: { "@id": abs("/#clinic") },
+            author: { "@id": clinicId(lang) },
+            publisher: { "@id": clinicId(lang) },
             mainEntityOfPage: abs(here),
           },
           breadcrumbSchema([

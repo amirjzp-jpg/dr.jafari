@@ -10,7 +10,7 @@ import { galleryFor, treatmentLabelFor } from "@/content/i18n/gallery";
 import { pagesCopy } from "@/content/i18n/pages";
 import { intlStaticParams, metaLang, pageLang } from "@/lib/intl-route";
 import { localePath } from "@/lib/i18n";
-import { abs, buildMetadata } from "@/lib/seo";
+import { abs, buildMetadata, clinicId } from "@/lib/seo";
 
 export const dynamicParams = false;
 export const generateStaticParams = intlStaticParams;
@@ -36,7 +36,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ lang: 
           name: c.schemaName,
           url: abs(here),
           inLanguage: lang,
-          about: { "@id": abs("/#clinic") },
+          about: { "@id": clinicId(lang) },
           image: items.map((g) => ({
             "@type": "ImageObject",
             contentUrl: abs(cover(g)),

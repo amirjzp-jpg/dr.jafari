@@ -59,6 +59,8 @@ export function GET() {
     `- تلفن: ‎${site.phone.tel.replace("+98", "+98 ").replace(/(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3")}`,
     `- ساعت کاری: ${site.hours}؛ ${site.closedDays}.`,
     "- پرداخت: امکان پرداخت اقساطی برای درمان‌های زیبایی.",
+    `- English: Saturday to Wednesday 10:00-13:00 and 14:00-19:00 (Iran time); closed Thursday and Friday.`,
+    `- WhatsApp (patients abroad, staff reply in Persian): ${site.whatsapp.display}`,
     "",
     "## خدمات اصلی",
     "",

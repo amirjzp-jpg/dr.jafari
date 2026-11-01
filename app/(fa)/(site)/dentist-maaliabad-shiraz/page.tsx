@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookingCta } from "@/components/content/BookingCta";
 import { JsonLd } from "@/components/content/JsonLd";
+import { Faq } from "@/components/content/Faq";
 import { PageHeader } from "@/components/content/PageHeader";
 import { PhoneIcon, PinIcon } from "@/components/icons/ui";
 import { Container } from "@/components/layout/Container";
@@ -26,6 +27,12 @@ const H2 = ({ children, id }: { children: React.ReactNode; id: string }) => (
     {children}
   </h2>
 );
+// Visible only, no FAQPage markup: the same questions are already marked up on the home page (one question, one URL).
+const areaFaq = [
+  { q: "کلینیک دندانپزشکی زیبایی در معالی‌آباد شیراز کجاست؟", a: `${site.address}. برای مسیریابی از دکمه‌ی «مسیریابی» همین صفحه استفاده کنید.`, noSchema: true },
+  { q: "کلینیک چه روزها و ساعت‌هایی باز است؟", a: `${site.hours}؛ ${site.closedDays}.`, noSchema: true },
+  { q: "برای نوبت چطور اقدام کنم؟", a: "از صفحه‌ی رزرو، روز و ساعت دلخواه را انتخاب و شماره‌ی موبایل را با کد پیامکی تأیید کنید، یا با کلینیک تماس بگیرید. اولین مراجعه یک جلسه‌ی معاینه و مشاوره‌ی ۳۰ دقیقه‌ای است.", noSchema: true },
+];
 const row = "flex flex-col gap-1.5 border-b border-line py-5 first:pt-0 last:border-b-0 last:pb-0";
 const label = "text-[13px] text-muted-2";
 
@@ -104,6 +111,11 @@ export default function MaaliabadPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section aria-labelledby="area-faq" className="flex flex-col gap-4">
+            <H2 id="area-faq">پرسش‌های رایج درباره‌ی مراجعه به کلینیک</H2>
+            <Faq items={areaFaq} />
           </section>
 
           <section aria-labelledby="booking" className="flex flex-col gap-4">

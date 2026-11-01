@@ -134,6 +134,8 @@ export function dentistSchema(lang: Locale = "fa") {
     "@type": "Dentist",
     "@id": clinicId(lang),
     name: f.clinicName,
+    // Finglish (Persian in Latin letters): many people search this way, e.g. "dandanpezeshki zibayi shiraz".
+    ...(intl ? {} : { alternateName: ["Dandanpezeshki Zibayi Shiraz", "Clinic Doctor Fatemeh Jafari Shiraz", "Kelinik Dr Jafari Shiraz"] }),
     url: siteUrl,
     image: abs("/opengraph-image.jpg"),
     telephone: site.phone.tel,
@@ -202,7 +204,7 @@ export function personSchema(lang: Locale = "fa") {
     "@id": doctorId(lang),
     name: p.name,
     // Known publicly as Neda (her Instagram); Fatemeh is her registered name.
-    alternateName: p.alt,
+    alternateName: lang === "fa" ? [p.alt, "Dr Fatemeh Jafari", "Dr Neda Jafari", "Doktor Jafari Dandanpezesh Shiraz"] : p.alt,
     jobTitle: p.job,
     hasOccupation: { "@type": "Occupation", name: p.job },
     identifier: {

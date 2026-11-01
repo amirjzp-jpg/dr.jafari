@@ -48,6 +48,7 @@ export function GET() {
     "> English: Cosmetic dental clinic of Dr. Fatemeh Jafari (cosmetic dentist, Iran Medical Council no. 169473) in Shiraz, Iran, offering composite bonding, ceramic veneers and smile design, with online booking.",
     "",
     "زبان سایت فارسی است.",
+    "Finglish spellings people also use: dandanpezeshki zibayi shiraz, dandanpezeshk shiraz, laminat dandan shiraz, kompozit dandan shiraz, tarahi labkhand shiraz, dandanpezeshki maaliabad shiraz.",
     "",
     "## درباره‌ی پزشک و کلینیک",
     "",

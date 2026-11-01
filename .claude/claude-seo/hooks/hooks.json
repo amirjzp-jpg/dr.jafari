@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              ".claude/claude-seo/hooks/run-python-hook.js",
+              ".claude/claude-seo/hooks/validate-schema.py",
+              "${tool_input.file_path}"
+            ],
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

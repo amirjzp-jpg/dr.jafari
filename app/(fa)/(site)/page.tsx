@@ -268,7 +268,7 @@ function Services() {
                 <span className="mb-1 flex size-16 items-center justify-center rounded-[20px] bg-surface">
                   <ServiceIcon name={s.icon} size={34} />
                 </span>
-                <span className="font-display text-[26px] font-semibold lg:text-[30px]">{s.name}</span>
+                <h3 className="font-display text-[26px] font-semibold lg:text-[30px]">{s.name}</h3>
                 <span className="text-[15px] leading-[1.9] text-muted-2">{s.short}</span>
                 <span className="mt-auto text-sm font-medium text-primary group-hover:text-primary-hover">
                   بیشتر بدانید ←

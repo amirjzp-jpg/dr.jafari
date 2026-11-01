@@ -7,7 +7,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
       {items.map((f) => (
         <details key={f.q} className="group border-b border-line">
           <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-[17px] font-medium [&::-webkit-details-marker]:hidden">
-            {f.q}
+            <h3 className="text-[17px] font-medium">{f.q}</h3>
             <span aria-hidden="true" className="text-xl text-primary transition-transform group-open:rotate-45">
               +
             </span>

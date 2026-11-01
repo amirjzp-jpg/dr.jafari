@@ -142,7 +142,15 @@ export function dentistSchema(lang: Locale = "fa") {
     geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
     hasMap: site.mapUrl,
     areaServed: shirazArea(lang),
+    medicalSpecialty: "https://schema.org/Dentistry",
     knowsLanguage: "fa",
+    // Staff speak Persian only (docs/decisions.md), so every contact point lists fa. Patients abroad reach the clinic on WhatsApp.
+    contactPoint: [
+      { "@type": "ContactPoint", contactType: "reservations", telephone: site.phone.tel, availableLanguage: ["fa"] },
+      ...(intl
+        ? [{ "@type": "ContactPoint", contactType: "customer support", url: site.whatsapp.url, telephone: "+989177203937", availableLanguage: ["fa"] }]
+        : []),
+    ],
     openingHoursSpecification: site.openPeriods.map(([opens, closes]) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [...site.openDays],
@@ -162,7 +170,12 @@ export function dentistSchema(lang: Locale = "fa") {
           potentialAction: {
             "@type": "ReserveAction",
             name: "رزرو نوبت معاینه و مشاوره",
-            target: abs("/booking"),
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: abs("/booking"),
+              actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
+              inLanguage: "fa",
+            },
           },
         }),
     employee: { "@id": abs("/about#doctor") },
@@ -186,6 +199,7 @@ export function personSchema(lang: Locale = "fa") {
     // Known publicly as Neda (her Instagram); Fatemeh is her registered name.
     alternateName: p.alt,
     jobTitle: p.job,
+    hasOccupation: { "@type": "Occupation", name: p.job },
     identifier: {
       "@type": "PropertyValue",
       propertyID: "IRIMC",

@@ -240,7 +240,7 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
                     <span className="mb-1 flex size-16 items-center justify-center rounded-[20px] bg-surface">
                       <ServiceIcon name={s.icon} size={34} />
                     </span>
-                    <span className="font-display text-[26px] font-semibold lg:text-[30px]">{tx.name}</span>
+                    <h3 className="font-display text-[26px] font-semibold lg:text-[30px]">{tx.name}</h3>
                     <span className="text-[15px] leading-[1.9] text-muted-2">{tx.short}</span>
                     {href && (
                       <span className="mt-auto text-sm font-medium text-primary group-hover:text-primary-hover">

@@ -64,6 +64,7 @@ export function Header({ lang = "fa" }: { lang?: Locale }) {
               href={book.href}
               variant="outline"
               size="sm"
+              data-umami-event="book_header"
               {...(book.external ? externalProps : {})}
             >
               {book.label}

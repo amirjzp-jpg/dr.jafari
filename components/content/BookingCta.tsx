@@ -6,9 +6,10 @@ import { bookingFor, externalProps } from "@/content/i18n/ui";
 import { pagesCopy } from "@/content/i18n/pages";
 import type { Locale } from "@/lib/i18n";
 
-export function BookingCta({ title, lang = "fa" }: { title?: string; lang?: Locale }) {
+export function BookingCta({ title, lang = "fa", href }: { title?: string; lang?: Locale; href?: string }) {
   const c = lang === "fa" ? null : pagesCopy[lang].cta;
   const book = bookingFor(lang);
+  const target = lang === "fa" && href ? href : book.href;
   return (
     <section aria-label={c ? c.aria : "رزرو نوبت"} className="py-16 lg:py-24">
       <Container>
@@ -20,7 +21,7 @@ export function BookingCta({ title, lang = "fa" }: { title?: string; lang?: Loca
               {c ? c.orCall : "یا تماس بگیرید:"} <PhoneLink lang={lang} />
             </p>
           </div>
-          <ButtonLink href={book.href} data-umami-event="book_cta" {...(book.external ? externalProps : {})}>
+          <ButtonLink href={target} data-umami-event="book_cta" {...(book.external ? externalProps : {})}>
             {book.label}
           </ButtonLink>
         </div>

@@ -200,6 +200,8 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
         </Container>
       </section>
 
+      <Reviews lang={lang} />
+
       <InstagramCta lang={lang} className="pb-16 lg:pb-24" />
 
       {/* Services */}
@@ -337,7 +339,6 @@ export function LocalizedHome({ lang }: { lang: IntlLocale }) {
         </Container>
       </section>
 
-      <Reviews lang={lang} />
 
       {/* FAQ */}
       <section aria-labelledby="faq-title">

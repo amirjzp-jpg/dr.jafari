@@ -197,10 +197,28 @@ export function navFor(lang: Locale): readonly NavItem[] {
   ];
 }
 
+// Ready first message with blanks for what the clinic needs to offer a time.
 const waText = {
-  ar: "السلام عليكم، أرغب في حجز موعد في عيادة الدكتورة فاطمة جعفري في شيراز.",
-  en: "Hello, I would like to book an appointment at Dr. Fatemeh Jafari's clinic in Shiraz.",
+  fa: "سلام، می‌خواهم در کلینیک دکتر فاطمه جعفری نوبت بگیرم.\nنام:\nدرمان موردنظر:\nروزهای مناسب:",
+  ar: "السلام عليكم، أرغب في حجز موعد في عيادة الدكتورة فاطمة جعفري في شيراز.\nالاسم:\nالعلاج:\nالأيام المناسبة:",
+  en: "Hello, I would like to book an appointment at Dr. Fatemeh Jafari's clinic in Shiraz.\nName:\nTreatment:\nDays that suit me:",
 } as const;
+
+export type BookingReason = "composite" | "veneer" | "other";
+
+/** Visit reason to preselect in the Persian booking flow, from the page the visitor came from. */
+export function reasonFor(path: string): BookingReason | undefined {
+  if (path === "/composite" || path.startsWith("/composite/")) return "composite";
+  if (path === "/veneers" || path.startsWith("/veneers/")) return "veneer";
+  if (path.startsWith("/services/")) return "other";
+  return undefined;
+}
+
+/** Persian booking link, with the visit reason preselected when the page implies one. */
+export const bookingWithReason = (path: string) => {
+  const r = reasonFor(path);
+  return r ? `/booking?reason=${r}` : "/booking";
+};
 
 /**
  * Where the booking button goes. Persian: the SMS-code booking flow. Arabic and
@@ -215,7 +233,7 @@ export function bookingFor(lang: Locale): { href: string; external: boolean; lab
 }
 
 /** WhatsApp chat with the clinic, opened with a ready first message in the visitor's language. */
-export function waLink(lang: "ar" | "en"): string {
+export function waLink(lang: Locale): string {
   return `${site.whatsapp.url}?text=${encodeURIComponent(waText[lang])}`;
 }
 

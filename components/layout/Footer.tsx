@@ -9,7 +9,8 @@ import { toFaDigits } from "@/lib/digits";
 import { localeHref, localePath, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
-const link = "text-muted no-underline hover:text-primary";
+// Padding widens the tap area to about 40px without moving the text.
+const link = "-my-2.5 inline-block py-2.5 text-muted no-underline hover:text-primary";
 const faYear = toFaDigits(new Date().getFullYear());
 
 export function Footer({ lang = "fa" }: { lang?: Locale }) {
@@ -45,7 +46,7 @@ export function Footer({ lang = "fa" }: { lang?: Locale }) {
           </address>
         </div>
         <div className="flex flex-col gap-3 md:items-end">
-          <ul className="flex flex-wrap items-center gap-x-7 gap-y-2">
+          <ul className="flex flex-wrap items-center gap-x-7 gap-y-4">
             {links.map((l) => (
               <li key={l.path}>
                 <Link href={l.href} className={link}>

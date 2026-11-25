@@ -5,13 +5,14 @@ import { query, tx } from "./db";
 import { hit, LIMITS } from "./rate-limit";
 import { sendSms } from "./sms";
 
-// OTP rules (BUILD-SPEC.md section 7): 5 digits, stored hashed, valid 2 minutes,
+// OTP rules (BUILD-SPEC.md section 7): 5 digits, stored hashed, valid 10 minutes
+// (raised from 2 on 2026-11-25: sms.ir has delivered codes many minutes late),
 // 5 attempts per code, resend after 2 minutes, at most 3 sends per phone per
 // 30 minutes, plus a per-IP limit. The code never appears in any response.
 
 export const OTP = {
   length: 5,
-  ttlSeconds: 120,
+  ttlSeconds: 600,
   resendSeconds: 120,
   maxAttempts: 5,
   maxSendsPerWindow: 3,

@@ -188,7 +188,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         {
           h: "مدة الحفظ",
           p: [
-            "تُحفظ سجلات المواعيد ما دام ذلك لازمًا لمتابعة علاجك وللمتطلبات القانونية. وتنتهي صلاحية رموز التأكيد بعد دقيقتين.",
+            "تُحفظ سجلات المواعيد ما دام ذلك لازمًا لمتابعة علاجك وللمتطلبات القانونية. وتنتهي صلاحية رموز التأكيد بعد عشر دقائق.",
           ],
         },
         {
@@ -384,7 +384,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         {
           h: "How long it is kept",
           p: [
-            "Appointment records are kept for as long as they are needed to follow up your treatment and to meet legal requirements. Confirmation codes expire after two minutes.",
+            "Appointment records are kept for as long as they are needed to follow up your treatment and to meet legal requirements. Confirmation codes expire after ten minutes.",
           ],
         },
         {

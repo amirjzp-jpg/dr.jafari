@@ -11,7 +11,8 @@ import { ReviewedBy } from "@/components/content/ReviewedBy";
 import { COPY_APPROVED, services } from "@/content/services";
 import { toFaDigits } from "@/lib/digits";
 import { abs, breadcrumbSchema, buildMetadata } from "@/lib/seo";
-import { bookingHref, bookingLabel } from "@/lib/site";
+import { bookingLabel } from "@/lib/site";
+import { bookingWithReason, externalProps, waLink } from "@/content/i18n/ui";
 import { jalali, tehranToUtc } from "@/lib/time";
 
 export const dynamicParams = false;
@@ -123,9 +124,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <p className="font-display text-xl font-semibold">درباره‌ی {pillar.name} سؤالی دارید؟</p>
             <p className="text-[15px] text-muted-2">در یک جلسه‌ی معاینه و مشاوره، گزینه‌های مناسب شما را با هم مرور می‌کنیم.</p>
             <div className="flex flex-wrap items-center gap-4">
-              <ButtonLink href={bookingHref} size="md" data-umami-event="book_cta">
-                {bookingLabel}
-              </ButtonLink>
+              {a.cta === "whatsapp" ? (
+                <ButtonLink href={waLink("fa")} {...externalProps} size="md" data-umami-event="whatsapp_click">
+                  پیام در واتساپ
+                </ButtonLink>
+              ) : (
+                <ButtonLink href={bookingWithReason(a.pillar)} size="md" data-umami-event="book_cta">
+                  {bookingLabel}
+                </ButtonLink>
+              )}
               <Link href={pillar.href} className="py-3 text-sm">
                 درباره‌ی {pillar.name} بیشتر بخوانید ←
               </Link>

@@ -42,10 +42,10 @@ export default function HomePage() {
       <Stats />
       <About />
       <Cases />
+      <Reviews lang="fa" />
       <InstagramCta className="pb-16 lg:pb-24" />
       <Services />
       <Journal />
-      <Reviews lang="fa" />
       <HomeFaq />
       <Contact />
     </>
@@ -70,6 +70,12 @@ function Hero() {
             {site.tagline}
           </h1>
           <p className="text-[19px] text-primary lg:text-[26px]">کامپوزیت · لمینت سرامیکی</p>
+          {/* Facts line: each fact stays on one line, so it never wraps mid-phrase. */}
+          <p className="flex flex-col text-[15px] leading-[1.9] text-muted-2 sm:flex-row sm:flex-wrap sm:gap-x-2">
+            <span className="whitespace-nowrap">رزرو آنلاین معاینه و مشاوره‌ی ۳۰ دقیقه‌ای</span>
+            <span aria-hidden="true" className="hidden sm:inline">·</span>
+            <span className="whitespace-nowrap">امکان پرداخت اقساطی</span>
+          </p>
           <p className="hidden max-w-[440px] text-[17px] leading-[2] text-muted lg:block">
             کلینیکی مجهز به تجهیزات و فناوری‌های روز دندانپزشکی، برای لبخندی طبیعی و ماندگار.
           </p>

@@ -13,6 +13,8 @@ export type Article = {
   category: string;
   /** Pillar service page this article supports. */
   pillar: string;
+  /** "whatsapp": the booking button opens WhatsApp (for readers abroad, who can't get the Iranian SMS code). */
+  cta?: "whatsapp";
   /** Other service pages that should list this article as related. */
   alsoRelatedTo?: string[];
   /** false when the doctor has not reviewed the text: no reviewer line, and the clinic (not the doctor) is the author in markup. */
@@ -244,6 +246,7 @@ export const articles: Article[] = [
     metaDescription:
       "برنامه‌ریزی درمان دندان در شیراز از خارج از کشور: سؤال‌های پیش از سفر، زمان تقریبی درمان‌ها، جلسه‌ی اول و نوبت‌گیری از طریق واتساب.",
     category: "راهنمای بیماران",
+    cta: "whatsapp",
     pillar: "/services/consultation",
     alsoRelatedTo: ["/composite", "/veneers", "/services/implant"],
     doctorReviewed: false,
@@ -426,6 +429,7 @@ export const articles: Article[] = [
     metaDescription:
       "لمینت یا کامپوزیت در شیراز: تفاوت دو روش، زمان تقریبی هر کدام، جلسه‌ی اول و رزرو از طریق واتساب برای بیماران عرب‌زبان کشورهای منطقه.",
     category: "راهنمای بیماران",
+    cta: "whatsapp",
     pillar: "/veneers",
     alsoRelatedTo: ["/composite", "/services/consultation"],
     doctorReviewed: false,

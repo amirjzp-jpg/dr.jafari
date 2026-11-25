@@ -63,9 +63,11 @@ describe("OTP", () => {
     expect(rows[0].attempts).toBe(5);
   });
 
-  it("expires after 2 minutes", async () => {
+  it("expires after 10 minutes", async () => {
     const phone = "09350000003";
     const { code } = await send(phone);
+    const { rows } = await query<{ ttl: number }>("SELECT extract(epoch FROM expires_at - created_at)::int AS ttl FROM otp_codes WHERE phone = $1", [phone]);
+    expect(rows[0].ttl).toBe(600);
     await query("UPDATE otp_codes SET expires_at = now() - interval '1 second' WHERE phone = $1", [phone]);
     expect(await verifyOtp({ phone, purpose: "booking", code: code!, ip: ip() })).toEqual({ ok: false, error: "expired" });
   });

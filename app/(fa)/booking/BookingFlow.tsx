@@ -27,6 +27,8 @@ type Props = {
   initialHold: HoldView | null;
   initialVerified: string | null;
   serverNow: number;
+  /** Visit reason preselected from the page the visitor came from. */
+  initialReason?: string;
 };
 
 const REASONS = [
@@ -46,7 +48,7 @@ const LABELS: Record<Step, string> = {
 const pad = (n: number) => String(n).padStart(2, "0");
 const clock = (secs: number) => toFaDigits(`${pad(Math.floor(secs / 60))}:${pad(secs % 60)}`);
 
-export function BookingFlow({ initialDays, initialHold, initialVerified, serverNow }: Props) {
+export function BookingFlow({ initialDays, initialHold, initialVerified, serverNow, initialReason = "composite" }: Props) {
   const [step, setStep] = useState<Step>(1);
   const [days, setDays] = useState(initialDays);
   const firstOpen = Math.max(0, initialDays.findIndex((d) => d.slots.some((s) => s.state !== "taken")));
@@ -61,7 +63,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
   const [masked, setMasked] = useState("");
   const [code, setCode] = useState("");
   const [name, setName] = useState("");
-  const [reason, setReason] = useState<string>("composite");
+  const [reason, setReason] = useState<string>(initialReason);
   const [note, setNote] = useState("");
   const [website, setWebsite] = useState(""); // honeypot
   const [err, setErr] = useState("");
@@ -109,8 +111,12 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
   const errRef = useRef<HTMLParagraphElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    // Move focus to the new step's heading for screen-reader and keyboard users.
-    headingRef.current?.focus();
+    // Steps with a text field focus it, so the keyboard opens without an extra tap (the
+    // field's label is announced); the others move focus to the step heading.
+    const field = !expired && ({ 2: "phone", 3: "otp", 4: "name" } as Partial<Record<Step, string>>)[step];
+    const input = field ? document.getElementById(field) : null;
+    if (input) input.focus();
+    else headingRef.current?.focus();
   }, [step, expired]);
 
   const day = days[dayIdx];
@@ -173,12 +179,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
       });
     } else if (step === 3) {
       if (!/^\d{5}$/.test(toEnDigits(code))) return setErr("کد ۵ رقمی را کامل وارد کنید.");
-      run(async () => {
-        const r = await verifyCode(phone, code);
-        if (!r.ok) return setErr(r.error);
-        setVerified(masked);
-        goto(4);
-      });
+      submitCode(code);
     } else if (step === 4) {
       if (name.trim().length < 2) return setErr("نام و نام خانوادگی را وارد کنید.");
       if (!hold) return goto(1);
@@ -202,6 +203,15 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
     } else {
       router.push("/");
     }
+  }
+
+  function submitCode(value: string) {
+    run(async () => {
+      const r = await verifyCode(phone, value);
+      if (!r.ok) return setErr(r.error);
+      setVerified(masked);
+      goto(4);
+    });
   }
 
   function onBack() {
@@ -371,8 +381,11 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                 dir="ltr"
                 value={code}
                 onChange={(e) => {
-                  setCode(toEnDigits(e.target.value).replace(/\D/g, "").slice(0, 5));
+                  const next = toEnDigits(e.target.value).replace(/\D/g, "").slice(0, 5);
+                  setCode(next);
                   setErr("");
+                  // The fifth digit (typed or autofilled from the SMS) submits the code.
+                  if (next.length === 5 && next !== code && !pending) submitCode(next);
                 }}
                 onKeyDown={(e) => e.key === "Enter" && onPrimary()}
                 placeholder="—————"
@@ -393,6 +406,10 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                 </button>
               )}
             </div>
+            <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted">
+              کد نرسید؟ تماس بگیرید یا در واتساپ پیام بدهید:
+              <PhoneLink />
+            </p>
           </>
         ) : step === 4 ? (
           <>
@@ -532,6 +549,12 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
             <p ref={errRef} id="form-error" role="alert" className="flex items-center gap-2 text-sm text-danger">
               <ErrorIcon />
               {err}
+            </p>
+          )}
+          {err && step <= 2 && (
+            <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted">
+              یا با کلینیک تماس بگیرید:
+              <PhoneLink />
             </p>
           )}
         </div>

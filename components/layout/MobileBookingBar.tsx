@@ -24,7 +24,7 @@ export function MobileBookingBar({ lang = "fa" }: { lang?: Locale }) {
           href={href}
           data-umami-event="book_bar"
           {...(book.external ? externalProps : {})}
-          className="flex h-[52px] grow items-center justify-center rounded-pill bg-primary text-base font-medium text-white no-underline hover:bg-primary-hover hover:text-white"
+          className="flex h-[52px] grow items-center justify-center rounded-pill bg-primary transition-transform duration-150 ease-out active:scale-[0.97] motion-reduce:transition-none text-base font-medium text-white no-underline hover:bg-primary-hover hover:text-white"
         >
           {book.label}
         </Link>
@@ -34,7 +34,7 @@ export function MobileBookingBar({ lang = "fa" }: { lang?: Locale }) {
             {...externalProps}
             aria-label={ui[lang].whatsapp}
             data-umami-event="whatsapp_click"
-            className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-[#1f8f5f] text-[#1f8f5f]"
+            className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-[#1f8f5f] text-[#1f8f5f] transition-transform duration-150 ease-out active:scale-[0.94] motion-reduce:transition-none"
           >
             <WhatsAppIcon size={22} />
           </a>
@@ -43,7 +43,7 @@ export function MobileBookingBar({ lang = "fa" }: { lang?: Locale }) {
           href={`tel:${site.phone.tel}`}
           data-umami-event="phone_click"
           aria-label={ui[lang].callClinic}
-          className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-primary text-primary"
+          className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-primary text-primary transition-transform duration-150 ease-out active:scale-[0.94] motion-reduce:transition-none"
         >
           <PhoneIcon />
         </a>

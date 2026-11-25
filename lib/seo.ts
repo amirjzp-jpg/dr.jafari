@@ -42,6 +42,16 @@ const defaultImage: ShareImage = {
   alt: "کلینیک دندانپزشکی زیبایی دکتر فاطمه جعفری در شیراز",
 };
 
+/** The brand suffix the layouts append to page titles. */
+const titleBrand: Record<Locale, string> = { fa: "دکتر فاطمه جعفری", ar: "د. فاطمة جعفري", en: "Dr. Fatemeh Jafari" };
+
+/** Share card per language (text on the card is in that language). */
+const shareImageUrl: Record<Locale, string> = {
+  fa: defaultImage.url,
+  ar: "/og/og-ar.jpg",
+  en: "/og/og-en.jpg",
+};
+
 const imageAlt: Record<Locale, string> = {
   fa: defaultImage.alt,
   ar: "عيادة الدكتورة فاطمة جعفري لطب الأسنان التجميلي في شيراز",
@@ -80,9 +90,12 @@ export function buildMetadata(o: {
   lang?: Locale;
 }): Metadata {
   const lang = o.lang ?? "fa";
-  const title = typeof o.title === "string" ? displayTitle(lang, o.title) : { absolute: displayTitle(lang, o.title.absolute) };
+  // The layout appends " | <doctor>" to string titles. When that would push the title past
+  // ~60 characters (where search results cut it off), show the page title alone.
+  const shown = typeof o.title === "string" ? displayTitle(lang, o.title) : displayTitle(lang, o.title.absolute);
+  const title = typeof o.title === "string" && `${shown} | ${titleBrand[lang]}`.length <= 60 ? shown : { absolute: shown };
   const plain = typeof title === "string" ? title : title.absolute;
-  const img = o.image ?? { ...defaultImage, alt: imageAlt[lang] };
+  const img = o.image ?? { ...defaultImage, url: shareImageUrl[lang], alt: imageAlt[lang] };
   const languages = languageAlternates(o.path);
   return {
     title,

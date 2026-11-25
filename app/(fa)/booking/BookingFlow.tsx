@@ -68,6 +68,15 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
   const [serverExpired, setExpired] = useState(false);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [pending, startTransition] = useTransition();
+  // A dropped connection must show a message and unlock the button, not freeze the flow.
+  const run = (fn: () => Promise<void>) =>
+    startTransition(async () => {
+      try {
+        await fn();
+      } catch {
+        setErr("ارتباط با سرور برقرار نشد. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.");
+      }
+    });
 
   const router = useRouter();
 
@@ -124,7 +133,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
     setErr("");
     if (expired) {
       track("booking_hold_expired");
-      startTransition(async () => {
+      run(async () => {
         await reloadDays();
         setExpired(false);
         setHold(null);
@@ -135,7 +144,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
     }
     if (step === 1) {
       if (!selected) return setErr("یک ساعت را انتخاب کنید.");
-      startTransition(async () => {
+      run(async () => {
         const r = await startHold(selected);
         if (!r.ok) {
           setErr(r.error);
@@ -153,7 +162,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
     } else if (step === 2) {
       const p = toEnDigits(phone).replace(/[\s-]/g, "");
       if (!/^(\+98|0098|98|0)?9\d{9}$/.test(p)) return setErr("شماره موبایل باید ۱۱ رقم باشد و با ۰۹ شروع شود.");
-      startTransition(async () => {
+      run(async () => {
         const r = await sendCode(phone);
         if (!r.ok) return setErr(r.error);
         setMasked(r.masked);
@@ -164,7 +173,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
       });
     } else if (step === 3) {
       if (!/^\d{5}$/.test(toEnDigits(code))) return setErr("کد ۵ رقمی را کامل وارد کنید.");
-      startTransition(async () => {
+      run(async () => {
         const r = await verifyCode(phone, code);
         if (!r.ok) return setErr(r.error);
         setVerified(masked);
@@ -173,7 +182,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
     } else if (step === 4) {
       if (name.trim().length < 2) return setErr("نام و نام خانوادگی را وارد کنید.");
       if (!hold) return goto(1);
-      startTransition(async () => {
+      run(async () => {
         const r = await submitBooking({ holdId: hold.id, name, reason, note, website });
         if (!r.ok) {
           if (r.expired) {
@@ -202,7 +211,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
   }
 
   function resend() {
-    startTransition(async () => {
+    run(async () => {
       const r = await sendCode(phone);
       if (!r.ok) return setErr(r.error);
       setErr("");
@@ -211,7 +220,7 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
   }
 
   function onChangePhone() {
-    startTransition(async () => {
+    run(async () => {
       await changePhone();
       setVerified(null);
       setCode("");

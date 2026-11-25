@@ -15,6 +15,21 @@ async function send(phone: string) {
 }
 
 describe("OTP", () => {
+  it("a failed SMS leaves no code behind, so the user can retry straight away", async () => {
+    const phone = "09350000099";
+    const saved = { key: process.env.SMSIR_API_KEY, env: process.env.NODE_ENV };
+    delete process.env.SMSIR_API_KEY;
+    (process.env as Record<string, string>).NODE_ENV = "production";
+    const fail = await requestOtp({ phone, purpose: "booking", ip: ip() });
+    (process.env as Record<string, string | undefined>).NODE_ENV = saved.env;
+    if (saved.key) process.env.SMSIR_API_KEY = saved.key;
+    expect(fail).toEqual({ ok: false, error: "sms_failed" });
+    const { rows } = await query("SELECT 1 FROM otp_codes WHERE phone = $1", [phone]);
+    expect(rows).toHaveLength(0);
+    const retry = await send(phone);
+    expect(retry.r).toEqual({ ok: true, resendIn: 120 });
+  });
+
   it("stores only a hash and verifies the right code once", async () => {
     const phone = "09350000001";
     const { r, code } = await send(phone);

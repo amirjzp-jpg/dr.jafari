@@ -22,6 +22,13 @@ export function generateStaticParams() {
 
 type Params = Promise<{ lang: string; slug: string }>;
 
+/** Arabic/English pages carry the translation date, but never an earlier one than the article itself. */
+function intlDates(a: { published: string; updated?: string }) {
+  const published = a.published > INTL_UPDATED ? a.published : INTL_UPDATED;
+  const own = a.updated ?? a.published;
+  return { published, modified: own > published ? own : published };
+}
+
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { lang, slug } = await params;
   const a = articleBySlug(slug);
@@ -34,8 +41,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     path: localePath(lang, `/journal/${a.slug}`),
     type: "article",
     image: { url: a.image.hero, width: 1600, height: 900, alt: t.imageAlt },
-    publishedTime: INTL_UPDATED,
-    modifiedTime: INTL_UPDATED,
+    publishedTime: intlDates(a).published,
+    modifiedTime: intlDates(a).modified,
     authors: [abs("/")],
   });
 }
@@ -89,8 +96,8 @@ export default async function ArticlePage({ params }: { params: Params }) {
             headline: displayTitle(lang, t.title),
             description: t.excerpt,
             image: abs(a.image.hero),
-            datePublished: INTL_UPDATED,
-            dateModified: INTL_UPDATED,
+            datePublished: intlDates(a).published,
+            dateModified: intlDates(a).modified,
             inLanguage: lang,
             author: { "@id": abs("/#clinic") },
             publisher: { "@id": abs("/#clinic") },
@@ -118,7 +125,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
           <span className="self-start rounded-pill bg-tint px-3.5 py-[5px] text-xs text-primary">{t.category}</span>
           <h1 className="font-display text-[30px] leading-normal font-semibold lg:text-[44px]">{displayTitle(lang, t.title)}</h1>
           <p className="flex gap-3 text-[13px] text-muted">
-            <time dateTime={INTL_UPDATED}>{articleDate(INTL_UPDATED, lang)}</time>
+            <time dateTime={intlDates(a).published}>{articleDate(intlDates(a).published, lang)}</time>
             <span aria-hidden="true">·</span>
             <span>{l.minutes(a.readMinutes)}</span>
           </p>

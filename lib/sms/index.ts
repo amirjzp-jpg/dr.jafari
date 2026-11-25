@@ -60,6 +60,13 @@ export async function sendSms(phone: string, template: SmsTemplate, params: Para
   } else {
     // Dev/test logger. This is the only place an OTP code is ever written out;
     // it never reaches an HTTP response.
+    if (process.env.NODE_ENV === "production" && !process.env.SMSIR_API_KEY) {
+      // A production server without the key must fail loudly, not pretend a code was sent.
+      const detail = "SMSIR_API_KEY is not set";
+      console.error(`[sms] failed to=${phone} template=${template}: ${detail}`);
+      await query("INSERT INTO sms_log (phone, template, ok, provider, detail) VALUES ($1, $2, $3, $4, $5)", [phone, template, false, "mock", detail]).catch(() => {});
+      return { ok: false, provider: "mock", detail };
+    }
     console.info(`[sms:mock] to=${phone} template=${template} params=${JSON.stringify(params)}`);
     // Once sms.ir is connected, a patient message whose template isn't set up was
     // NOT delivered: report it so staff see "no SMS sent" and call instead. Codes

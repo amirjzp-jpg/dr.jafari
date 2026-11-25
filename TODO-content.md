@@ -47,8 +47,8 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - Page `/visit-from-nearby-cities` (Persian): patients from other cities in Fars. Needs from the clinic: real travel facts (parking, landmarks) if they want them added; no distances were claimed.
 - Article `treatment-from-abroad` (fa/ar/en): trip-planning checklist. Open facts to confirm with the clinic: payment for foreign patients, accommodation, airport access (the text tells readers to ask; it makes no promise). Approximate treatment times (about 1 day / 1 month) come from the plan-your-visit decision.
 - Article `whitening-before-composite-veneers` (Persian only): uses only statements already on the approved whitening and veneers pages.
-- Both articles reuse existing blog photos as placeholders: replace with dedicated images.
+- Both articles now have their own photos (AI-generated, marked as illustrative).
 
-- Articles `composite-veneer-cost` and `smile-design-steps` (Persian only, 2026-11-25) come from the approved-for-the-clinic drafts 3 and 4 in `docs/content-drafts/articles.md`; they carry no reviewer line. The cost article states no prices; its instalment sentence matches the existing home and service pages. Both reuse existing blog photos as placeholders.
+- Articles `composite-veneer-cost` and `smile-design-steps` (Persian only, 2026-11-25) come from the approved-for-the-clinic drafts 3 and 4 in `docs/content-drafts/articles.md`; they carry no reviewer line. The cost article states no prices; its instalment sentence matches the existing home and service pages. Both have their own photos.
 
-- Article `veneers-composite-gulf-patients` (fa/ar/en, 2026-11-25): unreviewed; reuses the composite-vs-veneer photo as a placeholder. Payment for foreigners, accommodation and airport access are still "ask the clinic" until the clinic answers. Arabic needs a native proofread.
+- Article `veneers-composite-gulf-patients` (fa/ar/en, 2026-11-25): unreviewed; has its own photo. Payment for foreigners, accommodation and airport access are still "ask the clinic" until the clinic answers. Arabic needs a native proofread.

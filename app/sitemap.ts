@@ -13,13 +13,13 @@ const pages = ["/", "/booking", "/about", "/dentist-maaliabad-shiraz", "/visit-f
 // A page that exists in more than one language is listed once per language, each entry
 // pointing at all of its versions (Google's hreflang-in-sitemap format). `modified` is the
 // Persian page's content date; the Arabic and English versions carry INTL_UPDATED.
-function pageEntries(path: string, modified?: Date): MetadataRoute.Sitemap {
+function pageEntries(path: string, modified?: Date, intlModified: Date = new Date(INTL_UPDATED)): MetadataRoute.Sitemap {
   if (!isTranslated(path)) return [{ url: abs(path), ...(modified ? { lastModified: modified } : {}) }];
-  const languages = Object.fromEntries(locales.map((l) => [l, abs(localePath(l, path))]));
+  const languages = { ...Object.fromEntries(locales.map((l) => [l, abs(localePath(l, path))])), "x-default": abs(localePath("fa", path)) };
   return locales.map((l) => ({
     url: abs(localePath(l, path)),
     alternates: { languages },
-    ...(modified ? { lastModified: l === "fa" ? modified : new Date(INTL_UPDATED) } : {}),
+    ...(modified ? { lastModified: l === "fa" ? modified : intlModified } : {}),
   }));
 }
 
@@ -28,9 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.flatMap((path) => pageEntries(path)),
     ...services.flatMap((s) => pageEntries(s.href, new Date(s.updatedAt ?? s.reviewedAt ?? COPY_APPROVED))),
     ...intlOnlyPaths.flatMap((path) => {
-      const languages = Object.fromEntries(intlLocales.map((l) => [l, abs(localePath(l, path))]));
+      const languages = { ...Object.fromEntries(intlLocales.map((l) => [l, abs(localePath(l, path))])), "x-default": abs(localePath("en", path)) };
       return intlLocales.map((l) => ({ url: abs(localePath(l, path)), alternates: { languages }, lastModified: new Date(INTL_UPDATED) }));
     }),
-    ...articles.flatMap((a) => pageEntries(`/journal/${a.slug}`, new Date(a.updated ?? a.published))),
+    ...articles.flatMap((a) => {
+      const own = new Date(a.updated ?? a.published);
+      return pageEntries(`/journal/${a.slug}`, own, own > new Date(INTL_UPDATED) ? own : new Date(INTL_UPDATED));
+    }),
   ];
 }

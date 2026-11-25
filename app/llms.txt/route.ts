@@ -1,5 +1,6 @@
 import { articles } from "@/content/journal";
 import { homeFaq } from "@/content/home";
+import { articleText } from "@/content/i18n/articles";
 import { homeCopy } from "@/content/i18n/home";
 import { serviceContent } from "@/content/i18n/services";
 import { services, type Faq } from "@/content/services";
@@ -83,6 +84,11 @@ export function GET() {
           link(languageNames.en, localePath("en", "/"), "Home page in English"),
           link("المجلة", localePath("ar", "/journal"), "مقالات بالعربية عن الكومبوزيت والفينير الخزفي (البورسلين) والتبييض"),
           link("Journal", localePath("en", "/journal"), "Articles in English on composite bonding, ceramic (porcelain) veneers and whitening"),
+          ...intlLocales.flatMap((lang) =>
+            ["treatment-from-abroad", "veneers-composite-gulf-patients"]
+              .filter((slug) => articleText[lang][slug])
+              .map((slug) => link(articleText[lang][slug].title, localePath(lang, `/journal/${slug}`))),
+          ),
           "",
         ]
       : []),

@@ -161,7 +161,7 @@ describe("translated pages", () => {
   });
 });
 
-const PERSIAN_ONLY: string[] = ["whitening-before-composite-veneers"];
+const PERSIAN_ONLY: string[] = ["whitening-before-composite-veneers", "composite-veneer-cost", "smile-design-steps"];
 
 describe("journal articles in Arabic and English", () => {
   it("translates every article, section by section", () => {

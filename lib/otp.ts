@@ -56,22 +56,28 @@ export async function requestOtp(opts: {
   }
 
   const code = String(randomInt(0, 10 ** OTP.length)).padStart(OTP.length, "0");
-  await tx(async (c) => {
+  const codeId = await tx(async (c) => {
     // Only the newest code is valid.
     await c.query(
       "UPDATE otp_codes SET consumed_at = now() WHERE phone = $1 AND purpose = $2 AND consumed_at IS NULL",
       [phone, purpose],
     );
-    await c.query(
+    const ins = await c.query<{ id: string }>(
       `INSERT INTO otp_codes (phone, purpose, code_hash, expires_at, ip)
-       VALUES ($1, $2, $3, now() + make_interval(secs => $4), $5)`,
+       VALUES ($1, $2, $3, now() + make_interval(secs => $4), $5) RETURNING id`,
       [phone, purpose, hashCode(purpose, phone, code), OTP.ttlSeconds, ip],
     );
+    return ins.rows[0].id;
   });
 
   if (deliver) {
     const sms = await sendSms(phone, "otp", { CODE: code });
-    if (!sms.ok) return { ok: false, error: "sms_failed" };
+    if (!sms.ok) {
+      // Nothing reached the phone: drop the code so the user can retry at once, and it
+      // doesn't count toward the send limit or make the next request look "already sent".
+      await query("DELETE FROM otp_codes WHERE id = $1", [codeId]).catch(() => {});
+      return { ok: false, error: "sms_failed" };
+    }
   }
   return { ok: true, resendIn: OTP.resendSeconds };
 }

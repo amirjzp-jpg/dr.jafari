@@ -1,5 +1,6 @@
 import { articles } from "@/content/journal";
 import { homeFaq } from "@/content/home";
+import { articleText } from "@/content/i18n/articles";
 import { homeCopy } from "@/content/i18n/home";
 import { serviceContent } from "@/content/i18n/services";
 import { services, type Faq } from "@/content/services";
@@ -53,6 +54,7 @@ export function GET() {
     "",
     link(`درباره‌ی ${doctor}`, "/about", `${doctor} (با نام «دکتر ندا جعفری» نیز شناخته می‌شود)، دندانپزشک زیبایی، شماره نظام پزشکی ${site.councilNumber} (169473)، بیش از ۱۰ سال تجربه.`),
     link("دندانپزشکی زیبایی در معالی‌آباد شیراز", "/dentist-maaliabad-shiraz", "نشانی، ساعت کاری، خدمات و رزرو آنلاین نوبت."),
+    link("دندانپزشکی زیبایی در شیراز برای ساکنان شهرهای فارس", "/visit-from-nearby-cities", "نوبت‌گیری، زمان تقریبی درمان‌ها و نشانی برای مراجعان از مرودشت، زرقان، سپیدان و شهرهای دیگر."),
     link("نمونه‌کارها", "/gallery", "تصاویر واقعی قبل و بعد از کامپوزیت ونیر، لمینت سرامیکی، طراحی لبخند و بلیچینگ."),
     ...(site.instagram ? [`- اینستاگرام: ${site.instagram} (${site.instagramHandle})`] : []),
     `- نشانی: ${site.address}.`,
@@ -82,6 +84,11 @@ export function GET() {
           link(languageNames.en, localePath("en", "/"), "Home page in English"),
           link("المجلة", localePath("ar", "/journal"), "مقالات بالعربية عن الكومبوزيت والفينير الخزفي (البورسلين) والتبييض"),
           link("Journal", localePath("en", "/journal"), "Articles in English on composite bonding, ceramic (porcelain) veneers and whitening"),
+          ...intlLocales.flatMap((lang) =>
+            ["treatment-from-abroad", "veneers-composite-gulf-patients"]
+              .filter((slug) => articleText[lang][slug])
+              .map((slug) => link(articleText[lang][slug].title, localePath(lang, `/journal/${slug}`))),
+          ),
           "",
         ]
       : []),

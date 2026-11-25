@@ -280,7 +280,7 @@ export default function CardFanCarousel({
       role="region"
       aria-roledescription="carousel"
       aria-label={label}
-      className="relative flex w-full flex-col items-center"
+      className="relative flex w-full flex-col items-center overflow-x-clip"
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") go(DIR < 0 ? "next" : "prev");
         else if (e.key === "ArrowRight") go(DIR < 0 ? "prev" : "next");

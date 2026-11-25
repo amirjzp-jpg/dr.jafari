@@ -40,4 +40,12 @@ describe("sms.ir go-live switch", () => {
     delete process.env.SMSIR_API_KEY;
     expect((await sendSms("09120000001", "moved", { NAME: "مریم", DATE: "x", TIME: "y" })).ok).toBe(true);
   });
+
+  it("a production server without the key reports the message as not sent", async () => {
+    delete process.env.SMSIR_API_KEY;
+    (process.env as Record<string, string>).NODE_ENV = "production";
+    const r = await sendSms("09120000001", "otp", { CODE: "12345" });
+    expect(r.ok).toBe(false);
+    expect(r.detail).toMatch(/SMSIR_API_KEY/);
+  });
 });

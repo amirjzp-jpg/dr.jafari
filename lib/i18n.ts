@@ -41,6 +41,8 @@ export const translatedPaths: readonly string[] = [
   "/journal/veneer-care",
   "/journal/whitening-longevity",
   "/journal/whitening-doctor-shiraz",
+  "/journal/treatment-from-abroad",
+  "/journal/veneers-composite-gulf-patients",
 ];
 
 /**

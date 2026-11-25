@@ -167,7 +167,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         {
           h: "إرسال الرسائل النصية",
           p: [
-            "تُرسل رسائل رمز التأكيد وتأكيد الموعد والتذكير وتغيير الموعد عبر منصة الرسائل sms.ir. ولهذا لا يُسلَّم إلى هذه المنصة سوى رقم الجوال ونص الرسالة.",
+            "تُرسل رسائل رمز التأكيد وتأكيد الموعد والتذكير عبر منصة الرسائل sms.ir. ولهذا لا يُسلَّم إلى هذه المنصة سوى رقم الجوال ونص الرسالة.",
           ],
         },
         {
@@ -233,7 +233,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         },
         {
           h: "التغيير من جانب العيادة",
-          p: ["إذا اضطرت العيادة إلى تغيير موعدك أو إلغائه، فسيُبلَّغ ذلك برسالة نصية، وبمكالمة هاتفية عند الحاجة."],
+          p: ["إذا اضطرت العيادة إلى تغيير موعدك أو إلغائه، فستتصل بك العيادة لإبلاغك بذلك."],
         },
       ],
     },
@@ -363,7 +363,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         {
           h: "Text messages",
           p: [
-            "Confirmation code, appointment confirmation, reminder and appointment-change messages are sent through the sms.ir messaging service. For this, only the mobile number and the text of the message are given to that service.",
+            "Confirmation code, appointment confirmation and reminder messages are sent through the sms.ir messaging service. For this, only the mobile number and the text of the message are given to that service.",
           ],
         },
         {
@@ -430,7 +430,7 @@ export const pagesCopy: Record<IntlLocale, PagesCopy> = {
         },
         {
           h: "Changes made by the clinic",
-          p: ["If the clinic has to change or cancel your appointment, you will be told by text message and, if needed, by phone."],
+          p: ["If the clinic has to change or cancel your appointment, the clinic will phone you to let you know."],
         },
       ],
     },

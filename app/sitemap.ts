@@ -8,7 +8,7 @@ import { abs } from "@/lib/seo";
 // Only pages with a real content date carry lastModified. A build-time stamp
 // would claim every page changed on every deploy, so the rest omit it.
 // changefreq and priority are ignored by Google and left out.
-const pages = ["/", "/booking", "/about", "/dentist-maaliabad-shiraz", "/services", "/gallery", "/journal", "/privacy", "/booking-policy"];
+const pages = ["/", "/booking", "/about", "/dentist-maaliabad-shiraz", "/visit-from-nearby-cities", "/services", "/gallery", "/journal", "/privacy", "/booking-policy"];
 
 // A page that exists in more than one language is listed once per language, each entry
 // pointing at all of its versions (Google's hreflang-in-sitemap format). `modified` is the

@@ -111,6 +111,9 @@ export default function MaaliabadPage() {
             <p className="text-[17px] leading-[2] text-muted-2">
               اولین مراجعه معمولاً یک جلسه‌ی «معاینه و مشاوره» ۳۰ دقیقه‌ای است. می‌توانید روز و ساعت دلخواه را از صفحه‌ی رزرو انتخاب و با کد پیامکی تأیید کنید، یا تماس بگیرید.
             </p>
+            <p className="text-[17px] leading-[2] text-muted-2">
+              از شهرهای دیگر فارس می‌آیید؟ <Link href="/visit-from-nearby-cities">راهنمای مراجعه از شهرهای فارس</Link>
+            </p>
             <div>
               <ButtonLink href={bookingHref} data-umami-event="book_cta">
                 {bookingLabel}

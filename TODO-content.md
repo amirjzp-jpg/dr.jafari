@@ -42,3 +42,9 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - Added 2026-10-22. Arabic and English versions added the same day (need a native proofread and the doctor's confirmation). `doctorReviewed: false` until the doctor confirms the text; then flip it so the reviewer line shows.
 - Image: AI-generated stock photo added (public/images/blog/whitening-doctor-shiraz-*.webp).
 - Open with the doctor: the clinic's exact bleaching method and number of sessions; whether to publish a price range (D3).
+
+## Growth content added 2026-11-25 (all unreviewed by the doctor, `doctorReviewed: false`)
+- Page `/visit-from-nearby-cities` (Persian): patients from other cities in Fars. Needs from the clinic: real travel facts (parking, landmarks) if they want them added; no distances were claimed.
+- Article `treatment-from-abroad` (fa/ar/en): trip-planning checklist. Open facts to confirm with the clinic: payment for foreign patients, accommodation, airport access (the text tells readers to ask; it makes no promise). Approximate treatment times (about 1 day / 1 month) come from the plan-your-visit decision.
+- Article `whitening-before-composite-veneers` (Persian only): uses only statements already on the approved whitening and veneers pages.
+- Both articles reuse existing blog photos as placeholders: replace with dedicated images.

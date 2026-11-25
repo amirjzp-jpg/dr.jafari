@@ -393,6 +393,10 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
                 </button>
               )}
             </div>
+            <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted">
+              کد نرسید؟ تماس بگیرید یا در واتساپ پیام بدهید:
+              <PhoneLink />
+            </p>
           </>
         ) : step === 4 ? (
           <>
@@ -532,6 +536,12 @@ export function BookingFlow({ initialDays, initialHold, initialVerified, serverN
             <p ref={errRef} id="form-error" role="alert" className="flex items-center gap-2 text-sm text-danger">
               <ErrorIcon />
               {err}
+            </p>
+          )}
+          {err && step <= 2 && (
+            <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted">
+              یا با کلینیک تماس بگیرید:
+              <PhoneLink />
             </p>
           )}
         </div>

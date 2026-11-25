@@ -1,13 +1,13 @@
 import { WhatsAppIcon } from "@/components/icons/ui";
-import { facts, ui } from "@/content/i18n/ui";
+import { facts, ui, waLink } from "@/content/i18n/ui";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 /**
  * The clinic phone as a tap-to-call link. Semibold so it reads as the
  * clinic's contact point, and nowrap so it never breaks at its inner spaces.
- * In Arabic and English a WhatsApp mark sits beside it and opens a chat, since
- * visitors from abroad use WhatsApp rather than a call.
+ * A WhatsApp mark sits beside it and opens a chat with a ready first message
+ * in the page's language.
  */
 export function PhoneLink({ className = "", lang = "fa" }: { className?: string; lang?: Locale }) {
   const phone = (
@@ -20,12 +20,11 @@ export function PhoneLink({ className = "", lang = "fa" }: { className?: string;
       {facts[lang].phoneDisplay}
     </a>
   );
-  if (lang === "fa") return phone;
   return (
     <span className="inline-flex items-center gap-3">
       {phone}
       <a
-        href={site.whatsapp.url}
+        href={waLink(lang)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={ui[lang].whatsapp}

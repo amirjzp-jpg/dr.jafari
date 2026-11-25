@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PhoneIcon } from "@/components/icons/ui";
-import { bookingFor, externalProps, ui } from "@/content/i18n/ui";
+import { PhoneIcon, WhatsAppIcon } from "@/components/icons/ui";
+import { bookingFor, externalProps, ui, waLink } from "@/content/i18n/ui";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
@@ -25,8 +25,20 @@ export function MobileBookingBar({ lang = "fa" }: { lang?: Locale }) {
         >
           {book.label}
         </Link>
+        {!book.external && (
+          <a
+            href={waLink(lang)}
+            {...externalProps}
+            aria-label={ui[lang].whatsapp}
+            data-umami-event="whatsapp_click"
+            className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-[#1f8f5f] text-[#1f8f5f]"
+          >
+            <WhatsAppIcon size={22} />
+          </a>
+        )}
         <a
           href={`tel:${site.phone.tel}`}
+          data-umami-event="phone_click"
           aria-label={ui[lang].callClinic}
           className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-primary text-primary"
         >

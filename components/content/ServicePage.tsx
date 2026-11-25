@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { BookingCta } from "@/components/content/BookingCta";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { DraftNotice } from "@/components/content/DraftNotice";
 import { Faq } from "@/components/content/Faq";
 import { JsonLd } from "@/components/content/JsonLd";
@@ -49,6 +50,26 @@ export function ServicePage({ service }: { service: Service }) {
       <PageHeader title={service.title} lead={service.intro.map((p) => <p key={p}>{p}</p>)} crumbs={crumbs} />
       <JsonLd data={[medicalWebPageSchema(service), faqSchema(d.faq)]} />
       <Container>
+        {/* Real results right after the intro, where the decision is made, with the booking button under them. */}
+        {relatedCases.length > 0 && (
+          <section aria-labelledby="cases" className="flex flex-col gap-8 pb-14">
+            <H2 id="cases">نمونه‌کارهای کلینیک</H2>
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+              {relatedCases.map((c) => (
+                <BeforeAfter key={c.label} item={c} />
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <ButtonLink href="/booking" data-umami-event="book_cta_cases">
+                رزرو نوبت معاینه و مشاوره
+              </ButtonLink>
+              <Link href="/gallery" className="py-2 text-primary">
+                همه‌ی نمونه‌کارها
+              </Link>
+            </div>
+          </section>
+        )}
+
         <div className="flex max-w-[760px] flex-col gap-14 pb-4">
           <DraftNotice reviewed={service.reviewed} />
           <ReviewedBy reviewed={service.reviewed && doctorReviewed} date={service.reviewedAt ?? COPY_APPROVED} />
@@ -116,17 +137,6 @@ export function ServicePage({ service }: { service: Service }) {
             <Faq items={d.faq} />
           </section>
         </div>
-
-        {relatedCases.length > 0 && (
-          <section aria-labelledby="cases" className="flex flex-col gap-8 pt-16">
-            <H2 id="cases">نمونه‌کارها</H2>
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {relatedCases.map((c) => (
-                <BeforeAfter key={c.label} item={c} />
-              ))}
-            </div>
-          </section>
-        )}
 
         {related.length > 0 && (
           <section aria-labelledby="articles" className="flex flex-col gap-8 pt-16">

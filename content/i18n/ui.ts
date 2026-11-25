@@ -198,6 +198,7 @@ export function navFor(lang: Locale): readonly NavItem[] {
 }
 
 const waText = {
+  fa: "سلام، می‌خواهم در کلینیک دکتر فاطمه جعفری نوبت بگیرم.",
   ar: "السلام عليكم، أرغب في حجز موعد في عيادة الدكتورة فاطمة جعفري في شيراز.",
   en: "Hello, I would like to book an appointment at Dr. Fatemeh Jafari's clinic in Shiraz.",
 } as const;
@@ -215,7 +216,7 @@ export function bookingFor(lang: Locale): { href: string; external: boolean; lab
 }
 
 /** WhatsApp chat with the clinic, opened with a ready first message in the visitor's language. */
-export function waLink(lang: "ar" | "en"): string {
+export function waLink(lang: Locale): string {
   return `${site.whatsapp.url}?text=${encodeURIComponent(waText[lang])}`;
 }
 

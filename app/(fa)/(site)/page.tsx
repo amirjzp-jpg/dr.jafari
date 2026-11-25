@@ -70,6 +70,7 @@ function Hero() {
             {site.tagline}
           </h1>
           <p className="text-[19px] text-primary lg:text-[26px]">کامپوزیت · لمینت سرامیکی</p>
+          <p className="text-[15px] leading-[1.9] text-muted lg:text-[17px]">رزرو آنلاین معاینه و مشاوره‌ی ۳۰ دقیقه‌ای · امکان پرداخت اقساطی</p>
           <p className="hidden max-w-[440px] text-[17px] leading-[2] text-muted lg:block">
             کلینیکی مجهز به تجهیزات و فناوری‌های روز دندانپزشکی، برای لبخندی طبیعی و ماندگار.
           </p>

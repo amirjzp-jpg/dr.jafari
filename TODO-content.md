@@ -50,3 +50,5 @@ Every `[؟]` placeholder on the site must be listed here. Nothing ships while th
 - Both articles reuse existing blog photos as placeholders: replace with dedicated images.
 
 - Articles `composite-veneer-cost` and `smile-design-steps` (Persian only, 2026-11-25) come from the approved-for-the-clinic drafts 3 and 4 in `docs/content-drafts/articles.md`; they carry no reviewer line. The cost article states no prices; its instalment sentence matches the existing home and service pages. Both reuse existing blog photos as placeholders.
+
+- Article `veneers-composite-gulf-patients` (fa/ar/en, 2026-11-25): unreviewed; reuses the composite-vs-veneer photo as a placeholder. Payment for foreigners, accommodation and airport access are still "ask the clinic" until the clinic answers. Arabic needs a native proofread.

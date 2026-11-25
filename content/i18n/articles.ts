@@ -172,7 +172,7 @@ export const articleText: Record<IntlLocale, Record<string, ArticleText>> = {
       metaDescription:
         "تخطيط علاج الأسنان في شيراز من الخارج: أسئلة قبل السفر، مدة العلاجات التقريبية، الزيارة الأولى والحجز عبر واتساب.",
       category: "المرضى من الخارج",
-      imageAlt: "ابتسامة طبيعية فاتحة؛ صورة توضيحية",
+      imageAlt: "دفتر ملاحظات وهاتف وفنجان شاي ومرآة أسنان على طاولة؛ صورة توضيحية",
       body: [
         { p: "لعلاج الأسنان في شيراز قادمًا من الخارج، اتفق مع العيادة قبل السفر على أربعة أمور: العلاج المطلوب، وعدد الزيارات ومدتها التقريبية، وطريقة الدفع، وترتيب الزيارات. الزيارة الأولى فحص واستشارة مدتها نحو 30 دقيقة، وتُحدَّد الخطة النهائية بعد الفحص؛ لذا فإن وعدًا قاطعًا بالمدة أو بالنتيجة قبل رؤية أسنانك ليس علامة جيدة." },
         { h2: "ما الذي تسأل عنه العيادة قبل السفر؟" },
@@ -217,7 +217,7 @@ export const articleText: Record<IntlLocale, Record<string, ArticleText>> = {
       metaDescription:
         "الفينير أم الكومبوزيت في شيراز: الفرق بين الطريقتين، المدة التقريبية لكل منهما، الزيارة الأولى والحجز عبر واتساب للمرضى الناطقين بالعربية.",
       category: "المرضى من الخارج",
-      imageAlt: "مقارنة بين ابتسامة بالكومبوزيت وأخرى بالفينير؛ صورة توضيحية",
+      imageAlt: "نموذجان جصيان للأسنان ومرآة أسنان ودفتر ملاحظات؛ صورة توضيحية",
       body: [
         { p: "يسأل المرضى الناطقون بالعربية قبل السفر إلى شيراز عادةً: أيّهما يناسبني: الفينير أم الكومبوزيت، وكم يومًا يجب أن أبقى، وكيف أحجز؟ يُحدَّد الاختيار بين الطريقتين بعد الفحص، لكن الفرق في المدة يمكن أخذه في الحسبان من الآن عند تخطيط الرحلة." },
         { h2: "ما الفرق بين الفينير والكومبوزيت؟" },
@@ -395,7 +395,7 @@ export const articleText: Record<IntlLocale, Record<string, ArticleText>> = {
       metaDescription:
         "Planning dental treatment in Shiraz from abroad: questions to ask before you travel, approximate treatment times, the first visit and booking on WhatsApp.",
       category: "Patients abroad",
-      imageAlt: "A natural, bright smile; illustrative image",
+      imageAlt: "A notebook, phone, cup of tea and dental mirror on a table; illustrative image",
       body: [
         { p: "To have dental treatment in Shiraz from abroad, settle four things with the clinic before you travel: the treatment you want, the number and approximate length of visits, how payment works, and the order of visits. The first visit is an examination and consultation of about 30 minutes, and the final plan is set after the examination, so a fixed promise of time or result before your teeth are seen is not a good sign." },
         { h2: "What should you ask the clinic before you travel?" },
@@ -440,7 +440,7 @@ export const articleText: Record<IntlLocale, Record<string, ArticleText>> = {
       metaDescription:
         "Veneers or composite in Shiraz: how the two differ, roughly how long each takes, the first visit and booking on WhatsApp for Arabic-speaking patients.",
       category: "Patients abroad",
-      imageAlt: "A comparison of a smile with composite and with veneers; illustrative image",
+      imageAlt: "Two plaster dental models, a dental mirror and a notebook; illustrative image",
       body: [
         { p: "Arabic-speaking patients planning a trip to Shiraz usually ask which of veneers or composite suits them, how many days they need to stay, and how to book. The choice between the two is made after an examination, but the difference in time can already be part of your travel plan." },
         { h2: "How do veneers and composite differ?" },

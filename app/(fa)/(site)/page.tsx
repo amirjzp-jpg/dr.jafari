@@ -42,10 +42,10 @@ export default function HomePage() {
       <Stats />
       <About />
       <Cases />
+      <Reviews lang="fa" />
       <InstagramCta className="pb-16 lg:pb-24" />
       <Services />
       <Journal />
-      <Reviews lang="fa" />
       <HomeFaq />
       <Contact />
     </>

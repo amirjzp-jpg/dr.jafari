@@ -14,7 +14,8 @@ export const metadata: Metadata = buildMetadata({
   path: "/booking",
 });
 
-export default async function BookingPage() {
+export default async function BookingPage({ searchParams }: { searchParams: Promise<{ reason?: string }> }) {
+  const { reason } = await searchParams;
   await connection(); // always per-request: holds and availability are live
   let data: Awaited<ReturnType<typeof loadBooking>> | null = null;
   try {
@@ -30,6 +31,7 @@ export default async function BookingPage() {
       initialHold={data.hold}
       initialVerified={data.verifiedMasked}
       serverNow={data.serverNow}
+      initialReason={reason === "veneer" || reason === "other" ? reason : "composite"}
     />
   );
 }

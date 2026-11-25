@@ -3,12 +3,14 @@ import Link from "next/link";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { BookingCta } from "@/components/content/BookingCta";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { bookingWithReason } from "@/content/i18n/ui";
 import { DraftNotice } from "@/components/content/DraftNotice";
 import { Faq } from "@/components/content/Faq";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Container } from "@/components/layout/Container";
 import { cases } from "@/content/cases";
+import { reviews, reviewsCopy } from "@/content/reviews";
 import { articles } from "@/content/journal";
 import { ReviewedBy } from "@/components/content/ReviewedBy";
 import { COPY_APPROVED, type Service } from "@/content/services";
@@ -44,6 +46,8 @@ export function ServicePage({ service }: { service: Service }) {
     ? [{ name: service.name, path: service.href }]
     : [{ name: "خدمات", path: "/services" }, { name: service.name, path: service.href }];
   const relatedCases = cases.filter((c) => service.caseTitles?.includes(c.title));
+  // Real patient comments that name this treatment.
+  const serviceReviews = reviews.filter((r) => r.treatment?.fa === service.name);
 
   return (
     <>
@@ -59,8 +63,18 @@ export function ServicePage({ service }: { service: Service }) {
                 <BeforeAfter key={c.label} item={c} />
               ))}
             </div>
+            {serviceReviews.map((r, i) => (
+              <figure key={i} className="flex max-w-[760px] flex-col gap-3 rounded-[24px] border border-line bg-surface p-6">
+                <blockquote className="text-[16px] leading-[2] text-ink">«{r.text.fa}»</blockquote>
+                <figcaption className="flex flex-wrap gap-x-2 text-[13px] text-muted">
+                  <span>{reviewsCopy.fa.patient}</span>
+                  {r.treatment && <span>· {r.treatment.fa}</span>}
+                  {r.original !== "fa" && <span>· {reviewsCopy.fa.translated}</span>}
+                </figcaption>
+              </figure>
+            ))}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-              <ButtonLink href="/booking" data-umami-event="book_cta_cases">
+              <ButtonLink href={bookingWithReason(service.href)} data-umami-event="book_cta_cases">
                 رزرو نوبت معاینه و مشاوره
               </ButtonLink>
               <Link href="/gallery" className="py-2 text-primary">
@@ -161,7 +175,7 @@ export function ServicePage({ service }: { service: Service }) {
           </section>
         )}
       </Container>
-      <BookingCta />
+      <BookingCta href={bookingWithReason(service.href)} />
     </>
   );
 }
